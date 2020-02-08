@@ -129,7 +129,7 @@ SafariZoneWardensHome2FPosterText:
 	done
 	
 Warden2FFineYouWin:
-	text "Heh. Fine"
+	text "Heh. Fine."
 	para "You win."
 	para "We'll head out"
 	line "now."

@@ -62,6 +62,7 @@ SlowpokeWellSign:
 	;setevent EVENT_EXPLODING_TRAP_5
 	;giveitem HM_SURF
 	;givepoke STANTLER, 5
+	;givepoke ABRA, 5
 	jumptext SlowpokeWellSignText
 
 
