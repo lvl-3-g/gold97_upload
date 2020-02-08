@@ -72,10 +72,6 @@ Route2HiddenRevive:
 	hiddenitem REVIVE, EVENT_ROUTE_2_HIDDEN_REVIVE
 
 
-
-Route3MtMoonSquareSign:
-	jumptext Route3MtMoonSquareSignText
-
 FirebreatherOtisSeenText:
 	text "Ah! The weather's"
 	line "as fine as ever."
@@ -127,12 +123,6 @@ YoungsterJimmyAfterBattleText:
 
 
 
-Route3MtMoonSquareSignText:
-	text "MT.MOON SQUARE"
-
-	para "Just go up the"
-	line "stairs."
-	done
 
 Route3_MapEvents:
 	db 0, 0 ; filler
@@ -144,9 +134,7 @@ Route3_MapEvents:
 
 	db 0 ; coord events
 
-	db 6 ; bg events
-	bg_event 34, 10, BGEVENT_READ, Route3MtMoonSquareSign
-	bg_event 28,  6, BGEVENT_READ, Route2DiglettsCaveSign
+	db 4 ; bg events
 	bg_event  5,  4, BGEVENT_ITEM, Route2HiddenMaxEther
 	bg_event 31, 12, BGEVENT_ITEM, Route2HiddenFullHeal
 	bg_event 35,  8, BGEVENT_ITEM, Route2HiddenFullRestore

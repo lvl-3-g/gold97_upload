@@ -44,8 +44,6 @@ TrainerHikerRussell:
 Route2Sign:
 	jumptext Route2SignText
 
-Route2DiglettsCaveSign:
-	jumptext Route2DiglettsCaveSignText
 
 
 Route2MaxPotion:
@@ -100,10 +98,6 @@ Route2SignText:
 	line "HONTO TOWN"
 	done
 
-
-Route2DiglettsCaveSignText:
-	text "DIGLETT'S CAVE"
-	done
 
 Route2_MapEvents:
 	db 0, 0 ; filler

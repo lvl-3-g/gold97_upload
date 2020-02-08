@@ -411,7 +411,7 @@ NewBarkTownRivalText1:
 	cont "you about!"
 	
 	para "I got an email"
-	line "from PROF. OAK!"
+	line "from PROF.OAK!"
 
 	para "Yeah, the famous"
 	line "one!"
