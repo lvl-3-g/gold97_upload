@@ -74,3 +74,8 @@ INCBIN "gfx/trainers/blue.gbcpal", middle_colors
 INCBIN "gfx/trainers/officer.gbcpal", middle_colors
 INCBIN "gfx/trainers/grunt_f.gbcpal", middle_colors
 INCBIN "gfx/trainers/mysticalman.gbcpal", middle_colors
+INCBIN "gfx/trainers/engineer.gbcpal", middle_colors
+INCBIN "gfx/trainers/sportsman.gbcpal", middle_colors
+INCBIN "gfx/trainers/soldier.gbcpal", middle_colors
+INCBIN "gfx/trainers/instructor.gbcpal", middle_colors
+INCBIN "gfx/trainers/fledgling.gbcpal", middle_colors

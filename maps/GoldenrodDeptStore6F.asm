@@ -1,6 +1,7 @@
 	const_def 2 ; object constants
-	const GOLDENRODDEPTSTORE6F_LASS
 	const GOLDENRODDEPTSTORE6F_SUPER_NERD
+	const GOLDENRODDEPTSTORE6F_MON
+	const GOLDENRODDEPTSTORE6F_BIRD
 
 GoldenrodDeptStore6F_MapScripts:
 	db 0 ; scene scripts
@@ -80,8 +81,6 @@ GoldenrodVendingMachine:
 	db "LEMONADE     ¥350@"
 	db "CANCEL@"
 
-GoldenrodDeptStore6FLassScript:
-	jumptextfaceplayer GoldenrodDeptStore6FLassText
 
 GoldenrodDeptStore6FSuperNerdScript:
 	jumptextfaceplayer GoldenrodDeptStore6FSuperNerdText
@@ -91,6 +90,34 @@ GoldenrodDeptStore6FDirectory:
 
 GoldenrodDeptStore6FElevatorButton:
 	jumpstd elevatorbutton
+	
+GoldenrodDeptStore6FMonScript:
+	faceplayer
+	opentext
+	writetext GoldenrodDeptStore6FMonText
+	cry AMPHAROS
+	waitbutton
+	closetext
+	end
+	
+GoldenrodDeptStore6FBirdScript:
+	faceplayer
+	opentext
+	writetext GoldenrodDeptStore6FBirdText
+	cry MAGCARGO
+	waitbutton
+	closetext
+	end
+	
+GoldenrodDeptStore6FMonText:
+	text "AMPHAROS:"
+	line "Ampha!"
+	done
+	
+GoldenrodDeptStore6FBirdText:
+	text "MADAME:"
+	line "Kwaa!"
+	done
 
 GoldenrodVendingText:
 	text "A vending machine!"
@@ -115,29 +142,18 @@ GoldenrodVendingNoSpaceText:
 	line "room for stuff."
 	done
 
-GoldenrodDeptStore6FLassText:
-	text "Do you listen to"
-	line "LUCKY CHANNEL?"
 
-	para "If you want to"
-	line "win, trade #MON"
-
-	para "with as many peo-"
-	line "ple as possible to"
-
-	para "get different ID"
-	line "numbers."
-	done
 
 GoldenrodDeptStore6FSuperNerdText:
-	text "If you're tired,"
-	line "try the vending"
-	cont "machine's drinks."
-
-	para "Your #MON will"
-	line "love them too."
+	text "I'm off duty."
+	para "I like to take my"
+	line "#MON up here"
+	para "when I have the"
+	line "time."
+	para "#MON love the"
+	line "drinks from the"
+	cont "vending machines!"
 	done
-
 GoldenrodDeptStore6FDirectoryText:
 	text "Take a Break from"
 	line "Shopping!"
@@ -148,10 +164,9 @@ GoldenrodDeptStore6FDirectoryText:
 GoldenrodDeptStore6F_MapEvents:
 	db 0, 0 ; filler
 
-	db 3 ; warp events
+	db 2 ; warp events
 	warp_event 15,  0, GOLDENROD_DEPT_STORE_5F, 2
 	warp_event  2,  0, GOLDENROD_DEPT_STORE_ELEVATOR, 1
-	warp_event 13,  0, GOLDENROD_DEPT_STORE_ROOF, 1
 
 	db 0 ; coord events
 
@@ -163,6 +178,8 @@ GoldenrodDeptStore6F_MapEvents:
 	bg_event 10,  1, BGEVENT_UP, GoldenrodVendingMachine
 	bg_event 11,  1, BGEVENT_UP, GoldenrodVendingMachine
 
-	db 2 ; object events
-	object_event 10,  2, SPRITE_LASS, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, GoldenrodDeptStore6FLassScript, -1
-	object_event  8,  2, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, GoldenrodDeptStore6FSuperNerdScript, -1
+	db 3 ; object events
+	object_event  8,  3, SPRITE_OFFICER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 3, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, GoldenrodDeptStore6FSuperNerdScript, -1
+	object_event  6,  5, SPRITE_MONSTER, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 2, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, GoldenrodDeptStore6FMonScript, -1
+	object_event  3,  6, SPRITE_BIRD, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 2, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, GoldenrodDeptStore6FBirdScript, -1
+

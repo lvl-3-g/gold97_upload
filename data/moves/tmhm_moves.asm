@@ -8,7 +8,7 @@ TMHMMoves:
 	db ROAR
 	db TOXIC
 	db ZAP_CANNON
-	db ROCK_SMASH
+	db FLASH
 	db PSYCH_UP
 	db HIDDEN_POWER
 	db SUNNY_DAY
@@ -56,7 +56,7 @@ TMHMMoves:
 	db FLY
 	db SURF
 	db STRENGTH
-	db FLASH
+	db ROCK_SMASH
 	db WHIRLPOOL
 	db WATERFALL
 ; Move tutor

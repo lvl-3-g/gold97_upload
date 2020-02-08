@@ -1,10 +1,10 @@
-	db "BIG JAW@" ; species name
-	dw 707, 1960 ; height, weight
+	db "MAJESTIC@" ; species name
+	dw 702, 2170 ; height, weight
 
-	db   "Although it has a"
-	next "massive body, its"
-	next "powerful hind legs"
+	db   "Because it has a"
+	next "massive body, it"
+	next "is nimble in water"
 
-	page "enable it to move"
-	next "quickly, even on"
-	next "the ground.@"
+	page "but bulky on land."
+	next "Can easily hold"
+	next "its ground.@"

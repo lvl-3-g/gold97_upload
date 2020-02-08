@@ -26,8 +26,8 @@ VermilionPort_MapScripts:
 	applymovement PLAYER, MovementData_0x74ef3
 	appear VERMILIONPORT_SAILOR1
 	setscene SCENE_DEFAULT
-	setevent EVENT_FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN_TWIN_1
-	setevent EVENT_FAST_SHIP_CABINS_SE_SSE_GENTLEMAN
+;	setevent EVENT_FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN_TWIN_1
+;	setevent EVENT_FAST_SHIP_CABINS_SE_SSE_GENTLEMAN
 	setevent EVENT_FAST_SHIP_PASSENGERS_FIRST_TRIP
 	clearevent EVENT_OLIVINE_PORT_PASSAGE_POKEFAN_M
 	setevent EVENT_FAST_SHIP_FIRST_TIME
@@ -78,6 +78,8 @@ VermilionPortAlreadyRodeScript:
 
 VermilionPortWalkUpToShipScript:
 	turnobject VERMILIONPORT_SAILOR2, RIGHT
+	checkevent EVENT_FAST_SHIP_CABINS_SE_SSE_GENTLEMAN
+	iffalse .StillNeedToReturnPart
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	iftrue .skip
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
@@ -126,6 +128,35 @@ VermilionPortWalkUpToShipScript:
 	end
 
 .skip:
+	end
+	
+.StillNeedToReturnPart
+	turnobject PLAYER, LEFT
+	opentext
+	writetext GoGetThePart
+	waitbutton
+	closetext
+	checkitem CARD_KEY
+	iftrue .GiveFuelLine
+	applymovement PLAYER, MovementData_0x74ef5
+	end
+
+.GiveFuelLine
+	showemote EMOTE_SHOCK, VERMILIONPORT_SAILOR2, 15
+	opentext
+	writetext YouHaveTheFuelLine
+	waitbutton
+	closetext
+	takeitem CARD_KEY
+	applymovement PLAYER, MovementData_0x74ef5
+	applymovement VERMILIONPORT_SAILOR2, SailorWalksToShipAndBack
+	opentext
+	writetext ThanksForTheFuelLine
+	waitbutton
+	closetext
+	setevent EVENT_FAST_SHIP_CABINS_SE_SSE_GENTLEMAN
+	applymovement VERMILIONPORT_SAILOR2, SailorGoesBackToHisSpot
+	clearevent EVENT_TELEPORT_GUY
 	end
 
 VermilionPortNotRidingScript:
@@ -194,6 +225,36 @@ VermilionPortSuperNerdScript:
 
 VermilionPortHiddenIron:
 	hiddenitem IRON, EVENT_VERMILION_PORT_HIDDEN_IRON
+	
+SailorWalksToShipAndBack:
+	step RIGHT
+	step DOWN
+	step DOWN
+	step DOWN
+	step DOWN
+	step DOWN
+	step DOWN
+	step RIGHT
+	step LEFT
+	step RIGHT
+	step LEFT
+	step RIGHT
+	step LEFT
+	step RIGHT
+	step LEFT
+	step UP
+	step UP
+	step UP
+	step UP
+	step UP
+	step UP
+	turn_head RIGHT
+	step_end
+	
+SailorGoesBackToHisSpot:
+	step LEFT
+	turn_head RIGHT
+	step_end
 
 MovementData_0x74ef1:
 	step DOWN
@@ -225,6 +286,40 @@ MovementData_0x74efe:
 	step DOWN
 	step DOWN
 	step_end
+	
+ThanksForTheFuelLine:
+	text "Thanks, kid!"
+	para "The S.S.AQUA is"
+	line "back to being"
+	cont "fully operational!"
+	para "We can't thank you"
+	line "enough!"
+	para "Talk to the"
+	line "CAPTAIN next time"
+	cont "you're onboard."
+	para "I'm sure he'll"
+	line "have some way to"
+	cont "show his thanks!"
+	done
+	
+YouHaveTheFuelLine:
+	text "Ah, the FUEL LINE!"
+	para "Wow!"
+	para "Let me go bring"
+	line "this to the ship"
+	cont "crew!"
+	done
+	
+GoGetThePart:
+	text "Alright, kid. We"
+	line "need a new FUEL"
+	cont "LINE."
+	para "There's a guy in"
+	line "YORON CITY who'll"
+	cont "have what we need."
+	para "Bring it back here"
+	line "when you have it!"
+	done
 
 UnknownText_0x74f06:
 	text "We're departing"
@@ -284,12 +379,12 @@ UnknownText_0x75059:
 
 UnknownText_0x75080:
 	text "The FAST SHIP will"
-	line "sail next Sunday."
+	line "sail on Sunday."
 	done
 
 UnknownText_0x750a6:
 	text "You came from"
-	line "JOHTO?"
+	line "the mainland?"
 
 	para "I hear many rare"
 	line "#MON live over"
@@ -300,7 +395,7 @@ VermilionPort_MapEvents:
 	db 0, 0 ; filler
 
 	db 2 ; warp events
-	warp_event  9,  5, VERMILION_PORT_PASSAGE, 5
+	warp_event 13,  7, VERMILION_PORT_PASSAGE, 5
 	warp_event  7, 17, FAST_SHIP_1F, 1
 
 	db 1 ; coord events

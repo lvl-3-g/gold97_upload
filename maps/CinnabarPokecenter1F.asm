@@ -18,26 +18,27 @@ CinnabarPokecenter1FFisherScript:
 	jumptextfaceplayer CinnabarPokecenter1FFisherText
 
 CinnabarPokecenter1FCooltrainerFText:
-	text "CINNABAR GYM's"
-	line "BLAINE apparently"
-
-	para "lives alone in the"
-	line "SEAFOAM ISLANDS"
-	cont "cave…"
+	text "It's too difficult"
+	line "to travel here by"
+	cont "land or sea."
+	para "I have my #MON"
+	line "FLY me here."
 	done
 
 CinnabarPokecenter1FFisherText:
-	text "It's been a year"
-	line "since the volcano"
-	cont "erupted."
+	text "The DEEPWATER"
+	line "PASSAGE is"
+	para "larger than just"
+	line "the path to get"
+	cont "to this town."
 	done
 
 CinnabarPokecenter1F_MapEvents:
 	db 0, 0 ; filler
 
 	db 3 ; warp events
-	warp_event  3,  7, CINNABAR_ISLAND, 1
-	warp_event  4,  7, CINNABAR_ISLAND, 1
+	warp_event  5,  7, CINNABAR_ISLAND, 1
+	warp_event  6,  7, CINNABAR_ISLAND, 1
 	warp_event  0,  7, POKECENTER_2F, 1
 
 	db 0 ; coord events
@@ -45,6 +46,6 @@ CinnabarPokecenter1F_MapEvents:
 	db 0 ; bg events
 
 	db 3 ; object events
-	object_event  3,  1, SPRITE_NURSE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CinnabarPokecenter1FNurseScript, -1
-	object_event  7,  6, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 2, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CinnabarPokecenter1FCooltrainerFScript, -1
+	object_event  5,  1, SPRITE_NURSE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CinnabarPokecenter1FNurseScript, -1
+	object_event  9,  6, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 2, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CinnabarPokecenter1FCooltrainerFScript, -1
 	object_event  2,  4, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, CinnabarPokecenter1FFisherScript, -1

@@ -24,11 +24,18 @@ RuinsOfAlphResearchCenter_MapScripts:
 	return
 
 .ShowScientist:
-	moveobject RUINSOFALPHRESEARCHCENTER_SCIENTIST3, 3, 7
+	moveobject RUINSOFALPHRESEARCHCENTER_SCIENTIST3, 2, 4
 	appear RUINSOFALPHRESEARCHCENTER_SCIENTIST3
 	return
 
 .GetUnownDexScript:
+	pause 15
+	turnobject RUINSOFALPHRESEARCHCENTER_SCIENTIST3, DOWN
+	showemote EMOTE_SHOCK, RUINSOFALPHRESEARCHCENTER_SCIENTIST3, 15
+	opentext
+	writetext RuinsOfAlphResearchCenterModifiedDexBeforeText
+	waitbutton
+	closetext
 	applymovement RUINSOFALPHRESEARCHCENTER_SCIENTIST3, MovementData_0x5926f
 	playsound SFX_BOOT_PC
 	pause 60
@@ -54,7 +61,6 @@ RuinsOfAlphResearchCenter_MapScripts:
 	closetext
 	applymovement RUINSOFALPHRESEARCHCENTER_SCIENTIST3, MovementData_0x59276
 	setscene SCENE_RUINSOFALPHRESEARCHCENTER_NOTHING
-	special RestartMapMusic
 	end
 
 RuinsOfAlphResearchCenterScientist3Script:
@@ -175,19 +181,30 @@ RuinsOfAlphResearchCenterBookshelf:
 	jumptext RuinsOfAlphResearchCenterAcademicBooksText
 
 MovementData_0x5926f:
+	step DOWN
+	step DOWN
 	step UP
 	step UP
-	step LEFT
 	turn_head UP
 	step_end
 
 MovementData_0x59274:
 	step DOWN
+	step DOWN
 	step_end
 
 MovementData_0x59276:
 	step UP
+	step UP
 	step_end
+	
+RuinsOfAlphResearchCenterModifiedDexBeforeText:
+	text "Ah!"
+	line "There you are!"
+	para "Here, let me see"
+	line "your #DEX for"
+	cont "a second."
+	done
 
 RuinsOfAlphResearchCenterModifiedDexText:
 	text "Done!"
@@ -395,17 +412,17 @@ RuinsOfAlphResearchCenter_MapEvents:
 	db 0, 0 ; filler
 
 	db 2 ; warp events
-	warp_event  2,  7, RUINS_OF_ALPH_OUTSIDE, 6
-	warp_event  3,  7, RUINS_OF_ALPH_OUTSIDE, 6
-
+	warp_event  2,  7, MAHOGANY_TOWN, 3
+	warp_event  3,  7, MAHOGANY_TOWN, 3
+	
 	db 0 ; coord events
 
 	db 3 ; bg events
-	bg_event  6,  5, BGEVENT_READ, RuinsOfAlphResearchCenterBookshelf
-	bg_event  3,  4, BGEVENT_READ, RuinsOfAlphResearchCenterComputer
-	bg_event  7,  1, BGEVENT_READ, RuinsOfAlphResearchCenterPrinter
+	bg_event  3,  1, BGEVENT_READ, RuinsOfAlphResearchCenterBookshelf
+	bg_event  0,  0, BGEVENT_READ, RuinsOfAlphResearchCenterComputer
+	bg_event  6,  1, BGEVENT_READ, RuinsOfAlphResearchCenterPrinter
 
 	db 3 ; object events
-	object_event  4,  5, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, RuinsOfAlphResearchCenterScientist1Script, -1
-	object_event  5,  2, SPRITE_SCIENTIST, SPRITEMOVEDATA_WANDER, 2, 1, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, RuinsOfAlphResearchCenterScientist2Script, -1
-	object_event  2,  5, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, RuinsOfAlphResearchCenterScientist3Script, EVENT_RUINS_OF_ALPH_RESEARCH_CENTER_SCIENTIST
+	object_event  7,  5, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, RuinsOfAlphResearchCenterScientist1Script, -1
+	object_event  4,  2, SPRITE_SCIENTIST, SPRITEMOVEDATA_WANDER, 2, 1, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, RuinsOfAlphResearchCenterScientist2Script, -1
+	object_event  2,  4, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, RuinsOfAlphResearchCenterScientist3Script, EVENT_RUINS_OF_ALPH_RESEARCH_CENTER_SCIENTIST

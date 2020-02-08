@@ -15,32 +15,73 @@ FuchsiaMartClerkScript:
 	end
 
 FuchsiaMartFisherScript:
-	jumptextfaceplayer FuchsiaMartFisherText
+	faceplayer
+	opentext
+	checkevent EVENT_CLEARED_RADIO_TOWER
+	iftrue .FuchsiaMartFisherRocketsGone
+	writetext FuchsiaMartFisherText
+	waitbutton
+	closetext
+	end
+	
+.FuchsiaMartFisherRocketsGone
+	writetext FuchsiaMartFisherText2
+	waitbutton
+	closetext
+	end
 
 FuchsiaMartCooltrainerFScript:
-	jumptextfaceplayer FuchsiaMartCooltrainerFText
+	faceplayer
+	opentext
+	checkevent EVENT_BEAT_CHUCK
+	iftrue .FuchsiaMartCooltrainerFRocketsGone
+	writetext FuchsiaMartCooltrainerFText
+	waitbutton
+	closetext
+	end
+	
+.FuchsiaMartCooltrainerFRocketsGone
+	writetext FuchsiaMartCooltrainerFText2
+	waitbutton
+	closetext
+	end
 
 FuchsiaMartFisherText:
+	text "I wonder how much"
+	line "the local MART is"
+	para "affected by the"
+	line "ZOO closure..."
+	done
+	
+FuchsiaMartFisherText2:
 	text "I was hoping to"
-	line "buy some SAFARI"
-
-	para "ZONE souvenirs,"
-	line "but it's closed…"
+	line "buy STAND CITY"
+	cont "ZOO souvenirs,"
+	para "but this shop"
+	line "doesn't sell any."
 	done
 
 FuchsiaMartCooltrainerFText:
-	text "The SAFARI ZONE"
-	line "WARDEN's grand-"
-	cont "daughter lives in"
-	cont "town."
+	text "Have you faced"
+	line "OKERA?"
+	para "He's a moody"
+	line "teenager, but a"
+	cont "very good battler."
+	done
+
+FuchsiaMartCooltrainerFText2:
+	text "Oh, wow, the"
+	line "DUSKBADGE!"
+	para "Was it a tough"
+	line "battle?"
 	done
 
 FuchsiaMart_MapEvents:
 	db 0, 0 ; filler
 
 	db 2 ; warp events
-	warp_event  2,  7, FUCHSIA_CITY, 1
-	warp_event  3,  7, FUCHSIA_CITY, 1
+	warp_event  4,  7, FUCHSIA_CITY, 1
+	warp_event  5,  7, FUCHSIA_CITY, 1
 
 	db 0 ; coord events
 

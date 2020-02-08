@@ -1,10 +1,10 @@
-	db "PATIENT@" ; species name
-	dw 403, 630 ; height, weight
+	db "TWIN GROWTH@" ; species name
+	dw 108, 30 ; height, weight
 
-	db   "In order to con-"
-	next "ceal its black"
-	next "tail, it lives in"
+	db   "This #MON is"
+	next "a living embryo"
+	next "that has split"
 
-	page "a dark cave and"
-	next "only moves about"
-	next "at night.@"
+	page "into two separate"
+	next "#MON with unique"
+	next "personalities.@"

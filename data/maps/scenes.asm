@@ -26,6 +26,7 @@ MapScenes::
 	scene_var HALL_OF_FAME,                                wHallOfFameSceneID
 	scene_var ROUTE_27,                                    wRoute27SceneID
 	scene_var NEW_BARK_TOWN,                               wNewBarkTownSceneID
+	scene_var ELM_ENTRANCE,								   wElmEntranceSceneID
 	scene_var ELMS_LAB,                                    wElmsLabSceneID
 	scene_var PLAYERS_HOUSE_1F,                            wPlayersHouse1FSceneID
 	scene_var ROUTE_29,                                    wRoute29SceneID
@@ -84,4 +85,24 @@ MapScenes::
 	scene_var MOUNT_MOON_SQUARE,                           wMountMoonSquareSceneID
 	scene_var MOBILE_TRADE_ROOM,                           wMobileTradeRoomSceneID
 	scene_var MOBILE_BATTLE_ROOM,                          wMobileBattleRoomSceneID
+	scene_var KURTS_HOUSE,								   wKurtsHouseSceneID
+	scene_var TEKU_PORT,								   wTekuPortSceneID
+	scene_var SLOWPOKE_WELL_B1F,						   wSlowpokeWellB1FSceneID
+	scene_var SLOWPOKE_WELL_B2F,						   wSlowpokeWellB2FSceneID
+	scene_var ROUTE_35,									   wRoute35SceneID
+	scene_var VIRIDIAN_GYM,								   wViridianGymSceneID
+	scene_var ROUTE_33,									   wRoute33SceneID
+	scene_var ROUTE_36_RUINS_OF_ALPH_GATE,				   wRoute36RuinsOfAlphGateSceneID
+	scene_var FUCHSIA_CITY,								   wFuchsiaCitySceneID
+	scene_var SAFARI_ZONE_WARDENS_HOME,					   wSafariZoneWardensHomeSceneID
+	scene_var SAFARI_ZONE_WARDENS_HOME_2F,				   wSafariZoneWardensHome2FSceneID
+	scene_var RADIO_TOWER_6F,							   wRadioTower6FSceneID
+	scene_var GOLDENROD_CITY,							   wGoldenrodCitySceneID
+	scene_var VIOLET_CITY,								   wVioletCitySceneID
+	scene_var TIN_TOWER_5F,								   wTinTower5FSceneID
+	scene_var CELADON_GYM,								   wCeladonGymSceneID
+	scene_var KANTO_BATTLE_CLUB_B1F,					   wKantoBattleClubB1FSceneID
+	scene_var KANTO_BATTLE_CLUB_1F,						   wKantoBattleClub1FSceneID
+	scene_var UNDERGROUND_PATH,							   wUndergroundPathSceneID
+	scene_var SAFFRON_GYM,								   wSaffronGymSceneID
 	db -1

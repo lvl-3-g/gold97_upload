@@ -1,7 +1,6 @@
 	const_def 2 ; object constants
 	const VIRIDIANCITY_GRAMPS1
 	const VIRIDIANCITY_GRAMPS2
-	const VIRIDIANCITY_FISHER
 	const VIRIDIANCITY_YOUNGSTER
 
 ViridianCity_MapScripts:
@@ -47,22 +46,6 @@ ViridianCityGrampsNearGym:
 	closetext
 	end
 
-ViridianCityDreamEaterFisher:
-	faceplayer
-	opentext
-	checkevent EVENT_GOT_TM42_DREAM_EATER
-	iftrue .GotDreamEater
-	writetext ViridianCityDreamEaterFisherText
-	buttonsound
-	verbosegiveitem TM_DREAM_EATER
-	iffalse .NoRoomForDreamEater
-	setevent EVENT_GOT_TM42_DREAM_EATER
-.GotDreamEater:
-	writetext ViridianCityDreamEaterFisherGotDreamEaterText
-	waitbutton
-.NoRoomForDreamEater:
-	closetext
-	end
 
 ViridianCityYoungsterScript:
 	jumptextfaceplayer ViridianCityYoungsterText
@@ -144,36 +127,6 @@ ViridianCityGrampsNearGymBlueReturnedText:
 	line "You'll need it."
 	done
 
-ViridianCityDreamEaterFisherText:
-	text "Yawn!"
-
-	para "I must have dozed"
-	line "off in the sun."
-
-	para "…I had this dream"
-	line "about a DROWZEE"
-
-	para "eating my dream."
-	line "Weird, huh?"
-
-	para "Huh?"
-	line "What's this?"
-
-	para "Where did this TM"
-	line "come from?"
-
-	para "This is spooky!"
-	line "Here, you can have"
-	cont "this TM."
-	done
-
-ViridianCityDreamEaterFisherGotDreamEaterText:
-	text "TM42 contains"
-	line "DREAM EATER…"
-
-	para "…Zzzzz…"
-	done
-
 ViridianCityYoungsterText:
 	text "I heard that there"
 	line "are many items on"
@@ -233,8 +186,7 @@ ViridianCity_MapEvents:
 	bg_event 24, 25, BGEVENT_READ, ViridianCityPokecenterSign
 	bg_event 30, 19, BGEVENT_READ, ViridianCityMartSign
 
-	db 4 ; object events
+	db 3 ; object events
 	object_event 18,  5, SPRITE_GRAMPS, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ViridianCityCoffeeGramps, -1
 	object_event 30,  8, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, ViridianCityGrampsNearGym, -1
-	object_event  6, 23, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, ViridianCityDreamEaterFisher, -1
 	object_event 17, 21, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WANDER, 3, 3, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, ViridianCityYoungsterScript, -1

@@ -38,17 +38,32 @@ MomPhonePalette1:
 	ifequal GROUP_VIOLET_CITY, .violet
 	ifequal GROUP_AZALEA_TOWN, .azalea
 	ifequal GROUP_GOLDENROD_CITY, .goldenrod
+	ifequal GROUP_CIANWOOD_CITY, .cianwood
+	ifequal GROUP_PALLET_TOWN, .pallet
+	ifequal GROUP_FUCHSIA_CITY, .fuchsia
+	ifequal GROUP_LAKE_OF_RAGE, .silenthills
+;	ifequal GROUP_INDIGO_PLATEAU, .mtfuji ;why doesn't this work???? where are these map group variables defined???????asdfasdf
 	farwritetext MomPhoneGenericAreaText
 	buttonsound
 	jump MomSavingMoney
-
+	
 .newbark
 	farwritetext MomPhoneNewBarkText
+	buttonsound
+	jump MomSavingMoney
+	
+.mtfuji
+	farwritetext MomPhoneIndigoText
 	buttonsound
 	jump MomSavingMoney
 
 .cherrygrove
 	farwritetext MomPhoneCherrygroveText
+	buttonsound
+	jump MomSavingMoney
+	
+.silenthills
+	farwritetext MomPhoneSilentHillsText
 	buttonsound
 	jump MomSavingMoney
 
@@ -60,6 +75,15 @@ MomPhonePalette1:
 	jump MomPhoneLandmark
 .goldenrod
 	landmarktotext RADIO_TOWER, MEM_BUFFER_1
+	jump MomPhoneLandmark
+.cianwood
+	landmarktotext BURNED_TOWER, MEM_BUFFER_1
+	jump MomPhoneLandmark
+.pallet
+	landmarktotext DRAGONS_DEN, MEM_BUFFER_1
+	jump MomPhoneLandmark
+.fuchsia
+	landmarktotext NATIONAL_PARK, MEM_BUFFER_1
 	jump MomPhoneLandmark
 
 MomPhonePalette2:
@@ -196,7 +220,9 @@ BillPhoneScript2:
 ElmPhoneScript1:
 	checkcode VAR_SPECIALPHONECALL
 	ifequal SPECIALCALL_POKERUS, .pokerus
-	checkevent EVENT_SHOWED_TOGEPI_TO_ELM
+	checkevent EVENT_CLEARED_RADIO_TOWER
+	iftrue .elmafterradiotower
+	checkevent EVENT_RIVAL_BURNED_TOWER
 	iftrue .discovery
 	checkevent EVENT_GOT_TOGEPI_EGG_FROM_ELMS_AIDE
 	iffalse .next
@@ -242,9 +268,7 @@ ElmPhoneScript1:
 	end
 
 .discovery
-	random 2
-	ifequal 0, .nextdiscovery
-	farwritetext ElmPhoneDiscovery1Text
+	farwritetext ElmPhoneRocketsText
 	end
 
 .nextdiscovery
@@ -254,6 +278,10 @@ ElmPhoneScript1:
 .pokerus
 	farwritetext ElmPhonePokerusText
 	specialphonecall SPECIALCALL_NONE
+	end
+	
+.elmafterradiotower
+	farwritetext ElmAfterRadioTower
 	end
 
 ElmPhoneScript2:
@@ -792,11 +820,11 @@ RalphPhoneScript1:
 	farjump UnknownScript_0xa0940
 
 .Rematch:
-	landmarktotext ROUTE_32, MEM_BUFFER_2
+	landmarktotext ROUTE_7, MEM_BUFFER_2
 	farjump UnknownScript_0xa0a55
 
 .ReportSwarm:
-	landmarktotext ROUTE_32, MEM_BUFFER_2
+	landmarktotext ROUTE_7, MEM_BUFFER_2
 	farjump UnknownScript_0xa0af5
 
 RalphPhoneScript2:
@@ -818,7 +846,7 @@ RalphPhoneScript2:
 Ralph_WednesdayMorning:
 	setflag ENGINE_RALPH_WEDNESDAY_MORNING
 Ralph_FightMe:
-	landmarktotext ROUTE_32, MEM_BUFFER_2
+	landmarktotext ROUTE_7, MEM_BUFFER_2
 	setflag ENGINE_RALPH
 	farjump PhoneScript_WantsToBattle_Male
 
@@ -827,7 +855,7 @@ Ralph_SetUpSwarm:
 	iftrue .Generic
 	setflag ENGINE_FISH_SWARM
 	pokenamemem QWILFISH, MEM_BUFFER_1
-	landmarktotext ROUTE_32, MEM_BUFFER_2
+	landmarktotext ROUTE_7, MEM_BUFFER_2
 	writebyte FISHSWARM_QWILFISH
 	special ActivateFishingSwarm
 	farjump UnknownScript_0xa05d6
@@ -960,11 +988,11 @@ AnthonyPhoneScript1:
 	farjump UnknownScript_0xa0950
 
 .WantsBattle:
-	landmarktotext ROUTE_33, MEM_BUFFER_2
+	landmarktotext ROUTE_31, MEM_BUFFER_2
 	farjump UnknownScript_0xa0a5f
 
 .AlreadySwarming:
-	landmarktotext ROUTE_33, MEM_BUFFER_2
+	landmarktotext ROUTE_31, MEM_BUFFER_2
 	farjump UnknownScript_0xa0afa
 
 AnthonyPhoneScript2:
@@ -988,7 +1016,7 @@ AnthonyFridayNight:
 	setflag ENGINE_ANTHONY_FRIDAY_NIGHT
 
 AnthonyWantsBattle:
-	landmarktotext ROUTE_33, MEM_BUFFER_2
+	landmarktotext ROUTE_31, MEM_BUFFER_2
 	setflag ENGINE_ANTHONY
 	farjump PhoneScript_WantsToBattle_Male
 
@@ -996,9 +1024,9 @@ AnthonyTriesDunsparceSwarm:
 	checkflag ENGINE_DUNSPARCE_SWARM
 	iftrue .Generic
 	setflag ENGINE_DUNSPARCE_SWARM
-	pokenamemem DUNSPARCE, MEM_BUFFER_1
-	swarm SWARM_DUNSPARCE, DARK_CAVE_VIOLET_ENTRANCE
-	landmarktotext DARK_CAVE, MEM_BUFFER_2
+	pokenamemem EEVEE, MEM_BUFFER_1
+	swarm SWARM_DUNSPARCE, ROUTE_31; changed this from DARK_CAVE_VIOLET_ENTRANCE
+	landmarktotext ROUTE_31, MEM_BUFFER_2
 	farjump UnknownScript_0xa05de
 
 .Generic:

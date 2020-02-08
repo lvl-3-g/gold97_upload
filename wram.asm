@@ -2418,7 +2418,7 @@ wObjectStructsEnd:: ; d6de
 
 wCmdQueue:: ds CMDQUEUE_CAPACITY * CMDQUEUE_ENTRY_SIZE
 
-	ds 40
+	ds 6
 
 wMapObjects:: ; d71e
 wPlayerObject:: map_object wPlayer
@@ -2437,6 +2437,8 @@ wMap12Object::  map_object wMap12
 wMap13Object::  map_object wMap13
 wMap14Object::  map_object wMap14
 wMap15Object::  map_object wMap15
+wMap16Object::  map_object wMap16
+wMap17Object::  map_object wMap17
 wMapObjectsEnd::
 
 wObjectMasks:: ds NUM_OBJECTS ; d81e
@@ -2558,6 +2560,7 @@ wLancesRoomSceneID::                              db ; d983
 wHallOfFameSceneID::                              db ; d984
 wRoute27SceneID::                                 db ; d985
 wNewBarkTownSceneID::                             db ; d986
+wElmEntranceSceneID::							  db
 wElmsLabSceneID::                                 db ; d987
 wPlayersHouse1FSceneID::                          db ; d988
 wRoute29SceneID::                                 db ; d989
@@ -2616,8 +2619,28 @@ wFastShipB1FSceneID::                             db ; d9bd
 wMountMoonSquareSceneID::                         db ; d9be
 wMobileTradeRoomSceneID::                         db ; d9bf
 wMobileBattleRoomSceneID::                        db ; d9c0
+wKurtsHouseSceneID::							  db ; hope this works
+wTekuPortSceneID::								  db ; it did, hope this works too
+wSlowpokeWellB1FSceneID::						  db ; lets do another, finally got it to work, don't forget data\maps\scenes.asm
+wSlowpokeWellB2FSceneID::						  db 
+wRoute35SceneID::								  db
+wViridianGymSceneID::							  db
+wRoute33SceneID::								  db
+wRoute36RuinsOfAlphGateSceneID::				  db
+wFuchsiaCitySceneID::							  db
+wSafariZoneWardensHomeSceneID::					  db
+wSafariZoneWardensHome2FSceneID::				  db
+wRadioTower6FSceneID::							  db
+wGoldenrodCitySceneID::							  db
+wVioletCitySceneID::							  db
+wTinTower5FSceneID::							  db
+wCeladonGymSceneID::                              db
+wKantoBattleClubB1FSceneID::					  db
+wKantoBattleClub1FSceneID::						  db
+wUndergroundPathSceneID::						  db
+wSaffronGymSceneID::							  db
 
-	ds 49
+	ds 28
 
 ; fight counts
 wJackFightCount::    db ; d9f2
@@ -2896,38 +2919,7 @@ wTempTileMap::
 ; 20x18 grid of 8x8 tiles
 	ds SCREEN_WIDTH * SCREEN_HEIGHT ; $168 = 360
 
-; PokeAnim data
-wPokeAnimStruct::
-wPokeAnimSceneIndex:: db
-wPokeAnimPointer:: dw
-wPokeAnimSpecies:: db
-wPokeAnimUnownLetter:: db
-wPokeAnimSpeciesOrUnown:: db
-wPokeAnimGraphicStartTile:: db
-wPokeAnimCoord:: dw
-wPokeAnimFrontpicHeight:: db
-wPokeAnimIdleFlag:: db
-wPokeAnimSpeed:: db
-wPokeAnimPointerBank:: db
-wPokeAnimPointerAddr:: dw
-wPokeAnimFramesBank:: db
-wPokeAnimFramesAddr:: dw
-wPokeAnimBitmaskBank:: db
-wPokeAnimBitmaskAddr:: dw
-wPokeAnimFrame:: db
-wPokeAnimJumptableIndex:: db
-wPokeAnimRepeatTimer:: db
-wPokeAnimCurBitmask:: db
-wPokeAnimWaitCounter:: db
-wPokeAnimCommand:: db
-wPokeAnimParameter:: db
-	ds 1
-wPokeAnimBitmaskCurCol:: db
-wPokeAnimBitmaskCurRow:: db
-wPokeAnimBitmaskCurBit:: db
-wPokeAnimBitmaskBuffer:: ds 7
-	ds 2
-wPokeAnimStructEnd::
+
 
 
 SECTION "Battle Tower RAM", WRAMX

@@ -1,10 +1,10 @@
-	db "MILK COW@" ; species name
-	dw 311, 1660 ; height, weight
+	db "HATCHLING@" ; species name
+	dw 203, 450 ; height, weight
 
-	db   "In order to milk a"
-	next "MILTANK, one must"
-	next "have a knack for"
+	db   "Each one of its"
+	next "three heads has"
+	next "its own brain."
 
-	page "rhythmically pull-"
-	next "ing up and down"
-	next "on its udders.@"
+	page "But one of the"
+	next "brains go dormant"
+	next "as it grows.@"

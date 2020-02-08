@@ -132,8 +132,9 @@ FastShipLazySailorLeavesMovement2:
 	step_end
 
 CooltrainermSeanSeenText:
-	text "I'm going to KANTO"
-	line "to test my skills."
+	text "I'm going to the"
+	line "ISLANDS to test my"
+	cont "skills."
 	done
 
 CooltrainermSeanBeatenText:
@@ -141,16 +142,14 @@ CooltrainermSeanBeatenText:
 	done
 
 CooltrainermSeanAfterBattleText:
-	text "Trainers from"
-	line "JOHTO can battle"
-
-	para "with KANTO GYM"
-	line "LEADERS."
+	text "I should battle"
+	line "more GYM LEADERS"
+	cont "first..."
 	done
 
 CooltrainerfCarolSeenText:
 	text "I'm training to"
-	line "become the CHAMP!"
+	line "defeat the LEAGUE!"
 	done
 
 CooltrainerfCarolBeatenText:
@@ -164,9 +163,9 @@ CooltrainerfCarolAfterBattleText:
 	done
 
 PokemaniacEthanSeenText:
-	text "Do you know LILY?"
-	line "She's a hot DJ in"
-	cont "KANTO."
+	text "Do you know BUENA?"
+	line "She's the best"
+	cont "radio DJ."
 	done
 
 PokemaniacEthanBeatenText:
@@ -174,12 +173,11 @@ PokemaniacEthanBeatenText:
 	done
 
 PokemaniacEthanAfterBattleText:
-	text "LILY's nice, but"
-	line "MARY's the best!"
-
-	para "I want to check"
-	line "out JOHTO's radio"
-	cont "programs!"
+	text "The mainland's"
+	line "radio programs"
+	para "are just as"
+	line "popular on the"
+	cont "ISLANDS."
 	done
 
 HikerNolandSeenText:
@@ -196,8 +194,8 @@ HikerNolandAfterBattleText:
 	text "I wonder if there"
 	line "are any mountains"
 
-	para "worth climbing in"
-	line "KANTO?"
+	para "worth climbing on"
+	line "the ISLANDS."
 	done
 
 SailorStanlySeenText:

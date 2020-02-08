@@ -45,42 +45,48 @@ ElmPhoneAssistantText:
 	line "assistant? He's at"
 
 	para "the #MON CENTER"
-	line "in VIOLET CITY."
+	line "in OLD CITY."
 	done
 
 ElmPhoneEggUnhatchedText:
 	text "Hello, <PLAY_G>?"
-
-	para "How's the EGG? Has"
-	line "anything changed?"
-
-	para "If anything hap-"
-	line "pens, please call."
+	line "I hear you're"
+	para "taking the NIHON"
+	line "#MON LEAGUE"
+	cont "challenge."
+	para "That's great!"
+	line "I'm sure you've"
+	para "got a fighting"
+	line "chance to do"
+	cont "great things!"
 	done
 
 ElmPhoneEggHatchedText:
 	text "Hello, <PLAY_G>?"
-	line "How is the EGG?"
-
-	para "What? It hatched?"
-	line "Wow! What kind of"
-	cont "#MON is it?"
-
-	para "Please come show"
-	line "me now!"
+	line "I hear you're"
+	para "taking the NIHON"
+	line "#MON LEAGUE"
+	cont "challenge."
+	para "That's great!"
+	line "I'm sure you've"
+	para "got a fighting"
+	line "chance to do"
+	cont "great things!"
 	done
 
-ElmPhoneDiscovery1Text:
+ElmPhoneRocketsText:
 	text "Hello, <PLAY_G>?"
 
-	para "I just made a new"
-	line "discovery."
-
-	para "The time it takes"
-	line "for an EGG to"
-
-	para "hatch depends on"
-	line "the #MON."
+	para "I worry that TEAM"
+	line "ROCKET is planning"
+	para "something truly"
+	line "terrible..."
+	para "But you don't need"
+	line "to dwell on that!"
+	para "Keep up the great"
+	line "work with catching"
+	para "#MON and the"
+	line "LEAGUE CHALLENGE!"
 	done
 
 ElmPhoneDiscovery2Text:
@@ -128,34 +134,91 @@ ElmPhonePokerusText:
 	line "nothing to worry"
 	cont "about. Bye!"
 	done
+	
+ElmAfterRadioTower:
+	text "Hello, <PLAY_G>?"
+	para "So what was going"
+	line "on with TEAM"
+	cont "ROCKET?"
+	para "I heard they were"
+	line "trying to generate"
+	para "a signal that"
+	line "could control"
+	cont "#MON!"
+	para "That's insane!"
+	para "And apparently"
+	line "they had a lackey"
+	cont "who resembled me?"
+	para "That's even more"
+	line "unbelievable!"
+	para "I'm so incredibly"
+	line "proud of you and"
+	para "<RIVAL> for"
+	line "getting rid of"
+	cont "them!"
+	para "When you work with"
+	line "#MON, there's"
+	para "no limit to what"
+	line "you can do!"
+	done
 
 ElmPhoneDisasterText:
-	text "H-hello? <PLAY_G>?"
-	line "It's a disaster!"
-
-	para "Uh, um, it's just"
-	line "terrible!"
-
-	para "What should I do?"
-	line "It… Oh, no…"
-
-	para "Please get back"
-	line "here now!"
+	text "Hello, <PLAY_G>?"
+	para "Long time no see!"
+	line "If I'm not"
+	para "mistaken, I hear"
+	line "you've already"
+	para "acquired three GYM"
+	line "BADGES!"
+	para "That's impressive!"
+	para "But if it's not"
+	line "too much to ask,"
+	para "I'd appreciate it"
+	line "if you could meet"
+	para "me over in BIRDON"
+	line "TOWN. It's a small"
+	para "town north of WEST"
+	line "CITY."
+	para "The town has a"
+	line "well that's known"
+	para "to be a habitat"
+	line "for SLOWPOKE."
+	para "I'm studying the"
+	line "fascinating"
+	para "relationship"
+	line "between SLOWPOKE"
+	cont "and TURBAN."
+	para "I could use some"
+	line "assistance in"
+	para "capturing a few"
+	line "SLOWPOKE to help"
+	cont "with the study."
+	para "<RIVAL>, BLUE,"
+	line "and myself will"
+	para "all be meeting"
+	line "there!"
+	para "It'll be a good"
+	line "chance to catch"
+	cont "up for all of us!"
+	para "Please join us"
+	line "there when you get"
+	cont "the chance!"
 	done
 
 ElmPhoneEggAssistantText:
-	text "Hello, <PLAY_G>? We"
-	line "discovered some-"
-
-	para "thing about the"
-	line "EGG!"
-
-	para "My assistant is at"
-	line "the #MON CENTER"
-
-	para "in VIOLET CITY. "
-	line "Could you talk to"
-	cont "him?"
+	text "Hello, <PLAY_G>?"
+	para "I hope you and"
+	line "<RIVAL> are"
+	cont "doing well."
+	para "I've sent one of"
+	line "my AIDEs out to"
+	para "the OLD CITY"
+	line "#MON CENTER."
+	para "If you've got a"
+	line "moment, could you"
+	para "meet with him"
+	line "there?"
+	para "Thanks!"
 	done
 
 ElmPhoneRocketText:
@@ -175,14 +238,26 @@ ElmPhoneRocketText:
 	line "know anything"
 	cont "about it?"
 
-	para "Maybe TEAM ROCKET"
-	line "has returned. No,"
-
-	para "that just can't"
-	line "be true."
-
-	para "Sorry to bug you."
-	line "Take care!"
+	para "..."
+	para "Hm? You just dealt"
+	line "with TEAM ROCKET"
+	para "in their base in"
+	line "STAND CITY?"
+	para "You'll have to"
+	line "tell me all about"
+	cont "that soon!"
+	para "Do you know where"
+	line "they were planning"
+	cont "to go after that?"
+	para "If these weird"
+	line "radio broadcasts"
+	para "are anything to go"
+	line "by, I'd check the"
+	para "JOPM RADIO TOWER"
+	line "in WEST CITY."
+	para "Keep me updated!"
+	line "I'm rooting for"
+	cont "you and <RIVAL>!"
 	done
 
 ElmPhoneGiftText:

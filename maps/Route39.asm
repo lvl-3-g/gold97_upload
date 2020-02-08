@@ -1,11 +1,7 @@
 	const_def 2 ; object constants
-	const ROUTE39_SAILOR
+	const ROUTE39_BEAUTY
 	const ROUTE39_POKEFAN_M
 	const ROUTE39_POKEFAN_F1
-	const ROUTE39_MILTANK1
-	const ROUTE39_MILTANK2
-	const ROUTE39_MILTANK3
-	const ROUTE39_MILTANK4
 	const ROUTE39_PSYCHIC_NORMAN
 	const ROUTE39_FRUIT_TREE
 	const ROUTE39_POKEFAN_F2
@@ -15,13 +11,6 @@ Route39_MapScripts:
 
 	db 0 ; callbacks
 
-Route39Miltank:
-	opentext
-	writetext Route39MiltankText
-	cry MILTANK
-	waitbutton
-	closetext
-	end
 
 TrainerPokefanmDerek:
 	trainer POKEFANM, DEREK1, EVENT_BEAT_POKEFANM_DEREK, PokefanmDerekSeenText, PokefanmDerekBeatenText, 0, .Script
@@ -113,16 +102,18 @@ TrainerPokefanfRuth:
 	closetext
 	end
 
-TrainerSailorEugene:
-	trainer SAILOR, EUGENE, EVENT_BEAT_SAILOR_EUGENE, SailorEugeneSeenText, SailorEugeneBeatenText, 0, .Script
 
-.Script:
+TrainerBeautyValerie:
+	trainer BEAUTY, VALERIE, EVENT_BEAT_BEAUTY_VALERIE, BeautyValerieSeenText, BeautyValerieBeatenText, 0, .Script
+
+.Script
 	endifjustbattled
 	opentext
-	writetext SailorEugeneAfterBattleText
+	writetext BeautyValerieAfterBattleText
 	waitbutton
 	closetext
 	end
+
 
 TrainerPsychicNorman:
 	trainer PSYCHIC_T, NORMAN, EVENT_BEAT_PSYCHIC_NORMAN, PsychicNormanSeenText, PsychicNormanBeatenText, 0, .Script
@@ -166,6 +157,10 @@ TrainerPokefanfJaime:
 	end
 
 Route39Sign:
+	setflag ENGINE_FLYPOINT_NEW_BARK
+	setflag ENGINE_FLYPOINT_AZALEA
+	setflag ENGINE_FLYPOINT_VIOLET
+	clearflag ENGINE_FLYPOINT_PALLET
 	jumptext Route39SignText
 
 MoomooFarmSign:
@@ -182,28 +177,6 @@ Route39HiddenNugget:
 
 Route39MiltankText:
 	text "MILTANK: Mooo!"
-	done
-
-SailorEugeneSeenText:
-	text "I just got back to"
-	line "OLIVINE."
-
-	para "So how about a"
-	line "#MON battle?"
-	done
-
-SailorEugeneBeatenText:
-	text "Awaaargh!"
-	done
-
-SailorEugeneAfterBattleText:
-	text "My #MON were"
-	line "caught and raised"
-	cont "overseas."
-
-	para "They're my compan-"
-	line "ions on those long"
-	cont "voyages."
 	done
 
 PokefanmDerekSeenText:
@@ -246,7 +219,7 @@ PokefanfRuthAfterBattleText:
 	text "Do you know about"
 	line "baby #MON?"
 
-	para "I bet they're just"
+	para "They're all so"
 	line "adorable!"
 	done
 
@@ -295,7 +268,7 @@ PokefanfJaimeBeatenText:
 	done
 
 PokefanfJaimeAfterBattleText:
-	text "I met my MEOWTH at"
+	text "I met my PONYTA at"
 	line "night, right here"
 	cont "on ROUTE 39."
 
@@ -312,6 +285,28 @@ PokefanfJaimeAfterBattleText:
 	line "anywhere else."
 	done
 
+
+BeautyValerieSeenText:
+	text "Hi! Aren't you a"
+	line "cute trainer!"
+
+	para "May I see your"
+	line "#MON?"
+	done
+
+BeautyValerieBeatenText:
+	text "I'm glad I got to"
+	line "see your #MON!"
+	done
+
+BeautyValerieAfterBattleText:
+	text "When I see #-"
+	line "MON, it seems to"
+	cont "soothe my nerves."
+	done
+	
+	
+
 Route39SignText:
 	text "ROUTE 39"
 
@@ -320,10 +315,8 @@ Route39SignText:
 	done
 
 MoomooFarmSignText:
-	text "MOOMOO FARM"
-
-	para "Enjoy Our Fresh"
-	line "and Tasty Milk"
+	text "Heal Your #MON!"
+	line "#MON CENTER"
 	done
 
 Route39TrainerTipsText:
@@ -344,26 +337,24 @@ Route39TrainerTipsText:
 Route39_MapEvents:
 	db 0, 0 ; filler
 
-	db 2 ; warp events
-	warp_event  1,  3, ROUTE_39_BARN, 1
-	warp_event  5,  3, ROUTE_39_FARMHOUSE, 1
+	db 4 ; warp events
+	warp_event 15, 13, DARK_CAVE_BLACKTHORN_ENTRANCE, 1
+	warp_event 13, 28, ROUTE_10_POKECENTER_1F, 1
+	warp_event  8,  5, ROUTE_38_ECRUTEAK_GATE, 1
+	warp_event  9,  5, ROUTE_38_ECRUTEAK_GATE, 2
 
 	db 0 ; coord events
 
 	db 4 ; bg events
-	bg_event  5, 31, BGEVENT_READ, Route39TrainerTips
-	bg_event  9,  5, BGEVENT_READ, MoomooFarmSign
-	bg_event 15,  7, BGEVENT_READ, Route39Sign
-	bg_event  5, 13, BGEVENT_ITEM, Route39HiddenNugget
+	bg_event  4, 56, BGEVENT_READ, Route39TrainerTips
+	bg_event 14, 28, BGEVENT_READ, MoomooFarmSign
+	bg_event  1, 79, BGEVENT_READ, Route39Sign
+	bg_event  4, 35, BGEVENT_ITEM, Route39HiddenNugget
 
-	db 10 ; object events
-	object_event 13, 29, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 5, TrainerSailorEugene, -1
-	object_event 10, 22, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 4, TrainerPokefanmDerek, -1
-	object_event 11, 19, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 4, TrainerPokefanfRuth, -1
-	object_event  3, 12, SPRITE_TAUROS, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route39Miltank, -1
-	object_event  6, 11, SPRITE_TAUROS, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route39Miltank, -1
-	object_event  4, 15, SPRITE_TAUROS, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route39Miltank, -1
-	object_event  8, 13, SPRITE_TAUROS, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route39Miltank, -1
-	object_event 13,  7, SPRITE_STANDING_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 1, TrainerPsychicNorman, -1
-	object_event  9,  3, SPRITE_FRUIT_TREE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route39FruitTree, -1
-	object_event  4, 22, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, TrainerPokefanfJaime, -1
+	db 6 ; object events
+	object_event  4, 63, SPRITE_LASS, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 4, TrainerBeautyValerie, -1
+	object_event  9, 52, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 4, TrainerPokefanmDerek, -1
+	object_event 14, 36, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 1, TrainerPokefanfRuth, -1
+	object_event  5, 31, SPRITE_STANDING_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerPsychicNorman, -1
+	object_event 10, 23, SPRITE_FRUIT_TREE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route39FruitTree, -1
+	object_event  4, 49, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, TrainerPokefanfJaime, -1

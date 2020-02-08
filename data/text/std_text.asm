@@ -168,6 +168,13 @@ WindowText:
 	line "Lookin' good!"
 	done
 
+LavaText:
+	text "Oh! The lava is"
+	line "very hot!"
+	para "Better not get any"
+	line "closer!"
+	done
+
 TVText:
 	text "It's a TV."
 	done
@@ -289,7 +296,8 @@ GymStatue_WinningTrainersText:
 	text_ram wStringBuffer4
 	text_start
 	para "WINNING TRAINERS:"
-	line "<PLAYER>"
+	line "<RIVAL>"
+	cont "<PLAYER>"
 	done
 
 CoinVendor_WelcomeText:

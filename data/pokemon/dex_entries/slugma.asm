@@ -1,10 +1,10 @@
-	db "LAVA@" ; species name
-	dw 204, 770 ; height, weight
+	db "SCRATCHCAT@" ; species name
+	dw 101, 80 ; height, weight
 
-	db   "These group to-"
-	next "gether in areas"
-	next "that are hotter"
+	db   "Constantly looks"
+	next "for gold coins to"
+	next "play with."
 
-	page "than normal. If it"
-	next "cools off, its"
-	next "skin hardens.@"
+	page "Prefers shiny"
+	next "objects over yarn"
+	next "or other toys.@"

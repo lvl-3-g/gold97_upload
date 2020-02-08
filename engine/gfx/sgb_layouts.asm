@@ -555,7 +555,7 @@ endr
 	ret
 
 .env5
-	ld a, PREDEFPAL_VERMILION
+	ld a, PREDEFPAL_LAVENDER
 	ret
 
 .gate

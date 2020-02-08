@@ -1,16 +1,24 @@
 AnthonyAskNumber1Text:
-	text "By the way, I'm a"
-	line "HIKER, so I often"
-
-	para "go to mountains"
-	line "and caves."
-
-	para "I occasionally see"
-	line "rare #MON."
-
-	para "I could call you"
-	line "the next time I"
-	cont "see one."
+	text "By the way, have"
+	line "you heard of the"
+	
+	cont "#MON EEVEE?"
+	
+	para "They're usually"
+	line "difficult to find"
+	para "in the wild, but"
+	line "I swear there"
+	para "was once a whole"
+	line "colony of them"
+	para "that moved through"
+	line "this route."
+	
+	para "I don't know when"
+	line "they'll be back,"
+	
+	para "but I could call"
+	line "you next time I"
+	cont "see them."
 
 	para "Feel like swapping"
 	line "phone numbers?"
@@ -19,7 +27,7 @@ AnthonyAskNumber1Text:
 AnthonyAskNumber2Text:
 	text "I could call you"
 	line "when I see some"
-	cont "rare #MON."
+	cont "EEVEE."
 
 	para "Feel like swapping"
 	line "phone numbers?"
@@ -27,8 +35,9 @@ AnthonyAskNumber2Text:
 
 AnthonyNumberAcceptedText:
 	text "Be patient. I'll"
-	line "find some rare"
-	cont "#MON for you!"
+	line "let you know when"
+	para "EEVEE come on"
+	line "though here!"
 	done
 
 AnthonyNumberDeclinedText:

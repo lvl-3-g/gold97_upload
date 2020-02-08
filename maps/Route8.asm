@@ -1,192 +1,315 @@
 	const_def 2 ; object constants
-	const ROUTE8_BIKER1
-	const ROUTE8_BIKER2
-	const ROUTE8_BIKER3
-	const ROUTE8_SUPER_NERD1
-	const ROUTE8_SUPER_NERD2
 	const ROUTE8_FRUIT_TREE
+	const ROUTE8_YOUNGSTER
+	const ROUTE8_SCHOOLBOY
+	const ROUTE8_LASS
+	const ROUTE8_GRAMPS
 
 Route8_MapScripts:
 	db 0 ; scene scripts
 
 	db 0 ; callbacks
+	
+TrainerYoungsterJoey:
+	trainer YOUNGSTER, JOEY1, EVENT_BEAT_YOUNGSTER_JOEY, YoungsterJoey1SeenText, YoungsterJoey1BeatenText, 0, .Script
 
-TrainerBikerDwayne:
-	trainer BIKER, DWAYNE, EVENT_BEAT_BIKER_DWAYNE, BikerDwayneSeenText, BikerDwayneBeatenText, 0, .Script
+.Script:
+	writecode VAR_CALLERID, PHONE_YOUNGSTER_JOEY
+	endifjustbattled
+	opentext
+	checkflag ENGINE_JOEY
+	iftrue .Rematch
+	checkcellnum PHONE_YOUNGSTER_JOEY
+	iftrue .NumberAccepted
+	checkevent EVENT_JOEY_ASKED_FOR_PHONE_NUMBER
+	iftrue .AskAgain
+	writetext YoungsterJoey1AfterText
+	buttonsound
+	setevent EVENT_JOEY_ASKED_FOR_PHONE_NUMBER
+	scall .AskNumber1
+	jump .RequestNumber
+
+.AskAgain:
+	scall .AskNumber2
+.RequestNumber:
+	askforphonenumber PHONE_YOUNGSTER_JOEY
+	ifequal PHONE_CONTACTS_FULL, .PhoneFull
+	ifequal PHONE_CONTACT_REFUSED, .NumberDeclined
+	trainertotext YOUNGSTER, JOEY1, MEM_BUFFER_0
+	scall .RegisteredNumber
+	jump .NumberAccepted
+
+.Rematch:
+	scall .RematchStd
+	winlosstext YoungsterJoey1BeatenText, 0
+	copybytetovar wJoeyFightCount
+	ifequal 4, .Fight4
+	ifequal 3, .Fight3
+	ifequal 2, .Fight2
+	ifequal 1, .Fight1
+	ifequal 0, .LoadFight0
+.Fight4:
+	checkevent EVENT_BEAT_ELITE_FOUR
+	iftrue .LoadFight4
+.Fight3:
+	checkevent EVENT_BEAT_CHUCK
+	iftrue .LoadFight3
+.Fight2:
+	checkevent EVENT_BEAT_JASMINE
+	iftrue .LoadFight2
+.Fight1:
+	checkevent EVENT_BEAT_MORTY
+	iftrue .LoadFight1
+.LoadFight0:
+	loadtrainer YOUNGSTER, JOEY1
+	startbattle
+	reloadmapafterbattle
+	loadvar wJoeyFightCount, 1
+	clearflag ENGINE_JOEY
+	end
+
+.LoadFight1:
+	loadtrainer YOUNGSTER, JOEY2
+	startbattle
+	reloadmapafterbattle
+	loadvar wJoeyFightCount, 2
+	clearflag ENGINE_JOEY
+	end
+
+.LoadFight2:
+	loadtrainer YOUNGSTER, JOEY3
+	startbattle
+	reloadmapafterbattle
+	loadvar wJoeyFightCount, 3
+	clearflag ENGINE_JOEY
+	end
+
+.LoadFight3:
+	loadtrainer YOUNGSTER, JOEY4
+	startbattle
+	reloadmapafterbattle
+	loadvar wJoeyFightCount, 4
+	clearflag ENGINE_JOEY
+	end
+
+.LoadFight4:
+	loadtrainer YOUNGSTER, JOEY5
+	startbattle
+	reloadmapafterbattle
+	clearflag ENGINE_JOEY
+	checkevent EVENT_JOEY_HP_UP
+	iftrue .GiveHPUp
+	checkevent EVENT_GOT_HP_UP_FROM_JOEY
+	iftrue .done
+	scall .RematchGift
+	verbosegiveitem HP_UP
+	iffalse .PackFull
+	setevent EVENT_GOT_HP_UP_FROM_JOEY
+	jump .NumberAccepted
+
+.done
+	end
+
+.GiveHPUp:
+	opentext
+	writetext YoungsterJoeyText_GiveHPUpAfterBattle
+	waitbutton
+	verbosegiveitem HP_UP
+	iffalse .PackFull
+	clearevent EVENT_JOEY_HP_UP
+	setevent EVENT_GOT_HP_UP_FROM_JOEY
+	jump .NumberAccepted
+
+.AskNumber1:
+	jumpstd asknumber1m
+	end
+
+.AskNumber2:
+	jumpstd asknumber2m
+	end
+
+.RegisteredNumber:
+	jumpstd registerednumberm
+	end
+
+.NumberAccepted:
+	jumpstd numberacceptedm
+	end
+
+.NumberDeclined:
+	jumpstd numberdeclinedm
+	end
+
+.PhoneFull:
+	jumpstd phonefullm
+	end
+
+.RematchStd:
+	jumpstd rematchm
+	end
+
+.PackFull:
+	setevent EVENT_JOEY_HP_UP
+	jumpstd packfullm
+	end
+
+.RematchGift:
+	jumpstd rematchgiftm
+	end
+
+TrainerSchoolboyDudley:
+	trainer SCHOOLBOY, DUDLEY, EVENT_BEAT_SCHOOLBOY_DUDLEY, SchoolboyDudleySeenText, SchoolboyDudleyBeatenText, 0, .Script
 
 .Script:
 	endifjustbattled
 	opentext
-	writetext BikerDwayneAfterBattleText
+	writetext SchoolboyDudleyAfterBattleText
 	waitbutton
 	closetext
 	end
 
-TrainerBikerHarris:
-	trainer BIKER, HARRIS, EVENT_BEAT_BIKER_HARRIS, BikerHarrisSeenText, BikerHarrisBeatenText, 0, .Script
+TrainerLassConnie:
+	trainer LASS, CONNIE1, EVENT_BEAT_LASS_CONNIE, LassConnie1SeenText, LassConnie1BeatenText, 0, .Script
 
 .Script:
 	endifjustbattled
 	opentext
-	writetext BikerHarrisAfterBattleText
+	writetext LassConnie1AfterBattleText
 	waitbutton
 	closetext
 	end
-
-TrainerBikerZeke:
-	trainer BIKER, ZEKE, EVENT_BEAT_BIKER_ZEKE, BikerZekeSeenText, BikerZekeBeatenText, 0, .Script
-
-.Script:
-	endifjustbattled
+	
+Route8GrampsScript:
+	faceplayer
 	opentext
-	writetext BikerZekeAfterBattleText
+	writetext Route8GrampsText
 	waitbutton
 	closetext
 	end
-
-TrainerSupernerdSam:
-	trainer SUPER_NERD, SAM, EVENT_BEAT_SUPER_NERD_SAM, SupernerdSamSeenText, SupernerdSamBeatenText, 0, .Script
-
-.Script:
-	endifjustbattled
-	opentext
-	writetext SupernerdSamAfterBattleText
-	waitbutton
-	closetext
-	end
-
-TrainerSupernerdTom:
-	trainer SUPER_NERD, TOM, EVENT_BEAT_SUPER_NERD_TOM, SupernerdTomSeenText, SupernerdTomBeatenText, 0, .Script
-
-.Script:
-	endifjustbattled
-	opentext
-	writetext SupernerdTomAfterBattleText
-	waitbutton
-	closetext
-	end
-
-Route8LockedDoor:
-	jumptext Route8LockedDoorText
 
 Route8UndergroundPathSign:
 	jumptext Route8UndergroundPathSignText
 
 Route8FruitTree:
 	fruittree FRUITTREE_ROUTE_8
+	
+Route8GrampsText:
+	text "Oh, good! You're"
+	line "here!"
+	para "Please help me"
+	line "out."
+	para "My granddaughter"
+	line "could be trapped"
+	cont "in there!"
+	done
+	
 
-BikerDwayneSeenText:
-	text "We're the KANTO"
-	line "#MON FEDERATION"
-	cont "trainer group."
+LassConnie1SeenText:
+	text "I don't know why"
+	line "I hang out with"
+	cont "DUDLEY or JOEY."
 
-	para "We'll drive you"
-	line "under our wheels!"
+	para "You're probably"
+	line "cooler than either"
+	cont "of them!"
 	done
 
-BikerDwayneBeatenText:
-	text "S-sorry!"
+LassConnie1BeatenText:
+	text "Aaack! My #MON!"
 	done
 
-BikerDwayneAfterBattleText:
-	text "The KANTO #MON"
-	line "FEDERATION will"
-	cont "never fall!"
+LassConnie1AfterBattleText:
+	text "Well, I lost, but"
+	line "that battle was"
+	para "more fun than"
+	line "anything those"
+	para "two could be up"
+	line "to."
 	done
 
-BikerHarrisSeenText:
-	text "The cops shut down"
-	line "our UNDERGROUND"
-
-	para "PATH! That really"
-	line "fries me!"
+	
+SchoolboyDudleySeenText:
+	text "This route is"
+	line "where all of my"
+	para "friends meet after"
+	line "school!"
 	done
 
-BikerHarrisBeatenText:
-	text "F-forgive me!"
+SchoolboyDudleyBeatenText:
+	text "Whoo! Good stuff."
 	done
 
-BikerHarrisAfterBattleText:
-	text "Wiped out by some"
-	line "punk from JOHTO…"
+SchoolboyDudleyAfterBattleText:
+	text "I did my best."
+	line "I have no regrets."
+	done
+	
+YoungsterJoey1SeenText:
+	text "It's fun to play"
+	line "in the mines."
+	para "But don't tell"
+	line "our parents!"
 	done
 
-BikerZekeSeenText:
-	text "We're the KANTO"
-	line "#MON FEDERA-"
-	cont "TION!"
-	cont "Right on!"
+YoungsterJoey1BeatenText:
+	text "Ack! I lost!"
+	line "Doggone it!"
 	done
 
-BikerZekeBeatenText:
-	text "Yikes! Sorry!"
+YoungsterJoey1AfterText:
+	text "Do I have to have"
+	line "more #MON in"
+
+	para "order to battle"
+	line "better?"
+
+	para "No! I'm sticking"
+	line "with this one no"
+	cont "matter what!"
 	done
 
-BikerZekeAfterBattleText:
-	text "We'll try not to"
-	line "disturb anyone"
-	cont "from now on…"
-	done
 
-SupernerdSamSeenText:
-	text "How does the MAG-"
-	line "NET TRAIN work?"
-	done
+YoungsterJoeyText_GiveHPUpAfterBattle:
+	text "I lost again…"
+	line "Gee, you're tough!"
 
-SupernerdSamBeatenText:
-	text "I just want to see"
-	line "the MAGNET TRAIN…"
-	done
+	para "Oh yeah, I almost"
+	line "forgot that I had"
+	cont "to give you this."
 
-SupernerdSamAfterBattleText:
-	text "The power of mag-"
-	line "nets is awesome!"
-	done
+	para "Use it to get even"
+	line "tougher, OK?"
 
-SupernerdTomSeenText:
-	text "Hm… You've got"
-	line "many GYM BADGES."
-	done
-
-SupernerdTomBeatenText:
-	text "Just as I thought…"
-	line "You're tough!"
-	done
-
-SupernerdTomAfterBattleText:
-	text "GYM BADGES give"
-	line "you advantages in"
-	cont "battles."
-	done
-
-Route8LockedDoorText:
-	text "It's locked…"
+	para "I'm going to get"
+	line "tougher too."
 	done
 
 Route8UndergroundPathSignText:
-	text "The flyer's torn."
-
-	para "It's impossible to"
-	line "read…"
+	text "BOULDER MINES"
+	para "Dangerous mining"
+	line "area!"
+	para "Please do not"
+	line "enter without"
+	para "#MON for"
+	line "protection."
 	done
 
 Route8_MapEvents:
 	db 0, 0 ; filler
 
-	db 2 ; warp events
-	warp_event  4,  4, ROUTE_8_SAFFRON_GATE, 3
-	warp_event  4,  5, ROUTE_8_SAFFRON_GATE, 4
+	db 1 ; warp events
+	warp_event  9,  5, UNION_CAVE_1F, 1
 
 	db 0 ; coord events
 
-	db 2 ; bg events
-	bg_event 11,  7, BGEVENT_READ, Route8UndergroundPathSign
-	bg_event 10,  5, BGEVENT_READ, Route8LockedDoor
+	db 1 ; bg events
+	bg_event 10,  6, BGEVENT_READ, Route8UndergroundPathSign
 
-	db 6 ; object events
-	object_event 10,  8, SPRITE_BIKER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 5, TrainerBikerDwayne, -1
-	object_event 10,  9, SPRITE_BIKER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 5, TrainerBikerHarris, -1
-	object_event 10, 10, SPRITE_BIKER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 5, TrainerBikerZeke, -1
-	object_event 23,  2, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 3, TrainerSupernerdSam, -1
-	object_event 31, 12, SPRITE_SUPER_NERD, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 4, TrainerSupernerdTom, -1
-	object_event 33,  5, SPRITE_FRUIT_TREE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route8FruitTree, -1
+	db 5 ; object events
+	object_event 40,  6, SPRITE_FRUIT_TREE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route8FruitTree, -1
+	object_event 12, 10, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 4, TrainerYoungsterJoey, -1
+	object_event 24,  4, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 4, TrainerSchoolboyDudley, -1
+	object_event 12,  6, SPRITE_LASS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 1, TrainerLassConnie, -1
+	object_event  8,  7, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route8GrampsScript, EVENT_ECRUTEAK_CITY_GRAMPS
+
+

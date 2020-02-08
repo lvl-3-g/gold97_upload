@@ -88,13 +88,16 @@ TilesetCaveGFX:
 INCBIN "gfx/tilesets/cave.2bpp.lz"
 
 TilesetCaveMeta:
-TilesetDarkCaveMeta:
 INCBIN "data/tilesets/cave_metatiles.bin"
 
+TilesetDarkCaveMeta:
+INCBIN "data/tilesets/dark_cave_metatiles.bin"
+
 TilesetCaveColl:
-TilesetDarkCaveColl:
 INCLUDE "data/tilesets/cave_collision.asm"
 
+TilesetDarkCaveColl:
+INCLUDE "data/tilesets/dark_cave_collision.asm"
 
 SECTION "Tileset Data 3", ROMX
 
@@ -116,8 +119,6 @@ INCBIN "data/tilesets/lab_metatiles.bin"
 TilesetLabColl:
 INCLUDE "data/tilesets/lab_collision.asm"
 
-TilesetMartGFX:
-INCBIN "gfx/tilesets/mart.2bpp.lz"
 
 TilesetMartMeta:
 INCBIN "data/tilesets/mart_metatiles.bin"
@@ -176,9 +177,6 @@ INCBIN "data/tilesets/radio_tower_metatiles.bin"
 TilesetRadioTowerColl:
 INCLUDE "data/tilesets/radio_tower_collision.asm"
 
-TilesetUndergroundGFX:
-INCBIN "gfx/tilesets/underground.2bpp.lz"
-
 TilesetUndergroundMeta:
 INCBIN "data/tilesets/underground_metatiles.bin"
 
@@ -206,9 +204,6 @@ INCBIN "data/tilesets/pokecom_center_metatiles.bin"
 TilesetPokeComCenterColl:
 INCLUDE "data/tilesets/pokecom_center_collision.asm"
 
-TilesetBattleTowerGFX:
-INCBIN "gfx/tilesets/battle_tower.2bpp.lz"
-
 TilesetBattleTowerMeta:
 INCBIN "data/tilesets/battle_tower_metatiles.bin"
 
@@ -225,7 +220,6 @@ TilesetGateColl:
 INCLUDE "data/tilesets/gate_collision.asm"
 
 TilesetJohtoModernGFX:
-TilesetBattleTowerOutsideGFX:
 INCBIN "gfx/tilesets/johto_modern.2bpp.lz"
 
 TilesetJohtoModernMeta:
@@ -257,15 +251,6 @@ INCBIN "data/tilesets/champions_room_metatiles.bin"
 
 TilesetChampionsRoomColl:
 INCLUDE "data/tilesets/champions_room_collision.asm"
-
-TilesetHouseGFX:
-INCBIN "gfx/tilesets/house.2bpp.lz"
-
-TilesetHouseMeta:
-INCBIN "data/tilesets/house_metatiles.bin"
-
-TilesetHouseColl:
-INCLUDE "data/tilesets/house_collision.asm"
 
 TilesetLighthouseGFX:
 INCBIN "gfx/tilesets/lighthouse.2bpp.lz"
@@ -335,3 +320,27 @@ INCBIN "data/tilesets/omanyte_word_room_metatiles.bin"
 
 TilesetAerodactylWordRoomMeta:
 INCBIN "data/tilesets/aerodactyl_word_room_metatiles.bin"
+
+SECTION "Tileset Data 9", ROMX
+
+TilesetHouseGFX:
+INCBIN "gfx/tilesets/house.2bpp.lz"
+
+TilesetHouseMeta:
+INCBIN "data/tilesets/house_metatiles.bin"
+
+TilesetHouseColl:
+INCLUDE "data/tilesets/house_collision.asm"
+
+TilesetBattleTowerOutsideGFX:
+INCBIN "gfx/tilesets/battle_tower_outside.2bpp.lz"
+
+TilesetBattleTowerGFX:
+INCBIN "gfx/tilesets/battle_tower.2bpp.lz"
+
+TilesetMartGFX:
+INCBIN "gfx/tilesets/mart.2bpp.lz"
+
+TilesetUndergroundGFX:
+INCBIN "gfx/tilesets/underground.2bpp.lz"
+

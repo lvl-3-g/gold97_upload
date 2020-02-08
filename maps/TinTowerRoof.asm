@@ -10,9 +10,7 @@ TinTowerRoof_MapScripts:
 .HoOh:
 	checkevent EVENT_FOUGHT_HO_OH
 	iftrue .NoAppear
-	checkitem RAINBOW_WING
-	iftrue .Appear
-	jump .NoAppear
+	jump .Appear
 
 .Appear:
 	appear TINTOWERROOF_HO_OH
@@ -30,8 +28,15 @@ TinTowerHoOh:
 	pause 15
 	closetext
 	setevent EVENT_FOUGHT_HO_OH
+	clearevent EVENT_VIOLET_CITY_EARL
+	setmapscene VIOLET_CITY, SCENE_DEFAULT
+	setevent EVENT_SLOWPOKE_WELL_SLOWPOKES
+	clearevent EVENT_RIVAL_AZALEA_TOWN
+	clearevent EVENT_RIVAL_TEAM_ROCKET_BASE
+	clearevent EVENT_AZALEA_TOWN_SLOWPOKES
 	writecode VAR_BATTLETYPE, BATTLETYPE_FORCEITEM
-	loadwildmon HO_OH, 60
+	loadwildmon HO_OH, 40
+;	writecode VAR_BATTLETYPE, BATTLETYPE_LEGENDKANTO
 	startbattle
 	disappear TINTOWERROOF_HO_OH
 	reloadmapafterbattle
@@ -46,11 +51,11 @@ TinTowerRoof_MapEvents:
 	db 0, 0 ; filler
 
 	db 1 ; warp events
-	warp_event  9, 13, TIN_TOWER_9F, 4
+	warp_event  9, 13, TIN_TOWER_5F, 2
 
 	db 0 ; coord events
 
 	db 0 ; bg events
 
 	db 1 ; object events
-	object_event  9,  5, SPRITE_HO_OH, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, TinTowerHoOh, EVENT_TIN_TOWER_ROOF_HO_OH
+	object_event  8,  8, SPRITE_HO_OH, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, TinTowerHoOh, EVENT_TIN_TOWER_ROOF_HO_OH

@@ -1,10 +1,10 @@
-	db "SCREECH@" ; species name
-	dw 204, 20 ; height, weight
+	db "FOX@" ; species name
+	dw 170, 170 ; height, weight
 
-	db   "It loves to watch"
-	next "people it's scar-"
-	next "ed. It frightens"
+	db   "Its three tails"
+	next "are its primary"
+	next "source of warmth."
 
-	page "them by screaming"
-	next "loudly or appear-"
-	next "ing suddenly.@"
+	page "Most of its body"
+	next "heat is stored"
+	next "in its tails.@"

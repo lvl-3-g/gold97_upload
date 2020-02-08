@@ -1,10 +1,10 @@
-	db "ANGLER@" ; species name
-	dw 108, 260 ; height, weight
+	db "SHOCK TIGER@" ; species name
+	dw 203, 470 ; height, weight
 
-	db   "Its antennae, whi-"
-	next "ch evolved from a"
-	next "fin, have both po-"
+	db   "Its whiskers have"
+	next "been used to pass"
+	next "electricity into"
 
-	page "sitive and neg-"
-	next "ative charges flo-"
-	next "wing through them.@"
+	page "circuits to"
+	next "generate power"
+	next "in emergencies.@"

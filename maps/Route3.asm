@@ -2,8 +2,10 @@
 	const ROUTE3_FISHER1
 	const ROUTE3_YOUNGSTER1
 	const ROUTE3_YOUNGSTER2
-	const ROUTE3_FISHER2
-
+	const ROUTE26_FRUIT_TREE
+	const ROUTE3_ITEMBALL_1
+	const ROUTE3_ITEMBALL_2
+	const ROUTE3_ITEMBALL_3
 Route3_MapScripts:
 	db 0 ; scene scripts
 
@@ -42,16 +44,34 @@ TrainerYoungsterJimmy:
 	closetext
 	end
 
-TrainerFirebreatherBurt:
-	trainer FIREBREATHER, BURT, EVENT_BEAT_FIREBREATHER_BURT, FirebreatherBurtSeenText, FirebreatherBurtBeatenText, 0, .Script
 
-.Script:
-	endifjustbattled
-	opentext
-	writetext FirebreatherBurtAfterBattleText
-	waitbutton
-	closetext
-	end
+Route26FruitTree:
+	fruittree FRUITTREE_ROUTE_26
+	
+Route2DireHit:
+	itemball DIRE_HIT
+
+
+Route2Carbos:
+	itemball CARBOS
+
+Route2Elixer:
+	itemball ELIXER
+	
+
+Route2HiddenMaxEther:
+	hiddenitem MAX_ETHER, EVENT_ROUTE_2_HIDDEN_MAX_ETHER
+
+Route2HiddenFullHeal:
+	hiddenitem FULL_HEAL, EVENT_ROUTE_2_HIDDEN_FULL_HEAL
+
+Route2HiddenFullRestore:
+	hiddenitem FULL_RESTORE, EVENT_ROUTE_2_HIDDEN_FULL_RESTORE
+
+Route2HiddenRevive:
+	hiddenitem REVIVE, EVENT_ROUTE_2_HIDDEN_REVIVE
+
+
 
 Route3MtMoonSquareSign:
 	jumptext Route3MtMoonSquareSignText
@@ -73,8 +93,8 @@ FirebreatherOtisAfterBattleText:
 	done
 
 YoungsterWarrenSeenText:
-	text "Hmmm… I don't know"
-	line "what to do…"
+	text "Hmmm… This tree is"
+	line "kinda interesting…"
 	done
 
 YoungsterWarrenBeatenText:
@@ -105,23 +125,7 @@ YoungsterJimmyAfterBattleText:
 	line "policy."
 	done
 
-FirebreatherBurtSeenText:
-	text "Step right up and"
-	line "take a look!"
-	done
 
-FirebreatherBurtBeatenText:
-	text "Yow! That's hot!"
-	done
-
-FirebreatherBurtAfterBattleText:
-	text "The greatest fire-"
-	line "breather in KANTO,"
-	cont "that's me."
-
-	para "But not the best"
-	line "trainer…"
-	done
 
 Route3MtMoonSquareSignText:
 	text "MT.MOON SQUARE"
@@ -133,16 +137,27 @@ Route3MtMoonSquareSignText:
 Route3_MapEvents:
 	db 0, 0 ; filler
 
-	db 1 ; warp events
-	warp_event 52,  1, MOUNT_MOON, 1
+	db 2 ; warp events
+	warp_event 11,  5, DIGLETTS_CAVE, 1
+	;warp_event 11,  5, BATTLE_TOWER_1F, 1
+	warp_event 21,  5, DIGLETTS_CAVE, 2
 
 	db 0 ; coord events
 
-	db 1 ; bg events
-	bg_event 49, 13, BGEVENT_READ, Route3MtMoonSquareSign
+	db 6 ; bg events
+	bg_event 34, 10, BGEVENT_READ, Route3MtMoonSquareSign
+	bg_event 28,  6, BGEVENT_READ, Route2DiglettsCaveSign
+	bg_event  5,  4, BGEVENT_ITEM, Route2HiddenMaxEther
+	bg_event 31, 12, BGEVENT_ITEM, Route2HiddenFullHeal
+	bg_event 35,  8, BGEVENT_ITEM, Route2HiddenFullRestore
+	bg_event 15, 13, BGEVENT_ITEM, Route2HiddenRevive
 
-	db 4 ; object events
-	object_event 26, 12, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 2, TrainerFirebreatherOtis, -1
-	object_event 10,  7, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerYoungsterWarren, -1
-	object_event 16,  3, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 1, TrainerYoungsterJimmy, -1
-	object_event 49,  5, SPRITE_FISHER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 3, TrainerFirebreatherBurt, -1
+	db 7 ; object events
+	object_event 43, 12, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 4, TrainerFirebreatherOtis, -1
+	object_event  8, 13, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerYoungsterWarren, -1
+	object_event 12, 11, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 1, TrainerYoungsterJimmy, -1
+	object_event 29,  5, SPRITE_FRUIT_TREE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route26FruitTree, -1
+	object_event 31,  5, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route2DireHit, EVENT_ROUTE_2_DIRE_HIT
+	object_event 24,  4, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route2Carbos, EVENT_ROUTE_2_CARBOS
+	object_event 16,  9, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route2Elixer, EVENT_ROUTE_2_ELIXER
+

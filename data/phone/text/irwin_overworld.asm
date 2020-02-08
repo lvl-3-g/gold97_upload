@@ -2,9 +2,9 @@ IrwinAskNumber1Text:
 	text "You're the best"
 	line "I've ever battled!"
 
-	para "Huh? You're the"
-	line "one who saved all"
-	cont "the SLOWPOKE?"
+	para "Huh? You're"
+	line "helping PROF.OAK"
+	cont "research #MON?"
 
 	para "Well, no wonder I"
 	line "couldn't beat you!"

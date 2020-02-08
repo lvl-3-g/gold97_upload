@@ -72,18 +72,10 @@ FastShipB1FSailorScript:
 
 .LazySailor:
 	writetext FastShipB1FOnDutySailorThanksText
-	checkevent EVENT_FAST_SHIP_FOUND_GIRL
-	iffalse .NotFoundGirl
 	waitbutton
 	closetext
 	end
 
-.NotFoundGirl:
-	buttonsound
-	writetext FastShipB1FOnDutySailorSawLittleGirlText
-	waitbutton
-	closetext
-	end
 
 .FirstTime:
 	writetext FastShipB1FOnDutySailorDirectionsText
@@ -247,12 +239,6 @@ FastShipB1FOnDutySailorThanksText:
 	line "slacking off!"
 	done
 
-FastShipB1FOnDutySailorSawLittleGirlText:
-	text "A little girl?"
-
-	para "I may have seen"
-	line "her go by here."
-	done
 
 FastShipB1FOnDutySailorDirectionsText:
 	text "The dining room is"
@@ -291,11 +277,9 @@ PicnickerDebraBeatenText:
 	done
 
 PicnickerDebraAfterBattleText:
-	text "SAFFRON, CELADON…"
-	line "I hear there are"
-
-	para "many big cities"
-	line "in KANTO."
+	text "I hear there are"
+	line "many quaint towns"
+	cont "on the ISLANDS."
 	done
 
 JugglerFritzSeenText:
@@ -309,11 +293,9 @@ JugglerFritzBeatenText:
 	done
 
 JugglerFritzAfterBattleText:
-	text "No more ships for"
-	line "me. Next time,"
-
-	para "I'm taking the"
-	line "MAGNET TRAIN."
+	text "Ugh..."
+	para "I can hold it"
+	line "together..."
 	done
 
 SailorGarrettSeenText:
@@ -330,8 +312,8 @@ SailorGarrettAfterBattleText:
 	text "We get different"
 	line "passengers from"
 
-	para "VERMILION CITY to"
-	line "OLIVINE CITY."
+	para "AMAMI TOWN to"
+	line "WEST CITY."
 	done
 
 FisherJonahSeenText:
@@ -350,7 +332,7 @@ FisherJonahBeatenText:
 
 FisherJonahAfterBattleText:
 	text "I plan to fish off"
-	line "VERMILION's pier."
+	line "AMAMI's pier."
 	done
 
 BlackbeltWaiSeenText:
@@ -367,13 +349,10 @@ BlackbeltWaiBeatenText:
 	done
 
 BlackbeltWaiAfterBattleText:
-	text "I couldn't find"
-	line "the KARATE KING in"
-	cont "JOHTO."
-
-	para "He's supposed to"
-	line "be training in a"
-	cont "cave somewhere."
+	text "Have you ever"
+	line "trained in the"
+	para "DOJO in NUTYPE"
+	line "CITY?"
 	done
 
 SailorKennethSeenText:
@@ -381,7 +360,7 @@ SailorKennethSeenText:
 
 	para "But I'm training"
 	line "#MON, so I can"
-	cont "become the CHAMP!"
+	cont "beat the LEAGUE!"
 	done
 
 SailorKennethBeatenText:
@@ -412,12 +391,12 @@ TeacherShirleyBeatenText:
 TeacherShirleyAfterBattleText:
 	text "We're on a field"
 	line "trip to the RUINS"
-	cont "outside VIOLET."
+	cont "outside HONTO."
 	done
 
 SchoolboyNateSeenText:
 	text "Do you know the"
-	line "RUINS OF ALPH?"
+	line "HONTO RUINS?"
 	done
 
 SchoolboyNateBeatenText:
@@ -433,7 +412,7 @@ SchoolboyNateAfterBattleText:
 SchoolboyRickySeenText:
 	text "There are some odd"
 	line "stone panels in"
-	cont "the RUINS OF ALPH."
+	cont "the HONTO RUINS."
 	done
 
 SchoolboyRickyBeatenText:

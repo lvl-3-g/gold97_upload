@@ -3,32 +3,32 @@
 SwarmGrassWildMons:
 
 ; Dunsparce swarm
-	map_id DARK_CAVE_VIOLET_ENTRANCE
+	map_id ROUTE_31
 	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
 	; morn
-	db 3, GEODUDE
-	db 3, DUNSPARCE
-	db 2, ZUBAT
-	db 2, GEODUDE
-	db 2, DUNSPARCE
-	db 4, DUNSPARCE
-	db 4, DUNSPARCE
+	db 15, PARAS
+	db 15, EEVEE
+	db 14, HOPPIP
+	db 15, DROWZEE
+	db 15, DITTO
+	db 14, PIKACHU
+	db 15, PIKACHU
 	; day
-	db 3, GEODUDE
-	db 3, DUNSPARCE
-	db 2, ZUBAT
-	db 2, GEODUDE
-	db 2, DUNSPARCE
-	db 4, DUNSPARCE
-	db 4, DUNSPARCE
+	db 15, PARAS
+	db 15, EEVEE
+	db 14, HOPPIP
+	db 15, DROWZEE
+	db 15, DITTO
+	db 14, PIKACHU
+	db 15, PIKACHU
 	; nite
-	db 3, GEODUDE
-	db 3, DUNSPARCE
-	db 2, ZUBAT
-	db 2, GEODUDE
-	db 2, DUNSPARCE
-	db 4, DUNSPARCE
-	db 4, DUNSPARCE
+	db 15, PARAS
+	db 15, EEVEE
+	db 14, HOPPIP
+	db 15, DROWZEE
+	db 15, DITTO
+	db 14, PIKACHU
+	db 15, PIKACHU
 
 ; Yanma swarm
 	map_id ROUTE_35

@@ -7,23 +7,15 @@ RuinsOfAlphOmanyteChamber_MapScripts:
 	callback MAPCALLBACK_TILES, .HiddenDoors
 
 .CheckWall:
-	special OmanyteChamber
-	checkevent EVENT_WALL_OPENED_IN_OMANYTE_CHAMBER
-	iftrue .OpenWall
 	end
 
 .OpenWall:
-	priorityjump .WallOpenScript
 	end
 
 .DummyScene:
 	end
 
 .HiddenDoors:
-	checkevent EVENT_WALL_OPENED_IN_OMANYTE_CHAMBER
-	iftrue .WallOpen
-	changeblock 4, 0, $2e ; closed wall
-.WallOpen:
 	checkevent EVENT_SOLVED_OMANYTE_PUZZLE
 	iffalse .FloorClosed
 	return
@@ -34,16 +26,6 @@ RuinsOfAlphOmanyteChamber_MapScripts:
 	return
 
 .WallOpenScript:
-	pause 30
-	earthquake 30
-	showemote EMOTE_SHOCK, PLAYER, 20
-	pause 30
-	playsound SFX_STRENGTH
-	changeblock 4, 0, $30 ; open wall
-	reloadmappart
-	earthquake 50
-	setscene SCENE_FINISHED
-	closetext
 	end
 
 RuinsOfAlphOmanyteChamberPuzzle:
@@ -145,21 +127,18 @@ RuinsOfAlphOmanyteChamberDescriptionText:
 RuinsOfAlphOmanyteChamber_MapEvents:
 	db 0, 0 ; filler
 
-	db 5 ; warp events
+	db 4 ; warp events
 	warp_event  3,  9, RUINS_OF_ALPH_OUTSIDE, 3
 	warp_event  4,  9, RUINS_OF_ALPH_OUTSIDE, 3
 	warp_event  3,  3, RUINS_OF_ALPH_INNER_CHAMBER, 6
 	warp_event  4,  3, RUINS_OF_ALPH_INNER_CHAMBER, 7
-	warp_event  4,  0, RUINS_OF_ALPH_OMANYTE_ITEM_ROOM, 1
 
 	db 0 ; coord events
 
-	db 6 ; bg events
+	db 4 ; bg events
 	bg_event  2,  3, BGEVENT_READ, RuinsOfAlphOmanyteChamberAncientReplica
 	bg_event  5,  3, BGEVENT_READ, RuinsOfAlphOmanyteChamberAncientReplica
 	bg_event  3,  2, BGEVENT_UP, RuinsOfAlphOmanyteChamberPuzzle
 	bg_event  4,  2, BGEVENT_UP, RuinsOfAlphOmanyteChamberDescriptionSign
-	bg_event  3,  0, BGEVENT_UP, RuinsOfAlphOmanyteChamberWallPatternLeft
-	bg_event  4,  0, BGEVENT_UP, RuinsOfAlphOmanyteChamberWallPatternRight
 
 	db 0 ; object events

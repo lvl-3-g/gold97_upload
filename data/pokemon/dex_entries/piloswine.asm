@@ -1,10 +1,10 @@
-	db "SWINE@" ; species name
-	dw 307, 1230 ; height, weight
+	db "HAUNTED@" ; species name
+	dw 211, 240 ; height, weight
 
-	db   "Although its legs"
-	next "are short, its"
-	next "rugged hooves"
+	db   "Beware when this"
+	next "#MON leaps,"
+	next "as it is able to"
 
-	page "prevent it from"
-	next "slipping, even on"
-	next "icy ground.@"
+	page "envelop and steal"
+	next "the soul of its"
+	next "target.@"

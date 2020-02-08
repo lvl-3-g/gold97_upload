@@ -1,10 +1,10 @@
-	db "IMITATION@" ; species name
-	dw 311, 840 ; height, weight
+	db "FLYCATCHER@" ; species name
+	dw 403, 270 ; height, weight
 
-	db   "If a tree branch"
-	next "shakes when there"
-	next "is no wind, it's a"
+	db   "A surprisingly"
+	next "speedy plant. Able"
+	next "to move on the"
 
-	page "SUDOWOODO, not a"
-	next "tree. It hides"
-	next "from the rain.@"
+	page "ground much more"
+	next "quickly than its"
+	next "previous forms.@"

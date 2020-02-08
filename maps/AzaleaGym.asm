@@ -39,6 +39,12 @@ AzaleaGymBugsyScript:
 	setevent EVENT_BEAT_BUG_CATCHER_BENNY
 	setevent EVENT_BEAT_BUG_CATCHER_AL
 	setevent EVENT_BEAT_BUG_CATCHER_JOSH
+	setevent EVENT_ECRUTEAK_CITY_GRAMPS
+	setevent EVENT_ECRUTEAK_GYM_GRAMPS
+	setevent EVENT_WISE_TRIOS_ROOM_WISE_TRIO_1
+	setevent EVENT_BURNED_TOWER_MORTY
+	setevent EVENT_BURNED_TOWER_1F_EUSINE
+	clearevent EVENT_MAHOGANY_TOWN_POKEFAN_M_BLOCKS_GYM
 	writetext BugsyText_HiveBadgeSpeech
 	buttonsound
 	verbosegiveitem TM_FURY_CUTTER
@@ -149,20 +155,20 @@ AzaleaGymStatue:
 
 BugsyText_INeverLose:
 	text "I'm BUGSY!"
-	line "I never lose when"
-
-	para "it comes to bug"
-	line "#MON."
-
-	para "My research is"
-	line "going to make me"
-
-	para "the authority on"
-	line "bug #MON!"
-
-	para "Let me demonstrate"
-	line "what I've learned"
-	cont "from my studies."
+	para "I've dedicated my"
+	line "life to learning"
+	cont "about BUG #MON!"
+	para "My family has"
+	line "always been"
+	para "disgusted by BUGs,"
+	line "but not me!"
+	para "BUG #MON are"
+	line "fascinating, and"
+	para "grow strong very"
+	line "quickly!"
+	para "Here, let me show"
+	line "you what I've"
+	cont "learned!"
 	done
 
 BugsyText_ResearchIncomplete:
@@ -194,9 +200,9 @@ BugsyText_HiveBadgeSpeech:
 	line "even traded ones."
 
 	para "#MON that know"
-	line "CUT will be able"
+	line "STRENGTH can now"
 
-	para "to use it outside"
+	para "use it outside"
 	line "of battle too."
 
 	para "Here, I also want"
@@ -273,13 +279,9 @@ BugCatcherAlAfterBattleText:
 	done
 
 BugCatcherJoshSeenText:
-	text "You saved all the"
-	line "SLOWPOKE? Whew,"
-	cont "you're mighty!"
-
-	para "But my grown-up"
-	line "#MON are pretty"
-	cont "tough too!"
+	text "Bug #MON get"
+	line "strong quickly!"
+	para "Want to see?"
 	done
 
 BugCatcherJoshBeatenText:
@@ -363,8 +365,8 @@ AzaleaGym_MapEvents:
 	db 0, 0 ; filler
 
 	db 2 ; warp events
-	warp_event  4, 15, AZALEA_TOWN, 5
-	warp_event  5, 15, AZALEA_TOWN, 5
+	warp_event  4, 15, GOLDENROD_CITY, 1
+	warp_event  5, 15, GOLDENROD_CITY, 12
 
 	db 0 ; coord events
 
@@ -374,9 +376,9 @@ AzaleaGym_MapEvents:
 
 	db 7 ; object events
 	object_event  5,  7, SPRITE_BUGSY, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, AzaleaGymBugsyScript, -1
-	object_event  5,  3, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 2, TrainerBugCatcherBenny, -1
-	object_event  8,  8, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 3, TrainerBugCatcherAl, -1
-	object_event  0,  2, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 3, TrainerBugCatcherJosh, -1
+	object_event  6,  3, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 2, TrainerBugCatcherBenny, -1
+	object_event  8,  6, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 3, TrainerBugCatcherAl, -1
+	object_event  1,  2, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 3, TrainerBugCatcherJosh, -1
 	object_event  4, 10, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 1, TrainerTwinsAmyandmay1, -1
 	object_event  5, 10, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 1, TrainerTwinsAmyandmay2, -1
 	object_event  7, 13, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, AzaleaGymGuyScript, -1

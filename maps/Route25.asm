@@ -1,6 +1,4 @@
 	const_def 2 ; object constants
-	const ROUTE25_MISTY
-	const ROUTE25_COOLTRAINER_M1
 	const ROUTE25_YOUNGSTER1
 	const ROUTE25_LASS1
 	const ROUTE25_YOUNGSTER2
@@ -12,80 +10,10 @@
 	const ROUTE25_POKE_BALL
 
 Route25_MapScripts:
-	db 2 ; scene scripts
-	scene_script .DummyScene0 ; SCENE_ROUTE25_NOTHING
-	scene_script .DummyScene1 ; SCENE_ROUTE25_MISTYS_DATE
+	db 0 ; scene scripts
 
 	db 0 ; callbacks
 
-.DummyScene0:
-	end
-
-.DummyScene1:
-	end
-
-Route25MistyDate1Script:
-	showemote EMOTE_HEART, ROUTE25_MISTY, 15
-	pause 30
-	showemote EMOTE_SHOCK, ROUTE25_COOLTRAINER_M1, 10
-	turnobject ROUTE25_MISTY, DOWN
-	applymovement ROUTE25_COOLTRAINER_M1, MovementData_0x19efe8
-	disappear ROUTE25_COOLTRAINER_M1
-	pause 15
-	playmusic MUSIC_BEAUTY_ENCOUNTER
-	turnobject ROUTE25_MISTY, UP
-	pause 10
-	applymovement ROUTE25_MISTY, MovementData_0x19efed
-	opentext
-	writetext Route25MistyDateText
-	waitbutton
-	closetext
-	turnobject PLAYER, DOWN
-	applymovement ROUTE25_MISTY, MovementData_0x19effa
-	turnobject PLAYER, LEFT
-	applymovement ROUTE25_MISTY, MovementData_0x19f000
-	disappear ROUTE25_MISTY
-	clearevent EVENT_TRAINERS_IN_CERULEAN_GYM
-	setscene SCENE_ROUTE25_NOTHING
-	special RestartMapMusic
-	end
-
-Route25MistyDate2Script:
-	showemote EMOTE_HEART, ROUTE25_MISTY, 15
-	pause 30
-	showemote EMOTE_SHOCK, ROUTE25_COOLTRAINER_M1, 10
-	turnobject ROUTE25_MISTY, DOWN
-	applymovement ROUTE25_COOLTRAINER_M1, MovementData_0x19efea
-	disappear ROUTE25_COOLTRAINER_M1
-	pause 15
-	playmusic MUSIC_BEAUTY_ENCOUNTER
-	turnobject ROUTE25_MISTY, UP
-	pause 10
-	applymovement ROUTE25_MISTY, MovementData_0x19eff4
-	opentext
-	writetext Route25MistyDateText
-	waitbutton
-	closetext
-	turnobject PLAYER, UP
-	applymovement ROUTE25_MISTY, MovementData_0x19effd
-	turnobject PLAYER, LEFT
-	applymovement ROUTE25_MISTY, MovementData_0x19f000
-	disappear ROUTE25_MISTY
-	clearevent EVENT_TRAINERS_IN_CERULEAN_GYM
-	setscene SCENE_ROUTE25_NOTHING
-	special RestartMapMusic
-	end
-
-TrainerSchoolboyDudley:
-	trainer SCHOOLBOY, DUDLEY, EVENT_BEAT_SCHOOLBOY_DUDLEY, SchoolboyDudleySeenText, SchoolboyDudleyBeatenText, 0, .Script
-
-.Script:
-	endifjustbattled
-	opentext
-	writetext SchoolboyDudleyAfterBattleText
-	waitbutton
-	closetext
-	end
 
 TrainerLassEllen:
 	trainer LASS, ELLEN, EVENT_BEAT_LASS_ELLEN, LassEllenSeenText, LassEllenBeatenText, 0, .Script
@@ -154,142 +82,37 @@ TrainerSupernerdPat:
 	end
 
 TrainerCooltrainermKevin:
-	faceplayer
+	trainer COOLTRAINERM, KEVIN, EVENT_BEAT_COOLTRAINERM_KEVIN, CooltrainermKevinSeenText, CooltrainermKevinBeatenText, 0, .Script
+
+.Script:
+	endifjustbattled
 	opentext
-	checkevent EVENT_BEAT_COOLTRAINERM_KEVIN
-	iftrue .AfterBattle
-	checkevent EVENT_CLEARED_NUGGET_BRIDGE
-	iftrue .AfterNuggetBridge
-	writetext CooltrainermKevinNuggetText
-	buttonsound
-	verbosegiveitem NUGGET
-	iffalse .NoRoomForNugget
-	setevent EVENT_CLEARED_NUGGET_BRIDGE
-.AfterNuggetBridge:
-	writetext CooltrainermKevinSeenText
-	waitbutton
-	closetext
-	winlosstext CooltrainermKevinBeatenText, 0
-	loadtrainer COOLTRAINERM, KEVIN
-	startbattle
-	reloadmapafterbattle
-	setevent EVENT_BEAT_COOLTRAINERM_KEVIN
-	opentext
-.AfterBattle:
 	writetext CooltrainermKevinAfterBattleText
 	waitbutton
-.NoRoomForNugget:
 	closetext
 	end
 
-BillsHouseSign:
-	jumptext BillsHouseSignText
 
 Route25Protein:
 	itemball PROTEIN
 
 Route25HiddenPotion:
 	hiddenitem POTION, EVENT_ROUTE_25_HIDDEN_POTION
-
-MovementData_0x19efe8:
-	big_step DOWN
-	step_end
-
-MovementData_0x19efea:
-	big_step DOWN
-	big_step DOWN
-	step_end
-
-MovementData_0x19efed:
-	step UP
-	step UP
-	step UP
-	step LEFT
-	step LEFT
-	step LEFT
-	step_end
-
-MovementData_0x19eff4:
-	step UP
-	step UP
-	step LEFT
-	step LEFT
-	step LEFT
-	step_end
-
-MovementData_0x19effa:
-	step DOWN
-	step LEFT
-	step_end
-
-MovementData_0x19effd:
-	step UP
-	step LEFT
-	step_end
-
-MovementData_0x19f000:
-	step LEFT
-	step LEFT
-	step LEFT
-	step LEFT
-	step LEFT
-	step_end
-
-Route25MistyDateText:
-	text "MISTY: Aww! Why"
-	line "did you have to"
-
-	para "show up and bug us"
-	line "now?"
-
-	para "Do you know what"
-	line "they call people"
-	cont "like you?"
-
-	para "Pests! You heard"
-	line "me right, pest!"
-
-	para "…"
-
-	para "…Oh? Those BADGES"
-	line "you have… Are they"
-	cont "JOHTO GYM BADGES?"
-
-	para "If you have eight,"
-	line "you must be good."
-
-	para "OK, then. Come to"
-	line "CERULEAN GYM."
-
-	para "I'll be happy to"
-	line "take you on."
-
-	para "I'm MISTY, the"
-	line "GYM LEADER in"
-	cont "CERULEAN."
+	
+Route25Sign:
+	jumptext Route25SignText
+	
+Route25SignText:
+	text "MERIDIAN PATH"
+	para "NAGO VILLAGE -"
+	line "RYUKYU CITY"
 	done
 
-SchoolboyDudleySeenText:
-	text "Beat the six of us"
-	line "trainers to win a"
-	cont "fabulous prize!"
-
-	para "Think you've got"
-	line "what it takes?"
-	done
-
-SchoolboyDudleyBeatenText:
-	text "Whoo! Good stuff."
-	done
-
-SchoolboyDudleyAfterBattleText:
-	text "I did my best."
-	line "I have no regrets."
-	done
 
 LassEllenSeenText:
-	text "I'm second."
-	line "Now it's serious!"
+	text "You ever climbed"
+	line "the EASTWARD"
+	cont "SUMMIT?"
 	done
 
 LassEllenBeatenText:
@@ -297,13 +120,17 @@ LassEllenBeatenText:
 	done
 
 LassEllenAfterBattleText:
-	text "I did my best."
-	line "I have no regrets."
+	text "The view is very"
+	line "pretty up there."
 	done
 
 SchoolboyJoeSeenText:
-	text "Here's No. 3!"
-	line "I won't be easy."
+	text "You've traveled"
+	line "all of NIHON?"
+	para "That's cool."
+	para "But do you stand"
+	line "a chance against"
+	cont "a trainer like me?"
 	done
 
 SchoolboyJoeBeatenText:
@@ -311,27 +138,33 @@ SchoolboyJoeBeatenText:
 	done
 
 SchoolboyJoeAfterBattleText:
-	text "I did my best."
-	line "I have no regrets."
+	text "Looks like you had"
+	line "plenty of time to"
+	para "raise your #MON"
+	line "while traveling."
 	done
 
 LassLauraSeenText:
-	text "I'm No. 4!"
-	line "Getting tired?"
+	text "You look like"
+	line "you're far from"
+	cont "home."
 	done
 
 LassLauraBeatenText:
-	text "I lost too…"
+	text "I'm out!"
 	done
 
 LassLauraAfterBattleText:
-	text "I did my best."
-	line "I have no regrets."
+	text "Where are you"
+	line "from?"
+	para "SILENT TOWN?"
+	para "I've never been"
+	line "there."
 	done
 
 CamperLloydSeenText:
-	text "OK! I'm No. 5."
-	line "I'll stomp you!"
+	text "Going to EASTWARD"
+	line "SUMMIT?"
 	done
 
 CamperLloydBeatenText:
@@ -339,14 +172,19 @@ CamperLloydBeatenText:
 	done
 
 CamperLloydAfterBattleText:
-	text "I did my best."
-	line "I have no regrets."
+	text "Legend says that a"
+	line "rare #MON"
+	cont "roosts here."
+	para "But I've climbed"
+	line "to the top and"
+	para "never seen any-"
+	line "thing."
 	done
 
 LassShannonSeenText:
-	text "I'm the last in"
-	line "line, but I tell"
-	cont "you, I'm tough!"
+	text "Let me tell you,"
+	line "I'm a tough"
+	cont "trainer!"
 	done
 
 LassShannonBeatenText:
@@ -355,53 +193,36 @@ LassShannonBeatenText:
 
 LassShannonAfterBattleText:
 	text "I did my best."
-	line "I have no regrets."
+	line "But you did"
+	cont "better, I guess."
 	done
 
 SupernerdPatSeenText:
 	text "Mufufufu…"
 
-	para "I have nothing to"
-	line "do with the six-"
-	cont "pack trainers."
-
-	para "I waited here to"
-	line "beat you when you"
-
-	para "were tired out by"
-	line "all the battles."
+	para "Battle me."
 	done
 
 SupernerdPatBeatenText:
-	text "Aren't you tired"
-	line "at all?"
+	text "You weren't"
+	line "supposed to win."
 	done
 
 SupernerdPatAfterBattleText:
-	text "I'm sorry… I won't"
-	line "cheat anymore…"
+	text "There's a lady"
+	line "in NAGO VILLAGE"
+	para "who has like a"
+	line "million CHARMANDER"
+	cont "in her house."
+	para "I worry that it'll"
+	line "catch fire."
 	done
 
-CooltrainermKevinNuggetText:
-	text "You took on one"
-	line "more battle than"
-
-	para "you expected, but"
-	line "you won anyway."
-
-	para "As promised, you"
-	line "win a prize."
-	done
 
 CooltrainermKevinSeenText:
-	text "But after seeing"
-	line "how you battle, I"
-
-	para "want to see how"
-	line "I'll fare."
-
-	para "How about it? Let"
-	line "me take you on."
+	text "You want to"
+	line "battle, right?"
+	para "Right."
 	done
 
 CooltrainermKevinBeatenText:
@@ -418,38 +239,25 @@ CooltrainermKevinAfterBattleText:
 	cont "standing!"
 	done
 
-BillsHouseSignText:
-	text "SEA COTTAGE"
-	line "BILL'S HOUSE"
-	done
-
-; unused
-	text "BILL'S HOUSE"
-	done
 
 Route25_MapEvents:
 	db 0, 0 ; filler
 
 	db 1 ; warp events
-	warp_event 47,  5, BILLS_HOUSE, 1
+	warp_event  4, 47, ROUTE_19_FUCHSIA_GATE, 4
 
-	db 2 ; coord events
-	coord_event 42,  6, SCENE_ROUTE25_MISTYS_DATE, Route25MistyDate1Script
-	coord_event 42,  7, SCENE_ROUTE25_MISTYS_DATE, Route25MistyDate2Script
+	db 0 ; coord events
 
 	db 2 ; bg events
-	bg_event 45,  5, BGEVENT_READ, BillsHouseSign
-	bg_event  4,  5, BGEVENT_ITEM, Route25HiddenPotion
+	bg_event  4, 14, BGEVENT_ITEM, Route25HiddenPotion
+	bg_event 11,  5, BGEVENT_READ, Route25Sign
 
-	db 11 ; object events
-	object_event 46,  9, SPRITE_MISTY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_25_MISTY_BOYFRIEND
-	object_event 46, 10, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_25_MISTY_BOYFRIEND
-	object_event 12,  8, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerSchoolboyDudley, -1
-	object_event 16, 11, SPRITE_LASS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerLassEllen, -1
-	object_event 21,  8, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 1, TrainerSchoolboyJoe, -1
-	object_event 22,  6, SPRITE_LASS, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerLassLaura, -1
-	object_event 25,  4, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 2, TrainerCamperLloyd, -1
-	object_event 28, 11, SPRITE_LASS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 1, TrainerLassShannon, -1
-	object_event 31,  7, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 1, TrainerSupernerdPat, -1
-	object_event 37,  8, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, TrainerCooltrainermKevin, -1
-	object_event 32,  4, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route25Protein, EVENT_ROUTE_25_PROTEIN
+	db 8 ; object events
+	object_event  9,  7, SPRITE_LASS, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerLassEllen, -1
+	object_event  8, 47, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 2, TrainerSchoolboyJoe, -1
+	object_event 13, 44, SPRITE_LASS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerLassLaura, -1
+	object_event 14, 22, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 2, TrainerCamperLloyd, -1
+	object_event  8, 18, SPRITE_LASS, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 4, TrainerLassShannon, -1
+	object_event  6, 37, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 3, TrainerSupernerdPat, -1
+	object_event 13, 11, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 4, TrainerCooltrainermKevin, -1
+	object_event  7, 43, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route25Protein, EVENT_ROUTE_25_PROTEIN

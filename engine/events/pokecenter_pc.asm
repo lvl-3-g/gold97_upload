@@ -251,17 +251,17 @@ PlayersPCMenuData:
 PLAYERSPC_WITHDRAW_ITEM EQU 0
 PLAYERSPC_DEPOSIT_ITEM  EQU 1
 PLAYERSPC_TOSS_ITEM     EQU 2
-PLAYERSPC_MAIL_BOX      EQU 3
-PLAYERSPC_DECORATION    EQU 4
-PLAYERSPC_TURN_OFF      EQU 5
-PLAYERSPC_LOG_OFF       EQU 6
+;PLAYERSPC_MAIL_BOX      EQU 3
+PLAYERSPC_DECORATION    EQU 3
+PLAYERSPC_TURN_OFF      EQU 4
+PLAYERSPC_LOG_OFF       EQU 5
 
 .PlayersPCMenuPointers:
 ; entries correspond to PLAYERSPC_* constants
 	dw PlayerWithdrawItemMenu, .WithdrawItem
 	dw PlayerDepositItemMenu,  .DepositItem
 	dw PlayerTossItemMenu,     .TossItem
-	dw PlayerMailBoxMenu,      .MailBox
+;	dw PlayerMailBoxMenu,      .MailBox
 	dw PlayerDecorationMenu,   .Decoration
 	dw PlayerLogOffMenu,       .LogOff
 	dw PlayerLogOffMenu,       .TurnOff
@@ -269,26 +269,26 @@ PLAYERSPC_LOG_OFF       EQU 6
 .WithdrawItem: db "WITHDRAW ITEM@"
 .DepositItem:  db "DEPOSIT ITEM@"
 .TossItem:     db "TOSS ITEM@"
-.MailBox:      db "MAIL BOX@"
+;.MailBox:      db "MAIL BOX@"
 .Decoration:   db "DECORATION@"
 .TurnOff:      db "TURN OFF@"
 .LogOff:       db "LOG OFF@"
 
 .PlayersPCMenuList1:
-	db 5
+	db 4
 	db PLAYERSPC_WITHDRAW_ITEM
 	db PLAYERSPC_DEPOSIT_ITEM
 	db PLAYERSPC_TOSS_ITEM
-	db PLAYERSPC_MAIL_BOX
+;	db PLAYERSPC_MAIL_BOX
 	db PLAYERSPC_TURN_OFF
 	db -1 ; end
 
 .PlayersPCMenuList2:
-	db 6
+	db 5
 	db PLAYERSPC_WITHDRAW_ITEM
 	db PLAYERSPC_DEPOSIT_ITEM
 	db PLAYERSPC_TOSS_ITEM
-	db PLAYERSPC_MAIL_BOX
+;	db PLAYERSPC_MAIL_BOX
 	db PLAYERSPC_DECORATION
 	db PLAYERSPC_LOG_OFF
 	db -1 ; end

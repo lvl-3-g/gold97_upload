@@ -47,6 +47,8 @@ Script_ApproachLanceFromLeft:
 	jump LancesRoomLanceScript
 
 Script_ApproachLanceFromRight:
+;	warp ROUTE_5, 13, 3
+;	end
 	special FadeOutMusic
 	applymovement PLAYER, MovementData_ApproachLanceFromRight
 LancesRoomLanceScript:
@@ -71,31 +73,32 @@ LancesRoomLanceScript:
 	reloadmappart
 	closetext
 	setevent EVENT_LANCES_ROOM_ENTRANCE_CLOSED
-	musicfadeout MUSIC_BEAUTY_ENCOUNTER, 16
+	musicfadeout MUSIC_POKEMON_TALK, 16
 	pause 30
 	showemote EMOTE_SHOCK, LANCESROOM_LANCE, 15
 	turnobject LANCESROOM_LANCE, DOWN
 	pause 10
 	turnobject PLAYER, DOWN
-	appear LANCESROOM_MARY
-	applymovement LANCESROOM_MARY, LancesRoomMovementData_MaryRushesIn
-	opentext
-	writetext UnknownText_0x1811dd
-	waitbutton
-	closetext
+;	appear LANCESROOM_MARY
+;	applymovement LANCESROOM_MARY, LancesRoomMovementData_MaryRushesIn
+;	opentext
+;	writetext UnknownText_0x1811dd
+;	waitbutton
+;	closetext
 	appear LANCESROOM_OAK
 	applymovement LANCESROOM_OAK, LancesRoomMovementData_OakWalksIn
-	follow LANCESROOM_MARY, LANCESROOM_OAK
-	applymovement LANCESROOM_MARY, LancesRoomMovementData_MaryYieldsToOak
-	stopfollow
+;	follow LANCESROOM_MARY, LANCESROOM_OAK
+;	applymovement LANCESROOM_MARY, LancesRoomMovementData_MaryYieldsToOak
+;	stopfollow
 	turnobject LANCESROOM_OAK, UP
-	turnobject LANCESROOM_LANCE, LEFT
+;	turnobject LANCESROOM_LANCE, LEFT
 	opentext
 	writetext UnknownText_0x18121b
 	waitbutton
 	closetext
-	applymovement LANCESROOM_MARY, LancesRoomMovementData_MaryInterviewChampion
-	turnobject PLAYER, LEFT
+;	applymovement LANCESROOM_MARY, LancesRoomMovementData_MaryInterviewChampion
+	turnobject PLAYER, RIGHT
+	turnobject LANCESROOM_LANCE, LEFT
 	opentext
 	writetext UnknownText_0x18134b
 	waitbutton
@@ -116,13 +119,13 @@ LancesRoomLanceScript:
 	applymovement PLAYER, LancesRoomMovementData_PlayerExits
 	playsound SFX_EXIT_BUILDING
 	disappear PLAYER
-	applymovement LANCESROOM_MARY, LancesRoomMovementData_MaryTriesToFollow
-	showemote EMOTE_SHOCK, LANCESROOM_MARY, 15
+	applymovement LANCESROOM_OAK, LancesRoomMovementData_MaryTriesToFollow
+;	showemote EMOTE_SHOCK, LANCESROOM_MARY, 15
 	opentext
 	writetext UnknownText_0x1813c5
 	pause 30
 	closetext
-	applymovement LANCESROOM_MARY, LancesRoomMovementData_MaryRunsBackAndForth
+;	applymovement LANCESROOM_MARY, LancesRoomMovementData_MaryRunsBackAndForth
 	special FadeOutPalettes
 	pause 15
 	warpfacing UP, HALL_OF_FAME, 4, 13
@@ -158,6 +161,7 @@ LancesRoomMovementData_MaryRushesIn:
 LancesRoomMovementData_OakWalksIn:
 	step UP
 	step UP
+	step UP
 	step_end
 
 LancesRoomMovementData_MaryYieldsToOak:
@@ -186,8 +190,7 @@ LancesRoomMovementData_PlayerExits:
 
 LancesRoomMovementData_MaryTriesToFollow:
 	step UP
-	step RIGHT
-	turn_head UP
+	step UP
 	step_end
 
 LancesRoomMovementData_MaryRunsBackAndForth:
@@ -210,11 +213,15 @@ LanceBattleIntroText:
 
 	para "<PLAY_G>!"
 
-	para "I knew that you,"
-	line "with your skills,"
-
-	para "would eventually"
-	line "reach me here."
+	para "I've heard of you,"
+	line "and what you've"
+	cont "accomplished."
+	
+	para "It's inevitable"
+	line "that someone with"
+	para "your skills would"
+	line "would eventually"
+	cont "reach me here."
 
 	para "There's no need"
 	line "for words now."
@@ -285,11 +292,7 @@ UnknownText_0x18121b:
 	text "PROF.OAK: Ah,"
 	line "<PLAY_G>!"
 
-	para "It's been a long"
-	line "while."
-
-	para "You certainly look"
-	line "more impressive."
+	para "Congratulations!"
 
 	para "Your conquest of"
 	line "the LEAGUE is just"
@@ -309,30 +312,48 @@ UnknownText_0x18121b:
 
 	para "trainer, they per-"
 	line "severed."
+	
+	para "When I asked if"
+	line "you would be able"
+	para "to help me with"
+	line "my research, I did"
+	para "not realize how"
+	line "much of a help"
+	cont "you could be!"
+	para "And even more,"
+	line "you've defeated"
+	cont "the LEAGUE!"
+	
+	para "You've been able"
+	line "to accomplish so"
+	cont "much!"
 
 	para "Congratulations,"
 	line "<PLAY_G>!"
 	done
 
 UnknownText_0x18134b:
-	text "MARY: Let's inter-"
-	line "view the brand new"
-	cont "CHAMPION!"
+	text "LANCE: Yes, you"
+	line "should be very"
+	cont "proud."
+	para "Not just of your-"
+	line "self, but of your"
+	cont "#MON."
 	done
 
 UnknownText_0x18137b:
-	text "LANCE: This is"
-	line "getting to be a"
-	cont "bit too noisy…"
-
-	para "<PLAY_G>, could you"
-	line "come with me?"
+	text "LANCE: <PLAY_G>,"
+	line "could you come"
+	cont "with me?"
+	para "It is time for you"
+	line "and your #MON's"
+	para "accomplishments to"
+	line "be recognized."
 	done
 
 UnknownText_0x1813c5:
-	text "MARY: Oh, wait!"
-	line "We haven't done"
-	cont "the interview!"
+	text "OAK: Congrat-"
+	line "ulations again!"
 	done
 
 LancesRoom_MapEvents:

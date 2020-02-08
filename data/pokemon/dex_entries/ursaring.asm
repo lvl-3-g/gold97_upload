@@ -1,10 +1,10 @@
-	db "HIBERNANT@" ; species name
-	dw 511, 2770 ; height, weight
+	db "BALLOON@" ; species name
+	dw 211, 180 ; height, weight
 
-	db   "Although it has a"
-	next "large body, it is"
-	next "quite skilled at"
+	db   "The spines on its"
+	next "body emit electric"
+	next "shocks that can be"
 
-	page "climbing trees. It"
-	next "eats and sleeps in"
-	next "the treetops.@"
+	page "used to immobilize"
+	next "foes much larger"
+	next "than its own size.@"

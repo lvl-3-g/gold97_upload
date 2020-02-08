@@ -34,7 +34,11 @@ VioletGymFalknerScript:
 	iftrue .SpeechAfterTM
 	setevent EVENT_BEAT_BIRD_KEEPER_ROD
 	setevent EVENT_BEAT_BIRD_KEEPER_ABE
-	setmapscene ELMS_LAB, SCENE_ELMSLAB_NOTHING
+	setevent EVENT_SHOWED_PICHU_TO_BILLS_GRANDPA
+	setevent EVENT_SHOWED_GROWLITHE_VULPIX_TO_BILLS_GRANDPA
+	setmapscene ROUTE_36, SCENE_ROUTE36_SILVER
+	clearevent EVENT_ROUTE_36_SILVER
+;	setmapscene ELMS_LAB, SCENE_ELMSLAB_NOTHING
 	specialphonecall SPECIALCALL_ASSISTANT
 	writetext FalknerZephyrBadgeText
 	buttonsound
@@ -86,16 +90,25 @@ TrainerBirdKeeperAbe:
 	closetext
 	end
 
+
 VioletGymGuyScript:
 	faceplayer
 	opentext
+	checkevent EVENT_VIOLET_GYM_FALKNER
+	iftrue .nothere
 	checkevent EVENT_BEAT_FALKNER
 	iftrue .VioletGymGuyWinScript
 	writetext VioletGymGuyText
 	waitbutton
 	closetext
 	end
-
+	
+.nothere
+	writetext VioletGymGuyTextNotHere
+	waitbutton
+	closetext
+	end
+	
 .VioletGymGuyWinScript:
 	writetext VioletGymGuyWinText
 	waitbutton
@@ -111,20 +124,17 @@ VioletGymStatue:
 	jumpstd gymstatue2
 
 FalknerIntroText:
-	text "I'm FALKNER, the"
-	line "VIOLET #MON GYM"
-	cont "leader!"
+	text "I knew you'd be"
+	line "showing up here"
+	cont "sometime soon!"
+	
+	para "It's always great"
+	line "to see a new"
+	para "trainer take on"
+	line "the LEAGUE."
 
-	para "People say you can"
-	line "clip flying-type"
-
-	para "#MON's wings"
-	line "with a jolt of"
-	cont "electricity…"
-
-	para "I won't allow such"
-	line "insults to bird"
-	cont "#MON!"
+	para "But are you ready"
+	line "to take me on?"
 
 	para "I'll show you the"
 	line "real power of the"
@@ -159,7 +169,7 @@ FalknerZephyrBadgeText:
 	para "It also enables"
 	line "#MON to use"
 
-	para "FLASH, if they"
+	para "CUT, if they"
 	line "have it, anytime."
 
 	para "Here--take this"
@@ -271,6 +281,25 @@ VioletGymGuyText:
 	line "this in mind."
 	done
 
+VioletGymGuyTextNotHere:
+	text "Hey! Are you here"
+	line "to challenge"
+	cont "FALKNER?"
+	
+	para "I hate to tell you"
+	line "this, but he's not"
+	cont "here!"
+	
+	para "FALKNER's gone out"
+	line "somewhere right"
+	cont "now."
+	
+	para "Maybe look around"
+	line "town for him."
+	para "He couldn't have"
+	line "gone far."
+	done
+
 VioletGymGuyWinText:
 	text "Nice battle! Keep"
 	line "it up, and you'll"
@@ -284,7 +313,7 @@ VioletGym_MapEvents:
 
 	db 2 ; warp events
 	warp_event  4, 15, VIOLET_CITY, 2
-	warp_event  5, 15, VIOLET_CITY, 2
+	warp_event  5, 15, VIOLET_CITY, 3
 
 	db 0 ; coord events
 
@@ -293,7 +322,7 @@ VioletGym_MapEvents:
 	bg_event  6, 13, BGEVENT_READ, VioletGymStatue
 
 	db 4 ; object events
-	object_event  5,  1, SPRITE_FALKNER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, VioletGymFalknerScript, -1
-	object_event  7,  6, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_LEFT, 2, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerBirdKeeperRod, -1
-	object_event  2, 10, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 2, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerBirdKeeperAbe, -1
+	object_event  5,  1, SPRITE_FALKNER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, VioletGymFalknerScript, EVENT_VIOLET_GYM_FALKNER
+	object_event  7,  5, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_LEFT, 2, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerBirdKeeperRod, -1
+	object_event  2,  9, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 2, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerBirdKeeperAbe, -1
 	object_event  7, 13, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, VioletGymGuyScript, -1

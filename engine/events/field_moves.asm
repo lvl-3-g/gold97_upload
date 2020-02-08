@@ -92,7 +92,7 @@ HideHeadbuttTree:
 	ld h, [hl]
 	ld l, a
 
-	ld a, $5
+	ld a, $0; changed this from $5 to $0 to make headbutt tree not add grass pattern background
 	ld [hli], a
 	ld [hld], a
 	ld bc, SCREEN_WIDTH

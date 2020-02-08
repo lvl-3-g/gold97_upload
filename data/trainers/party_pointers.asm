@@ -69,3 +69,8 @@ TrainerGroups:
 	dw OfficerGroup
 	dw GruntFGroup
 	dw MysticalmanGroup
+	dw EngineerGroup
+	dw SportsmanGroup
+	dw SoldierGroup
+	dw InstructorGroup
+	dw FledglingGroup

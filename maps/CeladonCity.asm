@@ -1,13 +1,14 @@
 	const_def 2 ; object constants
-	const CELADONCITY_FISHER
-	const CELADONCITY_POLIWAG
-	const CELADONCITY_TEACHER1
-	const CELADONCITY_GRAMPS1
-	const CELADONCITY_GRAMPS2
-	const CELADONCITY_YOUNGSTER1
-	const CELADONCITY_YOUNGSTER2
-	const CELADONCITY_TEACHER2
-	const CELADONCITY_LASS
+	const KANTO_FISHER
+	const KANTO_COOLTRAINER_M
+	const KANTO_TEACHER
+	const KANTO_POKEFAN_M
+	const KANTO_LASS
+	const KANTO_SUPER_NERD
+	const KANTO_YOUNGSTER
+	const KANTO_FISHER_2
+	const KANTO_LASS_2
+	const KANTO_ITEMBALL
 
 CeladonCity_MapScripts:
 	db 0 ; scene scripts
@@ -18,253 +19,291 @@ CeladonCity_MapScripts:
 .FlyPoint:
 	setflag ENGINE_FLYPOINT_CELADON
 	return
+	
+CeladonCityTMDetect:
+	itemball TM_DETECT
 
-CeladonCityFisherScript:
-	jumptextfaceplayer CeladonCityFisherText
+KantoFisherScript:
+	jumptextfaceplayer KantoFisherText
 
-CeladonCityPoliwrath:
-	opentext
-	writetext CeladonCityPoliwrathText
-	cry POLIWRATH
-	waitbutton
-	closetext
-	end
-
-CeladonCityTeacher1Script:
-	jumptextfaceplayer CeladonCityTeacher1Text
-
-CeladonCityGramps1Script:
-	jumptextfaceplayer CeladonCityGramps1Text
-
-CeladonCityGramps2Script:
-	jumptextfaceplayer CeladonCityGramps2Text
-
-CeladonCityYoungster1Script:
-	jumptextfaceplayer CeladonCityYoungster1Text
-
-CeladonCityYoungster2Script:
-	jumptextfaceplayer CeladonCityYoungster2Text
-
-CeladonCityTeacher2Script:
-	jumptextfaceplayer CeladonCityTeacher2Text
-
-CeladonCityLassScript:
-	jumptextfaceplayer CeladonCityLassText
-
-CeladonCitySign:
-	jumptext CeladonCitySignText
-
-CeladonGymSign:
-	jumptext CeladonGymSignText
-
-CeladonCityDeptStoreSign:
-	jumptext CeladonCityDeptStoreSignText
-
-CeladonCityMansionSign:
-	jumptext CeladonCityMansionSignText
-
-CeladonCityGameCornerSign:
-	jumptext CeladonCityGameCornerSignText
-
-CeladonCityTrainerTips:
-	jumptext CeladonCityTrainerTipsText
-
-CeladonCityPokecenterSign:
+KantoSign:
+	jumptext KantoSignText
+	
+KantoPokecenterSign:
 	jumpstd pokecentersign
+	
+KantoGymSign:
+	jumptext KantoGymSignText
+	
+PalletTownSign2:
+	jumptext PalletTownSignText2
+	
+RedsHouseSign2:
+	jumptext RedsHouseSignText2
+	
+BluesHouseSign2:
+	jumptext BluesHouseSignText2
+	
+OaksLabSign2:
+	jumptext OaksLabSign2Text
+	
+KantoMartSign:
+	jumpstd martsign
+	
+KantoDeptSign:
+	jumptext KantoDeptSignText
+	
+KantoMansionSign:
+	jumptext KantoMansionSignText
+	
+KantoBattleClubSign:
+	jumptext KantoBattleClubSignText
+	
+PokemonTowerSign:
+	jumptext PokemonTowerSignText
+	
+KantoCooltrainerMScript:
+	jumptextfaceplayer KantoCooltrainerMText
+	
+KantoTeacherScript:
+	jumptextfaceplayer KantoTeacherText
+	
+KantoPokefanMScript:
+	jumptextfaceplayer KantoPokefanMText
 
-CeladonCityHiddenPpUp:
-	hiddenitem PP_UP, EVENT_CELADON_CITY_HIDDEN_PP_UP
+KantoLassScript:
+	jumptextfaceplayer KantoLassText
+	
+KantoSuperNerdScript:
+	jumptextfaceplayer KantoSuperNerdText
+	
+KantoYoungsterScript:
+	jumptextfaceplayer KantoYoungsterText
+	
+KantoFisher2Script:
+	jumptextfaceplayer KantoFisher2Text
+	
+KantoLass2Script:
+	jumptextfaceplayer KantoLass2Text
+	
+KantoLass2Text:
+	text "The SCIENTISTs in"
+	line "this lab are"
+	cont "amazing!"
+	para "They were able to"
+	line "turn my fossil"
+	para "into a living"
+	line "#MON!"
+	done
+	
+KantoFisher2Text:
+	text "Boy, I sure do"
+	line "love fishing!"
+	para "And this is such"
+	line "a peaceful spot"
+	cont "to do it!"
+	done
+	
+KantoYoungsterText:
+	text "One day, I want"
+	line "to be just as"
+	cont "strong as RED."
+	para "I'm not sure that"
+	line "will happen,"
+	cont "though."
+	para "Very few people"
+	line "are as good as"
+	cont "him."
+	done
+	
+KantoSuperNerdText:
+	text "The owner of this"
+	line "GAME CORNER"
+	para "recently bought"
+	line "ownership of the"
+	para "newer one over on"
+	line "BOARDWALK."
+	done
+	
+KantoLassText:
+	text "Do you know about"
+	line "SILPH CO.?"
+	para "If not, you"
+	line "probably should."
+	para "There's a good"
+	line "chance they made"
+	para "the #BALLs your"
+	line "#MON are in!"
+	done
+	
+KantoPokefanMText:
+	text "I've never been a"
+	line "serious trainer."
+	para "I mean, I train"
+	line "#MON, and I"
+	cont "battle."
+	para "But it's been more"
+	line "of a hobby."
+	para "The guy inside of"
+	line "the KANTO BATTLE"
+	para "CLUB wouldn't let"
+	line "me inside..."
+	done
+	
+KantoFisherText:
+	text "Technology is"
+	line "incredible!"
+	para "You can now trade"
+	line "#MON across"
+	cont "time!"
+	done
+	
+KantoSignText:
+	text "KANTO-"
+	line "NIHON's southern"
+	cont "crown jewel."
+	done
+	
+KantoGymSignText:
+	text "KANTO #MON GYM"
+	line "LEADER: RED"
 
-CeladonCityFisherText:
-	text "This POLIWRATH is"
-	line "my partner."
+	para "The Experienced"
+	line "Veteran Trainer"
+	done
+	
+PalletTownSignText2:
+	text "PALLET TOWN"
 
-	para "I wonder if it'll"
-	line "ever evolve into a"
-	cont "frog #MON."
+	para "A tranquil setting"
+	line "of peace and"
+	cont "purity."
+	done
+	
+RedsHouseSignText2:
+	text "RED's house"
+	done
+	
+BluesHouseSignText2:
+	text "BLUE's house"
 	done
 
-CeladonCityPoliwrathText:
-	text "POLIWRATH: Croak!"
+OaksLabSign2Text:
+	text "OAK #MON LAB"
+	para "NOTICE: PROF.OAK"
+	line "is currently"
+	para "researching in"
+	line "SILENT TOWN."
+	done
+	
+KantoDeptSignText:
+	text "Full Selection of"
+	line "#MON Goods!"
+
+	para "KANTO DEPT.STORE"
+	done
+	
+KantoMansionSignText:
+	text "KANTO MANSION"
+	done
+	
+KantoBattleClubSignText:
+	text "KANTO BATTLE CLUB"
+	para "A members-only"
+	line "club for serious"
+	cont "trainers."
+	done
+	
+PokemonTowerSignText:
+	text "#MON TOWER"
+	para "A monument to"
+	line "#MON who have"
+	cont "passed."
 	done
 
-CeladonCityTeacher1Text:
-	text "I lost at the slot"
-	line "machines again…"
-
-	para "We girls also play"
-	line "the slots now."
-
-	para "You should check"
-	line "them out too."
-	done
-
-CeladonCityGramps1Text:
-	text "GRIMER have been"
-	line "appearing lately."
-
-	para "See that pond out"
-	line "in front of the"
-
-	para "house? GRIMER live"
-	line "there now."
-
-	para "Where did they"
-	line "come from? This is"
-	cont "a serious problem…"
-	done
-
-CeladonCityGramps2Text:
-	text "Nihihi! This GYM"
-	line "is great! Only"
-
-	para "girls are allowed"
-	line "here!"
-	done
-
-CeladonCityYoungster1Text:
-	text "Want to know a"
-	line "secret?"
-
-	para "CELADON MANSION"
-	line "has a hidden back"
-	cont "door."
-	done
-
-CeladonCityYoungster2Text:
+KantoCooltrainerMText:
 	text "They're holding an"
-	line "eating contest at"
+	line "eating contest in"
 	cont "the restaurant."
-
 	para "Just watching them"
 	line "go at it makes me"
-	cont "feel bloated…"
+	cont "feel bloated..."
 	done
-
-CeladonCityTeacher2Text:
-	text "CELADON DEPT.STORE"
-	line "has the biggest"
-
-	para "and best selection"
-	line "of merchandise."
-
+	
+KantoTeacherText:
+	text "The KANTO DEPT."
+	line "STORE has the best"
+	cont "selection."
 	para "If you can't get"
 	line "it there, you"
-
 	para "can't get it any-"
-	line "where."
-
-	para "Gee… I sound like"
-	line "a sales clerk."
-	done
-
-CeladonCityLassText_Mobile:
-; unused
-	text "I love being"
-	line "surrounded by tall"
-	cont "buildings!"
-
-	para "Isn't it true that"
-	line "GOLDENROD #MON"
-
-	para "CENTER was made"
-	line "much, much bigger?"
-
-	para "That is so neat!"
-	line "I wish we had a"
-
-	para "place like that in"
-	line "KANTO…"
-	done
-
-CeladonCityLassText:
-	text "Looking at the"
-	line "ground while I was"
-
-	para "walking made me"
-	line "dizzy."
-	done
-
-CeladonCitySignText:
-	text "CELADON CITY"
-
-	para "The City of"
-	line "Rainbow Dreams"
-	done
-
-CeladonGymSignText:
-	text "CELADON CITY"
-	line "#MON GYM"
-	cont "LEADER: ERIKA"
-
-	para "The Nature-Loving"
-	line "Princess"
-	done
-
-CeladonCityDeptStoreSignText:
-	text "Find What You"
-	line "Need at CELADON"
-	cont "DEPT.STORE!"
-	done
-
-CeladonCityMansionSignText:
-	text "CELADON MANSION"
-	done
-
-CeladonCityGameCornerSignText:
-	text "The Playground for"
-	line "Everybody--CELADON"
-	cont "GAME CORNER"
-	done
-
-CeladonCityTrainerTipsText:
-	text "TRAINER TIPS"
-
-	para "GUARD SPEC."
-	line "protects #MON"
-
-	para "against SPECIAL"
-	line "attacks such as"
-	cont "fire and water."
-
-	para "Get your items at"
-	line "CELADON DEPT."
-	cont "STORE!"
+	line "where!"
+	para "...Gee, I sound"
+	line "like a sales"
+	cont "clerk."
 	done
 
 CeladonCity_MapEvents:
 	db 0, 0 ; filler
 
-	db 9 ; warp events
-	warp_event  4,  9, CELADON_DEPT_STORE_1F, 1
-	warp_event 16,  9, CELADON_MANSION_1F, 1
-	warp_event 16,  3, CELADON_MANSION_1F, 3
-	warp_event 17,  3, CELADON_MANSION_1F, 3
-	warp_event 29,  9, CELADON_POKECENTER_1F, 1
-	warp_event 18, 19, CELADON_GAME_CORNER, 1
-	warp_event 23, 19, CELADON_GAME_CORNER_PRIZE_ROOM, 1
-	warp_event 10, 29, CELADON_GYM, 1
-	warp_event 25, 29, CELADON_CAFE, 1
+	db 31 ; warp events
+	warp_event 14, 17, CELADON_DEPT_STORE_1F, 1
+	warp_event 22, 19, CELADON_MANSION_1F, 1
+	warp_event 22, 13, CELADON_MANSION_1F, 3
+	warp_event 23, 13, CELADON_MANSION_1F, 3
+	warp_event 49, 30, CELADON_POKECENTER_1F, 1
+	warp_event 29, 23, CELADON_GAME_CORNER, 1
+	warp_event 34, 23, CELADON_GAME_CORNER_PRIZE_ROOM, 1
+	warp_event  4,  5, CELADON_GYM, 1
+	warp_event 40, 23, CELADON_CAFE, 1
+	warp_event  6, 27, ILEX_FOREST_AZALEA_GATE, 4
+	warp_event 30, 19, SILPH_CO_1F, 1
+	warp_event 31, 19, SILPH_CO_1F, 2
+	warp_event 15, 17, CELADON_DEPT_STORE_1F, 2
+	warp_event 23, 19, CELADON_MANSION_1F, 2
+	warp_event  5,  5, CELADON_GYM, 2
+	warp_event 38, 29, GOLDENROD_MAGNET_TRAIN_STATION, 1
+	warp_event 12, 43, OAKS_LAB, 1
+	warp_event 13, 43, OAKS_LAB, 2
+	warp_event 13, 38, BLUES_HOUSE, 1
+	warp_event  5, 38, REDS_HOUSE_1F,1
+	warp_event 13,  4, KANTO_POKECENTER_1F,1
+	warp_event  3, 18, KANTO_MART,1
+	warp_event 42,  3, KANTO_BATTLE_CLUB_1F, 1
+	warp_event 16, 23, KANTO_HOUSE_1, 1
+	warp_event 51, 11, KANTO_HOUSE_2, 1
+	warp_event 39, 38, KANTO_HOUSE_3, 1
+	warp_event 45, 46, KANTO_HOUSE_4, 1
+	warp_event 52, 45, DANCE_THEATRE, 1
+	warp_event 53, 45, DANCE_THEATRE, 2
+	warp_event 52, 23, DRAGON_SHRINE, 1
+	warp_event 53, 23, DRAGON_SHRINE, 2
 
 	db 0 ; coord events
 
-	db 8 ; bg events
-	bg_event 23, 21, BGEVENT_READ, CeladonCitySign
-	bg_event 11, 31, BGEVENT_READ, CeladonGymSign
-	bg_event  6,  9, BGEVENT_READ, CeladonCityDeptStoreSign
-	bg_event 13,  9, BGEVENT_READ, CeladonCityMansionSign
-	bg_event 19, 21, BGEVENT_READ, CeladonCityGameCornerSign
-	bg_event 29, 21, BGEVENT_READ, CeladonCityTrainerTips
-	bg_event 30,  9, BGEVENT_READ, CeladonCityPokecenterSign
-	bg_event 37, 21, BGEVENT_ITEM, CeladonCityHiddenPpUp
+	db 13 ; bg events
+	bg_event 46, 18, BGEVENT_READ, KantoSign
+	bg_event 14,  4, BGEVENT_READ, KantoPokecenterSign
+	bg_event 50, 30, BGEVENT_READ, KantoPokecenterSign
+	bg_event  7,  7, BGEVENT_READ, KantoGymSign
+	bg_event  6, 41, BGEVENT_READ, PalletTownSign2
+	bg_event  8, 38, BGEVENT_READ, RedsHouseSign2
+	bg_event 16, 38, BGEVENT_READ, BluesHouseSign2
+	bg_event 12, 45, BGEVENT_READ, OaksLabSign2
+	bg_event  4, 18, BGEVENT_READ, KantoMartSign
+	bg_event 18, 18, BGEVENT_READ, KantoDeptSign
+	bg_event 26, 19, BGEVENT_READ, KantoMansionSign
+	bg_event 44,  2, BGEVENT_READ, KantoBattleClubSign
+	bg_event 54,  8, BGEVENT_READ, PokemonTowerSign
 
-	db 9 ; object events
-	object_event 26, 11, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, CeladonCityFisherScript, -1
-	object_event 27, 11, SPRITE_POLIWAG, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, CeladonCityPoliwrath, -1
-	object_event 20, 24, SPRITE_TEACHER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 2, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CeladonCityTeacher1Script, -1
-	object_event 14, 16, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, CeladonCityGramps1Script, -1
-	object_event  8, 31, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CeladonCityGramps2Script, -1
-	object_event 18, 13, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 2, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, CeladonCityYoungster1Script, -1
-	object_event 24, 33, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, CeladonCityYoungster2Script, -1
-	object_event  6, 14, SPRITE_TEACHER, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, CeladonCityTeacher2Script, -1
-	object_event  7, 22, SPRITE_LASS, SPRITEMOVEDATA_WALK_UP_DOWN, 0, 2, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CeladonCityLassScript, -1
+	db 10 ; object events
+	object_event 14, 46, SPRITE_FISHER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, KantoFisherScript, -1
+	object_event 50, 26, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_UP, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, KantoCooltrainerMScript, -1
+	object_event  9, 19, SPRITE_TEACHER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, KantoTeacherScript, -1
+	object_event 38,  7, SPRITE_POKEFAN_M, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, KantoPokefanMScript, -1
+	object_event 34, 21, SPRITE_LASS, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, KantoLassScript, -1
+	object_event 31, 25, SPRITE_SUPER_NERD, SPRITEMOVEDATA_SPINRANDOM_SLOW, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, KantoSuperNerdScript, -1
+	object_event  5,  9, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_UP, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, KantoYoungsterScript, -1
+	object_event 40, 43, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, KantoFisher2Script, -1
+	object_event 51, 48, SPRITE_LASS, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, KantoLass2Script, -1
+	object_event 32, 44, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, CeladonCityTMDetect, EVENT_LAKE_OF_RAGE_TM_DETECT

@@ -28,6 +28,8 @@ CeruleanTradeSpeechHouseZubatScript:
 	writetext CeruleanTradeSpeechHouseZubatText
 	cry ZUBAT
 	waitbutton
+	;verbosegiveitem RED_SCALE;
+	;waitbutton;
 	closetext
 	end
 
@@ -55,8 +57,8 @@ CeruleanTradeSpeechHouse_MapEvents:
 	db 0, 0 ; filler
 
 	db 2 ; warp events
-	warp_event  2,  7, CERULEAN_CITY, 3
-	warp_event  3,  7, CERULEAN_CITY, 3
+	warp_event  4,  7, SAFFRON_CITY, 7
+	warp_event  5,  7, SAFFRON_CITY, 7
 
 	db 0 ; coord events
 
@@ -66,4 +68,4 @@ CeruleanTradeSpeechHouse_MapEvents:
 	object_event  2,  4, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, CeruleanTradeSpeechHouseGrannyScript, -1
 	object_event  1,  2, SPRITE_GRAMPS, SPRITEMOVEDATA_WANDER, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, CeruleanTradeSpeechHouseGrampsScript, -1
 	object_event  5,  2, SPRITE_RHYDON, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, CeruleanTradeSpeechHouseRhydonScript, -1
-	object_event  5,  6, SPRITE_ZUBAT, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CeruleanTradeSpeechHouseZubatScript, -1
+	object_event  8,  6, SPRITE_ZUBAT, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CeruleanTradeSpeechHouseZubatScript, -1

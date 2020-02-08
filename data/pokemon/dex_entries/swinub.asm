@@ -1,10 +1,10 @@
-	db "PIG@" ; species name
-	dw 104, 140 ; height, weight
+	db "HAUNTED@" ; species name
+	dw 106, 20 ; height, weight
 
-	db   "It uses the tip of"
-	next "its nose to dig"
-	next "for food. Its nose"
+	db   "When a wandering"
+	next "spirit inhabits"
+	next "household objects,"
 
-	page "is so tough that"
-	next "even frozen ground"
-	next "poses no problem.@"
+	page "it comes together"
+	next "and animates into"
+	next "a CURSTRAW.@"

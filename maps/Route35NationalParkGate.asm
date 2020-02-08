@@ -442,7 +442,7 @@ Route35NationalParkGate_MapEvents:
 	warp_event  3,  0, NATIONAL_PARK, 3
 	warp_event  4,  0, NATIONAL_PARK, 4
 	warp_event  3,  7, ROUTE_35, 3
-	warp_event  4,  7, ROUTE_35, 3
+	warp_event  4,  7, ROUTE_35, 4
 
 	db 0 ; coord events
 

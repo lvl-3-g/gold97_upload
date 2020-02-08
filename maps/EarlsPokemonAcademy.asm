@@ -12,7 +12,7 @@ EarlsPokemonAcademy_MapScripts:
 	db 0 ; callbacks
 
 AcademyEarl:
-	applymovement EARLSPOKEMONACADEMY_EARL, AcademyEarlSpinMovement
+;	applymovement EARLSPOKEMONACADEMY_EARL, AcademyEarlSpinMovement
 	faceplayer
 	opentext
 	writetext AcademyEarlIntroText
@@ -162,70 +162,58 @@ AcademyEarlSpinMovement:
 	step_end
 
 AcademyEarlIntroText:
-	text "EARL, I am!"
+	text "Hello!"
 
-	para "Wonderful are"
-	line "#MON, yes!"
-
-	para "Teach you I will"
-	line "to be a better"
-	cont "trainer!"
-
-	para "What you want to"
-	line "know? Want to be"
-	cont "a winner is you?"
+	para "Welcome to the"
+	line "OLD CITY trainer's"
+	cont "school."
+	
+	para "Want to learn"
+	line "how battles work?"
 	done
 
 AcademyEarlTeachHowToWinText:
-	text "Good! Teach you,"
-	line "I will!"
+	text "In battle, the"
+	line "#MON at the top"
+	para "of the list is"
+	line "sent out first!"
 
-	para "In battle, #MON"
-	line "top on list jump"
-	cont "out first!"
+	para "It's a good"
+	line "strategy to put"
+	para "some thought into"
+	line "which #MON you"
+	cont "keep at the top."
 
-	para "Change order in"
-	line "list, make battle"
-	cont "easy, maybe!"
-
-	para "More from me you"
-	line "want to hear?"
+	para "Wanna learn more?"
 	done
 
 AcademyEarlTeachMoreText:
-	text "So, want to know"
-	line "how to raise"
+	text "Do you want to"
+	line "know how to raise"
 	cont "#MON well?"
 	done
 
 AcademyEarlTeachHowToRaiseWellText:
-	text "Fine! Teach you,"
-	line "I will!"
-
-	para "If #MON come"
+	text "If #MON come"
 	line "out in battle even"
 
-	para "briefly, some EXP."
-	line "Points it gets."
+	para "briefly, it will"
+	line "get EXP. Points."
 
-	para "At top of list put"
-	line "weak #MON."
-
-	para "Switch in battle"
-	line "quick!"
-
-	para "This way, weak"
-	line "#MON strong"
-	cont "become!"
+	para "You can send out"
+	line "a weak #MON"
+	para "into battle, then"
+	line "immediately switch"
+	para "it out for a"
+	line "stronger #MON."
+	para "This way, it still"
+	line "can gain EXP."
 	done
 
 AcademyEarlNoMoreToTeachText:
-	text "Oh! Smart student"
-	line "you are! Nothing"
-	cont "more do I teach!"
-
-	para "Good to #MON"
-	line "you must be!"
+	text "You must already"
+	line "be an expert on"
+	cont "#MON!"
 	done
 
 EarlsPokemonAcademyYoungster1Text:
@@ -245,9 +233,15 @@ EarlsPokemonAcademyGameboyKid1Text:
 	done
 
 EarlsPokemonAcademyGameboyKid2Text:
-	text "Huh? The #MON I"
-	line "just got is hold-"
-	cont "ing something!"
+	text "A #MON you get"
+	line "in a trade grows"
+	cont "quickly."
+
+	para "But if you don't"
+	line "have the right GYM"
+
+	para "BADGE, they may"
+	line "disobey you."
 	done
 
 EarlsPokemonAcademyYoungster2Text:
@@ -413,8 +407,8 @@ EarlsPokemonAcademy_MapEvents:
 	db 0, 0 ; filler
 
 	db 2 ; warp events
-	warp_event  3, 15, VIOLET_CITY, 3
-	warp_event  4, 15, VIOLET_CITY, 3
+	warp_event  3, 15, VIOLET_CITY, 6
+	warp_event  4, 15, VIOLET_CITY, 6
 
 	db 0 ; coord events
 
@@ -425,9 +419,9 @@ EarlsPokemonAcademy_MapEvents:
 	bg_event  4,  0, BGEVENT_READ, AcademyBlackboard
 
 	db 6 ; object events
-	object_event  4,  2, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, AcademyEarl, EVENT_EARLS_ACADEMY_EARL
-	object_event  2,  5, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, EarlsPokemonAcademyYoungster1Script, -1
+	object_event  4,  2, SPRITE_ROCKER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, AcademyEarl, -1
+	object_event  2,  5, SPRITE_JANINE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, EarlsPokemonAcademyYoungster1Script, -1
 	object_event  3, 11, SPRITE_GAMEBOY_KID, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, EarlsPokemonAcademyGameboyKid1Script, -1
 	object_event  4, 11, SPRITE_GAMEBOY_KID, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, EarlsPokemonAcademyGameboyKid2Script, -1
-	object_event  4,  7, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, EarlsPokemonAcademyYoungster2Script, -1
+	object_event  4,  7, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, EarlsPokemonAcademyYoungster2Script, -1
 	object_event  2,  4, SPRITE_POKEDEX, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, AcademyNotebook, -1

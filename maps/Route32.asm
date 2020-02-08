@@ -1,18 +1,13 @@
 	const_def 2 ; object constants
-	const ROUTE32_FISHER1
-	const ROUTE32_FISHER2
-	const ROUTE32_FISHER3
-	const ROUTE32_YOUNGSTER1
 	const ROUTE32_YOUNGSTER2
 	const ROUTE32_YOUNGSTER3
 	const ROUTE32_LASS1
-	const ROUTE32_COOLTRAINER_M
-	const ROUTE32_YOUNGSTER4
-	const ROUTE32_FISHER4
 	const ROUTE32_POKE_BALL1
-	const ROUTE32_FISHER5
 	const ROUTE32_FRIEDA
 	const ROUTE32_POKE_BALL2
+	const ROUTE32_OFFICER
+	const ROUTE32_WORKER1
+	const ROUTE32_WORKER2
 
 Route32_MapScripts:
 	db 3 ; scene scripts
@@ -42,104 +37,7 @@ Route32_MapScripts:
 	appear ROUTE32_FRIEDA
 	return
 
-Route32CooltrainerMScript:
-	faceplayer
-Route32CooltrainerMContinueScene:
-	opentext
-	checkevent EVENT_GOT_MIRACLE_SEED_IN_ROUTE_32
-	iftrue .GotMiracleSeed
-	checkflag ENGINE_ZEPHYRBADGE
-	iffalse .DontHaveZephyrBadge
-	checkevent EVENT_GOT_TOGEPI_EGG_FROM_ELMS_AIDE
-	iftrue .GiveMiracleSeed
-	writetext Route32CooltrainerMText_AideIsWaiting
-	waitbutton
-	closetext
-	end
 
-.Unreferenced:
-	writetext Route32CooltrainerMText_UnusedSproutTower
-	waitbutton
-	closetext
-	end
-
-.GiveMiracleSeed:
-	writetext Route32CooltrainerMText_HaveThisSeed
-	buttonsound
-	verbosegiveitem MIRACLE_SEED
-	iffalse .BagFull
-	setevent EVENT_GOT_MIRACLE_SEED_IN_ROUTE_32
-	jump .GotMiracleSeed
-
-.DontHaveZephyrBadge:
-	writetext Route32CooltrainerMText_VioletGym
-	waitbutton
-	closetext
-	end
-
-.GotMiracleSeed:
-	writetext Route32CooltrainerMText_ExperiencesShouldBeUseful
-	waitbutton
-.BagFull:
-	closetext
-	end
-
-Route32CooltrainerMStopsYouScene:
-	turnobject ROUTE32_COOLTRAINER_M, LEFT
-	turnobject PLAYER, RIGHT
-	opentext
-	writetext Route32CooltrainerMText_WhatsTheHurry
-	waitbutton
-	closetext
-	follow PLAYER, ROUTE32_COOLTRAINER_M
-	applymovement PLAYER, Movement_Route32CooltrainerMPushesYouBackToViolet
-	stopfollow
-	turnobject PLAYER, DOWN
-	scall Route32CooltrainerMContinueScene
-	applymovement ROUTE32_COOLTRAINER_M, Movement_Route32CooltrainerMReset1
-	applymovement ROUTE32_COOLTRAINER_M, Movement_Route32CooltrainerMReset2
-	end
-
-Route32RoarTMGuyScript:
-	faceplayer
-	opentext
-	checkevent EVENT_GOT_TM05_ROAR
-	iftrue .AlreadyHaveRoar
-	writetext Text_RoarIntro
-	buttonsound
-	verbosegiveitem TM_ROAR
-	iffalse .Finish
-	setevent EVENT_GOT_TM05_ROAR
-.AlreadyHaveRoar:
-	writetext Text_RoarOutro
-	waitbutton
-.Finish:
-	closetext
-	end
-
-Route32WannaBuyASlowpokeTailScript:
-	turnobject ROUTE32_FISHER4, DOWN
-	turnobject PLAYER, UP
-	jump _OfferToSellSlowpokeTail
-
-SlowpokeTailSalesmanScript:
-	faceplayer
-_OfferToSellSlowpokeTail:
-	setscene SCENE_ROUTE32_NOTHING
-	opentext
-	writetext Text_MillionDollarSlowpokeTail
-	yesorno
-	iffalse .refused
-	writetext Text_ThoughtKidsWereLoaded
-	waitbutton
-	closetext
-	end
-
-.refused
-	writetext Text_RefusedToBuySlowpokeTail
-	waitbutton
-	closetext
-	end
 
 TrainerCamperRoland:
 	trainer CAMPER, ROLAND, EVENT_BEAT_CAMPER_ROLAND, CamperRolandSeenText, CamperRolandBeatenText, 0, .Script
@@ -152,152 +50,6 @@ TrainerCamperRoland:
 	closetext
 	end
 
-TrainerFisherJustin:
-	trainer FISHER, JUSTIN, EVENT_BEAT_FISHER_JUSTIN, FisherJustinSeenText, FisherJustinBeatenText, 0, .Script
-
-.Script:
-	endifjustbattled
-	opentext
-	writetext FisherJustinAfterText
-	waitbutton
-	closetext
-	end
-
-TrainerFisherRalph1:
-	trainer FISHER, RALPH1, EVENT_BEAT_FISHER_RALPH, FisherRalph1SeenText, FisherRalph1BeatenText, 0, .Script
-
-.Script:
-	writecode VAR_CALLERID, PHONE_FISHER_RALPH
-	endifjustbattled
-	opentext
-	checkflag ENGINE_RALPH
-	iftrue .Rematch
-	checkflag ENGINE_FISH_SWARM
-	iftrue .Swarm
-	checkcellnum PHONE_FISHER_RALPH
-	iftrue .NumberAccepted
-	checkevent EVENT_RALPH_ASKED_FOR_PHONE_NUMBER
-	iftrue .AskAgain
-	writetext FisherRalphAfterText
-	buttonsound
-	setevent EVENT_RALPH_ASKED_FOR_PHONE_NUMBER
-	scall .AskNumber1
-	jump .AskForNumber
-
-.AskAgain:
-	scall .AskNumber2
-.AskForNumber:
-	askforphonenumber PHONE_FISHER_RALPH
-	ifequal PHONE_CONTACTS_FULL, .PhoneFull
-	ifequal PHONE_CONTACT_REFUSED, .NumberDeclined
-	trainertotext FISHER, RALPH1, MEM_BUFFER_0
-	scall .RegisteredNumber
-	jump .NumberAccepted
-
-.Rematch:
-	scall .RematchStd
-	winlosstext FisherRalph1BeatenText, 0
-	copybytetovar wRalphFightCount
-	ifequal 4, .Fight4
-	ifequal 3, .Fight3
-	ifequal 2, .Fight2
-	ifequal 1, .Fight1
-	ifequal 0, .LoadFight0
-.Fight4:
-	checkevent EVENT_RESTORED_POWER_TO_KANTO
-	iftrue .LoadFight4
-.Fight3:
-	checkevent EVENT_BEAT_ELITE_FOUR
-	iftrue .LoadFight3
-.Fight2:
-	checkflag ENGINE_FLYPOINT_LAKE_OF_RAGE
-	iftrue .LoadFight2
-.Fight1:
-	checkflag ENGINE_FLYPOINT_ECRUTEAK
-	iftrue .LoadFight1
-.LoadFight0:
-	loadtrainer FISHER, RALPH1
-	startbattle
-	reloadmapafterbattle
-	loadvar wRalphFightCount, 1
-	clearflag ENGINE_RALPH
-	end
-
-.LoadFight1:
-	loadtrainer FISHER, RALPH2
-	startbattle
-	reloadmapafterbattle
-	loadvar wRalphFightCount, 2
-	clearflag ENGINE_RALPH
-	end
-
-.LoadFight2:
-	loadtrainer FISHER, RALPH3
-	startbattle
-	reloadmapafterbattle
-	loadvar wRalphFightCount, 3
-	clearflag ENGINE_RALPH
-	end
-
-.LoadFight3:
-	loadtrainer FISHER, RALPH4
-	startbattle
-	reloadmapafterbattle
-	loadvar wRalphFightCount, 4
-	clearflag ENGINE_RALPH
-	end
-
-.LoadFight4:
-	loadtrainer FISHER, RALPH5
-	startbattle
-	reloadmapafterbattle
-	clearflag ENGINE_RALPH
-	end
-
-.Swarm:
-	writetext FisherRalphSwarmText
-	waitbutton
-	closetext
-	end
-
-.AskNumber1:
-	jumpstd asknumber1m
-	end
-
-.AskNumber2:
-	jumpstd asknumber2m
-	end
-
-.RegisteredNumber:
-	jumpstd registerednumberm
-	end
-
-.NumberAccepted:
-	jumpstd numberacceptedm
-	end
-
-.NumberDeclined:
-	jumpstd numberdeclinedm
-	end
-
-.PhoneFull:
-	jumpstd phonefullm
-	end
-
-.RematchStd:
-	jumpstd rematchm
-	end
-
-TrainerFisherHenry:
-	trainer FISHER, HENRY, EVENT_BEAT_FISHER_HENRY, FisherHenrySeenText, FisherHenryBeatenText, 0, .Script
-
-.Script:
-	endifjustbattled
-	opentext
-	writetext FisherHenryAfterText
-	waitbutton
-	closetext
-	end
 
 TrainerPicnickerLiz1:
 	trainer PICNICKER, LIZ1, EVENT_BEAT_PICNICKER_LIZ, PicnickerLiz1SeenText, PicnickerLiz1BeatenText, 0, .Script
@@ -338,16 +90,16 @@ TrainerPicnickerLiz1:
 	ifequal 1, .Fight1
 	ifequal 0, .LoadFight0
 .Fight4:
-	checkevent EVENT_BEAT_ELITE_FOUR
+	checkevent EVENT_FAST_SHIP_CABINS_SE_SSE_GENTLEMAN
 	iftrue .LoadFight4
 .Fight3:
-	checkevent EVENT_CLEARED_RADIO_TOWER
+	checkevent EVENT_BEAT_ELITE_FOUR
 	iftrue .LoadFight3
 .Fight2:
-	checkevent EVENT_CLEARED_ROCKET_HIDEOUT
+	checkevent EVENT_BEAT_ERIKA
 	iftrue .LoadFight2
 .Fight1:
-	checkflag ENGINE_FLYPOINT_ECRUTEAK
+	checkevent EVENT_CLEARED_RADIO_TOWER
 	iftrue .LoadFight1
 .LoadFight0:
 	loadtrainer PICNICKER, LIZ1
@@ -416,16 +168,7 @@ TrainerPicnickerLiz1:
 	jumpstd rematchf
 	end
 
-TrainerYoungsterAlbert:
-	trainer YOUNGSTER, ALBERT, EVENT_BEAT_YOUNGSTER_ALBERT, YoungsterAlbertSeenText, YoungsterAlbertBeatenText, 0, .Script
 
-.Script:
-	endifjustbattled
-	opentext
-	writetext YoungsterAlbertAfterText
-	waitbutton
-	closetext
-	end
 
 TrainerYoungsterGordon:
 	trainer YOUNGSTER, GORDON, EVENT_BEAT_YOUNGSTER_GORDON, YoungsterGordonSeenText, YoungsterGordonBeatenText, 0, .Script
@@ -438,16 +181,6 @@ TrainerYoungsterGordon:
 	closetext
 	end
 
-TrainerBirdKeeperPeter:
-	trainer BIRD_KEEPER, PETER, EVENT_BEAT_BIRD_KEEPER_PETER, BirdKeeperPeterSeenText, BirdKeeperPeterBeatenText, 0, .Script
-
-.Script:
-	endifjustbattled
-	opentext
-	writetext BirdKeeperPeterAfterText
-	waitbutton
-	closetext
-	end
 
 FriedaScript:
 	faceplayer
@@ -494,14 +227,6 @@ Route32Repel:
 Route32Sign:
 	jumptext Route32SignText
 
-Route32RuinsSign:
-	jumptext Route32RuinsSignText
-
-Route32UnionCaveSign:
-	jumptext Route32UnionCaveSignText
-
-Route32PokecenterSign:
-	jumpstd pokecentersign
 
 Route32HiddenGreatBall:
 	hiddenitem GREAT_BALL, EVENT_ROUTE_32_HIDDEN_GREAT_BALL
@@ -509,256 +234,53 @@ Route32HiddenGreatBall:
 Route32HiddenSuperPotion:
 	hiddenitem SUPER_POTION, EVENT_ROUTE_32_HIDDEN_SUPER_POTION
 
-Movement_Route32CooltrainerMPushesYouBackToViolet:
-	step UP
-	step UP
-	step_end
 
-Movement_Route32CooltrainerMReset1:
-	step DOWN
-	step_end
+Route32OfficerScript:
+	jumptextfaceplayer Route32OfficerText
+	
+Route32Worker1Script:
+	jumptextfaceplayer Route32Worker1Text
 
-Movement_Route32CooltrainerMReset2:
-	step RIGHT
-	step_end
+Route32Worker2Script:
+	jumptextfaceplayer Route32Worker2Text
 
-Route32CooltrainerMText_WhatsTheHurry:
-	text "Wait up!"
-	line "What's the hurry?"
+Route32OfficerText:
+	text "A recent storm"
+	line "blew a large"
+	para "amount of snow"
+	line "down the hill and"
+	cont "into this gate."
+	para "The storm had"
+	line "damaged the doors"
+	para "and broken the"
+	line "windows."
+	para "They're working on"
+	line "getting it"
+	cont "repaired."
 	done
-
-Route32CooltrainerMText_AideIsWaiting:
-	text "<PLAYER>, right?"
-	line "Some guy wearing"
-
-	para "glasses was look-"
-	line "ing for you."
-
-	para "See for yourself."
-	line "He's waiting for"
-
-	para "you at the #MON"
-	line "CENTER."
+	
+Route32Worker1Text:
+	text "Whew!"
+	para "STAND CITY is at"
+	line "a much lower"
+	para "altitude than"
+	line "BLUE FOREST."
+	para "Snow mixed with"
+	line "strong winds from"
+	para "a storm blowing"
+	line "down this hill was"
+	para "too much for this"
+	line "gate to handle!"
 	done
-
-Route32CooltrainerMText_UnusedSproutTower:
-; unused
-	text "Have you gone to"
-	line "SPROUT TOWER?"
-
-	para "If you ever visit"
-	line "VIOLET CITY, "
-
-	para "they'll expect you"
-	line "to train there."
-
-	para "That's basic for"
-	line "trainers. Go to"
-	cont "SPROUT TOWER!"
-	done
-
-Route32CooltrainerMText_VioletGym:
-	text "Have you gone to"
-	line "the #MON GYM?"
-
-	para "You can test your"
-	line "#MON and your-"
-	cont "self there."
-
-	para "It's a rite of"
-	line "passage for all"
-	cont "trainers!"
-	done
-
-Route32CooltrainerMText_HaveThisSeed:
-	text "You have some good"
-	line "#MON there."
-
-	para "It must be from"
-	line "the training you"
-
-	para "gave them around"
-	line "VIOLET CITY."
-
-	para "The training at"
-	line "the GYM must have"
-
-	para "been especially"
-	line "helpful."
-
-	para "As a souvenir of"
-	line "VIOLET CITY, take"
-	cont "this."
-
-	para "It increases the"
-	line "power of grass-"
-	cont "type moves."
-	done
-
-Route32CooltrainerMText_ExperiencesShouldBeUseful:
-	text "Your experiences"
-	line "in VIOLET CITY"
-
-	para "should be useful"
-	line "for your journey."
-	done
-
-Text_MillionDollarSlowpokeTail:
-	text "How would you like"
-	line "to have this"
-
-	para "tasty, nutritious"
-	line "SLOWPOKETAIL?"
-
-	para "For you right now,"
-	line "just ¥1,000,000!"
-
-	para "You'll want this!"
-	done
-
-Text_ThoughtKidsWereLoaded:
-	text "Tch! I thought"
-	line "kids these days"
-	cont "were loaded…"
-	done
-
-Text_RefusedToBuySlowpokeTail:
-	text "You don't want it?"
-	line "Then scram. Shoo!"
-	done
-
-FisherJustinSeenText:
-	text "Whoa!"
-
-	para "You made me lose"
-	line "that fish!"
-	done
-
-FisherJustinBeatenText:
-	text "Sploosh!"
-	done
-
-FisherJustinAfterText:
-	text "Calm, collected…"
-	line "The essence of"
-
-	para "fishing and #-"
-	line "MON is the same."
-	done
-
-FisherRalph1SeenText:
-	text "I'm really good at"
-	line "both fishing and"
-	cont "#MON."
-
-	para "I'm not about to"
-	line "lose to any kid!"
-	done
-
-FisherRalph1BeatenText:
-	text "Tch! I tried to"
-	line "rush things…"
-	done
-
-FisherRalphAfterText:
-	text "Fishing is a life-"
-	line "long passion."
-
-	para "#MON are life-"
-	line "long friends!"
-	done
-
-FisherRalphSwarmText:
-	text "One, two, three…"
-	line "Muahahaha, what a"
-
-	para "great haul!"
-	line "I'm done! Go ahead"
-
-	para "and catch as many"
-	line "as you can, kid!"
-	done
-
-; --- start a segment of unused text
-
-Route32UnusedFisher1SeenText:
-	text "I keep catching"
-	line "the same #MON…"
-
-	para "Maybe a battle"
-	line "will turn things"
-	cont "around for me."
-	done
-
-Route32UnusedFisher1BeatenText:
-	text "Nothing ever goes"
-	line "right for me now…"
-	done
-
-Route32UnusedFisher1AfterText:
-	text "How come the guy"
-	line "next to me catches"
-	cont "good #MON?"
-	done
-
-Route32UnusedFisher2SeenText:
-	text "Heh, I'm on a roll"
-	line "today. How about a"
-	cont "battle, kid?"
-	done
-
-Route32UnusedFisher2BeatenText:
-	text "Oof. I wasn't"
-	line "lucky that time."
-	done
-
-Route32UnusedFisher2AfterText:
-	text "You have to have a"
-	line "good ROD if you"
-
-	para "want to catch good"
-	line "#MON."
-	done
-
-; --- end a segment of unused texts
-
-FisherHenrySeenText:
-	text "My #MON?"
-	line "Freshly caught!"
-	done
-
-FisherHenryBeatenText:
-	text "SPLASH?"
-	done
-
-FisherHenryAfterText:
-	text "Freshly caught"
-	line "#MON are no"
-
-	para "match for properly"
-	line "raised ones."
-	done
-
-YoungsterAlbertSeenText:
-	text "I haven't seen you"
-	line "around before."
-
-	para "So you think you"
-	line "are pretty tough?"
-	done
-
-YoungsterAlbertBeatenText:
-	text "You're strong!"
-	done
-
-YoungsterAlbertAfterText:
-	text "I'm going to try"
-	line "to be the best"
-	cont "with my favorites."
-
-	para "I'm not using the"
-	line "same tough #MON"
-	cont "as everyone else."
+	
+Route32Worker2Text:
+	text "Be careful, kid!"
+	para "There might be"
+	line "broken glass"
+	cont "around here."
+	para "You should stay"
+	line "back until we're"
+	cont "done with repairs."
 	done
 
 YoungsterGordonSeenText:
@@ -781,8 +303,10 @@ YoungsterGordonAfterText:
 	done
 
 CamperRolandSeenText:
-	text "That glance…"
-	line "It's intriguing."
+	text "I'm spending my"
+	line "day camping at"
+	para "the base of this"
+	line "snowy hill."
 	done
 
 CamperRolandBeatenText:
@@ -791,9 +315,10 @@ CamperRolandBeatenText:
 	done
 
 CamperRolandAfterText:
-	text "If you don't want"
-	line "to battle, just"
-	cont "avoid eye contact."
+	text "The farther up"
+	line "this route you go,"
+	para "the more snow"
+	line "there is."
 	done
 
 PicnickerLiz1SeenText:
@@ -817,49 +342,7 @@ PicnickerLiz1AfterText:
 	line "nice chat too."
 	done
 
-BirdKeeperPeterSeenText:
-	text "That BADGE! It's"
-	line "from VIOLET CITY!"
 
-	para "You beat FALKNER?"
-	done
-
-BirdKeeperPeterBeatenText:
-	text "I know what my"
-	line "weaknesses are."
-	done
-
-BirdKeeperPeterAfterText:
-	text "I should train"
-	line "again at the GYM"
-	cont "in VIOLET CITY."
-	done
-
-Route32UnusedText:
-; unused
-	text "The fishermen"
-	line "yelled at me for"
-	cont "bugging them…"
-	done
-
-Text_RoarIntro:
-	text "WROOOOAR!"
-	line "PEOPLE RUN WHEN I"
-
-	para "ROAR! BUT YOU"
-	line "CAME LOOKING!"
-
-	para "THAT PLEASES ME!"
-	line "NOW TAKE THIS!"
-	done
-
-Text_RoarOutro:
-	text "WROOOAR!"
-	line "IT'S ROAR!"
-
-	para "EVEN #MON RUN"
-	line "FROM A GOOD ROAR!"
-	done
 
 MeetFriedaText:
 	text "FRIEDA: Yahoo!"
@@ -910,55 +393,37 @@ FriedaNotFridayText:
 	done
 
 Route32SignText:
-	text "ROUTE 32"
+	text "ROUTE 112"
 
-	para "VIOLET CITY -"
-	line "AZALEA TOWN"
+	para "BLUE FOREST -"
+	line "STAND CITY"
 	done
 
-Route32RuinsSignText:
-	text "RUINS OF ALPH"
-	line "EAST ENTRANCE"
-	done
-
-Route32UnionCaveSignText:
-	text "UNION CAVE"
-	line "AHEAD"
-	done
 
 Route32_MapEvents:
 	db 0, 0 ; filler
 
-	db 4 ; warp events
-	warp_event 11, 73, ROUTE_32_POKECENTER_1F, 1
-	warp_event  4,  2, ROUTE_32_RUINS_OF_ALPH_GATE, 3
-	warp_event  4,  3, ROUTE_32_RUINS_OF_ALPH_GATE, 4
-	warp_event  6, 79, UNION_CAVE_1F, 4
+	db 2 ; warp events
+	warp_event 10, 47, ROUTE_36_RUINS_OF_ALPH_GATE, 1
+	warp_event 11, 47, ROUTE_36_RUINS_OF_ALPH_GATE, 2
+;	warp_event 10, 43, ROUTE_32_POKECENTER_1F, 2
 
-	db 2 ; coord events
-	coord_event 18,  8, SCENE_DEFAULT, Route32CooltrainerMStopsYouScene
-	coord_event  7, 71, SCENE_ROUTE32_OFFER_SLOWPOKETAIL, Route32WannaBuyASlowpokeTailScript
 
-	db 6 ; bg events
-	bg_event 13,  5, BGEVENT_READ, Route32Sign
-	bg_event  9,  1, BGEVENT_READ, Route32RuinsSign
-	bg_event 10, 84, BGEVENT_READ, Route32UnionCaveSign
-	bg_event 12, 73, BGEVENT_READ, Route32PokecenterSign
-	bg_event 12, 67, BGEVENT_ITEM, Route32HiddenGreatBall
-	bg_event 11, 40, BGEVENT_ITEM, Route32HiddenSuperPotion
+	db 0 ; coord events
 
-	db 14 ; object events
-	object_event  8, 49, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 1, TrainerFisherJustin, -1
-	object_event 12, 56, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 3, TrainerFisherRalph1, -1
-	object_event  6, 48, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 1, TrainerFisherHenry, -1
-	object_event 12, 22, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerYoungsterAlbert, -1
-	object_event  4, 63, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerYoungsterGordon, -1
-	object_event  3, 45, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 3, TrainerCamperRoland, -1
-	object_event 10, 30, SPRITE_LASS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 1, TrainerPicnickerLiz1, -1
-	object_event 19,  8, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route32CooltrainerMScript, -1
-	object_event 11, 82, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerBirdKeeperPeter, -1
-	object_event  7, 70, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, SlowpokeTailSalesmanScript, EVENT_SLOWPOKE_WELL_ROCKETS
-	object_event  6, 53, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route32GreatBall, EVENT_ROUTE_32_GREAT_BALL
-	object_event 15, 13, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route32RoarTMGuyScript, -1
-	object_event 12, 67, SPRITE_LASS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, FriedaScript, EVENT_ROUTE_32_FRIEDA_OF_FRIDAY
-	object_event  3, 30, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route32Repel, EVENT_ROUTE_32_REPEL
+
+	db 3 ; bg events
+	bg_event  8,  2, BGEVENT_READ, Route32Sign
+	bg_event 14, 47, BGEVENT_ITEM, Route32HiddenGreatBall
+	bg_event 14,  4, BGEVENT_ITEM, Route32HiddenSuperPotion
+
+	db 9 ; object events
+	object_event 10,  7, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerYoungsterGordon, -1
+	object_event 13, 39, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 3, TrainerCamperRoland, -1
+	object_event  7, 30, SPRITE_LASS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 1, TrainerPicnickerLiz1, -1
+	object_event  5,  5, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route32GreatBall, EVENT_ROUTE_32_GREAT_BALL
+	object_event 10, 14, SPRITE_LASS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, FriedaScript, EVENT_ROUTE_32_FRIEDA_OF_FRIDAY
+	object_event  5, 47, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route32Repel, EVENT_ROUTE_32_REPEL
+	object_event 10, 46, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 3, Route32OfficerScript, EVENT_BLACKTHORN_CITY_SUPER_NERD_BLOCKS_GYM
+	object_event 11, 47, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 3, Route32Worker1Script, EVENT_BLACKTHORN_CITY_SUPER_NERD_BLOCKS_GYM
+	object_event 13, 47, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 3, Route32Worker2Script, EVENT_BLACKTHORN_CITY_SUPER_NERD_BLOCKS_GYM

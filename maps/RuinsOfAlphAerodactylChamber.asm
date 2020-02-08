@@ -7,8 +7,6 @@ RuinsOfAlphAerodactylChamber_MapScripts:
 	callback MAPCALLBACK_TILES, .HiddenDoors
 
 .CheckWall:
-	checkevent EVENT_WALL_OPENED_IN_AERODACTYL_CHAMBER
-	iftrue .OpenWall
 	end
 
 .OpenWall:
@@ -19,10 +17,6 @@ RuinsOfAlphAerodactylChamber_MapScripts:
 	end
 
 .HiddenDoors:
-	checkevent EVENT_WALL_OPENED_IN_AERODACTYL_CHAMBER
-	iftrue .WallOpen
-	changeblock 4, 0, $2e ; closed wall
-.WallOpen:
 	checkevent EVENT_SOLVED_AERODACTYL_PUZZLE
 	iffalse .FloorClosed
 	return
@@ -33,16 +27,6 @@ RuinsOfAlphAerodactylChamber_MapScripts:
 	return
 
 .WallOpenScript:
-	pause 30
-	earthquake 30
-	showemote EMOTE_SHOCK, PLAYER, 20
-	pause 30
-	playsound SFX_STRENGTH
-	changeblock 4, 0, $30 ; open wall
-	reloadmappart
-	earthquake 50
-	setscene SCENE_FINISHED
-	closetext
 	end
 
 RuinsOfAlphAerodactylChamberPuzzle:
@@ -144,21 +128,18 @@ RuinsOfAlphAerodactylChamberDescriptionText:
 RuinsOfAlphAerodactylChamber_MapEvents:
 	db 0, 0 ; filler
 
-	db 5 ; warp events
+	db 4 ; warp events
 	warp_event  3,  9, RUINS_OF_ALPH_OUTSIDE, 4
 	warp_event  4,  9, RUINS_OF_ALPH_OUTSIDE, 4
 	warp_event  3,  3, RUINS_OF_ALPH_INNER_CHAMBER, 8
 	warp_event  4,  3, RUINS_OF_ALPH_INNER_CHAMBER, 9
-	warp_event  4,  0, RUINS_OF_ALPH_AERODACTYL_ITEM_ROOM, 1
 
 	db 0 ; coord events
 
-	db 6 ; bg events
+	db 4 ; bg events
 	bg_event  2,  3, BGEVENT_READ, RuinsOfAlphAerodactylChamberAncientReplica
 	bg_event  5,  3, BGEVENT_READ, RuinsOfAlphAerodactylChamberAncientReplica
 	bg_event  3,  2, BGEVENT_UP, RuinsOfAlphAerodactylChamberPuzzle
 	bg_event  4,  2, BGEVENT_UP, RuinsOfAlphAerodactylChamberDescriptionSign
-	bg_event  3,  0, BGEVENT_UP, RuinsOfAlphAerodactylChamberWallPatternLeft
-	bg_event  4,  0, BGEVENT_UP, RuinsOfAlphAerodactylChamberWallPatternRight
 
 	db 0 ; object events

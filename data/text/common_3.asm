@@ -1065,7 +1065,7 @@ UnknownText_0x1c5827::
 	prompt
 
 UnknownText_0x1c5847::
-	text "Whom do you want"
+	text "Who do you want"
 	line "to call?"
 	done
 

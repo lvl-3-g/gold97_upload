@@ -716,22 +716,22 @@ PokeBallTransition:
 ; 16x16 overlay of a Poke Ball
 pusho
 opt b.X ; . = 0, X = 1
+	bigdw %................
 	bigdw %......XXXX......
 	bigdw %....XXXXXXXX....
-	bigdw %..XXXX....XXXX..
-	bigdw %..XX........XX..
-	bigdw %.XX..........XX.
-	bigdw %.XX...XXXX...XX.
-	bigdw %XX...XX..XX...XX
-	bigdw %XXXXXX....XXXXXX
-	bigdw %XXXXXX....XXXXXX
-	bigdw %XX...XX..XX...XX
-	bigdw %.XX...XXXX...XX.
-	bigdw %.XX..........XX.
-	bigdw %..XX........XX..
-	bigdw %..XXXX....XXXX..
-	bigdw %....XXXXXXXX....
+	bigdw %...XXXXXXXXXX...
+	bigdw %..XXXXXXXXXXXX..
+	bigdw %..XXXXXXXXXXXX..
+	bigdw %.XXXXXX..XXXXXX.
+	bigdw %.XXXXX....XXXXX.
+	bigdw %.X....X..X....X.
+	bigdw %.X.....XX.....X.
+	bigdw %..X..........X..
+	bigdw %..X..........X..
+	bigdw %...X........X...
+	bigdw %....XX....XX....
 	bigdw %......XXXX......
+	bigdw %................
 popo
 
 WipeLYOverrides:

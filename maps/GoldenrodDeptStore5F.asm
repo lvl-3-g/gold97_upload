@@ -3,7 +3,6 @@
 	const GOLDENRODDEPTSTORE5F_LASS
 	const GOLDENRODDEPTSTORE5F_MIKE
 	const GOLDENRODDEPTSTORE5F_POKEFAN_M
-	const GOLDENRODDEPTSTORE5F_CARRIE
 	const GOLDENRODDEPTSTORE5F_RECEPTIONIST
 
 GoldenrodDeptStore5F_MapScripts:
@@ -27,13 +26,13 @@ GoldenrodDeptStore5FClerkScript:
 	opentext
 	checkevent EVENT_GOT_TM02_HEADBUTT
 	iftrue .headbutt
-	checkevent EVENT_GOT_TM08_ROCK_SMASH
-	iftrue .onlyrocksmash
+;	checkevent EVENT_GOT_TM08_ROCK_SMASH
+;	iftrue .onlyrocksmash
 	jump .neither
 
 .headbutt
-	checkevent EVENT_GOT_TM08_ROCK_SMASH
-	iftrue .both
+;	checkevent EVENT_GOT_TM08_ROCK_SMASH
+;	iftrue .both
 	jump .onlyheadbutt
 
 .neither
@@ -128,9 +127,16 @@ Mike:
 	waitbutton
 	closetext
 	end
+	
+GoldenrodDeptStore5FPoliScript:
+	faceplayer
+	opentext
+	writetext GoldenrodDeptStore5FPoliText
+	cry POLIWHIRL
+	waitbutton
+	closetext
+	end
 
-GoldenrodDeptStore5FPokefanMScript:
-	jumptextfaceplayer GoldenrodDeptStore5FPokefanMText
 
 GoldenrodDeptStore5FDirectory:
 	jumptext GoldenrodDeptStore5FDirectoryText
@@ -188,25 +194,22 @@ UnknownText_0x56279:
 	done
 
 GoldenrodDeptStore5FLassText:
-	text "On Sundays, a lady"
-	line "comes to check out"
-	cont "#MON."
-
-	para "She even gives"
-	line "away TMs!"
+	text "Some #MON can"
+	line "evolve into many"
+	cont "forms, like EEVEE."
+	para "I'm having trouble"
+	line "deciding if I"
+	para "should evolve my"
+	line "POLIWHIRL into"
+	para "POLIWRATH or"
+	line "POLITOED."
 	done
 
-GoldenrodDeptStore5FPokefanMText:
-	text "You can't rename a"
-	line "#MON you get in"
-	cont "a trade."
-
-	para "The name is a re-"
-	line "flection of the"
-
-	para "original trainer's"
-	line "feelings for it."
+GoldenrodDeptStore5FPoliText:
+	text "POLIWHIRL:"
+	line "Polipoli!"
 	done
+
 
 GoldenrodDeptStore5FDirectoryText:
 	text "Customize Your"
@@ -229,10 +232,9 @@ GoldenrodDeptStore5F_MapEvents:
 	bg_event 14,  0, BGEVENT_READ, GoldenrodDeptStore5FDirectory
 	bg_event  3,  0, BGEVENT_READ, GoldenrodDeptStore5FElevatorButton
 
-	db 6 ; object events
+	db 5 ; object events
 	object_event  8,  5, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, GoldenrodDeptStore5FClerkScript, -1
-	object_event  3,  6, SPRITE_LASS, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, GoldenrodDeptStore5FLassScript, -1
-	object_event  6,  3, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Mike, -1
-	object_event 13,  5, SPRITE_POKEFAN_M, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, GoldenrodDeptStore5FPokefanMScript, -1
-	object_event  9,  1, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, Carrie, -1
+	object_event  3,  6, SPRITE_LASS, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Mike, -1
+	object_event 13,  5, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, GoldenrodDeptStore5FLassScript, -1
+	object_event 13,  4, SPRITE_SURFING_PIKACHU, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 2, 2, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, GoldenrodDeptStore5FPoliScript, -1
 	object_event  7,  5, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, GoldenrodDeptStore5FReceptionistScript, EVENT_GOLDENROD_DEPT_STORE_5F_HAPPINESS_EVENT_LADY

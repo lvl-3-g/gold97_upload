@@ -4,12 +4,7 @@
 	const ROUTE44_YOUNGSTER1
 	const ROUTE44_SUPER_NERD
 	const ROUTE44_YOUNGSTER2
-	const ROUTE44_COOLTRAINER_M
-	const ROUTE44_COOLTRAINER_F
 	const ROUTE44_FRUIT_TREE
-	const ROUTE44_POKE_BALL1
-	const ROUTE44_POKE_BALL2
-	const ROUTE44_POKE_BALL3
 
 Route44_MapScripts:
 	db 0 ; scene scripts
@@ -264,16 +259,6 @@ TrainerFisherEdgar:
 	closetext
 	end
 
-TrainerCooltrainerfCybil:
-	trainer COOLTRAINERF, CYBIL, EVENT_BEAT_COOLTRAINERF_CYBIL, CooltrainerfCybilSeenText, CooltrainerfCybilBeatenText, 0, .Script
-
-.Script:
-	endifjustbattled
-	opentext
-	writetext CooltrainerfCybilAfterBattleText
-	waitbutton
-	closetext
-	end
 
 TrainerPokemaniacZach:
 	trainer POKEMANIAC, ZACH, EVENT_BEAT_POKEMANIAC_ZACH, PokemaniacZachSeenText, PokemaniacZachBeatenText, 0, .Script
@@ -286,16 +271,6 @@ TrainerPokemaniacZach:
 	closetext
 	end
 
-TrainerCooltrainermAllen:
-	trainer COOLTRAINERM, ALLEN, EVENT_BEAT_COOLTRAINERM_ALLEN, CooltrainermAllenSeenText, CooltrainermAllenBeatenText, 0, .Script
-
-.Script:
-	endifjustbattled
-	opentext
-	writetext CooltrainermAllenAfterBattleText
-	waitbutton
-	closetext
-	end
 
 Route44Sign1:
 	jumptext Route44Sign1Text
@@ -306,14 +281,7 @@ Route44Sign2:
 Route44FruitTree:
 	fruittree FRUITTREE_ROUTE_44
 
-Route44MaxRevive:
-	itemball MAX_REVIVE
 
-Route44UltraBall:
-	itemball ULTRA_BALL
-
-Route44MaxRepel:
-	itemball MAX_REPEL
 
 Route44HiddenElixer:
 	hiddenitem ELIXER, EVENT_ROUTE_44_HIDDEN_ELIXER
@@ -437,60 +405,6 @@ PokemaniacZachAfterBattleText:
 	line "that's not true?"
 	done
 
-CooltrainermAllenSeenText:
-	text "I can tell you're"
-	line "a good trainer by"
-	cont "looking at you."
-
-	para "I'm good at #-"
-	line "MON, and I can see"
-	cont "that you are too."
-	done
-
-CooltrainermAllenBeatenText:
-	text "Tch! It's a total"
-	line "loss on my part."
-	done
-
-CooltrainermAllenAfterBattleText:
-	text "Wow. You have a"
-	line "lot of BADGES."
-
-	para "No wonder you're"
-	line "so tough."
-
-	para "I wonder if"
-	line "ECRUTEAK GYM's"
-
-	para "MORTY is still in"
-	line "training?"
-
-	para "He really hammered"
-	line "me."
-	done
-
-CooltrainerfCybilSeenText:
-	text "You look strong."
-
-	para "Good trainers seek"
-	line "tough opponents"
-	cont "instinctively."
-	done
-
-CooltrainerfCybilBeatenText:
-	text "Nope! This won't"
-	line "do at all."
-	done
-
-CooltrainerfCybilAfterBattleText:
-	text "We all get better"
-	line "by experiencing"
-	cont "many battles."
-
-	para "I battled a lot to"
-	line "become what I am"
-	cont "today--an elite."
-	done
 
 Route44Sign1Text:
 	text "ROUTE 44"
@@ -517,15 +431,10 @@ Route44_MapEvents:
 	bg_event  6, 10, BGEVENT_READ, Route44Sign2
 	bg_event 32,  9, BGEVENT_ITEM, Route44HiddenElixer
 
-	db 11 ; object events
+	db 6 ; object events
 	object_event 35,  3, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 1, TrainerFisherWilton1, -1
 	object_event 19, 13, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 1, TrainerFisherEdgar, -1
 	object_event 10,  9, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerPsychicPhil, -1
 	object_event 43,  2, SPRITE_SUPER_NERD, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 3, TrainerPokemaniacZach, -1
 	object_event 51,  5, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 2, TrainerBirdKeeperVance1, -1
-	object_event 41, 15, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 5, TrainerCooltrainermAllen, -1
-	object_event 31, 14, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 5, TrainerCooltrainerfCybil, -1
 	object_event  9,  5, SPRITE_FRUIT_TREE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route44FruitTree, -1
-	object_event 30,  8, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route44MaxRevive, EVENT_ROUTE_44_MAX_REVIVE
-	object_event 45,  4, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route44UltraBall, EVENT_ROUTE_44_ULTRA_BALL
-	object_event 14,  9, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route44MaxRepel, EVENT_ROUTE_44_MAX_REPEL

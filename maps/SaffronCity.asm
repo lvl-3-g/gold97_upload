@@ -1,12 +1,12 @@
 	const_def 2 ; object constants
-	const SAFFRONCITY_LASS1
-	const SAFFRONCITY_POKEFAN_M
-	const SAFFRONCITY_COOLTRAINER_M
-	const SAFFRONCITY_COOLTRAINER_F
-	const SAFFRONCITY_FISHER
-	const SAFFRONCITY_YOUNGSTER1
-	const SAFFRONCITY_YOUNGSTER2
-	const SAFFRONCITY_LASS2
+	const SAFFRON_POKEFAN_M
+	const SAFFRON_TEACHER
+	const SAFFRON_TWIN
+	const SAFFRON_BUG_CATCHER
+	const SAFFRON_LASS
+	const SAFFRON_COOLTRAINER_M
+	const SAFFRON_SWIMMER_GUY
+	const SAFFRON_SWIMMER_GIRL
 
 SaffronCity_MapScripts:
 	db 0 ; scene scripts
@@ -18,289 +18,157 @@ SaffronCity_MapScripts:
 	setflag ENGINE_FLYPOINT_SAFFRON
 	return
 
-SaffronCityLass1Script:
-	faceplayer
-	opentext
-	checkevent EVENT_RETURNED_MACHINE_PART
-	iftrue .ReturnedMachinePart
-	writetext SaffronCityLass1Text
-	waitbutton
-	closetext
-	end
-
-.ReturnedMachinePart:
-	writetext SaffronCityLass1Text_ReturnedMachinePart
-	waitbutton
-	closetext
-	end
-
-SaffronCityPokefanMScript:
-	faceplayer
-	opentext
-	checkevent EVENT_RETURNED_MACHINE_PART
-	iftrue .ReturnedMachinePart
-	writetext SaffronCityPokefanMText
-	waitbutton
-	closetext
-	end
-
-.ReturnedMachinePart:
-	writetext SaffronCityPokefanMText_ReturnedMachinePart
-	waitbutton
-	closetext
-	end
-
-SaffronCityCooltrainerMScript:
-	jumptextfaceplayer SaffronCityCooltrainerMText
-
-SaffronCityCooltrainerFScript:
-	jumptextfaceplayer SaffronCityCooltrainerFText
-
-SaffronCityFisherScript:
-	faceplayer
-	opentext
-	checkevent EVENT_RETURNED_MACHINE_PART
-	iftrue .ReturnedMachinePart
-	writetext SaffronCityFisherText
-	waitbutton
-	closetext
-	end
-
-.ReturnedMachinePart:
-	writetext SaffronCityFisherText_ReturnedMachinePart
-	waitbutton
-	closetext
-	end
-
-SaffronCityYoungster1Script:
-	jumptextfaceplayer SaffronCityYoungster1Text
-
-SaffronCityYoungster2Script:
-	jumptextfaceplayer SaffronCityYoungster2Text
-
-SaffronCityLass2Script:
-	jumptextfaceplayer SaffronCityLass2Text
-
-SaffronCitySign:
-	jumptext SaffronCitySignText
-
-SaffronGymSign:
-	jumptext SaffronGymSignText
-
-FightingDojoSign:
-	jumptext FightingDojoSignText
-
-SilphCoSign:
-	jumptext SilphCoSignText
-
-MrPsychicsHouseSign:
-	jumptext MrPsychicsHouseSignText
-
-SaffronCityMagnetTrainStationSign:
-	jumptext SaffronCityMagnetTrainStationSignText
-
 SaffronCityPokecenterSign:
 	jumpstd pokecentersign
 
 SaffronCityMartSign:
 	jumpstd martsign
+	
+SaffronCitySign:
+	jumptext SaffronCitySignText
+	
+SaffronPokefanMScript:
+	jumptextfaceplayer SaffronPokefanMText
+	
+SaffronTeacherScript:
+	jumptextfaceplayer SaffronTeacherText
+	
+SaffronTwinScript:
+	jumptextfaceplayer SaffronTwinText
+	
+SaffronBugCatcherScript:
+	jumptextfaceplayer SaffronBugCatcherText
+	
+SaffronLassScript:
+	jumptextfaceplayer SaffronLassText
+	
+SaffronCooltrainerMScript:
+	jumptextfaceplayer SaffronCooltrainerMText
+	
+SaffronSwimmerGuyScript:
+	jumptextfaceplayer SaffronSwimmerGuyText
+	
+SaffronSwimmerGirlScript:
+	jumptextfaceplayer SaffronSwimmerGirlText
 
-SaffronCityLass1Text:
-	text "A little girl who"
-	line "is an expert at"
-
-	para "mimicking people"
-	line "lives here."
-
-	para "She even mimics"
-	line "the people she's"
-
-	para "conversing with."
-	line "It's confusing."
+	
+FireStarterTest:
+	clearevent EVENT_GOT_TOTODILE_FROM_ELM
+	clearevent EVENT_GOT_CHIKORITA_FROM_ELM
+	setevent EVENT_GOT_CYNDAQUIL_FROM_ELM
+	jumptext FireStarterTestText
+	
+WaterStarterTest:
+	setevent EVENT_GOT_TOTODILE_FROM_ELM
+	clearevent EVENT_GOT_CHIKORITA_FROM_ELM
+	clearevent EVENT_GOT_CYNDAQUIL_FROM_ELM
+	jumptext WaterStarterTestText
+	
+	
+GrassStarterTest:
+	clearevent EVENT_GOT_TOTODILE_FROM_ELM
+	setevent EVENT_GOT_CHIKORITA_FROM_ELM
+	clearevent EVENT_GOT_CYNDAQUIL_FROM_ELM
+	jumptext GrassStarterTestText
+	
+GrassStarterTestText:
+	text "grass"
 	done
 
-SaffronCityLass1Text_ReturnedMachinePart:
-	text "The COPYCAT girl"
-	line "looked unhappy."
-
-	para "She said she lost"
-	line "her favorite #"
-	cont "DOLL--CLEFAIRY."
+WaterStarterTestText:
+	text "water"
 	done
-
-SaffronCityPokefanMText:
-	text "You came out from"
-	line "JOHTO?"
-
-	para "You can zip back"
-	line "home if the MAGNET"
-	cont "TRAIN's running."
+	
+FireStarterTestText:
+	text "fire"
 	done
-
-SaffronCityPokefanMText_ReturnedMachinePart:
-	text "You came out from"
-	line "JOHTO?"
-
-	para "You can zip back"
-	line "home by hopping on"
-	cont "the MAGNET TRAIN."
-	done
-
-SaffronCityCooltrainerMText:
-	text "I went to the GYM,"
-	line "raring for battles"
-	cont "against trainers…"
-
-	para "It turns out, I"
-	line "stumbled into the"
-
-	para "unused GYM next"
-	line "door."
-
-	para "Boy, I was pretty"
-	line "embarrassed."
-	done
-
-SaffronCityCooltrainerFText:
-	text "This is SILPH CO.,"
-	line "famous for #MON"
-	cont "merchandise."
-
-	para "In the past, TEAM"
-	line "ROCKET wanted the"
-
-	para "company because of"
-	line "that."
-	done
-
-SaffronCityFisherText:
-	text "Chew… Chew…"
-
-	para "I hear there's big"
-	line "trouble brewing at"
-	cont "the POWER PLANT."
-
-	para "Chew… Chew…"
-	done
-
-SaffronCityFisherText_ReturnedMachinePart:
-	text "Chew… Chew…"
-
-	para "I hear there was"
-	line "big trouble at the"
-	cont "POWER PLANT."
-
-	para "Chew… Chew…"
-	line "Haaah, I'm full!"
-	done
-
-SaffronCityYoungster1Text:
-	text "Going into an"
-	line "alley for the"
-
-	para "first time makes"
-	line "me sorta anxious."
-	done
-
-SaffronCityYoungster2Text:
-	text "There's a place"
-	line "called TRAINER"
-
-	para "HOUSE in VIRIDIAN"
-	line "where trainers"
-
-	para "gather from all"
-	line "over the place."
-	done
-
-SaffronCityLass2Text:
-	text "Our city was"
-	line "featured on a"
-	cont "radio program."
-
-	para "It's nice to hear"
-	line "praise for your"
-
-	para "city, but it's a"
-	line "bit embarrassing"
-	cont "too."
-	done
-
+	
 SaffronCitySignText:
-	text "SAFFRON CITY"
-
-	para "Shining, Golden"
-	line "Land of Commerce"
+	text "RYUKYU CITY -"
+	para "The SOUTHWEST"
+	line "ISLANDS' shining"
+	cont "gem."
 	done
 
-SaffronGymSignText:
-	text "SAFFRON CITY"
-	line "#MON GYM"
-	cont "LEADER: SABRINA"
-
-	para "The Master of"
-	line "Psychic #MON!"
+SaffronTeacherText:
+	text "Now now, children."
+	para "Don't just run off"
+	line "into the ocean!"
 	done
-
-FightingDojoSignText:
-	text "Everyone Welcome!"
-	line "FIGHTING DOJO"
+	
+SaffronPokefanMText:
+	text "The weather is"
+	line "perfect here, if a"
+	cont "bit humid."
 	done
-
-SilphCoSignText:
-	text "SILPH CO."
-	line "OFFICE BUILDING"
+	
+SaffronBugCatcherText:
+	text "I wanna go"
+	line "swimming!"
 	done
-
-MrPsychicsHouseSignText:
-	text "MR.PSYCHIC'S"
-	line "HOUSE"
+	
+SaffronTwinText:
+	text "Let's get some"
+	line "ice cream!"
 	done
-
-SaffronCityMagnetTrainStationSignText:
-	text "SAFFRON CITY"
-	line "MAGNET TRAIN"
-	cont "STATION"
+	
+SaffronCooltrainerMText:
+	text "I think I'll go"
+	line "out on a boat"
+	cont "today."
+	done
+	
+SaffronLassText:
+	text "Many of the people"
+	line "you see in this"
+	para "city don't live"
+	line "here."
+	done
+	
+SaffronSwimmerGuyText:
+	text "I come here on"
+	line "vacation whenever"
+	cont "I get the chance!"
+	done
+	
+SaffronSwimmerGirlText:
+	text "There's nowhere"
+	line "better to relax"
+	cont "than right here!"
 	done
 
 SaffronCity_MapEvents:
 	db 0, 0 ; filler
 
-	db 15 ; warp events
-	warp_event 26,  3, FIGHTING_DOJO, 1
-	warp_event 34,  3, SAFFRON_GYM, 1
-	warp_event 25, 11, SAFFRON_MART, 2
-	warp_event  9, 29, SAFFRON_POKECENTER_1F, 1
-	warp_event 27, 29, MR_PSYCHICS_HOUSE, 1
-	warp_event  8,  3, SAFFRON_MAGNET_TRAIN_STATION, 2
-	warp_event 18, 21, SILPH_CO_1F, 1
-	warp_event  9, 11, COPYCATS_HOUSE_1F, 1
-	warp_event 18,  3, ROUTE_5_SAFFRON_GATE, 3
-	warp_event  0, 24, ROUTE_7_SAFFRON_GATE, 3
-	warp_event  0, 25, ROUTE_7_SAFFRON_GATE, 4
-	warp_event 16, 33, ROUTE_6_SAFFRON_GATE, 1
-	warp_event 17, 33, ROUTE_6_SAFFRON_GATE, 2
-	warp_event 39, 22, ROUTE_8_SAFFRON_GATE, 1
-	warp_event 39, 23, ROUTE_8_SAFFRON_GATE, 2
+	db 10 ; warp events
+	warp_event 29, 26, SAFFRON_MART, 1
+	warp_event 11,  4, SAFFRON_POKECENTER_1F, 1
+	warp_event 33, 11, ROUTE_19_FUCHSIA_GATE, 1
+	warp_event 22, 31, ROUTE_6_SAFFRON_GATE, 1
+	warp_event 23, 31, ROUTE_6_SAFFRON_GATE, 2
+	warp_event 23,  7, MR_PSYCHICS_HOUSE, 1
+	warp_event 28, 18, CERULEAN_TRADE_SPEECH_HOUSE, 1
+	warp_event 27,  8, SAFFRON_MAGNET_TRAIN_STATION, 1
+	warp_event 28,  8, SAFFRON_MAGNET_TRAIN_STATION, 2
+	warp_event 14, 23, SAFFRON_GYM, 1
+
 
 	db 0 ; coord events
 
-	db 8 ; bg events
-	bg_event 21,  5, BGEVENT_READ, SaffronCitySign
-	bg_event 33,  5, BGEVENT_READ, SaffronGymSign
-	bg_event 25,  5, BGEVENT_READ, FightingDojoSign
-	bg_event 15, 21, BGEVENT_READ, SilphCoSign
-	bg_event 25, 29, BGEVENT_READ, MrPsychicsHouseSign
-	bg_event 11,  5, BGEVENT_READ, SaffronCityMagnetTrainStationSign
-	bg_event 10, 29, BGEVENT_READ, SaffronCityPokecenterSign
-	bg_event 26, 11, BGEVENT_READ, SaffronCityMartSign
+	db 6 ; bg events
+	bg_event 12,  4, BGEVENT_READ, SaffronCityPokecenterSign
+	bg_event 30, 26, BGEVENT_READ, SaffronCityMartSign
+	bg_event 22, 12, BGEVENT_READ, SaffronCitySign
+	bg_event 16, 22, BGEVENT_READ, FireStarterTest
+	bg_event 16, 21, BGEVENT_READ, WaterStarterTest
+	bg_event 15, 22, BGEVENT_READ, GrassStarterTest
 
 	db 8 ; object events
-	object_event  7, 14, SPRITE_LASS, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 2, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, SaffronCityLass1Script, -1
-	object_event 19, 30, SPRITE_POKEFAN_M, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 2, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, SaffronCityPokefanMScript, -1
-	object_event 32,  7, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, SaffronCityCooltrainerMScript, -1
-	object_event 20, 24, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 2, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, SaffronCityCooltrainerFScript, -1
-	object_event 27, 12, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, SaffronCityFisherScript, -1
-	object_event 15, 19, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WALK_UP_DOWN, 0, 1, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, SaffronCityYoungster1Script, -1
-	object_event 35, 22, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, SaffronCityYoungster2Script, -1
-	object_event 19,  8, SPRITE_LASS, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, SaffronCityLass2Script, -1
+	object_event 26, 12, SPRITE_POKEFAN_M, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, SaffronPokefanMScript, -1
+	object_event 11, 12, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, SaffronTeacherScript, -1
+	object_event 11, 13, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, SaffronTwinScript, -1
+	object_event 11, 11, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, SaffronBugCatcherScript, -1
+	object_event 20, 25, SPRITE_LASS, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, SaffronLassScript, -1
+	object_event  9, 19, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 1, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, SaffronCooltrainerMScript, -1
+	object_event  5, 20, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_SPINRANDOM_SLOW, 1, 1, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, SaffronSwimmerGuyScript, -1
+	object_event  6, 10, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_SPINRANDOM_SLOW, 1, 1, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, SaffronSwimmerGirlScript, -1

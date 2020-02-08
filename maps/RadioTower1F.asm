@@ -1,31 +1,15 @@
 	const_def 2 ; object constants
-	const RADIOTOWER1F_RECEPTIONIST
 	const RADIOTOWER1F_LASS
 	const RADIOTOWER1F_YOUNGSTER
-	const RADIOTOWER1F_ROCKET
 	const RADIOTOWER1F_GENTLEMAN
 	const RADIOTOWER1F_COOLTRAINER_F
+	const RADIOTOWER1F_GRUNTM12
 
 RadioTower1F_MapScripts:
 	db 0 ; scene scripts
 
 	db 0 ; callbacks
 
-RadioTower1FReceptionistScript:
-	faceplayer
-	opentext
-	checkflag ENGINE_ROCKETS_IN_RADIO_TOWER
-	iftrue .Rockets
-	writetext UnknownText_0x5ce77
-	waitbutton
-	closetext
-	end
-
-.Rockets:
-	writetext UnknownText_0x5ce81
-	waitbutton
-	closetext
-	end
 
 RadioTower1FLuckyNumberManScript:
 	faceplayer
@@ -42,7 +26,7 @@ RadioTower1FLuckyNumberManScript:
 	writetext UnknownText_0x5cf3a
 	buttonsound
 	closetext
-	applymovement RADIOTOWER1F_GENTLEMAN, MovementData_0x5ce71
+	;applymovement RADIOTOWER1F_GENTLEMAN, MovementData_0x5ce71
 	opentext
 	writetext UnknownText_0x5cf5a
 	buttonsound
@@ -53,7 +37,7 @@ RadioTower1FLuckyNumberManScript:
 	buttonsound
 	special CheckForLuckyNumberWinners
 	closetext
-	applymovement RADIOTOWER1F_GENTLEMAN, MovementData_0x5ce74
+	;applymovement RADIOTOWER1F_GENTLEMAN, MovementData_0x5ce74
 	opentext
 	ifequal 1, .FirstPlace
 	ifequal 2, .SecondPlace
@@ -114,6 +98,8 @@ RadioTower1FLuckyNumberManScript:
 RadioTower1FRadioCardWomanScript:
 	faceplayer
 	opentext
+	checkflag ENGINE_ROCKETS_IN_RADIO_TOWER
+	iftrue .ReceptionistTakeover
 	checkflag ENGINE_RADIO_CARD
 	iftrue .GotCard
 	writetext UnknownText_0x5d12d
@@ -156,6 +142,11 @@ RadioTower1FRadioCardWomanScript:
 	waitbutton
 	closetext
 	end
+.ReceptionistTakeover:
+	writetext ReceptionistTakeoverText
+	waitbutton
+	closetext
+	end
 
 .RadioCardText:
 	db "RADIO CARD@"
@@ -183,22 +174,23 @@ RadioTower1FLassScript:
 RadioTower1FYoungsterScript:
 	jumptextfaceplayer RadioTower1FYoungsterText
 
-TrainerGruntM3:
-	trainer GRUNTM, GRUNTM_3, EVENT_BEAT_ROCKET_GRUNTM_3, GruntM3SeenText, GruntM3BeatenText, 0, .Script
-
-.Script:
-	endifjustbattled
-	opentext
-	writetext GruntM3AfterBattleText
-	waitbutton
-	closetext
-	end
 
 RadioTower1FDirectory:
 	jumptext RadioTower1FDirectoryText
 
 RadioTower1FLuckyChannelSign:
 	jumptext RadioTower1FLuckyChannelSignText
+	
+TrainerGruntM12:
+	trainer GRUNTM, GRUNTM_12, EVENT_BEAT_ROCKET_GRUNTM_12, GruntM12SeenText, GruntM12BeatenText, 0, .Script
+
+.Script:
+	endifjustbattled
+	opentext
+	writetext GruntM12AfterBattleText
+	waitbutton
+	closetext
+	end
 
 MovementData_0x5ce71:
 	step RIGHT
@@ -209,17 +201,44 @@ MovementData_0x5ce74:
 	step LEFT
 	turn_head UP
 	step_end
+	
+GruntM12SeenText:
+	text "Welcome to the"
+	line "RADIO TOWER!"
+	para "I'm sure TEAM"
+	line "ROCKET can provide"
+	para "everything you"
+	line "might be looking"
+	cont "to see today!"
+	done
+	
+GruntM12BeatenText:
+	text "Losing a battle"
+	line "isn't what I was"
+	cont "talking about..."
+	done
+	
+GruntM12AfterBattleText:
+	text "TEAM ROCKET is"
+	line "working on making"
+	para "ourselves feel"
+	line "right at home!"
+	done
+
+ReceptionistTakeoverText:
+	text "Hello."
+	para "We are not holding"
+	line "any events or"
+	para "tours while the"
+	line "current situation"
+	cont "unfolds."
+	done
 
 UnknownText_0x5ce77:
 	text "Welcome!"
 	done
 
-UnknownText_0x5ce81:
-	text "Hello. I'm sorry,"
-	line "but we're not"
-	cont "offering any tours"
-	cont "today."
-	done
+
 
 UnknownText_0x5ceba:
 	text "Hi, are you here"
@@ -352,10 +371,9 @@ UnknownText_0x5d2bc:
 	line "Question 4:"
 
 	para "Is FALKNER the"
-	line "VIOLET GYM LEADER"
-
-	para "who uses bird"
-	line "#MON?"
+	line "OLD CITY GYM"
+	para "LEADER who uses"
+	line "bird #MON?"
 	done
 
 UnknownText_0x5d30e:
@@ -363,11 +381,9 @@ UnknownText_0x5d30e:
 	line "Here's the final"
 	cont "question:"
 
-	para "Do GOLDENROD GAME"
-	line "CORNER's slots"
-
-	para "have CHARMANDER"
-	line "on their reels?"
+	para "Is the route north"
+	line "of WEST CITY named"
+	cont "ROUTE 102?"
 	done
 
 UnknownText_0x5d37b:
@@ -404,59 +420,33 @@ UnknownText_0x5d443:
 	done
 
 RadioTower1FLassText:
-	text "BEN is a fabulous"
+	text "KEN is a fabulous"
 	line "DJ."
 
-	para "His sweet voice"
-	line "makes me melt!"
+	para "His voice is"
+	line "seriously so cool."
 	done
 
 RadioTower1FYoungsterText:
 	text "I love MARY, from"
 	line "#MON TALK."
 
-	para "I only know what"
-	line "she sounds like,"
-	cont "though."
+	para "I've met her in"
+	line "person. She's"
+	cont "really friendly!"
 	done
 
-GruntM3SeenText:
-	text "We've finally"
-	line "taken over the"
-	cont "RADIO TOWER!"
-
-	para "Now everyone will"
-	line "get to experience"
-
-	para "the true terror of"
-	line "TEAM ROCKET!"
-
-	para "We'll show you"
-	line "how scary we are!"
-	done
-
-GruntM3BeatenText:
-	text "Too strong! We"
-	line "must watch you…"
-	done
-
-GruntM3AfterBattleText:
-	text "You're too strong."
-
-	para "Our plan could be"
-	line "ruined. I must"
-	cont "warn the others…"
-	done
 
 RadioTower1FDirectoryText:
 	text "1F RECEPTION"
-	line "2F SALES"
+	line "2F STUDIO 1"
 
 	para "3F PERSONNEL"
-	line "4F PRODUCTION"
+	line "4F STUDIO 2"
 
-	para "5F DIRECTOR'S"
-	line "   OFFICE"
+	para "5F STUDIO 3"
+	line "6F DIRECTOR'S"
+	cont "   OFFICE"
 	done
 
 RadioTower1FLuckyChannelSignText:
@@ -474,20 +464,19 @@ RadioTower1F_MapEvents:
 	db 0, 0 ; filler
 
 	db 3 ; warp events
-	warp_event  2,  7, GOLDENROD_CITY, 11
+	warp_event  2,  7, GOLDENROD_CITY, 6
 	warp_event  3,  7, GOLDENROD_CITY, 11
-	warp_event 15,  0, RADIO_TOWER_2F, 2
+	warp_event  7,  0, RADIO_TOWER_2F, 2
 
 	db 0 ; coord events
 
 	db 2 ; bg events
-	bg_event  3,  0, BGEVENT_READ, RadioTower1FDirectory
-	bg_event 13,  0, BGEVENT_READ, RadioTower1FLuckyChannelSign
+	bg_event  5,  0, BGEVENT_READ, RadioTower1FDirectory
+	bg_event  3,  0, BGEVENT_READ, RadioTower1FLuckyChannelSign
 
-	db 6 ; object events
-	object_event  5,  6, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, RadioTower1FReceptionistScript, -1
-	object_event 16,  4, SPRITE_LASS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, RadioTower1FLassScript, EVENT_GOLDENROD_CITY_CIVILIANS
-	object_event 15,  4, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, RadioTower1FYoungsterScript, EVENT_GOLDENROD_CITY_CIVILIANS
-	object_event 14,  1, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 3, TrainerGruntM3, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	object_event  8,  6, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, RadioTower1FLuckyNumberManScript, EVENT_GOLDENROD_CITY_CIVILIANS
-	object_event 12,  6, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, RadioTower1FRadioCardWomanScript, EVENT_GOLDENROD_CITY_CIVILIANS
+	db 5 ; object events
+	object_event  4,  1, SPRITE_ROCKER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, RadioTower1FLassScript, EVENT_GOLDENROD_CITY_CIVILIANS
+	object_event  2,  3, SPRITE_SUPER_NERD, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, RadioTower1FYoungsterScript, EVENT_GOLDENROD_CITY_CIVILIANS
+	object_event  7,  6, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, RadioTower1FLuckyNumberManScript, EVENT_GOLDENROD_CITY_CIVILIANS
+	object_event  6,  6, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, RadioTower1FRadioCardWomanScript, -1
+	object_event  0,  5, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_RIGHT, 1, 1, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 4, TrainerGruntM12, EVENT_RADIO_TOWER_ROCKET_TAKEOVER

@@ -1,9 +1,10 @@
 	const_def 2 ; object constants
-	const PEWTERCITY_COOLTRAINER_F
-	const PEWTERCITY_BUG_CATCHER
-	const PEWTERCITY_GRAMPS
 	const PEWTERCITY_FRUIT_TREE1
 	const PEWTERCITY_FRUIT_TREE2
+	const PEWTERCITY_FISHER
+	const PEWTERCITY_LASS
+	const PEWTERCITY_TEACHER
+	const PEWTERCITY_ROCKER
 
 PewterCity_MapScripts:
 	db 0 ; scene scripts
@@ -15,165 +16,100 @@ PewterCity_MapScripts:
 	setflag ENGINE_FLYPOINT_PEWTER
 	return
 
-PewterCityCooltrainerFScript:
-	jumptextfaceplayer PewterCityCooltrainerFText
-
-PewterCityBugCatcherScript:
-	jumptextfaceplayer PewterCityBugCatcherText
-
-PewterCityGrampsScript:
-	faceplayer
-	opentext
-	checkevent EVENT_GOT_SILVER_WING
-	iftrue .GotSilverWing
-	writetext PewterCityGrampsText
-	buttonsound
-	verbosegiveitem SILVER_WING
-	setevent EVENT_GOT_SILVER_WING
-	closetext
-	end
-
-.GotSilverWing:
-	writetext PewterCityGrampsText_GotSilverWing
-	waitbutton
-	closetext
-	end
-
-PewterCitySign:
-	jumptext PewterCitySignText
-
-PewterGymSign:
-	jumptext PewterGymSignText
-
-PewterMuseumSign:
-	jumptext PewterMuseumSignText
-
-PewterCityMtMoonGiftShopSign:
-	jumptext PewterCityMtMoonGiftShopSignText
-
-PewterCityWelcomeSign:
-	jumptext PewterCityWelcomeSignText
-
 PewterCityPokecenterSign:
 	jumpstd pokecentersign
 
 PewterCityMartSign:
 	jumpstd martsign
 
+PewterCitySign:
+	jumptext PewterCitySignText
+	
+UrumaCavernSign:
+	jumptext UrumaCavernSignText
+
 PewterCityFruitTree1:
 	fruittree FRUITTREE_PEWTER_CITY_1
 
 PewterCityFruitTree2:
 	fruittree FRUITTREE_PEWTER_CITY_2
+	
+PewterCityFisherScript:
+	jumptextfaceplayer PewterCityFisherText	
 
-PewterCityCooltrainerFText:
-	text "Have you visited"
-	line "PEWTER GYM?"
+PewterCityLassScript:
+	jumptextfaceplayer PewterCityLassText
+	
+PewterCityTeacherScript:
+	jumptextfaceplayer PewterCityTeacherText
 
-	para "The LEADER uses"
-	line "rock-type #MON."
+PewterCityRockerScript:
+	jumptextfaceplayer PewterCityRockerText
+	
+PewterCityFisherText:
+	text "It's cold over in"
+	line "URUMA CAVERN."
+	para "Be prepared for"
+	line "that if you go"
+	cont "exploring."
 	done
-
-PewterCityBugCatcherText:
-	text "At night, CLEFAIRY"
-	line "come out to play"
-	cont "at MT.MOON."
-
-	para "But not every"
-	line "night."
+	
+PewterCityLassText:
+	text "You've been to"
+	line "NORTH ISLAND?"
+	para "Wow, that's so far"
+	line "from here."
 	done
-
-PewterCityGrampsText:
-	text "Ah, you came all"
-	line "the way out here"
-	cont "from JOHTO?"
-
-	para "That brings back"
-	line "memories. When I"
-
-	para "was young, I went"
-	line "to JOHTO to train."
-
-	para "You remind me so"
-	line "much of what I was"
-
-	para "like as a young"
-	line "man."
-
-	para "Here. I want you"
-	line "to have this item"
-	cont "I found in JOHTO."
+	
+PewterCityTeacherText:
+	text "You look like"
+	line "you're ready to go"
+	para "anywhere with"
+	line "#MON."
 	done
-
-PewterCityGrampsText_GotSilverWing:
-	text "Going to new, un-"
-	line "known places and"
-	cont "seeing new people…"
-
-	para "Those are the joys"
-	line "of travel."
+	
+PewterCityRockerText:
+	text "The climate isn't"
+	line "as tropical here"
+	cont "as RYUKYU CITY,"
+	para "so we don't get as"
+	line "many tourists."
 	done
-
+	
 PewterCitySignText:
-	text "PEWTER CITY"
-	line "A Stone Gray City"
+	text "YORON CITY"
+	para "The rocky mountain"
+	line "town."
 	done
-
-PewterGymSignText:
-	text "PEWTER CITY"
-	line "#MON GYM"
-	cont "LEADER: BROCK"
-
-	para "The Rock Solid"
-	line "#MON Trainer"
-	done
-
-PewterMuseumSignText:
-	text "There's a notice"
-	line "here…"
-
-	para "PEWTER MUSEUM OF"
-	line "SCIENCE is closed"
-	cont "for renovations…"
-	done
-
-PewterCityMtMoonGiftShopSignText:
-	text "There's a notice"
-	line "here…"
-
-	para "MT.MOON GIFT SHOP"
-	line "NOW OPEN!"
-	done
-
-PewterCityWelcomeSignText:
-	text "WELCOME TO"
-	line "PEWTER CITY!"
+	
+UrumaCavernSignText:
+	text "URUMA CAVERN"
+	line "ENTRANCE"
 	done
 
 PewterCity_MapEvents:
 	db 0, 0 ; filler
 
-	db 5 ; warp events
-	warp_event 29, 13, PEWTER_NIDORAN_SPEECH_HOUSE, 1
-	warp_event 16, 17, PEWTER_GYM, 1
-	warp_event 23, 17, PEWTER_MART, 2
-	warp_event 13, 25, PEWTER_POKECENTER_1F, 1
-	warp_event  7, 29, PEWTER_SNOOZE_SPEECH_HOUSE, 1
+	db 6 ; warp events
+	warp_event  7,  6, CERULEAN_MART, 1
+	warp_event 25, 18, PEWTER_POKECENTER_1F, 1
+	warp_event  7, 25, PEWTER_NIDORAN_SPEECH_HOUSE, 1
+	warp_event 21, 13, PEWTER_SNOOZE_SPEECH_HOUSE, 1
+	warp_event 17, 23, PEWTER_GYM, 1
+	warp_event 15,  5, MOUNT_MORTAR_2F_INSIDE, 8
 
 	db 0 ; coord events
 
-	db 7 ; bg events
-	bg_event 25, 23, BGEVENT_READ, PewterCitySign
-	bg_event 11, 17, BGEVENT_READ, PewterGymSign
-	bg_event 15,  9, BGEVENT_READ, PewterMuseumSign
-	bg_event 33, 19, BGEVENT_READ, PewterCityMtMoonGiftShopSign
-	bg_event 19, 29, BGEVENT_READ, PewterCityWelcomeSign
-	bg_event 14, 25, BGEVENT_READ, PewterCityPokecenterSign
-	bg_event 24, 17, BGEVENT_READ, PewterCityMartSign
+	db 4 ; bg events
+	bg_event 26, 18, BGEVENT_READ, PewterCityPokecenterSign
+	bg_event  8,  6, BGEVENT_READ, PewterCityMartSign
+	bg_event 28, 18, BGEVENT_READ, PewterCitySign
+	bg_event 18,  7, BGEVENT_READ, UrumaCavernSign
 
-	db 5 ; object events
-	object_event 19, 11, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, PewterCityCooltrainerFScript, -1
-	object_event 14, 29, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, PewterCityBugCatcherScript, -1
-	object_event 29, 17, SPRITE_GRAMPS, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 2, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, PewterCityGrampsScript, -1
-	object_event 32,  3, SPRITE_FRUIT_TREE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, PewterCityFruitTree1, -1
-	object_event 30,  3, SPRITE_FRUIT_TREE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, PewterCityFruitTree2, -1
+	db 6 ; object events
+	object_event 18, 12, SPRITE_FRUIT_TREE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, PewterCityFruitTree1, -1
+	object_event 16, 13, SPRITE_FRUIT_TREE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, PewterCityFruitTree2, -1
+	object_event 12, 19, SPRITE_FISHER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, PewterCityFisherScript, -1
+	object_event 25, 23, SPRITE_LASS, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, PewterCityLassScript, -1
+	object_event 12,  8, SPRITE_TEACHER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, PewterCityTeacherScript, -1
+	object_event 14, 27, SPRITE_ROCKER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, PewterCityRockerScript, -1

@@ -40,19 +40,13 @@ GoodRodHouseBookshelf:
 	jumpstd picturebookshelf
 
 OfferGoodRodText:
-	text "OLIVINE is on the"
-	line "sea!"
-
-	para "And if it's on the"
-	line "sea, there are"
-	cont "bound to be fish!"
-
-	para "I've fished here"
-	line "for 30 years."
-
-	para "Would you like to"
-	line "face the sea and"
-	cont "fish?"
+	text "The canal that"
+	line "runs through the"
+	para "city is a popular"
+	line "fishing spot."
+	para "Wouldn't you like"
+	line "to take up a ROD"
+	cont "and fish in it?"
 	done
 
 GiveGoodRodText:
@@ -84,8 +78,8 @@ OlivineGoodRodHouse_MapEvents:
 	db 0, 0 ; filler
 
 	db 2 ; warp events
-	warp_event  2,  7, OLIVINE_CITY, 6
-	warp_event  3,  7, OLIVINE_CITY, 6
+	warp_event  4,  7, OLIVINE_CITY, 6
+	warp_event  5,  7, OLIVINE_CITY, 6
 
 	db 0 ; coord events
 

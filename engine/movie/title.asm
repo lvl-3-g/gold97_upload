@@ -79,8 +79,8 @@ _TitleScreen:
 	call ByteFill
 
 ; Suicune gfx
-	hlbgcoord 0, 12
-	ld bc, 6 * BG_MAP_WIDTH ; the rest of the screen
+	hlbgcoord 0, 11
+	ld bc, 8 * BG_MAP_WIDTH ; the rest of the screen
 	ld a, 0 | VRAM_BANK_1
 	call ByteFill
 
@@ -106,7 +106,7 @@ _TitleScreen:
 
 ; Draw Pokemon logo
 	hlcoord 0, 3
-	lb bc, 7, 20
+	lb bc, 7, 40
 	ld d, $80
 	ld e, $14
 	call DrawTitleGraphic
@@ -114,7 +114,7 @@ _TitleScreen:
 ; Draw copyright text
 	hlbgcoord 3, 0, vBGMap1
 	lb bc, 1, 13
-	ld d, $c
+	ld d, $20
 	ld e, $10
 	call DrawTitleGraphic
 
@@ -123,7 +123,7 @@ _TitleScreen:
 	call LoadSuicuneFrame
 
 ; Initialize background crystal
-	call InitializeBackground
+	;call InitializeBackground
 
 ; Save WRAM bank
 	ldh a, [rSVBK]
@@ -252,8 +252,8 @@ SuicuneFrameIterator:
 	db $08 ; vTiles5 tile $08
 
 LoadSuicuneFrame:
-	hlcoord 6, 12
-	ld b, 6
+	hlcoord 6, 11
+	ld b, 8
 .bgrows
 	ld c, 8
 .col

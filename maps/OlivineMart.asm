@@ -33,22 +33,19 @@ OlivineMartLassText:
 	line "from my boyfriend"
 	cont "overseas."
 
-	para "It carried some"
-	line "MAIL from him."
-
-	para "Want to know what"
-	line "it says?"
-
-	para "Let's see… Nope!"
-	line "It's a secret!"
+	para "It flew here on"
+	line "its own."
+	
+	para "Do your #MON"
+	line "know how to FLY?"
 	done
 
 OlivineMart_MapEvents:
 	db 0, 0 ; filler
 
 	db 2 ; warp events
-	warp_event  2,  7, OLIVINE_CITY, 8
-	warp_event  3,  7, OLIVINE_CITY, 8
+	warp_event  4,  7, OLIVINE_CITY, 8
+	warp_event  5,  7, OLIVINE_CITY, 8
 
 	db 0 ; coord events
 

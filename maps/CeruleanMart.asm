@@ -21,34 +21,24 @@ CeruleanMart_CooltrainerF:
 	jumptextfaceplayer CeruleanMart_CooltrainerFText
 
 CeruleanMart_CooltrainerMText:
-	text "You'll run into"
-	line "many trainers on"
-
-	para "the way to CERU-"
-	line "LEAN's CAPE."
-
-	para "They want to see"
-	line "how they stack"
-
-	para "up against other"
-	line "trainers."
+	text "There's a guy here"
+	line "who specializes in"
+	para "ship building and"
+	line "ship repair."
 	done
 
 CeruleanMart_CooltrainerFText:
-	text "MISTY is about the"
-	line "only person in"
-
-	para "town who can beat"
-	line "the trainers at"
-	cont "CERULEAN's CAPE."
+	text "There isn't really"
+	line "anything cool for"
+	cont "sale here."
 	done
 
 CeruleanMart_MapEvents:
 	db 0, 0 ; filler
 
 	db 2 ; warp events
-	warp_event  2,  7, CERULEAN_CITY, 6
-	warp_event  3,  7, CERULEAN_CITY, 6
+	warp_event  4,  7, PEWTER_CITY, 1
+	warp_event  5,  7, PEWTER_CITY, 1
 
 	db 0 ; coord events
 

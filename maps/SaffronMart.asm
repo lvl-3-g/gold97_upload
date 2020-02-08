@@ -21,26 +21,27 @@ SaffronMartCooltrainerFScript:
 	jumptextfaceplayer SaffronMartCooltrainerFText
 
 SaffronMartCooltrainerMText:
-	text "There's a big"
-	line "RADIO TOWER in"
-	cont "LAVENDER."
+	text "There's a guy in"
+	line "this town who"
+	para "wants to be a"
+	line "GYM LEADER."
+	para "Have you given"
+	line "him a challenge"
+	cont "yet?"
 	done
 
 SaffronMartCooltrainerFText:
-	text "I want to become"
-	line "stronger, but I'm"
-	cont "not good yet…"
-
-	para "Could you show me"
-	line "how sometime?"
+	text "This city has the"
+	line "warmest climate on"
+	cont "the ISLANDS."
 	done
 
 SaffronMart_MapEvents:
 	db 0, 0 ; filler
 
 	db 2 ; warp events
-	warp_event  2,  7, SAFFRON_CITY, 3
-	warp_event  3,  7, SAFFRON_CITY, 3
+	warp_event  4,  7, SAFFRON_CITY, 1
+	warp_event  5,  7, SAFFRON_CITY, 1
 
 	db 0 ; coord events
 

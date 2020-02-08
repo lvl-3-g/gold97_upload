@@ -1,6 +1,5 @@
 	const_def 2 ; object constants
 	const ROUTE19_SWIMMER_GIRL
-	const ROUTE19_SWIMMER_GUY1
 	const ROUTE19_SWIMMER_GUY2
 	const ROUTE19_SWIMMER_GUY3
 	const ROUTE19_FISHER1
@@ -9,20 +8,7 @@
 Route19_MapScripts:
 	db 0 ; scene scripts
 
-	db 1 ; callbacks
-	callback MAPCALLBACK_TILES, .ClearRocks
-
-.ClearRocks:
-	checkevent EVENT_CINNABAR_ROCKS_CLEARED
-	iftrue .Done
-	changeblock  6,  6, $7a ; rock
-	changeblock  8,  6, $7a ; rock
-	changeblock 10,  6, $7a ; rock
-	changeblock 12,  8, $7a ; rock
-	changeblock  4,  8, $7a ; rock
-	changeblock 10, 10, $7a ; rock
-.Done:
-	return
+	db 0 ; callbacks
 
 TrainerSwimmerfDawn:
 	trainer SWIMMERF, DAWN, EVENT_BEAT_SWIMMERF_DAWN, SwimmerfDawnSeenText, SwimmerfDawnBeatenText, 0, .Script
@@ -35,16 +21,6 @@ TrainerSwimmerfDawn:
 	closetext
 	end
 
-TrainerSwimmermHarold:
-	trainer SWIMMERM, HAROLD, EVENT_BEAT_SWIMMERM_HAROLD, SwimmermHaroldSeenText, SwimmermHaroldBeatenText, 0, .Script
-
-.Script:
-	endifjustbattled
-	opentext
-	writetext SwimmermHaroldAfterBattleText
-	waitbutton
-	closetext
-	end
 
 TrainerSwimmermJerome:
 	trainer SWIMMERM, JEROME, EVENT_BEAT_SWIMMERM_JEROME, SwimmermJeromeSeenText, SwimmermJeromeBeatenText, 0, .Script
@@ -69,67 +45,23 @@ TrainerSwimmermTucker:
 	end
 
 Route19Fisher1Script:
-	faceplayer
-	opentext
-	checkevent EVENT_CINNABAR_ROCKS_CLEARED
-	iftrue .RocksCleared
-	writetext Route19Fisher1Text
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer Route19Fisher1Text
 
-.RocksCleared:
-	writetext Route19Fisher1Text_RocksCleared
-	waitbutton
-	closetext
-	end
 
 Route19Fisher2Script:
-	faceplayer
-	opentext
-	checkevent EVENT_CINNABAR_ROCKS_CLEARED
-	iftrue .RocksCleared
-	writetext Route19Fisher2Text
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer Route19Fisher2Text
 
-.RocksCleared:
-	writetext Route19Fisher2Text_RocksCleared
-	waitbutton
-	closetext
-	end
 
 Route19Sign:
 	jumptext Route19SignText
 
-CarefulSwimmingSign:
-	jumptext CarefulSwimmingSignText
-
-SwimmermHaroldSeenText:
-	text "Have you ever gone"
-	line "swimming in the"
-	cont "sea at night?"
-	done
-
-SwimmermHaroldBeatenText:
-	text "Glub…"
-	done
-
-SwimmermHaroldAfterBattleText:
-	text "At night, the sea"
-	line "turns black. It"
-
-	para "feels like it will"
-	line "swallow you up."
-	done
 
 SwimmermTuckerSeenText:
 	text "Pant, pant…"
 	line "Just… a little…"
 
 	para "farther… to…"
-	line "FUCHSIA…"
+	line "YORON…"
 	done
 
 SwimmermTuckerBeatenText:
@@ -139,7 +71,7 @@ SwimmermTuckerBeatenText:
 SwimmermTuckerAfterBattleText:
 	text "I… asked my girl-"
 	line "friend to swim to"
-	cont "FUCHSIA… Gasp…"
+	cont "YORON… Gasp…"
 	done
 
 SwimmerfDawnSeenText:
@@ -154,10 +86,7 @@ SwimmerfDawnBeatenText:
 
 SwimmerfDawnAfterBattleText:
 	text "It's a quick swim"
-	line "between FUCHSIA"
-
-	para "and SEAFOAM IS-"
-	line "LANDS…"
+	line "to YORON CITY..."
 
 	para "Sheesh, some big"
 	line "man my boyfriend"
@@ -167,11 +96,8 @@ SwimmerfDawnAfterBattleText:
 
 SwimmermJeromeSeenText:
 	text "Swimming?"
-	line "I'm lousy at it."
-
-	para "I'm just splashing"
-	line "around in these"
-	cont "shallow waters."
+	line "It's my favorite"
+	cont "thing."
 	done
 
 SwimmermJeromeBeatenText:
@@ -180,74 +106,54 @@ SwimmermJeromeBeatenText:
 	done
 
 SwimmermJeromeAfterBattleText:
-	text "I might be bad at"
-	line "swimming, but I"
-	cont "love the sea."
+	text "I'm great at"
+	line "swimming, and I"
+	cont "love the sea!"
 	done
 
 Route19Fisher1Text:
-	text "Sorry. This road"
-	line "is closed for"
-	cont "construction."
-
-	para "If you want to get"
-	line "to CINNABAR, you'd"
-
-	para "better go south"
-	line "from PALLET TOWN."
-	done
-
-Route19Fisher1Text_RocksCleared:
-	text "I'm all sweaty."
-	line "Time for a swim!"
+	text "The FISHERS who"
+	line "say the east side"
+	para "of the STRAIT is"
+	line "the best fishing"
+	cont "spot are wrong."
+	para "The FISHERS who"
+	line "say the west side"
+	para "of the STRAIT is"
+	line "the best fishing"
+	cont "spot are wrong."
+	para "It's here in the"
+	line "middle that's the"
+	cont "best spot!"
 	done
 
 Route19Fisher2Text:
-	text "Who knows how long"
-	line "it would take to"
-	cont "move this boulder…"
+	text "This here is"
+	line "definitely the"
+	cont "best spot."
 	done
 
-Route19Fisher2Text_RocksCleared:
-	text "The roadwork is"
-	line "finally finished."
-
-	para "Now I can go"
-	line "fishing again."
-	done
 
 Route19SignText:
-	text "ROUTE 19"
+	text "KERAMA STRAIT"
 
-	para "FUCHSIA CITY -"
-	line "SEAFOAM ISLANDS"
+	para "West to YORON CITY"
 	done
 
-CarefulSwimmingSignText:
-	text "Please be careful"
-	line "if you are swim-"
-	cont "ming to SEAFOAM"
-	cont "ISLANDS."
-
-	para "FUCHSIA POLICE"
-	done
 
 Route19_MapEvents:
 	db 0, 0 ; filler
 
-	db 1 ; warp events
-	warp_event  7,  3, ROUTE_19_FUCHSIA_GATE, 3
+	db 0 ; warp events
 
 	db 0 ; coord events
 
-	db 2 ; bg events
-	bg_event 11, 13, BGEVENT_READ, Route19Sign
-	bg_event 11,  1, BGEVENT_READ, CarefulSwimmingSign
+	db 1 ; bg events
+	bg_event 58, 11, BGEVENT_READ, Route19Sign
 
-	db 6 ; object events
-	object_event  9, 23, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 0, TrainerSwimmerfDawn, -1
-	object_event 13, 28, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 3, TrainerSwimmermHarold, -1
-	object_event 11, 17, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 3, TrainerSwimmermJerome, -1
-	object_event  8, 23, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 0, TrainerSwimmermTucker, -1
-	object_event  9,  5, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 1, Route19Fisher1Script, -1
-	object_event 11,  5, SPRITE_FISHER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 1, Route19Fisher2Script, -1
+	db 5 ; object events
+	object_event 19,  9, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 3, TrainerSwimmerfDawn, -1
+	object_event 46,  5, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 3, TrainerSwimmermJerome, -1
+	object_event 11, 11, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 3, TrainerSwimmermTucker, -1
+	object_event 27,  7, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 1, Route19Fisher1Script, -1
+	object_event 29,  6, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 1, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 1, Route19Fisher2Script, -1

@@ -1,10 +1,10 @@
-	db "FAIRY@" ; species name
-	dw 407, 1070 ; height, weight
+	db "WATER FISH@" ; species name
+	dw 407, 1650 ; height, weight
 
-	db   "It can make most"
-	next "any #MON run"
-	next "away simply by"
+	db   "Its body is always"
+	next "slimy. It often"
+	next "bangs its head on"
 
-	page "opening its mouth"
-	next "wide to reveal its"
-	next "big fangs.@"
+	page "the river bottom"
+	next "as it swims but"
+	next "seems not to care.@"

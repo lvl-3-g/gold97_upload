@@ -13,7 +13,7 @@ Route30BerryHousePokefanMScript:
 	iftrue .GotBerry
 	writetext Route30BerrySpeechHouseMonEatBerriesText
 	buttonsound
-	verbosegiveitem BERRY
+	verbosegiveitem PSNCUREBERRY
 	iffalse .NoRoom
 	setevent EVENT_GOT_BERRY_FROM_ROUTE_30_HOUSE
 .GotBerry:
@@ -27,35 +27,41 @@ Route30BerryHouseBookshelf:
 	jumpstd magazinebookshelf
 
 Route30BerrySpeechHouseMonEatBerriesText:
-	text "You know, #MON"
-	line "eat BERRIES."
-
-	para "Well, my #MON"
-	line "got healthier by"
-	cont "eating a BERRY."
-
-	para "Here. I'll share"
-	line "one with you!"
+	text "You know, I really"
+	line "love taking care"
+	cont "of my garden."
+	para "It's so dry around"
+	line "here."
+	para "I work really hard"
+	line "to make my flowers"
+	cont "grow."
+	para "Recently, I was"
+	line "even able to get"
+	para "a BERRY tree to"
+	line "grow out back."
+	para "Here! Let me share"
+	line "some of its fruit"
+	cont "with you!"
 	done
 
 Route30BerrySpeechHouseCheckTreesText:
-	text "Check trees for"
-	line "BERRIES. They just"
-	cont "drop right off."
+	text "Maybe one day I'll"
+	line "be able to get two"
+	cont "trees to grow."
 	done
 
 Route30BerryHouse_MapEvents:
 	db 0, 0 ; filler
 
 	db 2 ; warp events
-	warp_event  2,  7, ROUTE_30, 1
-	warp_event  3,  7, ROUTE_30, 1
+	warp_event  4,  7, ROUTE_33, 1
+	warp_event  5,  7, ROUTE_33, 1
 
 	db 0 ; coord events
 
 	db 2 ; bg events
-	bg_event  0,  1, BGEVENT_READ, Route30BerryHouseBookshelf
-	bg_event  1,  1, BGEVENT_READ, Route30BerryHouseBookshelf
+	bg_event  0,  0, BGEVENT_READ, Route30BerryHouseBookshelf
+	bg_event  1,  0, BGEVENT_READ, Route30BerryHouseBookshelf
 
 	db 1 ; object events
-	object_event  2,  3, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, Route30BerryHousePokefanMScript, -1
+	object_event  4,  3, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, Route30BerryHousePokefanMScript, -1

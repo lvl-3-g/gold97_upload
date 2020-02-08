@@ -1,10 +1,10 @@
-	db "SINGLEHORN@" ; species name
-	dw 411, 1190 ; height, weight
+	db "LOUDCAT@" ; species name
+	dw 207, 410 ; height, weight
 
-	db   "With its Herculean"
-	next "powers, it can"
-	next "easily throw arou-"
+	db   "The ring from its"
+	next "tail alerts foes"
+	next "to its position."
 
-	page "nd an object that"
-	next "is 100 times its"
-	next "own weight.@"
+	page "However, it moves"
+	next "too quickly for"
+	next "foes to catch it.@"

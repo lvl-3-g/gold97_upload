@@ -1,10 +1,10 @@
-	db "CLEAR WING@" ; species name
-	dw 311, 840 ; height, weight
+	db "TOUGH FISH@" ; species name
+	dw 305, 270 ; height, weight
 
-	db   "It can see in all"
-	next "directions without"
-	next "moving its big"
+	db   "Its skin is very"
+	next "scaly and tough."
+	next "This #MON is"
 
-	page "eyes, helping it"
-	next "spot attackers and"
-	next "food right away.@"
+	page "most often found"
+	next "in open waters and"
+	next "deep in the sea.@"

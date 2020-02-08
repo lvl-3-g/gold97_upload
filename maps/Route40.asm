@@ -1,16 +1,9 @@
 	const_def 2 ; object constants
-	const ROUTE40_OLIVINE_RIVAL1
-	const ROUTE40_OLIVINE_RIVAL2
-	const ROUTE40_SWIMMER_GIRL1
-	const ROUTE40_SWIMMER_GIRL2
-	const ROUTE40_ROCK1
-	const ROUTE40_ROCK2
-	const ROUTE40_ROCK3
+	const ROUTE40_SWIMMER_GUY
 	const ROUTE40_LASS1
 	const ROUTE40_MONICA
 	const ROUTE40_POKEFAN_M
-	const ROUTE40_LASS2
-	const ROUTE40_STANDING_YOUNGSTER
+	const ROUTE40_SUPER_NERD
 
 Route40_MapScripts:
 	db 0 ; scene scripts
@@ -29,27 +22,6 @@ Route40_MapScripts:
 	appear ROUTE40_MONICA
 	return
 
-TrainerSwimmerfElaine:
-	trainer SWIMMERF, ELAINE, EVENT_BEAT_SWIMMERF_ELAINE, SwimmerfElaineSeenText, SwimmerfElaineBeatenText, 0, .Script
-
-.Script:
-	endifjustbattled
-	opentext
-	writetext SwimmerfElaineAfterBattleText
-	waitbutton
-	closetext
-	end
-
-TrainerSwimmerfPaula:
-	trainer SWIMMERF, PAULA, EVENT_BEAT_SWIMMERF_PAULA, SwimmerfPaulaSeenText, SwimmerfPaulaBeatenText, 0, .Script
-
-.Script:
-	endifjustbattled
-	opentext
-	writetext SwimmerfPaulaAfterBattleText
-	waitbutton
-	closetext
-	end
 
 TrainerSwimmermSimon:
 	trainer SWIMMERM, SIMON, EVENT_BEAT_SWIMMERM_SIMON, SwimmermSimonSeenText, SwimmermSimonBeatenText, 0, .Script
@@ -58,17 +30,6 @@ TrainerSwimmermSimon:
 	endifjustbattled
 	opentext
 	writetext SwimmermSimonAfterBattleText
-	waitbutton
-	closetext
-	end
-
-TrainerSwimmermRandall:
-	trainer SWIMMERM, RANDALL, EVENT_BEAT_SWIMMERM_RANDALL, SwimmermRandallSeenText, SwimmermRandallBeatenText, 0, .Script
-
-.Script:
-	endifjustbattled
-	opentext
-	writetext SwimmermRandallAfterBattleText
 	waitbutton
 	closetext
 	end
@@ -84,11 +45,7 @@ Route40PokefanMScript:
 .mobile
 	jumptextfaceplayer Route40PokefanMText_Mobile
 
-Route40Lass2Script:
-	jumptextfaceplayer Route40Lass2Text
 
-Route40StandingYoungsterScript:
-	jumptextfaceplayer Route40StandingYoungsterText
 
 MonicaScript:
 	faceplayer
@@ -128,9 +85,21 @@ MonicaScript:
 
 Route40Sign:
 	jumptext Route40SignText
+	
 
-Route40Rock:
-	jumpstd smashrock
+TrainerEngineerRicardo:
+	trainer ENGINEER, RICARDO, EVENT_BEAT_ENGINEER_RICARDO, EngineerRicardoSeenText, EngineerRicardoBeatenText, 0, .Script
+
+.Script:
+	endifjustbattled
+	opentext
+	writetext EngineerRicardoAfterText
+	waitbutton
+	closetext
+	end
+	
+
+
 
 Route40HiddenHyperPotion:
 	hiddenitem HYPER_POTION, EVENT_ROUTE_40_HIDDEN_HYPER_POTION
@@ -159,13 +128,29 @@ MovementData_0x1a622a:
 	step UP
 	step UP
 	step_end
+	
+
+EngineerRicardoSeenText:
+	text "The air here is"
+	line "buzzing with"
+	cont "energy!"
+	done
+
+EngineerRicardoBeatenText:
+	text "I'm zapped!"
+	done
+
+EngineerRicardoAfterText:
+	text "The sting of cold"
+	line "air reminds me of"
+	para "the sting of an"
+	line "electric shock."
+	done
 
 SwimmermSimonSeenText:
-	text "You have to warm"
-	line "up before going"
-	cont "into the water."
-
-	para "That's basic."
+	text "Brr!"
+	para "This cold water"
+	line "builds character!"
 	done
 
 SwimmermSimonBeatenText:
@@ -173,79 +158,22 @@ SwimmermSimonBeatenText:
 	done
 
 SwimmermSimonAfterBattleText:
-	text "CIANWOOD CITY is"
-	line "a good distance"
-	cont "away from here."
-	done
-
-SwimmermRandallSeenText:
-	text "Hey, you're young"
-	line "and fit!"
-
-	para "Don't ride your"
-	line "#MON! Swim!"
-	done
-
-SwimmermRandallBeatenText:
-	text "Uh-oh. I lost…"
-	done
-
-SwimmermRandallAfterBattleText:
-	text "Swimming exercises"
-	line "your entire body."
-	cont "It's healthy."
-	done
-
-SwimmerfElaineSeenText:
-	text "Are you going to"
-	line "CIANWOOD?"
-
-	para "How about a quick"
-	line "battle first?"
-	done
-
-SwimmerfElaineBeatenText:
-	text "I lost that one!"
-	done
-
-SwimmerfElaineAfterBattleText:
-	text "I'd say I'm a bet-"
-	line "ter swimmer than"
-	cont "you. Yeah!"
-	done
-
-SwimmerfPaulaSeenText:
-	text "No inner tube for"
-	line "me."
-
-	para "I'm hanging on to"
-	line "a sea #MON!"
-	done
-
-SwimmerfPaulaBeatenText:
-	text "Ooh, I'm feeling"
-	line "dizzy!"
-	done
-
-SwimmerfPaulaAfterBattleText:
-	text "While I float like"
-	line "this, the waves"
-	cont "carry me along."
+	text "Constantly moving"
+	line "helps keep body"
+	cont "temperature up."
 	done
 
 Route40Lass1Text:
-	text "Although you can't"
-	line "see it from here,"
-
-	para "CIANWOOD is across"
-	line "the sea."
+	text "Have you ever"
+	line "looked for #MON"
+	cont "in snowy grass?"
 	done
 
 Route40PokefanMText:
-	text "Hm! There's a big"
-	line "building up ahead!"
-
-	para "What is it?"
+	text "There's a strange"
+	line "lady who lives in"
+	para "that house on the"
+	line "water."
 	done
 
 Route40PokefanMText_Mobile:
@@ -257,34 +185,7 @@ Route40PokefanMText_Mobile:
 	para "What? What?"
 	done
 
-Route40Lass2Text:
-	text "I came to OLIVINE"
-	line "by ship to see the"
 
-	para "sights and soak up"
-	line "the atmosphere."
-
-	para "Being a port, it"
-	line "feels so different"
-	cont "from a big city."
-	done
-
-Route40StandingYoungsterText:
-	text "Have you gone to"
-	line "the BATTLE TOWER?"
-
-	para "I think a lot of"
-	line "tough trainers"
-
-	para "have gathered"
-	line "there already."
-
-	para "But since you have"
-	line "so many BADGES,"
-
-	para "you shouldn't do"
-	line "badly at all."
-	done
 
 MeetMonicaText:
 	text "MONICA: Glad to"
@@ -329,34 +230,29 @@ MonicaNotMondayText:
 	done
 
 Route40SignText:
-	text "ROUTE 40"
+	text "ROUTE 110"
 
-	para "CIANWOOD CITY -"
-	line "OLIVINE CITY"
+	para "NUTYPE CITY -"
+	line "BLUE FOREST"
 	done
 
 Route40_MapEvents:
 	db 0, 0 ; filler
 
-	db 1 ; warp events
-	warp_event  9,  5, ROUTE_40_BATTLE_TOWER_GATE, 1
+	db 3 ; warp events
+	warp_event  6, 13, ROUTE_38_ECRUTEAK_GATE, 3
+	warp_event  7, 13, ROUTE_38_ECRUTEAK_GATE, 4
+	warp_event  9,  5, ROUTE_27_SANDSTORM_HOUSE, 1
 
 	db 0 ; coord events
 
 	db 2 ; bg events
-	bg_event 14, 10, BGEVENT_READ, Route40Sign
-	bg_event  7,  8, BGEVENT_ITEM, Route40HiddenHyperPotion
+	bg_event 10,  6, BGEVENT_READ, Route40Sign
+	bg_event 33, 13, BGEVENT_ITEM, Route40HiddenHyperPotion
 
-	db 12 ; object events
-	object_event 14, 15, SPRITE_OLIVINE_RIVAL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 4, TrainerSwimmermSimon, -1
-	object_event 18, 30, SPRITE_OLIVINE_RIVAL, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 5, TrainerSwimmermRandall, -1
-	object_event  3, 19, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 4, TrainerSwimmerfElaine, -1
-	object_event 10, 25, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 3, TrainerSwimmerfPaula, -1
-	object_event  7, 11, SPRITE_ROCK, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route40Rock, -1
-	object_event  6,  9, SPRITE_ROCK, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route40Rock, -1
-	object_event  7,  8, SPRITE_ROCK, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route40Rock, -1
-	object_event 11, 13, SPRITE_LASS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route40Lass1Script, -1
-	object_event  8, 10, SPRITE_BUENA, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, MonicaScript, EVENT_ROUTE_40_MONICA_OF_MONDAY
-	object_event  7,  6, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route40PokefanMScript, -1
-	object_event 13,  4, SPRITE_LASS, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, Route40Lass2Script, -1
-	object_event 16,  9, SPRITE_STANDING_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, Route40StandingYoungsterScript, EVENT_BATTLE_TOWER_OUTSIDE_SAILOR
+	db 5 ; object events
+	object_event 22,  9, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 4, TrainerSwimmermSimon, -1
+	object_event 37, 11, SPRITE_LASS, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route40Lass1Script, -1
+	object_event 45,  6, SPRITE_LASS, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, MonicaScript, EVENT_ROUTE_40_MONICA_OF_MONDAY
+	object_event 40,  4, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route40PokefanMScript, -1
+	object_event 40,  8, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_RIGHT, 1, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 4, TrainerEngineerRicardo, -1

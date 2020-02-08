@@ -2,9 +2,9 @@
 	tilecoll WALL, WALL, WALL, WALL ; 01
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 02
 	tilecoll FLOOR, FLOOR, FLOOR, LADDER ; 03
-	tilecoll WALL, UP_WALL, WALL, FLOOR ; 04
-	tilecoll UP_WALL, UP_WALL, FLOOR, FLOOR ; 05
-	tilecoll UP_WALL, WALL, FLOOR, WALL ; 06
+	tilecoll WALL, WALL, WALL, FLOOR ; 04
+	tilecoll WALL, WALL, FLOOR, FLOOR ; 05
+	tilecoll WALL, WALL, FLOOR, WALL ; 06
 	tilecoll FLOOR, FLOOR, FLOOR, LADDER ; 07
 	tilecoll WALL, FLOOR, WALL, FLOOR ; 08
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 09
@@ -39,8 +39,8 @@
 	tilecoll HOP_DOWN_RIGHT, WALL, WALL, WALL ; 26
 	tilecoll WALL, HOP_LEFT, WALL, HOP_LEFT ; 27
 	tilecoll HOP_RIGHT, WALL, HOP_RIGHT, WALL ; 28
-	tilecoll FLOOR, FLOOR, WARP_CARPET_DOWN, FLOOR ; 29
-	tilecoll WALL, WALL, WALL, WALL ; 2a
+	tilecoll FLOOR, FLOOR, WARP_CARPET_DOWN, WARP_CARPET_DOWN ; 29
+	tilecoll FLOOR, WALL, FLOOR, FLOOR ; 2a
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 2b
 	tilecoll WALL, ICE, ICE, ICE ; 2c
 	tilecoll ICE, ICE, WALL, ICE ; 2d
@@ -57,8 +57,72 @@
 	tilecoll FLOOR, FLOOR, FLOOR, LADDER ; 38
 	tilecoll WALL, FLOOR, WALL, FLOOR ; 39
 	tilecoll FLOOR, WALL, FLOOR, WALL ; 3a
-	tilecoll WALL, WALL, WALL, WALL ; 3b
+	tilecoll LAVA, LAVA, LAVA, LAVA ; 3b
 	tilecoll WALL, FLOOR, FLOOR, FLOOR ; 3c
 	tilecoll FLOOR, FLOOR, WARP_CARPET_DOWN, WARP_CARPET_DOWN ; 3d
 	tilecoll FLOOR, FLOOR, WALL, WALL ; 3e
-	tilecoll ICE, ICE, ICE, LADDER ; 3f
+	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 3f
+	tilecoll WALL, WALL, WALL, FLOOR ; 40
+	tilecoll WALL, WALL, FLOOR, FLOOR ; 41
+	tilecoll WALL, WALL, FLOOR, WALL ; 42
+	tilecoll WALL, FLOOR, WALL, FLOOR ; 43
+	tilecoll WALL, FLOOR, WALL, FLOOR ; 44
+	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 45
+	tilecoll FLOOR, WALL, FLOOR, WALL ; 46
+	tilecoll FLOOR, WALL, FLOOR, WALL ; 47
+	tilecoll WALL, FLOOR, WALL, WALL ; 48
+	tilecoll FLOOR, FLOOR, WALL, WALL ; 49
+	tilecoll FLOOR, WALL, WALL, WALL ; 4a
+	tilecoll WALL, WALL, FLOOR, FLOOR ; 4b
+	tilecoll FLOOR, FLOOR, WALL, WALL ; 4c
+	tilecoll LAVA, LAVA, LAVA, LAVA ; 4d
+	tilecoll LAVA, LAVA, LAVA, LAVA ; 4e
+	tilecoll LAVA, LAVA, LAVA, LAVA ; 4f
+	tilecoll LAVA, LAVA, LAVA, LAVA ; 50
+	tilecoll LAVA, LAVA, LAVA, LAVA ; 51
+	tilecoll WATER, WATER, WATER, WATER ; 52
+	tilecoll WATER, WATER, WATER, WATER ; 53
+	tilecoll WATER, WATER, WATER, WATER ; 54
+	tilecoll WATER, WATER, WATER, WATER ; 55
+	tilecoll WATER, WATER, WATER, WATER ; 56
+	tilecoll WATER, WATER, WATER, WATER ; 57
+	tilecoll WALL, FLOOR, FLOOR, FLOOR ; 58
+	tilecoll WALL, WALL, WALL, WALL ; 59
+	tilecoll FLOOR, WALL, FLOOR, FLOOR ; 5a
+	tilecoll WALL, FLOOR, FLOOR, FLOOR ; 5b
+	tilecoll FLOOR, FLOOR, WALL, FLOOR ; 5c
+	tilecoll FLOOR, FLOOR, WALL, FLOOR ; 5d
+	tilecoll FLOOR, FLOOR, FLOOR, WALL ; 5e
+	tilecoll WALL, WALL, WALL, WALL ; 5f
+	tilecoll WALL, FLOOR, FLOOR, FLOOR ; 60
+	tilecoll FLOOR, WALL, FLOOR, FLOOR ; 61
+	tilecoll FLOOR, FLOOR, WALL, FLOOR ; 62
+	tilecoll FLOOR, LAVA, FLOOR, LAVA ; 63
+	tilecoll LAVA, LAVA, FLOOR, LAVA ; 64
+	tilecoll LAVA, LAVA, LAVA, FLOOR ; 65
+	tilecoll LAVA, LAVA, LAVA, LAVA ; 66
+	tilecoll FLOOR, FLOOR, FLOOR, LAVA ; 67
+	tilecoll FLOOR, LAVA, LAVA, LAVA ; 68
+	tilecoll LAVA, FLOOR, LAVA, LAVA ; 69
+	tilecoll LAVA, LAVA, LAVA, LAVA ; 6a
+	tilecoll LAVA, FLOOR, LAVA, FLOOR ; 6b
+	tilecoll FLOOR, FLOOR, WALL, CAVE ; 6c
+	tilecoll FLOOR, FLOOR, WARP_CARPET_DOWN, WARP_CARPET_DOWN ; 6d
+	tilecoll LADDER, FLOOR, FLOOR, FLOOR ; 6e
+	tilecoll FLOOR, FLOOR, LAVA, FLOOR ; 6f
+	tilecoll FLOOR, WALL, FLOOR, WALL ; 70
+	tilecoll WALL, FLOOR, WALL, WALL ; 71
+	tilecoll FLOOR, WALL, WALL, WALL ; 72
+	tilecoll ICE, WALL, WALL, ICE ; 73
+	tilecoll WATER, WATER, WATER, WATER ; 74
+	tilecoll WALL, WATER, WATER, WATER ; 75
+	tilecoll WATER, WATER, WATER, WALL ; 76
+	tilecoll WATER, WATER, WATER, WATER ; 77
+	tilecoll WALL, FLOOR, WALL, FLOOR ; 78
+	tilecoll FLOOR, WALL, FLOOR, WALL ; 79
+	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 7a
+	tilecoll FLOOR, FLOOR, WARP_CARPET_DOWN, WARP_CARPET_DOWN ; 7b
+	tilecoll WALL, WALL, WALL, WALL ; 7c
+	tilecoll WALL, WALL, WALL, WALL ; 7d
+	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 7e
+	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 7f

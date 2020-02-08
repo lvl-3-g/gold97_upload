@@ -1,15 +1,11 @@
 	const_def 2 ; object constants
-	const RADIOTOWER2F_SUPER_NERD
-	const RADIOTOWER2F_TEACHER
-	const RADIOTOWER2F_ROCKET1
-	const RADIOTOWER2F_ROCKET2
-	const RADIOTOWER2F_ROCKET3
-	const RADIOTOWER2F_ROCKET_GIRL
-	const RADIOTOWER2F_BLACK_BELT1
-	const RADIOTOWER2F_BLACK_BELT2
 	const RADIOTOWER2F_JIGGLYPUFF
 	const RADIOTOWER2F_BUENA
 	const RADIOTOWER2F_RECEPTIONIST
+	const RADIOTOWER2F_ROCKER
+	const RADIOTOWER2F_GRUNTM24
+	const RADIOTOWER2F_GRUNTM26
+;	const RADIOTOWER2F_LILY
 
 RadioTower2F_MapScripts:
 	db 0 ; scene scripts
@@ -20,24 +16,6 @@ RadioTower2FUnusedDummyScene:
 ; unused
 	end
 
-RadioTower2FSuperNerdScript:
-	jumptextfaceplayer RadioTower2FSuperNerdText
-
-RadioTower2FTeacherScript:
-	faceplayer
-	opentext
-	checkflag ENGINE_ROCKETS_IN_RADIO_TOWER
-	iftrue .Rockets
-	writetext RadioTower2FTeacherText
-	waitbutton
-	closetext
-	end
-
-.Rockets:
-	writetext RadioTower2FTeacherText_Rockets
-	waitbutton
-	closetext
-	end
 
 RadioTowerJigglypuff:
 	opentext
@@ -47,55 +25,7 @@ RadioTowerJigglypuff:
 	closetext
 	end
 
-RadioTower2FBlackBelt1Script:
-	jumptextfaceplayer RadioTower2FBlackBelt1Text
 
-RadioTower2FBlackBelt2Script:
-	jumptextfaceplayer RadioTower2FBlackBelt2Text
-
-TrainerGruntM4:
-	trainer GRUNTM, GRUNTM_4, EVENT_BEAT_ROCKET_GRUNTM_4, GruntM4SeenText, GruntM4BeatenText, 0, .Script
-
-.Script:
-	endifjustbattled
-	opentext
-	writetext GruntM4AfterBattleText
-	waitbutton
-	closetext
-	end
-
-TrainerGruntM5:
-	trainer GRUNTM, GRUNTM_5, EVENT_BEAT_ROCKET_GRUNTM_5, GruntM5SeenText, GruntM5BeatenText, 0, .Script
-
-.Script:
-	endifjustbattled
-	opentext
-	writetext GruntM5AfterBattleText
-	waitbutton
-	closetext
-	end
-
-TrainerGruntM6:
-	trainer GRUNTM, GRUNTM_6, EVENT_BEAT_ROCKET_GRUNTM_6, GruntM6SeenText, GruntM6BeatenText, 0, .Script
-
-.Script:
-	endifjustbattled
-	opentext
-	writetext GruntM6AfterBattleText
-	waitbutton
-	closetext
-	end
-
-TrainerGruntF2:
-	trainer GRUNTF, GRUNTF_2, EVENT_BEAT_ROCKET_GRUNTF_2, GruntF2SeenText, GruntF2BeatenText, 0, .Script
-
-.Script:
-	endifjustbattled
-	opentext
-	writetext GruntF2AfterBattleText
-	waitbutton
-	closetext
-	end
 
 Buena:
 	faceplayer
@@ -333,139 +263,144 @@ RadioTower2FOaksPKMNTalkSign:
 
 RadioTower2FPokemonRadioSign:
 	jumptext RadioTower2FPokemonRadioSignText
+	
+RadioTower2fRocker:
+	faceplayer
+	opentext
+	checkflag ENGINE_ROCKETS_IN_RADIO_TOWER
+	iftrue .MidRocketTakeover2fRocker
+	writetext RadioTower2fRockerText
+	waitbutton
+	closetext
+	end
+.MidRocketTakeover2fRocker
+	writetext RadioTower2fRockerTextTakeover
+	waitbutton
+	closetext
+	end
+	
+TrainerGruntM24:
+	trainer GRUNTM, GRUNTM_24, EVENT_BEAT_ROCKET_GRUNTM_24, GruntM24SeenText, GruntM24BeatenText, 0, .Script
 
-RadioTower2FBookshelf:
-	jumpstd magazinebookshelf
+.Script:
+	endifjustbattled
+	opentext
+	writetext GruntM24AfterBattleText
+	waitbutton
+	closetext
+	end
+	
+TrainerGruntM26:
+	trainer GRUNTM, GRUNTM_26, EVENT_BEAT_ROCKET_GRUNTM_26, GruntM26SeenText, GruntM26BeatenText, 0, .Script
+
+.Script:
+	endifjustbattled
+	opentext
+	writetext GruntM26AfterBattleText
+	waitbutton
+	closetext
+	end
+	
+;RadioTower2fLily:
+;	faceplayer
+;	opentext
+;	checkflag ENGINE_ROCKETS_IN_RADIO_TOWER
+;	iftrue .MidRocketTakeover2fLily
+;	writetext RadioTower2fLilyText
+;	waitbutton
+;	closetext
+;	end
+;.MidRocketTakeover2fLily
+;	writetext RadioTower2fLilyTextTakeover
+;	waitbutton
+;;	closetext
+;	end
+	
+;RadioTower2fLilyText:
+;	text "LILY: Be sure to"
+;	line "tune in to hear me"
+;	para "talk about all of"
+;	line "my favorite people"
+;	cont "and locations!"
+;	done
+;	
+;RadioTower2fLilyTextTakeover:
+;	text "LILY: TEAM ROCKET"
+;	line "members are my"
+;	cont "least favorite!"
+;	done
+	
+GruntM24SeenText:
+	text "TEAM ROCKET can"
+	line "conduct operations"
+	cont "in secret bases."
+	para "But we also have"
+	line "no problem barging"
+	para "in and taking what"
+	line "we need if it's"
+	cont "necessary!"
+	done
+	
+GruntM24BeatenText:
+	text "And you had no"
+	line "problem defeating"
+	cont "me!"
+	done
+	
+GruntM24AfterBattleText:
+	text "Have you met our"
+	line "leader?"
+	para "I have a feeling"
+	line "you two wouldn't"
+	cont "get along."
+	done
+
+GruntM26SeenText:
+	text "Why are we here?"
+	para "Because you and"
+	line "your friend"
+	para "destoryed our"
+	line "antenna!"
+	para "Why build another"
+	line "when we could just"
+	cont "take this one!"
+	done
+	
+GruntM26BeatenText:
+	text "Yeowch!"
+	done
+	
+GruntM26AfterBattleText:
+	text "I blame you for"
+	line "all the problems"
+	cont "we've had!"
+	done
+
+	
+RadioTower2fRockerTextTakeover:
+	text "Every radio"
+	line "station is talking"
+	cont "about TEAM ROCKET!"
+	done
+
+RadioTower2fRockerText:
+	text "Have you listened"
+	line "to the #MON"
+	cont "March?"
+	para "It makes wild"
+	line "#MON appear"
+	cont "more frequently."
+	done
 
 MovementData_0x5d921:
-	slow_step DOWN
-	slow_step RIGHT
+;	slow_step DOWN
+;	slow_step RIGHT
 	step_end
 
-RadioTower2FSuperNerdText:
-	text "You can listen to"
-	line "the radio any-"
-	cont "where. Tune in!"
-	done
-
-RadioTower2FTeacherText:
-	text "Lullabies on the"
-	line "radio may make"
-	cont "#MON sleep."
-	done
-
-RadioTower2FTeacherText_Rockets:
-	text "Why would they"
-	line "want to take over"
-	cont "the RADIO TOWER?"
-	done
 
 RadioTowerJigglypuffText:
 	text "JIGGLYPUFF:"
 	line "Jiggly…"
-	done
-
-RadioTower2FBlackBelt1Text:
-	text "Sorry. Authorized"
-	line "personnel only"
-	cont "beyond this point."
-
-	para "It wasn't that way"
-	line "before."
-
-	para "There's something"
-	line "wrong with the"
-	cont "DIRECTOR…"
-	done
-
-RadioTower2FBlackBelt2Text:
-	text "Feel free to look"
-	line "around anywhere."
-
-	para "The DIRECTOR is"
-	line "nice again, just"
-	cont "as he was before."
-	done
-
-GruntM4SeenText:
-	text "Three years ago,"
-	line "TEAM ROCKET was"
-	cont "forced to disband."
-
-	para "But we're making a"
-	line "comeback here!"
-	done
-
-GruntM4BeatenText:
-	text "Gwah! Don't get"
-	line "cute!"
-	done
-
-GruntM4AfterBattleText:
-	text "We won't let you"
-	line "ruin our plans"
-	cont "for our comeback!"
-	done
-
-GruntM5SeenText:
-	text "We're TEAM ROCKET,"
-	line "the exploiters of"
-	cont "#MON!"
-
-	para "We love being"
-	line "evil! Scared?"
-	done
-
-GruntM5BeatenText:
-	text "You think you're a"
-	line "hero?"
-	done
-
-GruntM5AfterBattleText:
-	text "We're not always"
-	line "evil. We just do"
-	cont "whatever we like."
-	done
-
-GruntM6SeenText:
-	text "Hey, hey! Keep out"
-	line "of our way!"
-	done
-
-GruntM6BeatenText:
-	text "Arggh. I give up."
-	done
-
-GruntM6AfterBattleText:
-	text "Our EXECUTIVES are"
-	line "trying to take"
-	cont "this place over."
-
-	para "They have some big"
-	line "plan. I wonder"
-	cont "what that is?"
-	done
-
-GruntF2SeenText:
-	text "Hahaha!"
-
-	para "How boring."
-	line "It was far too"
-
-	para "easy to take over"
-	line "this place!"
-
-	para "Come on, keep me"
-	line "amused!"
-	done
-
-GruntF2BeatenText:
-	text "Wh-who are you?"
-	done
-
-GruntF2AfterBattleText:
-	text "You beat me, and"
-	line "I won't forget it!"
 	done
 
 UnknownText_0x5dcf4:
@@ -693,7 +628,7 @@ UnknownText_0x5e3d8:
 	done
 
 RadioTower2FSalesSignText:
-	text "2F SALES"
+	text "2F STUDIO 1"
 	done
 
 RadioTower2FOaksPKMNTalkSignText:
@@ -714,27 +649,22 @@ RadioTower2F_MapEvents:
 
 	db 2 ; warp events
 	warp_event  0,  0, RADIO_TOWER_3F, 1
-	warp_event 15,  0, RADIO_TOWER_1F, 3
+	warp_event  7,  0, RADIO_TOWER_1F, 3
 
 	db 0 ; coord events
 
-	db 6 ; bg events
-	bg_event  3,  0, BGEVENT_READ, RadioTower2FSalesSign
-	bg_event  5,  0, BGEVENT_READ, RadioTower2FOaksPKMNTalkSign
-	bg_event  9,  1, BGEVENT_READ, RadioTower2FBookshelf
-	bg_event 10,  1, BGEVENT_READ, RadioTower2FBookshelf
-	bg_event 11,  1, BGEVENT_READ, RadioTower2FBookshelf
-	bg_event 13,  0, BGEVENT_READ, RadioTower2FPokemonRadioSign
+	db 3 ; bg events
+	bg_event  5,  0, BGEVENT_READ, RadioTower2FSalesSign
+	bg_event  6, -1, BGEVENT_READ, RadioTower2FOaksPKMNTalkSign
+	bg_event  3,  0, BGEVENT_READ, RadioTower2FPokemonRadioSign
 
-	db 11 ; object events
-	object_event  6,  6, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, RadioTower2FSuperNerdScript, EVENT_GOLDENROD_CITY_CIVILIANS
-	object_event 17,  2, SPRITE_TEACHER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, RadioTower2FTeacherScript, -1
-	object_event  1,  4, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 3, TrainerGruntM4, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	object_event  8,  4, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 3, TrainerGruntM5, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	object_event  4,  1, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 2, TrainerGruntM6, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	object_event 10,  5, SPRITE_ROCKET_GIRL, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 3, TrainerGruntF2, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	object_event  0,  1, SPRITE_BLACK_BELT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, RadioTower2FBlackBelt1Script, EVENT_RADIO_TOWER_BLACKBELT_BLOCKS_STAIRS
-	object_event  1,  1, SPRITE_BLACK_BELT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, RadioTower2FBlackBelt2Script, EVENT_RADIO_TOWER_CIVILIANS_AFTER
-	object_event 12,  1, SPRITE_JIGGLYPUFF, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, RadioTowerJigglypuff, -1
-	object_event 14,  5, SPRITE_BUENA, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, Buena, -1
-	object_event 12,  7, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, RadioTowerBuenaPrizeReceptionist, EVENT_GOLDENROD_CITY_CIVILIANS
+	db 6 ; object events
+;	object_event  0,  1, SPRITE_BLACK_BELT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, RadioTower2FBlackBelt1Script, EVENT_RADIO_TOWER_BLACKBELT_BLOCKS_STAIRS
+;	object_event  1,  1, SPRITE_BLACK_BELT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, RadioTower2FBlackBelt2Script, EVENT_RADIO_TOWER_CIVILIANS_AFTER
+	object_event  4,  1, SPRITE_JIGGLYPUFF, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, RadioTowerJigglypuff, -1
+	object_event  0,  5, SPRITE_LASS, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, Buena, -1
+	object_event  4,  6, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, RadioTowerBuenaPrizeReceptionist, EVENT_GOLDENROD_CITY_CIVILIANS
+	object_event  6,  5, SPRITE_ROCKER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 1, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, RadioTower2fRocker, -1
+	object_event  2,  1, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 1, 1, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 1, TrainerGruntM24, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	object_event  6,  1, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 1, 1, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 4, TrainerGruntM26, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+;	object_event  6,  5, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_RIGHT, 1, 1, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, RadioTower2fLily, -1

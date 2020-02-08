@@ -1,59 +1,97 @@
 	const_def 2 ; object constants
-	const ECRUTEAKLUGIASPEECHHOUSE_GRAMPS
-	const ECRUTEAKLUGIASPEECHHOUSE_YOUNGSTER
+	const ECRUTEAKLUGIASPEECHHOUSE_FISHER
 
 EcruteakLugiaSpeechHouse_MapScripts:
 	db 0 ; scene scripts
 
 	db 0 ; callbacks
 
-EcruteakLugiaSpeechHouseGrampsScript:
-	jumptextfaceplayer EcruteakLugiaSpeechHouseGrampsText
-
-EcruteakLugiaSpeechHouseYoungsterScript:
-	jumptextfaceplayer EcruteakLugiaSpeechHouseYoungsterText
 
 LugiaSpeechHouseRadio:
 	jumpstd radio2
+	
 
-EcruteakLugiaSpeechHouseGrampsText:
-	text "This happened when"
-	line "I was young."
+Route32Pokecenter1FFishingGuruScript:
+	faceplayer
+	opentext
+	checkevent EVENT_GOT_OLD_ROD
+	iftrue .GotOldRod
+	writetext Route32Pokecenter1FFishingGuruText_Question
+	yesorno
+	iffalse .Refused
+	writetext Route32Pokecenter1FFishingGuruText_Yes
+	buttonsound
+	verbosegiveitem OLD_ROD
+	writetext Route32Pokecenter1FFishingGuruText_GiveOldRod
+	waitbutton
+	closetext
+	setevent EVENT_GOT_OLD_ROD
+	end
 
-	para "The sky suddenly"
-	line "turned black. A"
+.Refused:
+	writetext Route32Pokecenter1FFishingGuruText_No
+	waitbutton
+	closetext
+	end
 
-	para "giant flying #-"
-	line "MON was blocking"
-	cont "out the sun."
+.GotOldRod:
+	writetext Route32Pokecenter1FFishingGuruText_After
+	waitbutton
+	closetext
+	end
 
-	para "I wonder what that"
-	line "#MON was? "
 
-	para "It was like a bird"
-	line "and a dragon."
+Route32Pokecenter1FFishingGuruText_Question:
+	text "The river on"
+	line "ROUTE 119 is a"
+	para "popular fishing"
+	line "spot."
+	
+	para "You want to fish?"
+
+	para "Would you like one"
+	line "of my RODS?"
 	done
 
-EcruteakLugiaSpeechHouseYoungsterText:
-	text "Is there really a"
-	line "#MON that big?"
+Route32Pokecenter1FFishingGuruText_Yes:
+	text "Heh, that's good"
+	line "to hear."
 
-	para "If it exists, it"
-	line "must be powerful."
+	para "Now you're an"
+	line "angler too!"
+	done
+
+Route32Pokecenter1FFishingGuruText_GiveOldRod:
+	text "Fishing is great!"
+
+	para "If there's water,"
+	line "be it the sea or a"
+
+	para "stream, try out"
+	line "your ROD."
+	done
+
+Route32Pokecenter1FFishingGuruText_No:
+	text "Oh. That's rather"
+	line "disappointing…"
+	done
+
+Route32Pokecenter1FFishingGuruText_After:
+	text "Yo, kid. How are"
+	line "they biting?"
 	done
 
 EcruteakLugiaSpeechHouse_MapEvents:
 	db 0, 0 ; filler
 
 	db 2 ; warp events
-	warp_event  3,  7, ECRUTEAK_CITY, 7
-	warp_event  4,  7, ECRUTEAK_CITY, 7
+	warp_event  4,  7, ECRUTEAK_CITY, 4
+	warp_event  5,  7, ECRUTEAK_CITY, 4
 
 	db 0 ; coord events
 
 	db 1 ; bg events
-	bg_event  2,  1, BGEVENT_READ, LugiaSpeechHouseRadio
+	bg_event  4,  1, BGEVENT_READ, LugiaSpeechHouseRadio
 
-	db 2 ; object events
-	object_event  2,  3, SPRITE_GRAMPS, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, EcruteakLugiaSpeechHouseGrampsScript, -1
-	object_event  5,  4, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, EcruteakLugiaSpeechHouseYoungsterScript, -1
+	db 1 ; object events
+	object_event  7,  3, SPRITE_FISHING_GURU, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route32Pokecenter1FFishingGuruScript, -1

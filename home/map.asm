@@ -1360,12 +1360,12 @@ LoadTilesetGFX::
 
 ; These tilesets support dynamic per-mapgroup roof tiles.
 	ld a, [wMapTileset]
-	cp TILESET_JOHTO
-	jr z, .load_roof
-	cp TILESET_JOHTO_MODERN
-	jr z, .load_roof
-	cp TILESET_BATTLE_TOWER_OUTSIDE
-	jr z, .load_roof
+	;cp TILESET_JOHTO
+	;jr z, .load_roof
+	;cp TILESET_JOHTO_MODERN
+	;jr z, .load_roof
+	;cp TILESET_BATTLE_TOWER_OUTSIDE
+	;jr z, .load_roof
 	jr .skip_roof
 
 .load_roof
@@ -2215,11 +2215,11 @@ GetMapMusic::
 	ld a, [wStatusFlags2]
 	bit STATUSFLAGS2_ROCKETS_IN_MAHOGANY_F, a
 	jr z, .clearedmahogany
-	ld de, MUSIC_ROCKET_HIDEOUT
+	ld de, MUSIC_ROCKET_OVERTURE
 	jr .done
 
 .clearedmahogany
-	ld de, MUSIC_CHERRYGROVE_CITY
+	ld de, MUSIC_ECRUTEAK_CITY
 	jr .done
 
 GetMapTimeOfDay::

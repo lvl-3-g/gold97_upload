@@ -1,10 +1,10 @@
-	db "FLYSCORPIO@" ; species name
-	dw 307, 1430 ; height, weight
+	db "TRANSFORM@" ; species name
+	dw 110, 270 ; height, weight
 
-	db   "It builds its nest"
-	next "on a steep cliff."
-	next "When it is done"
+	db   "Much heavier than"
+	next "it would appear to"
+	next "be."
 
-	page "gliding, it hops"
-	next "along the ground"
-	next "back to its nest.@"
+	page "Its body is made"
+	next "of a dense and"
+	next "metallic material.@"

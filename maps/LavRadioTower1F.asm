@@ -11,60 +11,103 @@ LavRadioTower1F_MapScripts:
 	db 0 ; callbacks
 
 LavRadioTower1FReceptionistScript:
-	jumptextfaceplayer LavRadioTower1FReceptionistText
+	faceplayer
+	opentext
+	checkevent EVENT_GOT_SECRETPOTION_FROM_PHARMACY
+	iftrue .GiveKey
+	writetext LavRadioTower1FReceptionistText
+	waitbutton
+	closetext
+	end
+
+.GiveKey:
+	checkevent EVENT_MADE_WHITNEY_CRY
+	iftrue .AlreadyGotKey
+	writetext LavRadioTower1FReceptionistTextKeyTime
+	waitbutton
+	closetext
+	winlosstext RocketKey_WinText, RocketKey_LossText
+	loadtrainer GRUNTM, GRUNTM_23
+	startbattle
+	reloadmapafterbattle
+	jump .returnfrombattlerocketkey
+	
+	
+.returnfrombattlerocketkey
+	opentext
+	writetext RocketKey_AfterText
+	waitbutton
+	verbosegiveitem BASEMENT_KEY
+	writetext RocketKey_AfterText2
+	waitbutton
+	closetext
+	setevent EVENT_MADE_WHITNEY_CRY
+	end
+	
+.AlreadyGotKey:
+	writetext RocketKey_Afterwards
+	waitbutton
+	closetext
+	end
 
 LavRadioTower1FOfficerScript:
-	jumptextfaceplayer LavRadioTower1FOfficerText
+	faceplayer
+	opentext
+	writetext LavRadioTower1FOfficerText
+	cry MURKROW
+	waitbutton
+	closetext
+	end
 
 LavRadioTower1FSuperNerd1Script:
-	jumptextfaceplayer LavRadioTower1FSuperNerd1Text
+	faceplayer
+	opentext
+	checkevent EVENT_GOT_SECRETPOTION_FROM_PHARMACY
+	iftrue .SN1KeyScript
+	writetext LavRadioTower1FSuperNerd1Text
+	waitbutton
+	closetext
+	end
+
+.SN1KeyScript:
+	writetext LavRadioTower1FSuperNerd1TextKey
+	waitbutton
+	closetext
+	end
 
 LavRadioTower1FGentlemanScript:
 	faceplayer
 	opentext
-	checkflag ENGINE_EXPN_CARD
-	iftrue .GotExpnCard
-	checkevent EVENT_RETURNED_MACHINE_PART
-	iftrue .ReturnedMachinePart
+	checkevent EVENT_GOT_SECRETPOTION_FROM_PHARMACY
+	iftrue .GMKeyScript
 	writetext LavRadioTower1FGentlemanText
 	waitbutton
 	closetext
 	end
 
-.ReturnedMachinePart:
-	writetext LavRadioTower1FGentlemanText_ReturnedMachinePart
-	buttonsound
-	stringtotext .expncardname, MEM_BUFFER_1
-	scall .receiveitem
-	setflag ENGINE_EXPN_CARD
-.GotExpnCard:
-	writetext LavRadioTower1FGentlemanText_GotExpnCard
+.GMKeyScript:
+	writetext LavRadioTower1FGentlemanTextKey
 	waitbutton
 	closetext
 	end
 
-.receiveitem:
-	jumpstd receiveitem
-	end
-
-.expncardname
-	db "EXPN CARD@"
 
 LavRadioTower1FSuperNerd2Script:
 	faceplayer
 	opentext
-	checkflag ENGINE_EXPN_CARD
-	iftrue .GotExpnCard
+	checkevent EVENT_GOT_SECRETPOTION_FROM_PHARMACY
+	iftrue .SN2KeyScript
 	writetext LavRadioTower1FSuperNerd2Text
 	waitbutton
 	closetext
 	end
 
-.GotExpnCard:
-	writetext LavRadioTower1FSuperNerd2Text_GotExpnCard
+.SN2KeyScript:
+	writetext LavRadioTower1FSuperNerd2TextKey
 	waitbutton
 	closetext
 	end
+
 
 LavRadioTower1FDirectory:
 	jumptext LavRadioTower1FDirectoryText
@@ -77,102 +120,85 @@ LavRadioTower1FReferenceLibrary:
 	jumptext LavRadioTower1FReferenceLibraryText
 
 LavRadioTower1FReceptionistText:
-	text "Welcome!"
-	line "Feel free to look"
-
-	para "around anywhere on"
-	line "this floor."
+	text "Ha!"
+	para "Supplies are"
+	line "rolling in fast"
+	para "over at the SOUTH"
+	line "POINT DOCKS!"
+	para "We've almost got"
+	line "everything we need"
+	para "to begin the next"
+	line "phase of our plan!"
+	para "The crew over in"
+	line "STAND CITY will be"
+	para "so impressed with"
+	line "our work here!"
 	done
 
 LavRadioTower1FOfficerText:
-	text "Sorry, but you can"
-	line "only tour the"
-	cont "ground floor."
-
-	para "Ever since JOHTO's"
-	line "RADIO TOWER was"
-
-	para "taken over by a"
-	line "criminal gang, we"
-
-	para "have had to step"
-	line "up our security."
+	text "MURKROW: KRAWW!"
 	done
 
 LavRadioTower1FSuperNerd1Text:
-	text "Many people are"
-	line "hard at work here"
-
-	para "in the RADIO"
-	line "TOWER."
-
-	para "They must be doing"
-	line "their best to put"
-	cont "on good shows."
+	text "GAME CORNERs are"
+	line "always reliable"
+	cont "sources of income!"
+	para "Remember that!"
+	done
+	
+LavRadioTower1FSuperNerd1TextKey:
+	text "Hm? A key?"
+	para "Nah, I don't have"
+	line "that."
+	para "But why would you"
+	line "want it?"
+	para "Stay out of TEAM"
+	line "ROCKET's way, kid!"
 	done
 
 LavRadioTower1FGentlemanText:
-	text "Oh, no, no, no!"
-
-	para "We've been off the"
-	line "air ever since the"
-
-	para "POWER PLANT shut"
-	line "down."
-
-	para "All my efforts to"
-	line "start this station"
-
-	para "would be wasted if"
-	line "I can't broadcast."
-
-	para "I'll be ruined!"
+	text "Some kid has been"
+	line "messing with our"
+	cont "plans."
+	para "First the AQUARIUM"
+	line "heist, then the"
+	cont "SLOWPOKE WELL..."
+	para "But it doesn't"
+	line "matter!"
+	para "Minor setbacks,"
+	line "those were!"
+	para "HA!"
 	done
 
-LavRadioTower1FGentlemanText_ReturnedMachinePart:
-	text "Ah! So you're the"
-	line "<PLAY_G> who solved"
-
-	para "the POWER PLANT's"
-	line "problem?"
-
-	para "Thanks to you, I"
-	line "never lost my job."
-
-	para "I tell you, you're"
-	line "a real lifesaver!"
-
-	para "Please take this"
-	line "as my thanks."
+LavRadioTower1FGentlemanTextKey:
+	text "What key?"
+	line "I don't have any"
+	cont "keys."
+	para "Hey!"
+	para "I hope you're not"
+	line "that kid that's"
+	para "been messing with"
+	line "our plans!"
+	para "Cut it out, if"
+	line "you know what's"
+	cont "good for you!"
 	done
 
-LavRadioTower1FGentlemanText_GotExpnCard:
-	text "With that thing,"
-	line "you can tune into"
-
-	para "the radio programs"
-	line "here in KANTO."
-
-	para "Gahahahaha!"
-	done
 
 LavRadioTower1FSuperNerd2Text:
-	text "Hey there!"
+	text "Just a bit longer"
+	line "until we can show"
+	para "the world what"
+	line "TEAM ROCKET is"
+	cont "truly capable of!"
+	done
 
-	para "I am the super"
-	line "MUSIC DIRECTOR!"
-
-	para "Huh? Your #GEAR"
-	line "can't tune into my"
-
-	para "music programs."
-	line "How unfortunate!"
-
-	para "If you get an EXPN"
-	line "CARD upgrade, you"
-
-	para "can tune in. You'd"
-	line "better get one!"
+LavRadioTower1FSuperNerd2TextKey:
+	text "Nah, I don't have"
+	line "any keys."
+	para "The CAPTAIN"
+	line "doesn't trust me"
+	cont "with any of those."
 	done
 
 LavRadioTower1FSuperNerd2Text_GotExpnCard:
@@ -193,22 +219,13 @@ LavRadioTower1FSuperNerd2Text_GotExpnCard:
 	done
 
 LavRadioTower1FDirectoryText:
-	text "1F RECEPTION"
-	line "2F SALES"
-
-	para "3F PERSONNEL"
-	line "4F PRODUCTION"
-
-	para "5F DIRECTOR'S"
-	line "   OFFICE"
+	text "All #MON exist"
+	line "for the glory of"
+	cont "TEAM ROCKET!"
 	done
 
 LavRadioTower1FPokeFluteSignText:
-	text "Perk Up #MON"
-	line "with Mellow Sounds"
-
-	para "of the # FLUTE"
-	line "on CHANNEL 20"
+	text "It's a rerun..."
 	done
 
 LavRadioTower1FReferenceLibraryText:
@@ -219,23 +236,51 @@ LavRadioTower1FReferenceLibraryText:
 	para "This must be the"
 	line "reference library."
 	done
+	
+LavRadioTower1FReceptionistTextKeyTime:
+	text "A SHIP KEY?"
+	para "Maybe I have it."
+	line "What's it to you?"
+	done
+
+RocketKey_WinText:
+	text "What!?"
+	done
+	
+RocketKey_LossText:
+	text "Ha!"
+	done
+	
+RocketKey_AfterText:
+	text "Oh no, the CAPTAIN"
+	line "will have my head"
+	cont "for this!"
+	done
+
+RocketKey_AfterText2:
+	text "Get out of here!"
+	done
+	
+RocketKey_Afterwards:
+	text "Don't talk to me!"
+	done
 
 LavRadioTower1F_MapEvents:
 	db 0, 0 ; filler
 
 	db 2 ; warp events
-	warp_event  2,  7, LAVENDER_TOWN, 7
-	warp_event  3,  7, LAVENDER_TOWN, 7
+	warp_event 16,  7, MAHOGANY_TOWN, 5
+	warp_event 17,  7, MAHOGANY_TOWN, 5
 
 	db 0 ; coord events
 
 	db 2 ; bg events
-	bg_event 11,  0, BGEVENT_READ, LavRadioTower1FDirectory
-	bg_event  5,  0, BGEVENT_READ, LavRadioTower1FPokeFluteSign
+	bg_event 16,  2, BGEVENT_READ, LavRadioTower1FDirectory
+	bg_event  6,  1, BGEVENT_READ, LavRadioTower1FPokeFluteSign
 
 	db 5 ; object events
-	object_event  6,  6, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, LavRadioTower1FReceptionistScript, -1
-	object_event 15,  1, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, LavRadioTower1FOfficerScript, -1
-	object_event  1,  3, SPRITE_SUPER_NERD, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, LavRadioTower1FSuperNerd1Script, -1
-	object_event  9,  1, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, LavRadioTower1FGentlemanScript, -1
-	object_event 14,  6, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, LavRadioTower1FSuperNerd2Script, -1
+	object_event  9,  4, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, LavRadioTower1FReceptionistScript, EVENT_ROUTE_5_6_POKEFAN_M_BLOCKS_UNDERGROUND_PATH
+	object_event 17,  4, SPRITE_BIRD, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, LavRadioTower1FOfficerScript, EVENT_ROUTE_5_6_POKEFAN_M_BLOCKS_UNDERGROUND_PATH
+	object_event 11,  2, SPRITE_ROCKET, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, LavRadioTower1FSuperNerd1Script, EVENT_ROUTE_5_6_POKEFAN_M_BLOCKS_UNDERGROUND_PATH
+	object_event 19,  4, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, LavRadioTower1FGentlemanScript, EVENT_ROUTE_5_6_POKEFAN_M_BLOCKS_UNDERGROUND_PATH
+	object_event 15,  4, SPRITE_ROCKET_GIRL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, LavRadioTower1FSuperNerd2Script, EVENT_ROUTE_5_6_POKEFAN_M_BLOCKS_UNDERGROUND_PATH

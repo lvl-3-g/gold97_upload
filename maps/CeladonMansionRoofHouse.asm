@@ -93,8 +93,7 @@ CeladonMansionRoofHousePharmacistStoryText:
 	para "SHRIEEEEK!"
 
 	para "The boy had been"
-	line "riding uphill on"
-	cont "CYCLING ROAD!"
+	line "riding uphill!"
 
 	para "…"
 	line "Ba-dum ba-dum!"
@@ -118,12 +117,12 @@ CeladonMansionRoofHouse_MapEvents:
 	db 0, 0 ; filler
 
 	db 2 ; warp events
-	warp_event  2,  7, CELADON_MANSION_ROOF, 3
 	warp_event  3,  7, CELADON_MANSION_ROOF, 3
+	warp_event  4,  7, CELADON_MANSION_ROOF, 3
 
 	db 0 ; coord events
 
 	db 0 ; bg events
 
 	db 1 ; object events
-	object_event  3,  2, SPRITE_PHARMACIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 2, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, CeladonMansionRoofHousePharmacistScript, -1
+	object_event  4,  3, SPRITE_PHARMACIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 2, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, CeladonMansionRoofHousePharmacistScript, -1

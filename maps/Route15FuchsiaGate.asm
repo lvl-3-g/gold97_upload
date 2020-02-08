@@ -1,5 +1,6 @@
 	const_def 2 ; object constants
 	const ROUTE15FUCHSIAGATE_OFFICER
+	const ROUTE15FUCHSIAGATE_FISHINGURU
 
 Route15FuchsiaGate_MapScripts:
 	db 0 ; scene scripts
@@ -8,6 +9,15 @@ Route15FuchsiaGate_MapScripts:
 
 Route15FuchsiaGateOfficerScript:
 	jumptextfaceplayer Route15FuchsiaGateOfficerText
+	
+Route15FuchsiaGateFishScript:
+	jumptextfaceplayer Route15FuchsiaGateFishText
+
+Route15FuchsiaGateFishText:
+	text "I think I'll head"
+	line "to the shore to do"
+	cont "some fishing."
+	done
 
 Route15FuchsiaGateOfficerText:
 	text "You're working on"
@@ -21,14 +31,15 @@ Route15FuchsiaGate_MapEvents:
 	db 0, 0 ; filler
 
 	db 4 ; warp events
-	warp_event  0,  4, FUCHSIA_CITY, 8
-	warp_event  0,  5, FUCHSIA_CITY, 9
-	warp_event  9,  4, ROUTE_15, 1
-	warp_event  9,  5, ROUTE_15, 2
+	warp_event  4,  0, CIANWOOD_CITY, 10
+	warp_event  5,  0, CIANWOOD_CITY, 11
+	warp_event  4,  7, ROUTE_7, 1
+	warp_event  5,  7, ROUTE_7, 2
 
 	db 0 ; coord events
 
 	db 0 ; bg events
 
-	db 1 ; object events
-	object_event  5,  2, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, Route15FuchsiaGateOfficerScript, -1
+	db 2 ; object events
+	object_event  0,  4, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, Route15FuchsiaGateOfficerScript, -1
+	object_event  6,  5, SPRITE_FISHING_GURU, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 1, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, Route15FuchsiaGateFishScript, -1

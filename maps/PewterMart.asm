@@ -32,23 +32,21 @@ PewterMartYoungsterText:
 	done
 
 PewterMartSuperNerdText:
-	text "There once was a"
-	line "weird old man who"
-	cont "sold MAGIKARP."
-
-	para "He was saying the"
-	line "MAGIKARP from the"
-
-	para "LAKE OF RAGE were"
-	line "excellent."
+	text "Whew!"
+	para "It's exceptionally"
+	line "hot outside today!"
+	para "I've come into the"
+	line "MART just to get"
+	para "away from all of"
+	line "the heat."
 	done
 
 PewterMart_MapEvents:
 	db 0, 0 ; filler
 
 	db 2 ; warp events
-	warp_event  2,  7, PEWTER_CITY, 3
-	warp_event  3,  7, PEWTER_CITY, 3
+	warp_event  4,  7, CIANWOOD_CITY, 4
+	warp_event  5,  7, CIANWOOD_CITY, 4
 
 	db 0 ; coord events
 
@@ -56,5 +54,5 @@ PewterMart_MapEvents:
 
 	db 3 ; object events
 	object_event  1,  3, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, PewterMartClerkScript, -1
-	object_event  9,  2, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 2, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, PewterMartYoungsterScript, -1
-	object_event  6,  6, SPRITE_SUPER_NERD, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, PewterMartSuperNerdScript, -1
+	object_event  4,  1, SPRITE_POKEFAN_F, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 2, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, PewterMartYoungsterScript, -1
+	object_event  9,  5, SPRITE_FISHING_GURU, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 1, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, PewterMartSuperNerdScript, -1

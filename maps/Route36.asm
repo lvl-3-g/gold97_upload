@@ -1,21 +1,31 @@
 	const_def 2 ; object constants
 	const ROUTE36_YOUNGSTER1
 	const ROUTE36_YOUNGSTER2
-	const ROUTE36_WEIRD_TREE
 	const ROUTE36_LASS1
-	const ROUTE36_FISHER
 	const ROUTE36_FRUIT_TREE
 	const ROUTE36_ARTHUR
-	const ROUTE36_FLORIA
-	const ROUTE36_SUICUNE
+	const ROUTE36_SILVER
+	const ROUTE36_YOUNGSTER3
+	const ROUTE36_YOUNGSTER4
+
 
 Route36_MapScripts:
 	db 2 ; scene scripts
 	scene_script .DummyScene0 ; SCENE_ROUTE36_NOTHING
-	scene_script .DummyScene1 ; SCENE_ROUTE36_SUICUNE
+	scene_script .DummyScene1 ; SCENE_ROUTE36_SILVER
 
-	db 1 ; callbacks
+	db 2 ; callbacks
 	callback MAPCALLBACK_OBJECTS, .ArthurCallback
+	callback MAPCALLBACK_NEWMAP, .CheckMomCall
+
+.CheckMomCall:
+	checkevent EVENT_TALKED_TO_MOM_AFTER_MYSTERY_EGG_QUEST
+	iffalse .DoMomCall
+	return
+
+.DoMomCall:
+	specialphonecall SPECIALCALL_WORRIED
+	return
 
 .DummyScene0:
 	end
@@ -33,136 +43,65 @@ Route36_MapScripts:
 	appear ROUTE36_ARTHUR
 	return
 
-Route36SuicuneScript:
-	showemote EMOTE_SHOCK, PLAYER, 15
-	pause 15
-	playsound SFX_WARP_FROM
-	turnobject PLAYER, UP
-	applymovement ROUTE36_SUICUNE, Route36SuicuneMovement
-	disappear ROUTE36_SUICUNE
-	turnobject PLAYER, DOWN
-	pause 10
-	setscene SCENE_ROUTE36_NOTHING
-	clearevent EVENT_SAW_SUICUNE_AT_CIANWOOD_CITY
-	setmapscene CIANWOOD_CITY, SCENE_CIANWOODCITY_SUICUNE_AND_EUSINE
-	end
 
-SudowoodoScript:
-	checkitem SQUIRTBOTTLE
-	iftrue .Fight
 
-	waitsfx
-	playsound SFX_SANDSTORM
-	applymovement ROUTE36_WEIRD_TREE, SudowoodoShakeMovement
-	end
+;Route36RockSmashGuyScript:
+;	faceplayer
+;	opentext
+;	checkevent EVENT_GOT_TM08_ROCK_SMASH
+;	iftrue .AlreadyGotRockSmash
+;	checkevent EVENT_FOUGHT_SUDOWOODO
+;	iftrue .ClearedSudowoodo
+;	writetext RockSmashGuyText1
+;	waitbutton
+;	closetext
+;	end
+;
+;.ClearedSudowoodo:
+;	writetext RockSmashGuyText2
+;	buttonsound
+;	verbosegiveitem HM_ROCK_SMASH
+;	iffalse .NoRoomForTM
+;	setevent EVENT_GOT_TM08_ROCK_SMASH
+;.AlreadyGotRockSmash:
+;	writetext RockSmashGuyText3
+;	waitbutton
+;.NoRoomForTM:
+;	closetext
+;	end
 
-.Fight:
+
+TrainerYoungsterSamuel:
+	trainer YOUNGSTER, SAMUEL, EVENT_BEAT_YOUNGSTER_SAMUEL, YoungsterSamuelSeenText, YoungsterSamuelBeatenText, 0, .Script
+
+.Script:
+	endifjustbattled
 	opentext
-	writetext UseSquirtbottleText
-	yesorno
-	iffalse DidntUseSquirtbottleScript
+	writetext YoungsterSamuelAfterText
+	waitbutton
 	closetext
-WateredWeirdTreeScript:: ; export (for when you use Squirtbottle from pack)
+	end
+
+TrainerYoungsterIan:
+	trainer YOUNGSTER, IAN, EVENT_BEAT_YOUNGSTER_IAN, YoungsterIanSeenText, YoungsterIanBeatenText, 0, .Script
+
+.Script:
+	endifjustbattled
 	opentext
-	writetext UsedSquirtbottleText
-	waitbutton
-	closetext
-	waitsfx
-	playsound SFX_SANDSTORM
-	applymovement ROUTE36_WEIRD_TREE, SudowoodoShakeMovement
-	opentext
-	writetext SudowoodoAttackedText
-	waitbutton
-	closetext
-	loadwildmon SUDOWOODO, 20
-	startbattle
-	setevent EVENT_FOUGHT_SUDOWOODO
-	ifequal $2, DidntCatchSudowoodo
-	disappear ROUTE36_WEIRD_TREE
-	variablesprite SPRITE_WEIRD_TREE, SPRITE_TWIN
-	reloadmapafterbattle
-	end
-
-DidntUseSquirtbottleScript:
-	closetext
-	end
-
-DidntCatchSudowoodo:
-	reloadmapafterbattle
-	applymovement ROUTE36_WEIRD_TREE, WeirdTreeMovement_Flee
-	disappear ROUTE36_WEIRD_TREE
-	variablesprite SPRITE_WEIRD_TREE, SPRITE_TWIN
-	special LoadUsedSpritesGFX
-	special RefreshSprites
-	end
-
-Route36FloriaScript:
-	faceplayer
-	opentext
-	checkevent EVENT_TALKED_TO_FLORIA_AT_FLOWER_SHOP
-	iftrue .SecondTimeTalking
-	setevent EVENT_MET_FLORIA
-	writetext FloriaText1
-	waitbutton
-	closetext
-	clearevent EVENT_FLORIA_AT_FLOWER_SHOP
-	checkcode VAR_FACING
-	ifequal UP, .Up
-	applymovement ROUTE36_FLORIA, FloriaMovement1
-	disappear ROUTE36_FLORIA
-	end
-
-.Up:
-	applymovement ROUTE36_FLORIA, FloriaMovement2
-	disappear ROUTE36_FLORIA
-	end
-
-.SecondTimeTalking:
-	writetext FloriaText2
+	writetext YoungsterIanAfterText
 	waitbutton
 	closetext
 	end
 
-Route36RockSmashGuyScript:
-	faceplayer
-	opentext
-	checkevent EVENT_GOT_TM08_ROCK_SMASH
-	iftrue .AlreadyGotRockSmash
-	checkevent EVENT_FOUGHT_SUDOWOODO
-	iftrue .ClearedSudowoodo
-	writetext RockSmashGuyText1
-	waitbutton
-	closetext
-	end
-
-.ClearedSudowoodo:
-	writetext RockSmashGuyText2
-	buttonsound
-	verbosegiveitem TM_ROCK_SMASH
-	iffalse .NoRoomForTM
-	setevent EVENT_GOT_TM08_ROCK_SMASH
-.AlreadyGotRockSmash:
-	writetext RockSmashGuyText3
-	waitbutton
-.NoRoomForTM:
-	closetext
-	end
 
 Route36LassScript:
 	faceplayer
 	opentext
-	checkevent EVENT_FOUGHT_SUDOWOODO
-	iftrue .ClearedSudowoodo
 	writetext Route36LassText
 	waitbutton
 	closetext
 	end
 
-.ClearedSudowoodo:
-	writetext Route36LassText_ClearedSudowoodo
-	waitbutton
-	closetext
-	end
 
 TrainerSchoolboyAlan1:
 	trainer SCHOOLBOY, ALAN1, EVENT_BEAT_SCHOOLBOY_ALAN, SchoolboyAlan1SeenText, SchoolboyAlan1BeatenText, 0, .Script
@@ -205,16 +144,16 @@ TrainerSchoolboyAlan1:
 	ifequal 1, .Fight1
 	ifequal 0, .LoadFight0
 .Fight4:
-	checkevent EVENT_RESTORED_POWER_TO_KANTO
+	checkevent EVENT_BEAT_ELITE_FOUR
 	iftrue .LoadFight4
 .Fight3:
-	checkevent EVENT_BEAT_ELITE_FOUR
+	checkevent EVENT_CLEARED_RADIO_TOWER
 	iftrue .LoadFight3
 .Fight2:
-	checkflag ENGINE_FLYPOINT_BLACKTHORN
+	checkevent EVENT_BEAT_PRYCE
 	iftrue .LoadFight2
 .Fight1:
-	checkflag ENGINE_FLYPOINT_OLIVINE
+	checkevent EVENT_BEAT_MORTY
 	iftrue .LoadFight1
 .LoadFight0:
 	loadtrainer SCHOOLBOY, ALAN1
@@ -349,6 +288,62 @@ ArthurNotThursdayScript:
 	closetext
 	end
 
+Route36SilverScript:
+	applymovement PLAYER, Movement_36DownOne
+	playsound SFX_EXIT_BUILDING
+	moveobject ROUTE36_SILVER, 6, 5
+	appear ROUTE36_SILVER
+	applymovement ROUTE36_SILVER, Movement_36SilverDownOne
+	special FadeOutMusic
+	playmusic MUSIC_RIVAL_ENCOUNTER
+	opentext
+	writetext Route36RivalBeforeText
+	waitbutton
+	closetext
+	checkevent EVENT_GOT_TOTODILE_FROM_ELM
+	iftrue .Totodile
+	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
+	iftrue .Chikorita
+	winlosstext Route36SilverWinText, Route36SilverLossText
+	loadtrainer RIVAL1, RIVAL1_2_TOTODILE
+	startbattle
+	dontrestartmapmusic
+	reloadmapafterbattle
+	jump .AfterBattle
+
+.Totodile:
+	winlosstext Route36SilverWinText, Route36SilverLossText
+	loadtrainer RIVAL1, RIVAL1_2_CHIKORITA
+	startbattle
+	dontrestartmapmusic
+	reloadmapafterbattle
+	jump .AfterBattle
+
+.Chikorita:
+	winlosstext Route36SilverWinText, Route36SilverLossText
+	loadtrainer RIVAL1, RIVAL1_2_CYNDAQUIL
+	startbattle
+	dontrestartmapmusic
+	reloadmapafterbattle
+	jump .AfterBattle
+
+.AfterBattle:
+	playmusic MUSIC_RIVAL_AFTER
+	opentext
+	writetext Route36RivalAfterText
+	waitbutton
+	closetext
+	applymovement ROUTE36_SILVER, Route36RivalBattleExitMovement
+	playsound SFX_ENTER_DOOR
+	disappear ROUTE36_SILVER
+	setscene SCENE_ROUTE36_NOTHING
+	waitsfx
+	playmapmusic
+	end
+
+Route36SilverTalkScript:
+	end
+
 Route36Sign:
 	jumptext Route36SignText
 
@@ -360,6 +355,9 @@ Route36TrainerTips1:
 
 Route36TrainerTips2:
 	jumptext Route36TrainerTips2Text
+	
+Route36GameHouse:
+	jumptext Route36GameHouseText
 
 Route36FruitTree:
 	fruittree FRUITTREE_ROUTE_36
@@ -371,6 +369,15 @@ SudowoodoShakeMovement:
 WeirdTreeMovement_Flee:
 	fast_jump_step UP
 	fast_jump_step UP
+	step_end
+	
+Movement_36DownOne:
+	step DOWN
+	turn_head UP
+	step_end
+	
+Movement_36SilverDownOne
+	step DOWN
 	step_end
 
 FloriaMovement1:
@@ -407,6 +414,58 @@ Route36SuicuneMovement:
 	fast_jump_step RIGHT
 	remove_sliding
 	step_end
+	
+Route36RivalBattleExitMovement:
+	step UP
+	step_end
+	
+Route36SilverWinText:
+	text "Wow! Looks like"
+	line "you've been"
+	para "working hard to"
+	line "raise your"
+	cont "#MON!"
+	done
+	
+Route36SilverLossText
+	text "My team is the"
+	line "best!"
+	done
+	
+Route36RivalBeforeText:
+	text "<PLAY_G>!"
+	para "You gotta check"
+	line "out WEST CITY!"
+	para "There's a giant"
+	line "MART and a RADIO"
+	cont "TOWER, and..."
+	para "Oh, yeah!"
+	para "I've started the"
+	line "LEAGUE challenge!"
+	para "I heard you have,"
+	line "too, <PLAY_G>!"
+	para "This will be a"
+	line "great way to show"
+	para "the world how"
+	line "my team is the"
+	para "strongest there"
+	line "is!"
+	para "I've also been out"
+	line "catching some"
+	cont "#MON!"
+	para "Have you? Let's"
+	line "battle to see"
+	cont "whose are better!"
+	done
+	
+Route36RivalAfterText:
+	text "Whew! It was good"
+	line "catching up with"
+	cont "you, <PLAY_G>!"
+	para "I'm heading back"
+	line "into the city!"
+	para "See you around!"
+	done
 
 UseSquirtbottleText:
 	text "It's a weird tree."
@@ -522,24 +581,15 @@ UnknownText_0x1945b8:
 	done
 
 Route36LassText:
-	text "An odd tree is"
+	text "A small tree is"
 	line "blocking the way"
-	cont "to GOLDENROD CITY."
+	cont "to WEST CITY."
 
-	para "It's preventing"
-	line "me from shopping."
-
-	para "Something should"
-	line "be done about it."
-	done
-
-Route36LassText_ClearedSudowoodo:
-	text "That odd tree dis-"
-	line "appeared without a"
-	cont "trace."
-
-	para "Oh! That tree was"
-	line "really a #MON?"
+	para "If you need to"
+	line "get through, a"
+	para "#MON could"
+	line "probably CUT the"
+	cont "tree."
 	done
 
 PsychicMarkSeenText:
@@ -618,7 +668,9 @@ ArthurNotThursdayText:
 	done
 
 Route36SignText:
-	text "ROUTE 36"
+	text "ROUTE 102"
+	para "OLD CITY -"
+	line "WEST CITY"
 	done
 
 RuinsOfAlphNorthSignText:
@@ -656,33 +708,74 @@ Route36TrainerTips2Text:
 	para "caves and other"
 	line "landmarks."
 	done
+	
+Route36GameHouseText:
+	text "Come and take a"
+	line "break!"
+	para "GAME HOUSE"
+	done
+	
+
+
+YoungsterSamuelSeenText:
+	text "This is where I do"
+	line "my training!"
+	done
+
+YoungsterSamuelBeatenText:
+	text "Beaten by a"
+	line "passing stranger!"
+	done
+
+YoungsterSamuelAfterText:
+	text "I'm going to train"
+	line "even harder."
+
+	para "After all, I'm"
+	line "trying to become"
+	cont "a GYM LEADER."
+	done
+
+YoungsterIanSeenText:
+	text "I'm the best in my"
+	line "class at #MON."
+	para "It's honestly not"
+	line "even close."
+	done
+
+YoungsterIanBeatenText:
+	text "No! There are bet-"
+	line "ter trainers…"
+	done
+
+YoungsterIanAfterText:
+	text "I guess I gotta"
+	line "try even harder."
+	done
+
 
 Route36_MapEvents:
 	db 0, 0 ; filler
 
-	db 4 ; warp events
-	warp_event 18,  8, ROUTE_36_NATIONAL_PARK_GATE, 3
-	warp_event 18,  9, ROUTE_36_NATIONAL_PARK_GATE, 4
-	warp_event 47, 13, ROUTE_36_RUINS_OF_ALPH_GATE, 1
-	warp_event 48, 13, ROUTE_36_RUINS_OF_ALPH_GATE, 2
+	db 2 ; warp events
+	warp_event  6,  5, NEW_VIOLET_GATE_NORTH, 4
+	warp_event 16,  4, GOLDENROD_FLOWER_SHOP, 1
 
-	db 2 ; coord events
-	coord_event 20,  7, SCENE_ROUTE36_SUICUNE, Route36SuicuneScript
-	coord_event 22,  7, SCENE_ROUTE36_SUICUNE, Route36SuicuneScript
+	db 1 ; coord events
+	coord_event  6,  6, SCENE_ROUTE36_SILVER, Route36SilverScript
 
 	db 4 ; bg events
-	bg_event 29,  1, BGEVENT_READ, Route36TrainerTips2
-	bg_event 45, 11, BGEVENT_READ, RuinsOfAlphNorthSign
-	bg_event 55,  7, BGEVENT_READ, Route36Sign
-	bg_event 21,  7, BGEVENT_READ, Route36TrainerTips1
+	bg_event 22, 10, BGEVENT_READ, Route36TrainerTips2
+	bg_event 50, 10, BGEVENT_READ, Route36Sign
+	bg_event 32, 10, BGEVENT_READ, Route36TrainerTips1
+	bg_event 18,  4, BGEVENT_READ, Route36GameHouse
 
-	db 9 ; object events
-	object_event 20, 13, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerPsychicMark, -1
-	object_event 31, 14, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 5, TrainerSchoolboyAlan1, -1
-	object_event 35,  9, SPRITE_WEIRD_TREE, SPRITEMOVEDATA_SUDOWOODO, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, SudowoodoScript, EVENT_ROUTE_36_SUDOWOODO
-	object_event 51,  8, SPRITE_LASS, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 2, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route36LassScript, -1
-	object_event 44,  9, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route36RockSmashGuyScript, -1
-	object_event 21,  4, SPRITE_FRUIT_TREE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route36FruitTree, -1
-	object_event 46,  6, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ArthurScript, EVENT_ROUTE_36_ARTHUR_OF_THURSDAY
-	object_event 33, 12, SPRITE_LASS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, Route36FloriaScript, EVENT_FLORIA_AT_SUDOWOODO
-	object_event 21,  6, SPRITE_SUICUNE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_SAW_SUICUNE_ON_ROUTE_36
+	db 8 ; object events
+	object_event  6, 10, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerPsychicMark, -1
+	object_event 29,  6, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 5, TrainerSchoolboyAlan1, -1
+	object_event 50,  7, SPRITE_LASS, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 2, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route36LassScript, -1
+	object_event 38,  4, SPRITE_FRUIT_TREE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route36FruitTree, -1
+	object_event 40,  8, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ArthurScript, EVENT_ROUTE_36_ARTHUR_OF_THURSDAY
+	object_event  1,  1, SPRITE_SILVER, SPRITEMOVEDATA_STANDING_DOWN, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route36SilverTalkScript, EVENT_ROUTE_36_SILVER
+	object_event 12, 11, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerYoungsterSamuel, -1
+	object_event 20,  8, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 1, 1, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 4, TrainerYoungsterIan, -1

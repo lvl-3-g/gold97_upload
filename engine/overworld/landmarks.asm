@@ -70,7 +70,7 @@ RegionCheck:
 	cp KANTO_LANDMARK
 	jr c, .johto
 
-; Victory Road area is considered to be Johto.
+;Victory Road area is considered to be Johto.
 	cp VICTORY_ROAD
 	jr c, .kanto
 

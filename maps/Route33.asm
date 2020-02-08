@@ -1,209 +1,436 @@
 	const_def 2 ; object constants
-	const ROUTE33_POKEFAN_M
 	const ROUTE33_LASS
 	const ROUTE33_FRUIT_TREE
+	const ROUTE33_GARDENER
+	const ROUTE33_SUPER_NERD
+	const ROUTE33_POKEFAN_M
+	const ROUTE33_FIREBREATHER
+	const ROUTE33_CAMPER
+	const ROUTE33_TEACHER
+	const ROUTE33_OFFICER
+	const ROUTE33_TUSCANY
+	const ROUTE33_ITEMBALL
 
 Route33_MapScripts:
-	db 0 ; scene scripts
+	db 2 ; scene scripts
+	scene_script .SceneRoute33Gardener ; SCENE_DEFAULT
+	scene_script .SceneRoute33Nothing ;
 
-	db 0 ; callbacks
+	db 1 ; callbacks
+	callback MAPCALLBACK_OBJECTS, .Tuscany
 
+
+.SceneRoute33Gardener
+	end
+
+.SceneRoute33Nothing
+	end
+
+.Tuscany:
+	checkflag ENGINE_ZEPHYRBADGE
+	iftrue .DoesTuscanyAppear
+
+.TuscanyDisappears:
+	disappear ROUTE33_TUSCANY
+	return
+
+.DoesTuscanyAppear:
+	checkcode VAR_WEEKDAY
+	ifnotequal TUESDAY, .TuscanyDisappears
+	appear ROUTE33_TUSCANY
+	return
+	
+GardenerStopsYou:
+	jump Route33GardenerScript
+	end
+
+GardenerStopsYou2:
+	jump Route33GardenerScript
+	end
+
+Route33GardenerScript:
+	showemote EMOTE_SHOCK, ROUTE33_GARDENER, 15
+	opentext
+	writetext DontStepFlowers
+	waitbutton
+	closetext
+	applymovement PLAYER, Movement_1LEFT
+	end
+	
+Route33GardenerWateringScript:
+	opentext
+	writetext LaDiDa
+	waitbutton
+	closetext
+	end
+	
 Route33LassScript:
 	jumptextfaceplayer Route33LassText
 
-TrainerHikerAnthony:
-	trainer HIKER, ANTHONY2, EVENT_BEAT_HIKER_ANTHONY, HikerAnthony2SeenText, HikerAnthony2BeatenText, 0, .Script
+Route33TeacherScript:
+	jumptextfaceplayer Route33TeacherText
 
+
+Route33Sign:
+	jumptext Route33SignText
+	
+Route33SignActual:
+	jumptext Route33SignActualText
+
+Route33FruitTree:
+	fruittree FRUITTREE_ROUTE_33
+	
+Movement_1LEFT:
+	step LEFT
+	step_end
+
+TrainerSupernerdSam:
+	trainer SUPER_NERD, SAM, EVENT_BEAT_SUPER_NERD_SAM, SupernerdSamSeenText, SupernerdSamBeatenText, 0, .Script
+	
 .Script:
-	writecode VAR_CALLERID, PHONE_HIKER_ANTHONY
 	endifjustbattled
 	opentext
-	checkflag ENGINE_ANTHONY
-	iftrue .Rematch
-	checkflag ENGINE_DUNSPARCE_SWARM
-	iftrue .Swarm
-	checkcellnum PHONE_HIKER_ANTHONY
-	iftrue .NumberAccepted
-	checkevent EVENT_ANTHONY_ASKED_FOR_PHONE_NUMBER
-	iftrue .AskAgain
-	writetext HikerAnthony2AfterText
-	buttonsound
-	setevent EVENT_ANTHONY_ASKED_FOR_PHONE_NUMBER
-	scall .AskNumber1
-	jump .AskForPhoneNumber
-
-.AskAgain:
-	scall .AskNumber2
-.AskForPhoneNumber:
-	askforphonenumber PHONE_HIKER_ANTHONY
-	ifequal PHONE_CONTACTS_FULL, .PhoneFull
-	ifequal PHONE_CONTACT_REFUSED, .NumberDeclined
-	trainertotext HIKER, ANTHONY2, MEM_BUFFER_0
-	scall .RegisteredNumber
-	jump .NumberAccepted
-
-.Rematch:
-	scall .RematchStd
-	winlosstext HikerAnthony2BeatenText, 0
-	copybytetovar wAnthonyFightCount
-	ifequal 4, .Fight4
-	ifequal 3, .Fight3
-	ifequal 2, .Fight2
-	ifequal 1, .Fight1
-	ifequal 0, .LoadFight0
-.Fight4:
-	checkevent EVENT_RESTORED_POWER_TO_KANTO
-	iftrue .LoadFight4
-.Fight3:
-	checkevent EVENT_BEAT_ELITE_FOUR
-	iftrue .LoadFight3
-.Fight2:
-	checkevent EVENT_CLEARED_RADIO_TOWER
-	iftrue .LoadFight2
-.Fight1:
-	checkflag ENGINE_FLYPOINT_OLIVINE
-	iftrue .LoadFight1
-.LoadFight0:
-	loadtrainer HIKER, ANTHONY2
-	startbattle
-	reloadmapafterbattle
-	loadvar wAnthonyFightCount, 1
-	clearflag ENGINE_ANTHONY
+	writetext SupernerdSamAfterBattleText
+	waitbutton
+	closetext
 	end
+	
 
-.LoadFight1:
-	loadtrainer HIKER, ANTHONY1
-	startbattle
-	reloadmapafterbattle
-	loadvar wAnthonyFightCount, 2
-	clearflag ENGINE_ANTHONY
-	end
-
-.LoadFight2:
-	loadtrainer HIKER, ANTHONY3
-	startbattle
-	reloadmapafterbattle
-	loadvar wAnthonyFightCount, 3
-	clearflag ENGINE_ANTHONY
-	end
-
-.LoadFight3:
-	loadtrainer HIKER, ANTHONY4
-	startbattle
-	reloadmapafterbattle
-	loadvar wAnthonyFightCount, 4
-	clearflag ENGINE_ANTHONY
-	end
-
-.LoadFight4:
-	loadtrainer HIKER, ANTHONY5
-	startbattle
-	reloadmapafterbattle
-	clearflag ENGINE_ANTHONY
-	end
-
-.Swarm:
-	writetext HikerAnthonyDunsparceText
+TrainerHikerDaniel:
+	trainer HIKER, DANIEL, EVENT_BEAT_HIKER_DANIEL, HikerDanielSeenText, HikerDanielBeatenText, 0, .Script
+	
+.Script:
+	endifjustbattled
+	opentext
+	writetext HikerDanielAfterBattleText
 	waitbutton
 	closetext
 	end
 
-.AskNumber1:
-	jumpstd asknumber1m
+
+TrainerFirebreatherBurt:
+	trainer FIREBREATHER, BURT, EVENT_BEAT_FIREBREATHER_BURT, FirebreatherBurtSeenText, FirebreatherBurtBeatenText, 0, .Script
+	
+.Script:
+	endifjustbattled
+	opentext
+	writetext FirebreatherBurtAfterBattleText
+	waitbutton
+	closetext
 	end
 
-.AskNumber2:
-	jumpstd asknumber2m
+
+TrainerCamperElliot:
+	trainer CAMPER, ELLIOT, EVENT_BEAT_CAMPER_ELLIOT, CamperElliotSeenText, CamperElliotBeatenText, 0, .Script
+	
+.Script:
+	endifjustbattled
+	opentext
+	writetext CamperElliotAfterBattleText
+	waitbutton
+	closetext
 	end
 
-.RegisteredNumber:
-	jumpstd registerednumberm
+TrainerOfficerDirk:
+	faceplayer
+	opentext
+	checktime NITE
+	iffalse .NotNight
+	checkevent EVENT_BEAT_OFFICER_DIRK
+	iftrue .AfterBattle
+	playmusic MUSIC_OFFICER_ENCOUNTER
+	writetext OfficerDirkSeenText
+	waitbutton
+	closetext
+	winlosstext OfficerDirkBeatenText, 0
+	loadtrainer OFFICER, DIRK
+	startbattle
+	reloadmapafterbattle
+	setevent EVENT_BEAT_OFFICER_DIRK
+	closetext
 	end
 
-.NumberAccepted:
-	jumpstd numberacceptedm
+.AfterBattle:
+	writetext OfficerDirkAfterBattleText
+	waitbutton
+	closetext
 	end
 
-.NumberDeclined:
-	jumpstd numberdeclinedm
+.NotNight:
+	writetext OfficerDirkPrettyToughText
+	waitbutton
+	closetext
 	end
 
-.PhoneFull:
-	jumpstd phonefullm
+TuscanyScript:
+	faceplayer
+	opentext
+	checkevent EVENT_GOT_PINK_BOW_FROM_TUSCANY
+	iftrue TuscanyTuesdayScript
+	checkcode VAR_WEEKDAY
+	ifnotequal TUESDAY, TuscanyNotTuesdayScript
+	checkevent EVENT_MET_TUSCANY_OF_TUESDAY
+	iftrue .MetTuscany
+	writetext MeetTuscanyText
+	buttonsound
+	setevent EVENT_MET_TUSCANY_OF_TUESDAY
+.MetTuscany:
+	writetext TuscanyGivesGiftText
+	buttonsound
+	verbosegiveitem PINK_BOW
+	iffalse TuscanyDoneScript
+	setevent EVENT_GOT_PINK_BOW_FROM_TUSCANY
+	writetext TuscanyGaveGiftText
+	waitbutton
+	closetext
 	end
 
-.RematchStd:
-	jumpstd rematchm
+TuscanyTuesdayScript:
+	writetext TuscanyTuesdayText
+	waitbutton
+TuscanyDoneScript:
+	closetext
 	end
 
-Route33Sign:
-	jumptext Route33SignText
+TuscanyNotTuesdayScript:
+	writetext TuscanyNotTuesdayText
+	waitbutton
+	closetext
+	end
+	
+Route33TMEndure:
+	itemball TM_ENDURE
 
-Route33FruitTree:
-	fruittree FRUITTREE_ROUTE_33
-
-HikerAnthony2SeenText:
-	text "I came through the"
-	line "tunnel, but I"
-
-	para "still have plenty"
-	line "of energy left."
-	done
-
-HikerAnthony2BeatenText:
-	text "Whoa! You've got"
-	line "more zip than me!"
-	done
-
-HikerAnthony2AfterText:
-	text "We HIKERS are at"
-	line "our best in the"
-	cont "mountains."
-	done
-
-HikerAnthonyDunsparceText:
-	text "Hey, did you get a"
-	line "DUNSPARCE?"
-
-	para "I caught one too."
-
-	para "Take a look at it"
-	line "in the light. It's"
-	cont "got a funny face!"
-	done
 
 Route33LassText:
 	text "Pant, pant…"
 
-	para "I finally got"
-	line "through that cave."
+	para "It's a long walk"
+	line "just to get this"
+	cont "far."
+	para "But there's still"
+	line "a long way to go"
+	cont "to NUTYPE CITY."
+	para "NIHON FOREST is a"
+	line "maze."
+	para "I need to make"
+	line "sure I'm ready."
+	done
 
-	para "It was much bigger"
-	line "than I'd expected."
+Route33TeacherText:
+	text "I'm confused."
+	para "I came though this"
+	line "route by going"
+	cont "down this ledge."
+	para "But I can't figure"
+	line "out my way back"
+	cont "to BIRDON TOWN."
+	para "There's got to be"
+	line "a way around..."
+	done
 
-	para "I got too tired to"
-	line "explore the whole"
+DontStepFlowers:
+	text "Hey!"
+	para "Don't step there!"
+	para "I work really hard"
+	line "getting my garden"
+	para "to look nice in"
+	line "such a dry area!"
+	para "Don't trample my"
+	line "flowers!"
+	done
 
-	para "thing, so I came"
-	line "outside."
+LaDiDa:
+	text "La-Di-Da!"
+	para "Oh, how I enjoy"
+	line "tending to my"
+	cont "garden!"
+	done
+
+
+SupernerdSamSeenText:
+	text "Do you collect"
+	line "rare #MON?"
+	done
+
+SupernerdSamBeatenText:
+	text "Oi!"
+	done
+
+SupernerdSamAfterBattleText:
+	text "I collect rare"
+	line "#MON."
+	para "Or at least, I"
+	line "wish I did."
+	done
+	
+HikerDanielSeenText:
+	text "I'm setting out"
+	line "on a long hike."
+	para "Let's see how"
+	line "prepared I am!"
+	done
+
+HikerDanielBeatenText:
+	text "Foot cramps!"
+	done
+
+HikerDanielAfterBattleText:
+	text "Looks like I need"
+	line "to make sure I'm"
+	para "up for the long"
+	line "journey."
+	done
+
+FirebreatherBurtSeenText:
+	text "Can you take the"
+	line "heat that I'm"
+	cont "about to give?"
+	done
+
+FirebreatherBurtBeatenText:
+	text "Ow, hot!"
+	done
+
+FirebreatherBurtAfterBattleText:
+	text "This ROUTE is too"
+	line "hot!"
+	done
+
+
+CamperElliotSeenText:
+	text "I'm on my way"
+	line "to go camping"
+	cont "in the FOREST!"
+	done
+
+CamperElliotBeatenText:
+	text "I'm beat!"
+	done
+
+CamperElliotAfterBattleText:
+	text "This area is"
+	line "pretty dry."
+	para "But the FOREST up"
+	line "ahead is a lot"
+	cont "less arid."
+	done
+	
+
+OfficerDirkSeenText:
+	text "Danger lurks in"
+	line "the night!"
+	done
+
+OfficerDirkBeatenText:
+	text "Whoops!"
+	done
+
+OfficerDirkAfterBattleText:
+	text "You know, night-"
+	line "time is fun in its"
+	cont "own ways."
+
+	para "But don't overdo"
+	line "it, OK?"
+	done
+
+OfficerDirkPrettyToughText:
+	text "Your #MON look"
+	line "pretty tough."
+
+	para "You could go any-"
+	line "where safely."
 	done
 
 Route33SignText:
-	text "ROUTE 33"
+	text "GEOFFREY the"
+	line "Gardener's house"
+	done
+	
+Route33SignActualText:
+	text "ROUTE 104"
+	line "BIRDON TOWN -"
+	cont "NUTYPE CITY"
+	done
+	
+
+MeetTuscanyText:
+	text "TUSCANY: I do be-"
+	line "lieve that this is"
+
+	para "the first time"
+	line "we've met?"
+
+	para "Please allow me to"
+	line "introduce myself."
+
+	para "I am TUSCANY of"
+	line "Tuesday."
+	done
+
+TuscanyGivesGiftText:
+	text "By way of intro-"
+	line "duction, please"
+
+	para "accept this gift,"
+	line "a PINK BOW."
+	done
+
+TuscanyGaveGiftText:
+	text "TUSCANY: Wouldn't"
+	line "you agree that it"
+	cont "is most adorable?"
+
+	para "It strengthens"
+	line "normal-type moves."
+
+	para "I am certain it"
+	line "will be of use."
+	done
+
+TuscanyTuesdayText:
+	text "TUSCANY: Have you"
+	line "met MONICA, my"
+	cont "older sister?"
+
+	para "Or my younger"
+	line "brother, WESLEY?"
+
+	para "I am the second of"
+	line "seven children."
+	done
+
+TuscanyNotTuesdayText:
+	text "TUSCANY: Today is"
+	line "not Tuesday. That"
+	cont "is unfortunate…"
 	done
 
 Route33_MapEvents:
 	db 0, 0 ; filler
 
 	db 1 ; warp events
-	warp_event 11,  9, UNION_CAVE_1F, 3
+	warp_event 55,  7, ROUTE_30_BERRY_HOUSE, 1
 
-	db 0 ; coord events
+	db 2 ; coord events
+	coord_event 52, 12, SCENE_DEFAULT, GardenerStopsYou
+	coord_event 52, 13, SCENE_DEFAULT, GardenerStopsYou2
 
-	db 1 ; bg events
-	bg_event 11, 11, BGEVENT_READ, Route33Sign
+	db 2 ; bg events
+	bg_event 56,  8, BGEVENT_READ, Route33Sign
+	bg_event  6,  8, BGEVENT_READ, Route33SignActual
 
-	db 3 ; object events
-	object_event  6, 13, SPRITE_POKEFAN_M, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 2, TrainerHikerAnthony, -1
-	object_event 13, 16, SPRITE_LASS, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, Route33LassScript, -1
-	object_event 14, 16, SPRITE_FRUIT_TREE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route33FruitTree, -1
+	db 11 ; object events
+	object_event 88,  7, SPRITE_LASS, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, Route33LassScript, -1
+	object_event 61,  7, SPRITE_FRUIT_TREE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route33FruitTree, -1
+	object_event 52, 11, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route33GardenerWateringScript, EVENT_ROUTE_5_6_POKEFAN_M_BLOCKS_UNDERGROUND_PATH
+	object_event 59,  2, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 4, TrainerSupernerdSam, -1
+	object_event 12, 12, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 2, TrainerHikerDaniel, -1
+	object_event 82, 13, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 3, TrainerFirebreatherBurt, -1
+	object_event 45,  8, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 2, TrainerCamperElliot, -1
+	object_event 24, 13, SPRITE_TEACHER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 1, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, Route33TeacherScript, -1
+	object_event 76, 10, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, TrainerOfficerDirk, -1
+	object_event 48,  5, SPRITE_TEACHER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, TuscanyScript, EVENT_ROUTE_29_TUSCANY_OF_TUESDAY
+	object_event 68,  4, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route33TMEndure, EVENT_BURNED_TOWER_B1F_TM_ENDURE
+

@@ -5,6 +5,7 @@
 	const ROUTE9_LASS2
 	const ROUTE9_POKEFAN_M1
 	const ROUTE9_POKEFAN_M2
+	const ROUTE9_COOLTRAINER
 
 Route9_MapScripts:
 	db 0 ; scene scripts
@@ -66,6 +67,17 @@ TrainerHikerTim:
 	closetext
 	end
 
+TrainerSportsmanJacob:
+	trainer SPORTSMAN, JACOB, EVENT_BEAT_SPORTSMAN_JACOB, SportsmanJacobSeenText, SportsmanJacobBeatenText, 0, .Script
+
+.Script:
+	endifjustbattled
+	opentext
+	writetext SportsmanJacobAfterBattleText
+	waitbutton
+	closetext
+	end
+
 TrainerHikerSidney:
 	trainer HIKER, SIDNEY, EVENT_BEAT_HIKER_SIDNEY, HikerSidneySeenText, HikerSidneyBeatenText, 0, .Script
 
@@ -82,10 +94,27 @@ Route9Sign:
 
 Route9HiddenEther:
 	hiddenitem ETHER, EVENT_ROUTE_9_HIDDEN_ETHER
+	
+SportsmanJacobSeenText:
+	text "I'm taking a break"
+	line "after a long jog"
+	cont "here."
+	done
+	
+SportsmanJacobBeatenText:
+	text "Now that's not"
+	line "what I expected."
+	done
+	
+SportsmanJacobAfterBattleText:
+	text "Jogging with"
+	line "#MON is a good"
+	cont "way to train."
+	done
 
 CamperDeanSeenText:
-	text "I came to explore"
-	line "ROCK TUNNEL."
+	text "Have you ever been"
+	line "to KANTO?"
 	done
 
 CamperDeanBeatenText:
@@ -93,15 +122,8 @@ CamperDeanBeatenText:
 	done
 
 CamperDeanAfterBattleText:
-	text "My #MON were"
-	line "hurt before even"
-
-	para "entering ROCK"
-	line "TUNNEL."
-
-	para "I'd better take"
-	line "them to a #MON"
-	cont "CENTER right away."
+	text "I prefer camping"
+	line "in NIHON FOREST."
 	done
 
 PicnickerHeidiSeenText:
@@ -160,11 +182,8 @@ PicnickerEdnaAfterBattleText:
 
 HikerTimSeenText:
 	text "She'll be coming"
-	line "'round MT.SILVER"
+	line "'round MT.FUJI"
 	cont "when she comes…"
-
-	para "MT.SILVER is in"
-	line "JOHTO, right?"
 	done
 
 HikerTimBeatenText:
@@ -191,34 +210,37 @@ HikerSidneyBeatenText:
 	done
 
 HikerSidneyAfterBattleText:
-	text "The POWER PLANT is"
-	line "across a small"
-	cont "river."
+	text "I was just kidding"
+	line "about the secret."
+	para "I don't know any-"
+	line "thing interesting."
 	done
 
 Route9SignText:
-	text "ROUTE 9"
+	text "ROUTE 114"
 
-	para "CERULEAN CITY -"
-	line "ROCK TUNNEL"
+	para "STAND CITY -"
+	line "KANTO"
 	done
 
 Route9_MapEvents:
 	db 0, 0 ; filler
 
-	db 1 ; warp events
-	warp_event 48, 15, ROCK_TUNNEL_1F, 1
+	db 2 ; warp events
+	warp_event 28,  5, ROUTE_34_ILEX_FOREST_GATE, 3
+	warp_event 29,  5, ROUTE_34_ILEX_FOREST_GATE, 4
 
 	db 0 ; coord events
 
 	db 2 ; bg events
-	bg_event 15,  7, BGEVENT_READ, Route9Sign
-	bg_event 41, 15, BGEVENT_ITEM, Route9HiddenEther
+	bg_event  5,  9, BGEVENT_READ, Route9Sign
+	bg_event 35, 14, BGEVENT_ITEM, Route9HiddenEther
 
-	db 6 ; object events
-	object_event 23, 11, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 3, TrainerCamperDean, -1
-	object_event 39,  8, SPRITE_LASS, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 3, TrainerPicnickerHeidi, -1
-	object_event 11,  4, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 5, TrainerCamperSid, -1
-	object_event 12, 15, SPRITE_LASS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 1, TrainerPicnickerEdna, -1
-	object_event 28,  3, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 2, TrainerHikerTim, -1
-	object_event 36, 15, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 4, TrainerHikerSidney, -1
+	db 7 ; object events
+	object_event 18, 14, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 4, TrainerCamperDean, -1
+	object_event 28, 10, SPRITE_LASS, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 3, TrainerPicnickerHeidi, -1
+	object_event 10,  9, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 4, TrainerCamperSid, -1
+	object_event  8, 13, SPRITE_LASS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 1, TrainerPicnickerEdna, -1
+	object_event 14, 10, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 1, TrainerHikerTim, -1
+	object_event 21,  8, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 4, TrainerHikerSidney, -1
+	object_event 31,  7, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 4, TrainerSportsmanJacob, -1

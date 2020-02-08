@@ -25,11 +25,11 @@ PhoneContacts:
 	phone COOLTRAINERF, BETH1,              ROUTE_26,         ANYTIME, BethPhoneScript1,    ANYTIME, BethPhoneScript2
 	phone BIRD_KEEPER,  JOSE2,              ROUTE_27,         ANYTIME, JosePhoneScript1,    ANYTIME, JosePhoneScript2
 	phone COOLTRAINERF, REENA1,             ROUTE_27,         ANYTIME, ReenaPhoneScript1,   ANYTIME, ReenaPhoneScript2
-	phone YOUNGSTER,    JOEY1,              ROUTE_30,         ANYTIME, JoeyPhoneScript1,    ANYTIME, JoeyPhoneScript2
+	phone YOUNGSTER,    JOEY1,              ROUTE_8,          ANYTIME, JoeyPhoneScript1,    ANYTIME, JoeyPhoneScript2
 	phone BUG_CATCHER,  WADE1,              ROUTE_31,         ANYTIME, WadePhoneScript1,    ANYTIME, WadePhoneScript2
-	phone FISHER,       RALPH1,             ROUTE_32,         ANYTIME, RalphPhoneScript1,   ANYTIME, RalphPhoneScript2
+	phone FISHER,       RALPH1,             ROUTE_7,          ANYTIME, RalphPhoneScript1,   ANYTIME, RalphPhoneScript2
 	phone PICNICKER,    LIZ1,               ROUTE_32,         ANYTIME, LizPhoneScript1,     ANYTIME, LizPhoneScript2
-	phone HIKER,        ANTHONY2,           ROUTE_33,         ANYTIME, AnthonyPhoneScript1, ANYTIME, AnthonyPhoneScript2
+	phone HIKER,        ANTHONY2,           ROUTE_31,         ANYTIME, AnthonyPhoneScript1, ANYTIME, AnthonyPhoneScript2
 	phone CAMPER,       TODD1,              ROUTE_34,         ANYTIME, ToddPhoneScript1,    ANYTIME, ToddPhoneScript2
 	phone PICNICKER,    GINA1,              ROUTE_34,         ANYTIME, GinaPhoneScript1,    ANYTIME, GinaPhoneScript2
 	phone JUGGLER,      IRWIN1,             ROUTE_35,         ANYTIME, IrwinPhoneScript1,   ANYTIME, IrwinPhoneScript2

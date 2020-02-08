@@ -65,6 +65,11 @@ PlayBattleMusic:
 	cp BATTLETYPE_ROAMING
 	jp z, .done
 
+	ld a, [wBattleType]
+	cp BATTLETYPE_LEGENDKANTO
+	ld de, MUSIC_KANTO_WILD_BATTLE
+	jp z, .done
+
 	; Are we fighting a trainer?
 	ld a, [wOtherTrainerClass]
 	and a
@@ -93,11 +98,21 @@ PlayBattleMusic:
 	cp RED
 	jr z, .done
 
-	; They should have included EXECUTIVEM, EXECUTIVEF, and SCIENTIST too...
+	; They should have included EXECUTIVEM, EXECUTIVEF, and SCIENTIST too...so i'll add those
 	ld de, MUSIC_ROCKET_BATTLE
 	cp GRUNTM
 	jr z, .done
 	cp GRUNTF
+	jr z, .done
+	cp EXECUTIVEM
+	jr z, .done
+	cp EXECUTIVEF
+	jr z, .done
+	cp SCIENTIST
+	jr z, .done
+	cp SABRINA; this is imposter oak
+	jr z, .done
+	cp BROCK; this is giovanni
 	jr z, .done
 
 	ld de, MUSIC_KANTO_GYM_LEADER_BATTLE

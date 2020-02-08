@@ -1,234 +1,176 @@
 	const_def 2 ; object constants
-	const SAFFRONMAGNETTRAINSTATION_OFFICER
-	const SAFFRONMAGNETTRAINSTATION_GYM_GUY
-	const SAFFRONMAGNETTRAINSTATION_TEACHER
-	const SAFFRONMAGNETTRAINSTATION_LASS
-
+	const SAFFRON_MAGNET_TRAIN_STATION_BULBASAUR_LADY
+	const SAFFRON_MAGNET_TRAIN_STATION_ODDISH
+	const SAFFRON_MAGNET_TRAIN_STATION_BULBASAUR
+	const SAFFRON_MAGNET_TRAIN_STATION_PARAS
+	const SAFFRON_MAGNET_TRAIN_STATION_YOUNGSTER
 SaffronMagnetTrainStation_MapScripts:
-	db 1 ; scene scripts
-	scene_script .DummyScene ; SCENE_DEFAULT
+	db 0 ; scene scripts
 
 	db 0 ; callbacks
 
-.DummyScene:
-	end
 
-SaffronMagnetTrainStationOfficerScript:
+SaffronMagnetTrainSpeechHouseCooltrainer:
 	faceplayer
 	opentext
-	checkevent EVENT_RESTORED_POWER_TO_KANTO
-	iftrue .MagnetTrainToGoldenrod
-	writetext UnknownText_0x18a8a9
-	waitbutton
-	closetext
-	end
-
-.MagnetTrainToGoldenrod:
-	writetext UnknownText_0x18a8dd
+	checkevent EVENT_EXPLODING_TRAP_14
+	iftrue .AlreadyGotBulbasaur
+	writetext ILoveBulbasaurText
 	yesorno
-	iffalse .DecidedNotToRide
-	checkitem PASS
-	iffalse .PassNotInBag
-	writetext UnknownText_0x18a917
+	iffalse .DontTakeBulbasaur
+	checkcode VAR_PARTYCOUNT
+	ifequal PARTY_LENGTH, .PartyFullBulbasaur
+	writetext UnknownText_0x7e355ab
+	playsound SFX_CAUGHT_MON
+	waitsfx
+	givepoke BULBASAUR, 5
+	writetext GiveBulbasaurText
 	waitbutton
 	closetext
-	applymovement SAFFRONMAGNETTRAINSTATION_OFFICER, MovementData_0x18a88f
-	applymovement PLAYER, MovementData_0x18a898
-	writebyte TRUE
-	special MagnetTrain
-	warpcheck
-	newloadmap MAPSETUP_TRAIN
-	applymovement PLAYER, .MovementBoardTheTrain
-	wait 20
+	setevent EVENT_EXPLODING_TRAP_14
 	end
-
-.MovementBoardTheTrain:
-	turn_head DOWN
-	step_end
-
-.PassNotInBag:
-	writetext UnknownText_0x18a956
+	
+.AlreadyGotBulbasaur
+	writetext AlreadyGotBulbasaurText
 	waitbutton
 	closetext
 	end
-
-.DecidedNotToRide:
-	writetext UnknownText_0x18a978
+	
+.DontTakeBulbasaur
+	writetext NoBulbasaurText
 	waitbutton
 	closetext
 	end
-
-Script_ArriveFromGoldenrod:
-	applymovement SAFFRONMAGNETTRAINSTATION_OFFICER, MovementData_0x18a88f
-	applymovement PLAYER, MovementData_0x18a8a1
-	applymovement SAFFRONMAGNETTRAINSTATION_OFFICER, MovementData_0x18a894
-	opentext
-	writetext UnknownText_0x18a993
+	
+.PartyFullBulbasaur
+	writetext PartyFullBulbasaurText
 	waitbutton
 	closetext
 	end
-
-SaffronMagnetTrainStationGymGuyScript:
+	
+SaffronMagnetTrainOddishScript:
 	faceplayer
 	opentext
-	checkevent EVENT_RETURNED_MACHINE_PART
-	iftrue .ReturnedMachinePart
-	writetext SaffronMagnetTrainStationGymGuyText
+	writetext SaffronMagnetTrainOddishText
+	cry ODDISH
 	waitbutton
 	closetext
 	end
-
-.ReturnedMachinePart:
-	writetext SaffronMagnetTrainStationGymGuyText_ReturnedMachinePart
+	
+SaffronMagnetTrainBulbasaurScript:
+	faceplayer
+	opentext
+	writetext SaffronMagnetTrainBulbasaurText
+	cry BULBASAUR
 	waitbutton
 	closetext
 	end
+	
+SaffronMagnetTrainParasScript:
+	faceplayer
+	opentext
+	writetext SaffronMagnetTrainParasText
+	cry PARAS
+	waitbutton
+	closetext
+	end
+	
+SaffronMagnetTrainSpeechHouseYoungsterScript:
+	jumptextfaceplayer SaffronMagnetTrainSpeechHouseYoungsterText
+	
+SaffronMagnetTrainSpeechHouseYoungsterText:
+	text "This place is"
+	line "neat!"
+	para "GRASS #MON seem"
+	line "to love it here!"
+	done
+	
+SaffronMagnetTrainParasText:
+	text "PARAS:"
+	line "Paraa..."
+	done
+	
+SaffronMagnetTrainBulbasaurText:
+	text "BULBASAUR:"
+	line "Bulba!"
+	done
+	
+SaffronMagnetTrainOddishText:
+	text "ODDISH:"
+	line "Oddd?"
+	done
+	
+UnknownText_0x7e355ab:
+	text "<PLAYER> received"
+	line "BULBASAUR."
+	done
+	
+AlreadyGotBulbasaurText:
+	text "I have many tree"
+	line "species from"
+	cont "around NIHON!"
+	done
+	
+PartyFullBulbasaurText:
+	text "You've already got"
+	line "too many #MON"
+	cont "with you!"
+	done
+	
+NoBulbasaurText:
+	text "I understand."
+	para "I'll be here if"
+	line "you change your"
+	cont "mind!"
+	done
+	
 
-SaffronMagnetTrainStationTeacherScript:
-	jumptextfaceplayer SaffronMagnetTrainStationTeacherText
-
-SaffronMagnetTrainStationLassScript:
-	jumptextfaceplayer SaffronMagnetTrainStationLassText
-
-MovementData_0x18a88f:
-	step UP
-	step UP
-	step RIGHT
-	turn_head LEFT
-	step_end
-
-MovementData_0x18a894:
-	step LEFT
-	step DOWN
-	step DOWN
-	step_end
-
-MovementData_0x18a898:
-	step UP
-	step UP
-	step UP
-	step LEFT
-	step LEFT
-	step LEFT
-	step UP
-	step UP
-	step_end
-
-MovementData_0x18a8a1:
-	step LEFT
-	step LEFT
-	step DOWN
-	step DOWN
-	step DOWN
-	step DOWN
-	turn_head UP
-	step_end
-
-UnknownText_0x18a8a9:
-	text "I'm sorry, but the"
-	line "MAGNET TRAIN isn't"
-	cont "operating now."
+ILoveBulbasaurText:
+	text "Hi there!"
+	para "I'm running an"
+	line "arboretum."
+	para "That means I take"
+	line "care of trees!"
+	para "This building is"
+	line "full of windows"
+	para "that let light in"
+	line "for the trees."
+	para "It's also full of"
+	line "grass #MON to"
+	cont "take care of them!"
+	para "I can only keep so"
+	line "many #MON here,"
+	cont "though."
+	para "I've got a"
+	line "BULBASAUR that I"
+	para "need to find a"
+	line "good home for."
+	para "Would you be"
+	line "willing to take"
+	cont "it?"
+	done
+	
+GiveBulbasaurText:
+	text "I'm sure you'll"
+	line "take great care"
+	cont "of it!"
 	done
 
-UnknownText_0x18a8dd:
-	text "We'll soon depart"
-	line "for GOLDENROD."
-
-	para "Are you coming on"
-	line "board?"
-	done
-
-UnknownText_0x18a917:
-	text "May I see your"
-	line "rail PASS, please?"
-
-	para "OK. Right this"
-	line "way, please."
-	done
-
-UnknownText_0x18a956:
-	text "Sorry, but you"
-	line "don't have a PASS."
-	done
-
-UnknownText_0x18a978:
-	text "We hope to see you"
-	line "again."
-	done
-
-UnknownText_0x18a993:
-	text "We have arrived in"
-	line "SAFFRON."
-
-	para "We hope to see you"
-	line "again."
-	done
-
-SaffronMagnetTrainStationGymGuyText:
-	text "The MAGNET TRAIN"
-	line "is a super-modern"
-
-	para "rail liner that"
-	line "uses electricity"
-
-	para "and magnets to"
-	line "attain incredible"
-	cont "speed."
-
-	para "However, if there"
-	line "isn't any elec-"
-	cont "tricity…"
-	done
-
-SaffronMagnetTrainStationGymGuyText_ReturnedMachinePart:
-	text "Whew…"
-
-	para "How many times"
-	line "have I gone back"
-
-	para "and forth between"
-	line "KANTO and JOHTO?"
-	done
-
-SaffronMagnetTrainStationTeacherText:
-	text "Before the MAGNET"
-	line "TRAIN STATION was"
-
-	para "built, there was a"
-	line "house there."
-
-	para "A little girl"
-	line "named COPYCAT used"
-	cont "to live there."
-	done
-
-SaffronMagnetTrainStationLassText:
-	text "Hi. Do you have a"
-	line "rail PASS? I have"
-
-	para "one. All the peo-"
-	line "ple in SAFFRON who"
-
-	para "ride the MAGNET"
-	line "TRAIN have PASSES."
-	done
 
 SaffronMagnetTrainStation_MapEvents:
 	db 0, 0 ; filler
 
-	db 4 ; warp events
-	warp_event  8, 17, SAFFRON_CITY, 6
-	warp_event  9, 17, SAFFRON_CITY, 6
-	warp_event  6,  5, GOLDENROD_MAGNET_TRAIN_STATION, 4
-	warp_event 11,  5, GOLDENROD_MAGNET_TRAIN_STATION, 3
-
-	db 1 ; coord events
-	coord_event 11,  6, SCENE_DEFAULT, Script_ArriveFromGoldenrod
+	db 2 ; warp events
+	warp_event  8, 17, SAFFRON_CITY, 8
+	warp_event  9, 17, SAFFRON_CITY, 9
+	
+	db 0 ; coord events
 
 	db 0 ; bg events
 
-	db 4 ; object events
-	object_event  9,  9, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, SaffronMagnetTrainStationOfficerScript, -1
-	object_event 10, 14, SPRITE_GYM_GUY, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, SaffronMagnetTrainStationGymGuyScript, -1
-	object_event  6, 11, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, SaffronMagnetTrainStationTeacherScript, EVENT_SAFFRON_TRAIN_STATION_POPULATION
-	object_event  6, 10, SPRITE_LASS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, SaffronMagnetTrainStationLassScript, EVENT_SAFFRON_TRAIN_STATION_POPULATION
+	db 5 ; object events
+	object_event  7,  4, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, SaffronMagnetTrainSpeechHouseCooltrainer, -1
+	object_event  5, 13, SPRITE_ODDISH, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, SaffronMagnetTrainOddishScript, -1
+	object_event 14,  8, SPRITE_BULBASAUR, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, SaffronMagnetTrainBulbasaurScript, -1
+	object_event  6,  7, SPRITE_PARAS, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, SaffronMagnetTrainParasScript, -1
+	object_event 12, 11, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 1, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, SaffronMagnetTrainSpeechHouseYoungsterScript, -1

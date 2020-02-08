@@ -280,7 +280,7 @@ EcruteakTinTowerEntrance_MapEvents:
 
 	db 5 ; warp events
 	warp_event  4, 17, ECRUTEAK_CITY, 3
-	warp_event  5, 17, ECRUTEAK_CITY, 3
+	warp_event  5, 17, ECRUTEAK_CITY, 18
 	warp_event  5,  3, ECRUTEAK_TIN_TOWER_ENTRANCE, 4
 	warp_event 17, 15, ECRUTEAK_TIN_TOWER_ENTRANCE, 3
 	warp_event 17,  3, WISE_TRIOS_ROOM, 3

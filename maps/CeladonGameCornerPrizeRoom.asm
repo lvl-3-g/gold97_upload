@@ -14,7 +14,7 @@ CeladonGameCornerPrizeRoomPharmacistScript:
 	jumptextfaceplayer CeladonGameCornerPrizeRoomPharmacistText
 
 CeladonGameCornerPrizeRoomTMVendor:
-	faceplayer
+;	faceplayer
 	opentext
 	writetext CeladonPrizeRoom_PrizeVendorIntroText
 	waitbutton
@@ -115,7 +115,7 @@ CeladonPrizeRoom_TMMenuHeader:
 	db "CANCEL@"
 
 CeladonGameCornerPrizeRoomPokemonVendor:
-	faceplayer
+;	faceplayer
 	opentext
 	writetext CeladonPrizeRoom_PrizeVendorIntroText
 	waitbutton
@@ -197,8 +197,11 @@ CeladonGameCornerPrizeRoomPokemonVendor:
 	db 4 ; items
 	db "PIKACHU    2222@"
 	db "PORYGON    5555@"
-	db "LARVITAR   8888@"
+	db "WOLFAN     8888@"
 	db "CANCEL@"
+	
+DummyVendorScript:
+	end
 
 CeladonGameCornerPrizeRoomGentlemanText:
 	text "I wanted PORYGON,"
@@ -265,15 +268,17 @@ CeladonGameCornerPrizeRoom_MapEvents:
 	db 0, 0 ; filler
 
 	db 2 ; warp events
-	warp_event  2,  5, CELADON_CITY, 7
-	warp_event  3,  5, CELADON_CITY, 7
+	warp_event  4,  7, CELADON_CITY, 7
+	warp_event  5,  7, CELADON_CITY, 7
 
 	db 0 ; coord events
 
 	db 2 ; bg events
-	bg_event  2,  1, BGEVENT_READ, CeladonGameCornerPrizeRoomTMVendor
-	bg_event  4,  1, BGEVENT_READ, CeladonGameCornerPrizeRoomPokemonVendor
+	bg_event  3,  2, BGEVENT_READ, CeladonGameCornerPrizeRoomTMVendor
+	bg_event  6,  2, BGEVENT_READ, CeladonGameCornerPrizeRoomPokemonVendor
 
-	db 2 ; object events
-	object_event  0,  2, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CeladonGameCornerPrizeRoomGentlemanScript, -1
-	object_event  4,  4, SPRITE_PHARMACIST, SPRITEMOVEDATA_WALK_UP_DOWN, 0, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, CeladonGameCornerPrizeRoomPharmacistScript, -1
+	db 4 ; object events
+	object_event  0,  3, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CeladonGameCornerPrizeRoomGentlemanScript, -1
+	object_event  8,  4, SPRITE_PHARMACIST, SPRITEMOVEDATA_WALK_UP_DOWN, 0, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, CeladonGameCornerPrizeRoomPharmacistScript, -1
+	object_event  3,  1, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_DOWN, 0, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, DummyVendorScript, -1
+	object_event  6,  1, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_DOWN, 0, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, DummyVendorScript, -1

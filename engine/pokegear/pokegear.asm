@@ -572,7 +572,7 @@ PokegearMap_KantoMap:
 	jr PokegearMap_ContinueMap
 
 PokegearMap_JohtoMap:
-	ld d, SILVER_CAVE
+	ld d, INDIGO_PLATEAU
 	ld e, NEW_BARK_TOWN
 PokegearMap_ContinueMap:
 	ld hl, hJoyLast
@@ -732,17 +732,17 @@ PokegearMap_UpdateCursorPosition:
 	ret
 
 TownMap_GetKantoLandmarkLimits:
-	ld a, [wStatusFlags]
-	bit STATUSFLAGS_HALL_OF_FAME_F, a
-	jr z, .not_hof
-	ld d, ROUTE_28
-	ld e, PALLET_TOWN
+;	ld a, [wStatusFlags]
+;	bit STATUSFLAGS_HALL_OF_FAME_F, a
+;	jr z, .not_hof
+	ld d, VERMILION_CITY
+	ld e, PEWTER_CITY
 	ret
 
-.not_hof
-	ld d, ROUTE_28
-	ld e, VICTORY_ROAD
-	ret
+;.not_hof
+;	ld d, ROUTE_28
+;	ld e, VICTORY_ROAD
+;	ret
 
 PokegearRadio_Init:
 	call InitPokegearTilemap
@@ -1473,7 +1473,7 @@ RadioChannels:
 	dbw 32, .LuckyChannel
 	dbw 40, .BuenasPassword
 	dbw 52, .RuinsOfAlphRadio
-	dbw 64, .PlacesAndPeople
+	dbw 46, .PlacesAndPeople
 	dbw 72, .LetsAllSing
 	dbw 78, .PokeFluteRadio
 	dbw 80, .EvolutionRadio
@@ -1541,11 +1541,7 @@ RadioChannels:
 	bit STATUSFLAGS_ROCKET_SIGNAL_F, a
 	jr z, .NoSignal
 	ld a, [wPokegearMapPlayerIconLandmark]
-	cp MAHOGANY_TOWN
-	jr z, .ok
-	cp ROUTE_43
-	jr z, .ok
-	cp LAKE_OF_RAGE
+	cp LAVENDER_TOWN; i think this makes it only play in lavender town, which is inaccessible
 	jr nz, .NoSignal
 .ok
 	jp LoadStation_EvolutionRadio
@@ -1564,7 +1560,7 @@ RadioChannels:
 	cp KANTO_LANDMARK
 	jr c, .johto
 .kanto
-	and a
+	scf
 	ret
 
 .johto
@@ -1761,7 +1757,7 @@ NoRadioName:
 	call TextBox
 	ret
 
-OaksPKMNTalkName:     db "OAK's <PK><MN> Talk@"
+OaksPKMNTalkName:     db "KEN's <PK><MN> Talk@"
 PokedexShowName:      db "#DEX Show@"
 PokemonMusicName:     db "#MON Music@"
 LuckyChannelName:     db "Lucky Channel@"
@@ -2023,7 +2019,11 @@ PlayRadio:
 	jp LoadStation_OaksPokemonTalk
 
 .kanto
-	jp LoadStation_PlacesAndPeople
+	call UpdateTime
+	ld a, [wTimeOfDay]
+	and a
+	jp z, LoadStation_PokedexShow
+	jp LoadStation_OaksPokemonTalk
 
 PokegearMap:
 	ld a, e
@@ -2291,7 +2291,7 @@ FlyMap:
 ; Flypoints begin at New Bark Town...
 	ld [wStartFlypoint], a
 ; ..and end at Silver Cave.
-	ld a, FLY_MT_SILVER
+	ld a, FLY_INDIGO
 	ld [wEndFlypoint], a
 ; Fill out the map
 	call FillJohtoMap
@@ -2310,17 +2310,19 @@ FlyMap:
 ; enters Kanto, fly access is restricted until Indigo Plateau is
 ; visited and its flypoint enabled.
 	push af
-	ld c, SPAWN_INDIGO
+	ld c, SPAWN_VERMILION; this is going to be the first city you visit on the islands, so this unlocks the kanto/islands map, instead of indigo. Make sure to figure
+; out how to make it so that once you first get off the boat, you're not either stuck off the islands if you fly back to johto, or that the game doesn't crash
+;before you actually exit the docks into the city to load the flypoint
 	call HasVisitedSpawn
 	and a
 	jr z, .NoKanto
-; Kanto's map is only loaded if we've visited Indigo Plateau
+; Kanto's map is only loaded if we've visited Indigo Plateau, gonna change this to the islands eventually
 
 ; Flypoints begin at Pallet Town...
-	ld a, FLY_PALLET
+	ld a, FLY_PEWTER
 	ld [wStartFlypoint], a
 ; ...and end at Indigo Plateau
-	ld a, FLY_INDIGO
+	ld a, FLY_VERMILION
 	ld [wEndFlypoint], a
 ; Because Indigo Plateau is the first flypoint the player
 ; visits, it's made the default flypoint.
@@ -2341,7 +2343,7 @@ FlyMap:
 ; Flypoints begin at New Bark Town...
 	ld [wStartFlypoint], a
 ; ..and end at Silver Cave
-	ld a, FLY_MT_SILVER
+	ld a, FLY_INDIGO
 	ld [wEndFlypoint], a
 	call FillJohtoMap
 	pop af
@@ -2425,10 +2427,10 @@ Pokedex_GetArea:
 
 .LeftRightInput:
 	ld a, [hl]
-	and D_LEFT
+	and D_UP
 	jr nz, .left
 	ld a, [hl]
-	and D_RIGHT
+	and D_DOWN
 	jr nz, .right
 	ret
 
@@ -2809,9 +2811,11 @@ LoadTownMapGFX:
 
 JohtoMap:
 INCBIN "gfx/pokegear/johto.bin"
+	db $ff
 
 KantoMap:
 INCBIN "gfx/pokegear/kanto.bin"
+	db $ff
 
 PokedexNestIconGFX:
 INCBIN "gfx/pokegear/dexmap_nest_icon.2bpp"

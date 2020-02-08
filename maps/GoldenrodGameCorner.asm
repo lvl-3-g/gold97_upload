@@ -62,42 +62,42 @@ GoldenrodGameCornerTMVendor_LoopScript:
 	loadmenu GoldenrodGameCornerTMVendorMenuHeader
 	verticalmenu
 	closewindow
-	ifequal 1, .Thunder
-	ifequal 2, .Blizzard
-	ifequal 3, .FireBlast
+	ifequal 1, .Poison
+	ifequal 2, .Trade
+	ifequal 3, .Moon
 	jump GoldenrodGameCornerPrizeVendor_CancelPurchaseScript
 
-.Thunder:
-	checkcoins 5500
+.Poison:
+	checkcoins 800
 	ifequal HAVE_LESS, GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript
-	itemtotext TM_THUNDER, MEM_BUFFER_0
+	itemtotext POISON_STONE, MEM_BUFFER_0
 	scall GoldenrodGameCornerPrizeVendor_ConfirmPurchaseScript
 	iffalse GoldenrodGameCornerPrizeVendor_CancelPurchaseScript
-	giveitem TM_THUNDER
+	giveitem POISON_STONE
 	iffalse GoldenrodGameCornerPrizeMonVendor_NoRoomForPrizeScript
-	takecoins 5500
+	takecoins 800
 	jump GoldenrodGameCornerTMVendor_FinishScript
 
-.Blizzard:
-	checkcoins 5500
+.Trade:
+	checkcoins 800
 	ifequal HAVE_LESS, GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript
-	itemtotext TM_BLIZZARD, MEM_BUFFER_0
+	itemtotext TRADE_STONE, MEM_BUFFER_0
 	scall GoldenrodGameCornerPrizeVendor_ConfirmPurchaseScript
 	iffalse GoldenrodGameCornerPrizeVendor_CancelPurchaseScript
-	giveitem TM_BLIZZARD
+	giveitem TRADE_STONE
 	iffalse GoldenrodGameCornerPrizeMonVendor_NoRoomForPrizeScript
-	takecoins 5500
+	takecoins 800
 	jump GoldenrodGameCornerTMVendor_FinishScript
 
-.FireBlast:
-	checkcoins 5500
+.Moon:
+	checkcoins 800
 	ifequal HAVE_LESS, GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript
-	itemtotext TM_FIRE_BLAST, MEM_BUFFER_0
+	itemtotext MOON_STONE, MEM_BUFFER_0
 	scall GoldenrodGameCornerPrizeVendor_ConfirmPurchaseScript
 	iffalse GoldenrodGameCornerPrizeVendor_CancelPurchaseScript
-	giveitem TM_FIRE_BLAST
+	giveitem MOON_STONE
 	iffalse GoldenrodGameCornerPrizeMonVendor_NoRoomForPrizeScript
-	takecoins 5500
+	takecoins 800
 	jump GoldenrodGameCornerTMVendor_FinishScript
 
 GoldenrodGameCornerPrizeVendor_ConfirmPurchaseScript:
@@ -138,16 +138,16 @@ GoldenrodGameCornerPrizeVendor_NoCoinCaseScript:
 
 GoldenrodGameCornerTMVendorMenuHeader:
 	db MENU_BACKUP_TILES ; flags
-	menu_coords 0, 2, 15, TEXTBOX_Y - 1
+	menu_coords 0, 2, 19, TEXTBOX_Y - 1
 	dw .MenuData
 	db 1 ; default option
 
 .MenuData:
 	db STATICMENU_CURSOR ; flags
 	db 4 ; items
-	db "TM25    5500@"
-	db "TM14    5500@"
-	db "TM38    5500@"
+	db "POISON STONE  800@"
+	db "TRADE STONE   800@"
+	db "MOON STONE    800@"
 	db "CANCEL@"
 
 GoldenrodGameCornerPrizeMonVendorScript:
@@ -233,7 +233,7 @@ GoldenrodGameCornerPrizeMonVendorScript:
 	db 4 ; items
 	db "ABRA        100@"
 	db "CUBONE      800@"
-	db "WOBBUFFET  1500@"
+	db "TWINBORUS  1500@"
 	db "CANCEL@"
 
 GoldenrodGameCornerPharmacistScript:
@@ -368,9 +368,9 @@ GoldenrodGameCornerPokefanM1Text:
 	text "I just love this"
 	line "new slot machine."
 
-	para "It's more of a"
-	line "challenge than the"
-	cont "ones in CELADON."
+	para "It's just the"
+	line "right level of"
+	cont "challenge."
 	done
 
 GoldenrodGameCornerCooltrainerMText:
@@ -398,8 +398,9 @@ GoldenrodGameCornerCooltrainerFText:
 	done
 
 GoldenrodGameCornerGentlemanText:
-	text "I taught BLIZZARD"
-	line "to my #MON."
+	text "I evolved my #-"
+	line "MON with a POISON"
+	cont "STONE."
 
 	para "It was hard to get"
 	line "enough coins for"
@@ -415,11 +416,9 @@ GoldenrodGameCornerPokefanM2Text:
 	para "blew it on card"
 	line "flipping…"
 
-	para "I got so furious,"
-	line "I tossed out my"
-
-	para "COIN CASE in the"
-	line "UNDERGROUND."
+	para "I took too many"
+	line "risks, and they"
+	cont "weren't worth it."
 	done
 
 MoveTutorInsideText:
@@ -438,8 +437,8 @@ GoldenrodGameCorner_MapEvents:
 	db 0, 0 ; filler
 
 	db 2 ; warp events
-	warp_event  2, 13, GOLDENROD_CITY, 10
-	warp_event  3, 13, GOLDENROD_CITY, 10
+	warp_event 10, 13, ROUTE_43, 7
+	warp_event 11, 13, ROUTE_43, 8
 
 	db 0 ; coord events
 

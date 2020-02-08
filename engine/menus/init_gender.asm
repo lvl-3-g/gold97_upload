@@ -21,24 +21,24 @@ InitCrystalData:
 
 INCLUDE "mobile/mobile_12.asm"
 
-InitGender:
-	call InitGenderScreen
-	call LoadGenderScreenPal
-	call LoadGenderScreenLightBlueTile
-	call WaitBGMap2
-	call SetPalettes
-	ld hl, TextJump_AreYouABoyOrAreYouAGirl
-	call PrintText
-	ld hl, .MenuHeader
-	call LoadMenuHeader
-	call WaitBGMap2
-	call VerticalMenu
-	call CloseWindow
-	ld a, [wMenuCursorY]
-	dec a
-	ld [wPlayerGender], a
-	ld c, 10
-	call DelayFrames
+InitGender: ; I commented out all this to remove the option to play as a girl to make it more authentic, but if this breaks something, uncomment all of it
+	;call InitGenderScreen
+	;call LoadGenderScreenPal
+	;call LoadGenderScreenLightBlueTile
+	;call WaitBGMap2
+	;call SetPalettes
+	;ld hl, TextJump_AreYouABoyOrAreYouAGirl
+	;call PrintText
+	;ld hl, .MenuHeader
+	;call LoadMenuHeader
+	;call WaitBGMap2
+	;call VerticalMenu
+	;call CloseWindow
+	;ld a, [wMenuCursorY]
+	;dec a
+	;ld [wPlayerGender], a
+	;ld c, 10
+	;call DelayFrames
 	ret
 
 .MenuHeader:
@@ -50,8 +50,8 @@ InitGender:
 .MenuData:
 	db STATICMENU_CURSOR | STATICMENU_WRAP | STATICMENU_DISABLE_B ; flags
 	db 2 ; items
-	db "Boy@"
-	db "Girl@"
+	db "BOY@"
+	db "GIRL@"
 
 TextJump_AreYouABoyOrAreYouAGirl:
 	; Are you a boy? Or are you a girl?

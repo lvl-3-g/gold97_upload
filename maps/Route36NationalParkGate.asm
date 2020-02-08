@@ -87,11 +87,11 @@ Route36NationalParkGate_MapScripts:
 	writetext UnknownText_0x6b300
 	waitbutton
 	closetext
-	turnobject PLAYER, LEFT
+	turnobject PLAYER, DOWN
 	playsound SFX_EXIT_BUILDING
 	special FadeOutPalettes
 	waitsfx
-	warpfacing LEFT, NATIONAL_PARK_BUG_CONTEST, 33, 18
+	warpfacing DOWN, NATIONAL_PARK_BUG_CONTEST, 32, 31
 	end
 
 .CopyContestants:
@@ -170,12 +170,13 @@ Route36OfficerScriptContest:
 	closetext
 	setflag ENGINE_BUG_CONTEST_TIMER
 	special GiveParkBalls
-	turnobject PLAYER, LEFT
+	turnobject PLAYER, DOWN
+	applymovement PLAYER, ExitBuildingMovement
 	playsound SFX_EXIT_BUILDING
 	special FadeOutPalettes
 	waitsfx
 	special SelectRandomBugContestContestants
-	warpfacing LEFT, NATIONAL_PARK_BUG_CONTEST, 33, 18
+	warpfacing DOWN, NATIONAL_PARK_BUG_CONTEST, 32, 31
 	end
 
 .LeaveMonsWithOfficer:
@@ -467,8 +468,15 @@ UnusedBugCatchingContestExplanationSign:
 ; duplicate of BugCatchingContestExplanationSign in Route35NationalParkGate.asm
 	jumptext UnusedBugCatchingContestExplanationText
 
+ExitBuildingMovement:
+	step DOWN
+	step DOWN
+	step DOWN
+	step_end
+
 MovementData_0x6add1:
-	big_step DOWN
+	big_step UP
+	big_step UP
 	big_step RIGHT
 	turn_head UP
 	step_end
@@ -853,10 +861,10 @@ Route36NationalParkGate_MapEvents:
 	db 0, 0 ; filler
 
 	db 4 ; warp events
-	warp_event  0,  4, NATIONAL_PARK, 1
-	warp_event  0,  5, NATIONAL_PARK, 2
-	warp_event  9,  4, ROUTE_36, 1
-	warp_event  9,  5, ROUTE_36, 2
+	warp_event  0,  7, NATIONAL_PARK, 1
+	warp_event  1,  7, NATIONAL_PARK, 2
+	warp_event  8,  7, FUCHSIA_CITY, 10
+	warp_event  9,  7, FUCHSIA_CITY, 10
 
 	db 0 ; coord events
 

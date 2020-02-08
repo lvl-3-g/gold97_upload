@@ -1,173 +1,317 @@
 	const_def 2 ; object constants
-	const GOLDENRODFLOWERSHOP_TEACHER
-	const GOLDENRODFLOWERSHOP_FLORIA
+	const N64_HOUSE_SCIENTIST
+	const N64_HOUSE_YOUNGSTER
+	const N64_HOUSE_ROCKER
+	const N64_HOUSE_LASS
+	const N64_HOUSE_COOLTRAINER_M
 
 GoldenrodFlowerShop_MapScripts:
 	db 0 ; scene scripts
 
 	db 0 ; callbacks
 
-FlowerShopTeacherScript:
-	checkevent EVENT_FOUGHT_SUDOWOODO
-	iftrue .Lalala
-	checkevent EVENT_GOT_SQUIRTBOTTLE
-	iftrue .GotSquirtbottle
-	checkevent EVENT_MET_FLORIA
-	iffalse .HaventMetFloria
-	checkevent EVENT_TALKED_TO_FLORIA_AT_FLOWER_SHOP
-	iffalse .Lalala
-	checkflag ENGINE_PLAINBADGE
-	iffalse .NoPlainBadge
+N64HouseScientistScript:
 	faceplayer
 	opentext
-	writetext UnknownText_0x554c2
+	checkevent EVENT_GOT_FIRE_STONE_FROM_BILLS_GRANDPA
+	iftrue .AlreadyAskedToSearchN64
+	writetext N64HouseScientistText
 	buttonsound
-	verbosegiveitem SQUIRTBOTTLE
-	setevent EVENT_GOT_SQUIRTBOTTLE
+	writetext N64HouseScientistText2
+	waitbutton
 	closetext
-	setevent EVENT_FLORIA_AT_SUDOWOODO
-	clearevent EVENT_FLORIA_AT_FLOWER_SHOP
+	setevent EVENT_GOT_FIRE_STONE_FROM_BILLS_GRANDPA
 	end
 
-.Lalala:
-	turnobject GOLDENRODFLOWERSHOP_TEACHER, LEFT
-	opentext
-	writetext UnknownText_0x5552e
+.AlreadyAskedToSearchN64
+	checkevent EVENT_GOT_WATER_STONE_FROM_BILLS_GRANDPA
+	iffalse .N64OnePersonSoFar
+	writetext N64HouseScientistText2
 	waitbutton
 	closetext
 	end
-
-.GotSquirtbottle:
-	jumptextfaceplayer UnknownText_0x5550d
-
-.NoPlainBadge:
-	jumptextfaceplayer UnknownText_0x55463
-
-.HaventMetFloria:
-	jumptextfaceplayer UnknownText_0x553d4
-
-FlowerShopFloriaScript:
+	
+.N64OnePersonSoFar
+	checkevent EVENT_GOLDENROD_DEPT_STORE_B1F_LAYOUT_2
+	iffalse .N64TwoPeopleNow
+	writetext N64HouseScientistText3
+	waitbutton
+	closetext
+	end
+	
+.N64TwoPeopleNow
+	checkevent EVENT_GOLDENROD_UNDERGROUND_WAREHOUSE_BLOCKED_OFF
+	iffalse .N643PeopleTimeForStarter3
+	writetext N64HouseScientistText4
+	waitbutton
+	closetext
+	end
+	
+.N643PeopleTimeForStarter3
+	checkevent EVENT_USED_THE_CARD_KEY_IN_THE_RADIO_TOWER
+	iftrue .AlreadyGotStarter3
+	writetext N64HouseScientistText5
+	waitbutton
+	checkevent EVENT_GOT_TOTODILE_FROM_ELM
+	iftrue .HaveTotodileGiveCyndaquil
+	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
+	iftrue .HaveChikoritaGiveTotodile
+	checkcode VAR_PARTYCOUNT
+	ifequal PARTY_LENGTH, .PartyFullStarter3
+	giveegg CHIKORITA, 5
+	stringtotext .eggname3, MEM_BUFFER_1
+	scall .GetStarter3Egg
+	writetext TakeGoodCareOfStarter3
+	waitbutton
+	closetext
+	setevent EVENT_USED_THE_CARD_KEY_IN_THE_RADIO_TOWER
+	end
+	
+.HaveChikoritaGiveTotodile
+	checkcode VAR_PARTYCOUNT
+	ifequal PARTY_LENGTH, .PartyFullStarter3
+	giveegg TOTODILE, 5
+	stringtotext .eggname3, MEM_BUFFER_1
+	scall .GetStarter3Egg
+	writetext TakeGoodCareOfStarter3
+	waitbutton
+	closetext
+	setevent EVENT_USED_THE_CARD_KEY_IN_THE_RADIO_TOWER
+	end
+	
+.HaveTotodileGiveCyndaquil
+	checkcode VAR_PARTYCOUNT
+	ifequal PARTY_LENGTH, .PartyFullStarter3
+	giveegg CYNDAQUIL, 5
+	stringtotext .eggname3, MEM_BUFFER_1
+	scall .GetStarter3Egg
+	writetext TakeGoodCareOfStarter3
+	waitbutton
+	closetext
+	setevent EVENT_USED_THE_CARD_KEY_IN_THE_RADIO_TOWER
+	end
+	
+.AlreadyGotStarter3
+	writetext AlreadyGotStarter3Text
+	waitbutton
+	closetext
+	end
+	
+.eggname3
+	db "EGG@"
+	
+.GetStarter3Egg:
+	jumpstd receivetogepiegg
+	end
+	
+.PartyFullStarter3
+	writetext NoRoomForStarter3
+	waitbutton
+	closetext
+	end
+	
+N64HouseRockerScript:
 	faceplayer
 	opentext
-	checkevent EVENT_FOUGHT_SUDOWOODO
-	iftrue .FoughtSudowoodo
-	checkevent EVENT_GOT_SQUIRTBOTTLE
-	iftrue .GotSquirtbottle
-	writetext UnknownText_0x55561
+	writetext N64HouseRockerText
 	waitbutton
 	closetext
-	setevent EVENT_TALKED_TO_FLORIA_AT_FLOWER_SHOP
-	setevent EVENT_FLORIA_AT_FLOWER_SHOP
-	clearevent EVENT_FLORIA_AT_SUDOWOODO
+	turnobject N64_HOUSE_ROCKER, RIGHT
 	end
 
-.GotSquirtbottle:
-	writetext UnknownText_0x555e6
+N64HouseYoungsterScript:
+	faceplayer
+	opentext
+	checkevent EVENT_GOLDENROD_DEPT_STORE_B1F_LAYOUT_2
+	iffalse .RockerTwoPeopleNow
+	writetext RockerN64AloneText
 	waitbutton
 	closetext
+	turnobject N64_HOUSE_YOUNGSTER, UP
 	end
-
-.FoughtSudowoodo:
-	writetext UnknownText_0x55604
+	
+.RockerTwoPeopleNow
+	writetext RockerN64TwoPeopleText
 	waitbutton
 	closetext
+	turnobject N64_HOUSE_YOUNGSTER, UP
 	end
-
-FlowerShopShelf1:
-; unused
-	jumpstd picturebookshelf
-
-FlowerShopShelf2:
-; unused
-	jumpstd magazinebookshelf
-
-FlowerShopRadio:
-; unused
-	jumpstd radio2
-
-UnknownText_0x553d4:
-	text "Have you seen that"
-	line "wiggly tree that's"
-
-	para "growing on ROUTE"
-	line "36?"
-
-	para "My little sister"
-	line "got all excited"
-
-	para "and went to see"
-	line "it…"
-
-	para "I'm worried… Isn't"
-	line "it dangerous?"
+	
+N64HouseLassScript:
+	faceplayer
+	opentext
+	writetext N64HouseLassText
+	waitbutton
+	closetext
+	turnobject N64_HOUSE_LASS, UP
+	end
+	
+N64HouseCooltrainerMScript:
+	faceplayer
+	opentext
+	writetext N64HouseCooltrainerMText
+	waitbutton
+	closetext
+	turnobject N64_HOUSE_COOLTRAINER_M, LEFT
+	end
+	
+N64HouseFisherScript:
+	jumptextfaceplayer N64HouseFisherText
+	
+N64HouseFisherText:
+	text "Should I try to"
+	line "play the racing"
+	para "game with those"
+	line "guys?"
+	para "I think I'd be no"
+	line "good at it."
+	done
+	
+N64HouseCooltrainerMText:
+	text "This place has a"
+	line "great selection of"
+	cont "sports games!"
+	done
+	
+N64HouseLassText:
+	text "I'm no good at"
+	line "sports games, but"
+	para "my friend here"
+	line "helps me learn."
+	done
+	
+TakeGoodCareOfStarter3:
+	text "I know you'll take"
+	line "great care of that"
+	cont "#MON."
+	done
+	
+NoRoomForStarter3:
+	text "Oh, wait! You have"
+	line "no room for this!"
+	done
+	
+AlreadyGotStarter3Text:
+	text "This place is the"
+	line "coolest spot for"
+	para "trainers to come"
+	line "socialize and play"
+	cont "games!"
+	para "All thanks to you!"
+	done
+	
+N64HouseScientistText5:
+	text "Wow, look at all"
+	line "of these trainers."
+	para "It's incredible!"
+	line "I owe you a ton!"
+	para "Here, take this"
+	line "#MON EGG."
+	para "It's a rare"
+	line "#MON, I'm sure"
+	para "you'd appreciate"
+	line "it."
+	done
+	
+N64HouseRockerText:
+	text "I'm gonna win!"
 	done
 
-UnknownText_0x55463:
-	text "Do you want to"
-	line "borrow the water"
-
-	para "bottle too?"
-	line "I don't want you"
-
-	para "doing anything"
-	line "dangerous with it."
+RockerN64AloneText:
+	text "This racing game"
+	line "is neat, but"
+	para "there's no one"
+	line "here to race"
+	cont "against!"
+	para "I came here to"
+	line "meet other"
+	para "trainers, but I'm"
+	line "alone so far."
+	done
+	
+RockerN64TwoPeopleText:
+	text "Hey, this is much"
+	line "more fun with"
+	cont "another person!"
 	done
 
-UnknownText_0x554c2:
-	text "Oh, you're better"
-	line "than WHITNEY…"
-
-	para "You'll be OK,"
-	line "then. Here's the"
-	cont "SQUIRTBOTTLE!"
+N64HouseScientistText4:
+	text "Wow, two people!"
+	para "I may realize my"
+	line "dream of owning"
+	para "a hot gathering"
+	line "place for #MON"
+	cont "trainers!"
+	para "See if you can"
+	line "find another!"
+	para "Maybe somewhere"
+	line "that people meet"
+	para "to socialize, but"
+	line "doesn't have any"
+	cont "games to play..."
+	done
+	
+N64HouseScientistText3:
+	text "Hey, someone"
+	line "showed up!"
+	para "That's great!"
+	para "Did you let him"
+	line "know about this"
+	cont "place?"
+	para "I'm very grateful."
+	para "See if you can"
+	line "find anyone else!"
+	para "Maybe look some-"
+	line "where that people"
+	para "play other types"
+	line "of games..."
+	done
+	
+N64HouseScientistText2:
+	text "How about it?"
+	para "Let any trainers"
+	line "who might be"
+	para "interested know"
+	line "about this place."
+	para "Maybe look in a"
+	line "town where there"
+	para "isn't too much"
+	line "to do..."
 	done
 
-UnknownText_0x5550d:
-	text "Don't do anything"
-	line "too dangerous!"
+N64HouseScientistText:
+	text "Hmmm."
+	para "I opened this game"
+	line "house as a place"
+	para "for trainers to"
+	line "come and socialize"
+	cont "between battles."
+	para "But it doesn't"
+	line "seem to be"
+	cont "catching on..."
+	para "Hey, if you find"
+	line "any trainers who"
+	para "might be interest-"
+	line "ed in a place like"
+	para "this, could you"
+	line "let them know?"
 	done
-
-UnknownText_0x5552e:
-	text "Lalala lalalala."
-	line "Have plenty of"
-	cont "water, my lovely!"
-	done
-
-UnknownText_0x55561:
-	text "When I told my sis"
-	line "about the jiggly"
-
-	para "tree, she told me"
-	line "it's dangerous."
-
-	para "If I beat WHITNEY,"
-	line "I wonder if she'll"
-
-	para "lend me her water"
-	line "bottle…"
-	done
-
-UnknownText_0x555e6:
-	text "Wow, you beat"
-	line "WHITNEY? Cool!"
-	done
-
-UnknownText_0x55604:
-	text "So it really was a"
-	line "#MON!"
-	done
-
+	
 GoldenrodFlowerShop_MapEvents:
 	db 0, 0 ; filler
 
 	db 2 ; warp events
-	warp_event  2,  7, GOLDENROD_CITY, 6
-	warp_event  3,  7, GOLDENROD_CITY, 6
+	warp_event  4,  7, ROUTE_36, 2
+	warp_event  5,  7, ROUTE_36, 2
 
 	db 0 ; coord events
 
 	db 0 ; bg events
 
-	db 2 ; object events
-	object_event  2,  4, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, FlowerShopTeacherScript, -1
-	object_event  5,  6, SPRITE_LASS, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, FlowerShopFloriaScript, EVENT_FLORIA_AT_FLOWER_SHOP
+	db 6 ; object events
+	object_event 6,  6, SPRITE_SCIENTIST, SPRITEMOVEDATA_SPINRANDOM_SLOW, 2, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, N64HouseScientistScript, -1
+	object_event 4,  4, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, N64HouseYoungsterScript, EVENT_GOT_WATER_STONE_FROM_BILLS_GRANDPA
+	object_event 3,  3, SPRITE_ROCKER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, N64HouseRockerScript, EVENT_GOLDENROD_DEPT_STORE_B1F_LAYOUT_2
+	object_event 0,  4, SPRITE_LASS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, N64HouseLassScript, EVENT_GOLDENROD_UNDERGROUND_WAREHOUSE_BLOCKED_OFF
+	object_event 1,  3, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, N64HouseCooltrainerMScript, EVENT_GOLDENROD_UNDERGROUND_WAREHOUSE_BLOCKED_OFF
+	object_event 7,  2, SPRITE_FISHER, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, N64HouseFisherScript, EVENT_GOLDENROD_UNDERGROUND_WAREHOUSE_BLOCKED_OFF

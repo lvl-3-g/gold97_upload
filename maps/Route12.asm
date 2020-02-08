@@ -1,37 +1,27 @@
 	const_def 2 ; object constants
-	const ROUTE12_FISHER1
-	const ROUTE12_FISHER2
 	const ROUTE12_FISHER3
 	const ROUTE12_FISHER4
 	const ROUTE12_POKE_BALL1
 	const ROUTE12_POKE_BALL2
+	const ROUTE12_POKEMANIAC
 
 Route12_MapScripts:
 	db 0 ; scene scripts
 
 	db 0 ; callbacks
 
-TrainerFisherKyle:
-	trainer FISHER, KYLE, EVENT_BEAT_FISHER_KYLE, FisherKyleSeenText, FisherKyleBeatenText, 0, .Script
+
+TrainerPokemaniacShane:
+	trainer POKEMANIAC, SHANE, EVENT_BEAT_POKEMANIAC_SHANE, PokemaniacShaneSeenText, PokemaniacShaneBeatenText, 0, .Script
 
 .Script:
 	endifjustbattled
 	opentext
-	writetext FisherKyleAfterBattleText
+	writetext PokemaniacShaneAfterBattleText
 	waitbutton
 	closetext
 	end
 
-TrainerFisherMartin:
-	trainer FISHER, MARTIN, EVENT_BEAT_FISHER_MARTIN, FisherMartinSeenText, FisherMartinBeatenText, 0, .Script
-
-.Script:
-	endifjustbattled
-	opentext
-	writetext FisherMartinAfterBattleText
-	waitbutton
-	closetext
-	end
 
 TrainerFisherStephen:
 	trainer FISHER, STEPHEN, EVENT_BEAT_FISHER_STEPHEN, FisherStephenSeenText, FisherStephenBeatenText, 0, .Script
@@ -70,20 +60,6 @@ Route12Nugget:
 Route12HiddenElixer:
 	hiddenitem ELIXER, EVENT_ROUTE_12_HIDDEN_ELIXER
 
-FisherMartinSeenText:
-	text "Patience is the"
-	line "key to both fish-"
-	cont "ing and #MON."
-	done
-
-FisherMartinBeatenText:
-	text "Gwaaah!"
-	done
-
-FisherMartinAfterBattleText:
-	text "I'm too impatient"
-	line "for fishing…"
-	done
 
 FisherStephenSeenText:
 	text "I feel so content,"
@@ -98,89 +74,91 @@ FisherStephenBeatenText:
 	done
 
 FisherStephenAfterBattleText:
-	text "Have you checked"
-	line "out KANTO's radio"
-
-	para "programs? We get a"
-	line "good variety here."
+	text "Have you ever met"
+	line "any of the radio"
+	cont "hosts?"
+	para "I wonder if"
+	line "they're as cool"
+	cont "as they sound."
 	done
 
 FisherBarneySeenText:
-	text "What's most impor-"
-	line "tant in our every-"
-	cont "day lives?"
+	text "Nothing beats a"
+	line "day of fishing!"
 	done
 
 FisherBarneyBeatenText:
-	text "The answer is"
-	line "coming up next!"
+	text "Oof!"
 	done
 
 FisherBarneyAfterBattleText:
-	text "I think electric-"
-	line "ity is the most"
-
-	para "important thing in"
-	line "our daily lives."
-
-	para "If it weren't,"
-	line "people wouldn't"
-
-	para "have made such a"
-	line "fuss when the"
-
-	para "POWER PLANT went"
-	line "out of commission."
+	text "Rumors going"
+	line "around say that"
+	para "YORON POINT on"
+	line "the other side of"
+	para "the STRAIT is a"
+	line "better spot for"
+	cont "fishing."
+	para "That's a bunch of"
+	line "nonsense."
+	para "This side is"
+	line "clearly better!"
 	done
 
-FisherKyleSeenText:
-	text "Do you remember?"
+
+PokemaniacShaneSeenText:
+	text "What does rarity"
+	line "mean to you?"
 	done
 
-FisherKyleBeatenText:
-	text "You do remember?"
+PokemaniacShaneBeatenText:
+	text "I should have used"
+	line "my MOON STONE…"
 	done
 
-FisherKyleAfterBattleText:
-	text "The tug you feel"
-	line "on the ROD when"
+PokemaniacShaneAfterBattleText:
+	text "You're working on"
+	line "a #DEX?"
 
-	para "you hook a #-"
-	line "MON…"
+	para "Wow, you must know"
+	line "some pretty rare"
+	cont "#MON!"
 
-	para "That's the best"
-	line "feeling ever for"
-	cont "an angler like me."
+	para "May I please see"
+	line "it. Please?"
 	done
 
 Route12SignText:
-	text "ROUTE 12"
+	text "URASOE TRAIL"
 
-	para "NORTH TO LAVENDER"
-	line "TOWN"
+	para "RYUKYU CITY -"
+	line "YORON CITY"
 	done
 
 FishingSpotSignText:
-	text "FISHING SPOT"
+	text "NANJO FOREST"
+	line "ENTRANCE"
 	done
 
 Route12_MapEvents:
 	db 0, 0 ; filler
 
-	db 1 ; warp events
-	warp_event 11, 33, ROUTE_12_SUPER_ROD_HOUSE, 1
+	db 4 ; warp events
+	warp_event  8,  5, ROUTE_8_SAFFRON_GATE, 3
+	warp_event  9,  5, ROUTE_8_SAFFRON_GATE, 4
+	warp_event 14, 26, SAFARI_ZONE_BETA, 1
+	warp_event 14, 27, SAFARI_ZONE_BETA, 2
 
 	db 0 ; coord events
 
 	db 3 ; bg events
-	bg_event 11, 27, BGEVENT_READ, Route12Sign
-	bg_event 13,  9, BGEVENT_READ, FishingSpotSign
-	bg_event 14, 13, BGEVENT_ITEM, Route12HiddenElixer
+	bg_event  7,  7, BGEVENT_READ, Route12Sign
+	bg_event 11, 25, BGEVENT_READ, FishingSpotSign
+	bg_event  6,  4, BGEVENT_ITEM, Route12HiddenElixer
 
-	db 6 ; object events
-	object_event  5, 13, SPRITE_FISHER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 1, TrainerFisherMartin, -1
-	object_event 14, 23, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 1, TrainerFisherStephen, -1
-	object_event 10, 38, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 5, TrainerFisherBarney, -1
-	object_event  6,  7, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 3, TrainerFisherKyle, -1
-	object_event  5, 43, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route12Calcium, EVENT_ROUTE_12_CALCIUM
-	object_event  5, 51, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route12Nugget, EVENT_ROUTE_12_NUGGET
+	db 5 ; object events
+	object_event  6, 21, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 0, TrainerFisherStephen, -1
+	object_event  4, 14, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 0, TrainerFisherBarney, -1
+	object_event  5,  4, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route12Calcium, EVENT_ROUTE_12_CALCIUM
+	object_event  5, 43, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route12Nugget, EVENT_ROUTE_12_NUGGET
+	object_event 10,  9, SPRITE_SUPER_NERD, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerPokemaniacShane, -1

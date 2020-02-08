@@ -24,7 +24,7 @@ ItemDescriptions:
 	dw FireStoneDesc
 	dw ThunderStoneDesc
 	dw WaterStoneDesc
-	dw TeruSama2Desc
+	dw TradeStoneDesc
 	dw HPUpDesc
 	dw ProteinDesc
 	dw IronDesc
@@ -44,7 +44,7 @@ ItemDescriptions:
 	dw SuperRepelDesc
 	dw MaxRepelDesc
 	dw DireHitDesc
-	dw TeruSama3Desc
+	dw PoisonStoneDesc
 	dw FreshWaterDesc
 	dw SodaPopDesc
 	dw LemonadeDesc
@@ -351,8 +351,9 @@ WaterStoneDesc:
 	db   "Evolves certain"
 	next "kinds of #MON.@"
 
-TeruSama2Desc:
-	db   "?@"
+TradeStoneDesc:
+	db   "Evolves certain"
+	next "kinds of #MON.@"
 
 HPUpDesc:
 	db   "Raises the HP of"
@@ -430,8 +431,9 @@ DireHitDesc:
 	db   "Ups critical hit"
 	next "ratio. (1 BTL)@"
 
-TeruSama3Desc:
-	db   "?@"
+PoisonStoneDesc:
+	db   "Evolves certain"
+	next "kinds of #MON.@"
 
 FreshWaterDesc:
 	db   "Restores #MON"
@@ -512,8 +514,8 @@ ElixerDesc:
 	next "moves by 10.@"
 
 RedScaleDesc:
-	db   "A scale from the"
-	next "red GYARADOS.@"
+	db   "A blue, red, and"
+	next "yellow wing.@"
 
 SecretPotionDesc:
 	db   "Fully heals any"
@@ -528,12 +530,12 @@ MysteryEggDesc:
 	next "from MR.#MON.@"
 
 ClearBellDesc:
-	db   "Makes a gentle"
-	next "ringing.@"
+	db   "A mysterious"
+	next "#MON fossil.@"
 
 SilverWingDesc:
-	db   "A strange, silver-"
-	next "colored feather.@"
+	db   "A mysterious"
+	next "#MON fossil.@"
 
 MoomooMilkDesc:
 	db   "Restores #MON"
@@ -748,12 +750,12 @@ LuckyEggDesc:
 	next "points. (HOLD)@"
 
 CardKeyDesc:
-	db   "Opens shutters in"
-	next "the RADIO TOWER.@"
+	db   "A new fuel line"
+	next "for the S.S.AQUA.@"
 
 MachinePartDesc:
-	db   "A machine part for"
-	next "the POWER PLANT.@"
+	db   "A mystical ORB"
+	next "kept in the cave.@"
 
 EggTicketDesc:
 	db   "May use at Golden-"
@@ -775,8 +777,8 @@ BasementKeyDesc:
 	db   "Opens doors.@"
 
 PassDesc:
-	db   "A ticket for the"
-	next "MAGNET TRAIN.@"
+	db   "A pass for the"
+	next "KANTO BATTLE CLUB.@"
 
 TeruSama9Desc:
 	db   "?@"

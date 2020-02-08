@@ -11,7 +11,7 @@ CeladonDeptStore4F_MapScripts:
 CeladonDeptStore4FClerkScript:
 	faceplayer
 	opentext
-	pokemart MARTTYPE_STANDARD, MART_CELADON_4F
+	pokemart MARTTYPE_STANDARD, MART_CELADON_3F_2; yes 3f, this is stone salesman
 	closetext
 	end
 
@@ -29,16 +29,16 @@ CeladonDeptStore4FElevatorButton:
 
 CeladonDeptStore4FSuperNerdText:
 	text "I'm here to buy"
-	line "SURF MAIL to send"
-	cont "to my girlfriend."
+	line "a gift for my"
+	cont "girlfriend."
 	done
 
 CeladonDeptStore4FYoungsterText:
-	text "This is the only"
-	line "place where you"
-
-	para "can buy LOVELY"
-	line "MAIL."
+	text "This floor carries"
+	line "evolution stones"
+	para "that can be"
+	line "difficult to find"
+	cont "elsewhere."
 	done
 
 CeladonDeptStore4FDirectoryText:

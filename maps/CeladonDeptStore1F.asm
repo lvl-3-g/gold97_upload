@@ -25,8 +25,7 @@ CeladonDeptStore1FElevatorButton:
 
 CeladonDeptStore1FReceptionistText:
 	text "Hello! Welcome to"
-	line "CELADON DEPT."
-	cont "STORE!"
+	line "KANTO DEPT.STORE!"
 
 	para "The directory is"
 	line "on the wall."
@@ -37,7 +36,7 @@ CeladonDeptStore1FGentlemanText:
 	line "part of the same"
 
 	para "chain as the one"
-	line "in GOLDENROD CITY."
+	line "in WEST CITY."
 
 	para "They were both"
 	line "renovated at the"
@@ -75,8 +74,8 @@ CeladonDeptStore1F_MapEvents:
 	db 0, 0 ; filler
 
 	db 4 ; warp events
-	warp_event  7,  7, CELADON_CITY, 1
-	warp_event  8,  7, CELADON_CITY, 1
+	warp_event 13,  7, CELADON_CITY, 1
+	warp_event 14,  7, CELADON_CITY, 13
 	warp_event 15,  0, CELADON_DEPT_STORE_2F, 2
 	warp_event  2,  0, CELADON_DEPT_STORE_ELEVATOR, 1
 
@@ -87,6 +86,6 @@ CeladonDeptStore1F_MapEvents:
 	bg_event  3,  0, BGEVENT_READ, CeladonDeptStore1FElevatorButton
 
 	db 3 ; object events
-	object_event 10,  1, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CeladonDeptStore1FReceptionistScript, -1
+	object_event  7,  1, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CeladonDeptStore1FReceptionistScript, -1
 	object_event 11,  4, SPRITE_GENTLEMAN, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CeladonDeptStore1FGentlemanScript, -1
-	object_event  5,  3, SPRITE_TEACHER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, CeladonDeptStore1FTeacherScript, -1
+	object_event  5,  6, SPRITE_TEACHER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, CeladonDeptStore1FTeacherScript, -1

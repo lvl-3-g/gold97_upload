@@ -1,10 +1,10 @@
-	db "HARD SHELL@" ; species name
-	dw 311, 3350 ; height, weight
+	db "ICE MONSTER@" ; species name
+	dw 504, 2230 ; height, weight
 
-	db   "It will not stay"
-	next "still, even while"
-	next "it's a pupa. It"
+	db   "Its fur isn't"
+	next "warmed by its"
+	next "body heat, as it"
 
-	page "already has arms"
-	next "and legs under its"
-	next "solid shell.@"
+	page "stays as cold as"
+	next "the environment it"
+	next "lives in.@"

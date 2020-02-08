@@ -133,7 +133,7 @@ CutFunction:
 	dw .FailCut
 
 .CheckAble:
-	ld de, ENGINE_HIVEBADGE
+	ld de, ENGINE_ZEPHYRBADGE
 	call CheckBadge
 	jr c, .nohivebadge
 	call CheckMapForSomethingToCut
@@ -286,9 +286,9 @@ OWFlash:
 
 .CheckUseFlash:
 ; Flash
-	ld de, ENGINE_ZEPHYRBADGE
-	farcall CheckBadge
-	jr c, .nozephyrbadge
+;	ld de, ENGINE_ZEPHYRBADGE
+;	farcall CheckBadge
+;	jr c, .nozephyrbadge
 	push hl
 	farcall SpecialAerodactylChamber
 	pop hl
@@ -566,7 +566,7 @@ FlyFunction:
 
 .TryFly:
 ; Fly
-	ld de, ENGINE_STORMBADGE
+	ld de, ENGINE_MINERALBADGE; this is already changed to jasmine's badge, done here
 	call CheckBadge
 	jr c, .nostormbadge
 	call GetMapEnvironment
@@ -786,6 +786,8 @@ dig_incave
 	jr z, .incave
 	cp DUNGEON
 	jr z, .incave
+	cp ENVIRONMENT_5
+	jr z, .incave
 .fail
 	ld a, $2
 	ret
@@ -980,7 +982,7 @@ StrengthFunction:
 
 .TryStrength:
 ; Strength
-	ld de, ENGINE_PLAINBADGE
+	ld de, ENGINE_HIVEBADGE
 	call CheckBadge
 	jr c, .Failed
 	jr .UseStrength
@@ -1080,7 +1082,7 @@ TryStrengthOW:
 	call CheckPartyMove
 	jr c, .nope
 
-	ld de, ENGINE_PLAINBADGE
+	ld de, ENGINE_HIVEBADGE
 	call CheckEngineFlag
 	jr c, .nope
 
@@ -1384,6 +1386,20 @@ RockSmashFromMenuScript:
 	special UpdateTimePals
 
 RockSmashScript:
+	checkflag ENGINE_STORMBADGE
+	iftrue RockSmashScript2
+	opentext
+	writetext BadgeWorkaroundText
+	waitbutton
+	closetext
+	end
+	
+BadgeWorkaroundText:
+	text "Sorry! A new BADGE"
+	line "is required."
+	done
+	
+RockSmashScript2:
 	callasm GetPartyNick
 	writetext UnknownText_0xcf58
 	closetext
@@ -1795,7 +1811,7 @@ TryCutOW::
 	call CheckPartyMove
 	jr c, .cant_cut
 
-	ld de, ENGINE_HIVEBADGE
+	ld de, ENGINE_ZEPHYRBADGE
 	call CheckEngineFlag
 	jr c, .cant_cut
 

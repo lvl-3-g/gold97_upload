@@ -1,339 +1,660 @@
 	const_def 2 ; object constants
-	const SAFFRONGYM_SABRINA
-	const SAFFRONGYM_GRANNY1
-	const SAFFRONGYM_YOUNGSTER1
-	const SAFFRONGYM_GRANNY2
-	const SAFFRONGYM_YOUNGSTER2
-	const SAFFRONGYM_GYM_GUY
+	const SAFFRON_GYM_LASS
+	const SAFFRON_GYM_YOUNGSTER
+	const SAFFRON_GYM_POKEFAN_M
+	const SAFFROM_GYM_GYM_GUY
+
 
 SaffronGym_MapScripts:
 	db 0 ; scene scripts
 
-	db 0 ; callbacks
+	db 1 ; callbacks
+	callback MAPCALLBACK_TILES, .SaffronGymTypeChange
+	
+.SaffronGymTypeChange:
+	checkevent EVENT_GOT_TOTODILE_FROM_ELM
+	iftrue .GrassGym
+	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
+	iftrue .FireGym
+	jump .doneGym
+.GrassGym:
+	changeblock  3, 1, $3F ; grass
+	changeblock  5, 1, $7D ; grass
+	changeblock  3, 3, $3F ; grass
+	changeblock  5, 3, $3F ; grass
+	changeblock  3, 5, $3F ; grass
+	changeblock  5, 5, $7D ; grass
+	changeblock  3, 7, $3F ; grass
+	changeblock  5, 7, $3F ; grass
+	changeblock  3, 9, $3F ; grass
+	changeblock  5, 9, $7D ; grass
+	changeblock  3, 11, $3F ; grass
+	changeblock  5, 11, $3F ; grass
+	changeblock  3, 13, $3F ; grass
+	changeblock  5, 13, $7D ; grass
+	changeblock  3, 15, $3F ; grass
+	changeblock  5, 15, $3F ; grass
+	changeblock  3, 17, $3F ; grass
+	changeblock  5, 17, $7D ; grass
+	changeblock  13, 1, $7D ; grass
+	changeblock  15, 1, $3F ; grass
+	changeblock  13, 3, $3F ; grass
+	changeblock  15, 3, $3F ; grass
+	changeblock  13, 5, $7D ; grass
+	changeblock  15, 5, $3F ; grass
+	changeblock  13, 7, $3F ; grass
+	changeblock  15, 7, $3F ; grass
+	changeblock  13, 9, $7D ; grass
+	changeblock  15, 9, $3F ; grass
+	changeblock  13, 11, $3F ; grass
+	changeblock  15, 11, $3F ; grass
+	changeblock  13, 13, $7D ; grass
+	changeblock  15, 13, $3F ; grass
+	changeblock  13, 15, $3F ; grass
+	changeblock  15, 15, $3F ; grass
+	changeblock  13, 17, $7D ; grass
+	changeblock  15, 17, $3F ; grass
+	return
+	
+.FireGym:
+	changeblock  3, 1, $3B ; fire
+	changeblock  5, 1, $59 ; fire
+	changeblock  3, 3, $3B ; fire
+	changeblock  5, 3, $3B ; fire
+	changeblock  3, 5, $3B ; fire
+	changeblock  5, 5, $59 ; fire
+	changeblock  3, 7, $3B ; fire
+	changeblock  5, 7, $3B ; fire
+	changeblock  3, 9, $3B ; fire
+	changeblock  5, 9, $59 ; fire
+	changeblock  3, 11, $3B ; fire
+	changeblock  5, 11, $3B ; fire
+	changeblock  3, 13, $3B ; fire
+	changeblock  5, 13, $59 ; fire
+	changeblock  3, 15, $3B ; fire
+	changeblock  5, 15, $3B ; fire
+	changeblock  3, 17, $3B ; fire
+	changeblock  5, 17, $59 ; fire
+	changeblock  13, 1, $59 ; fire
+	changeblock  15, 1, $3B ; fire
+	changeblock  13, 3, $3B ; fire
+	changeblock  15, 3, $3B ; fire
+	changeblock  13, 5, $59 ; fire
+	changeblock  15, 5, $3B ; fire
+	changeblock  13, 7, $3B ; fire
+	changeblock  15, 7, $3B ; fire
+	changeblock  13, 9, $59 ; fire
+	changeblock  15, 9, $3B ; fire
+	changeblock  13, 11, $3B ; fire
+	changeblock  15, 11, $3B ; fire
+	changeblock  13, 13, $59 ; fire
+	changeblock  15, 13, $3B ; fire
+	changeblock  13, 15, $3B ; fire
+	changeblock  15, 15, $3B ; fire
+	changeblock  13, 17, $59 ; fire
+	changeblock  15, 17, $3B ; fire
+	return
+	
+.doneGym
+	return
+	
 
-SaffronGymSabrinaScript:
+	
+SaffronGymPokefanMScript:
 	faceplayer
 	opentext
-	checkflag ENGINE_MARSHBADGE
-	iftrue .FightDone
-	writetext SabrinaIntroText
+	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
+	iftrue .GotChikoritaGiveCyndaquil
+	checkevent EVENT_GOT_TOTODILE_FROM_ELM
+	iftrue .GotTotodileGiveChikorita
+	checkevent EVENT_EXPLODING_TRAP_19
+	iftrue .AfterBattleFakeGymWater
+	writetext PokefanMBeforeTextWater
 	waitbutton
 	closetext
-	winlosstext SabrinaWinLossText, 0
-	loadtrainer SABRINA, SABRINA1
+	winlosstext PokefanMWinTextFake, PokefanMLossTextFake
+	loadtrainer POKEFANM, TREVOR,
 	startbattle
 	reloadmapafterbattle
-	setevent EVENT_BEAT_SABRINA
-	setevent EVENT_BEAT_MEDIUM_REBECCA
-	setevent EVENT_BEAT_MEDIUM_DORIS
-	setevent EVENT_BEAT_PSYCHIC_FRANKLIN
-	setevent EVENT_BEAT_PSYCHIC_JARED
+	setevent EVENT_EXPLODING_TRAP_19
 	opentext
-	writetext ReceivedMarshBadgeText
-	playsound SFX_GET_BADGE
-	waitsfx
-	setflag ENGINE_MARSHBADGE
-	writetext SabrinaMarshBadgeText
+.AfterBattleFakeGymWater
+	checkevent EVENT_EXPLODING_TRAP_20
+	iftrue .AlreadyGotEgg2Water
+	writetext HaveStarter2Egg
+	waitbutton
+	checkcode VAR_PARTYCOUNT
+	ifequal PARTY_LENGTH, .PartyFullStarter2
+	giveegg TOTODILE, 5
+	stringtotext .eggname2, MEM_BUFFER_1
+	scall .GetStarter2Egg
+	setevent EVENT_EXPLODING_TRAP_20
+.AlreadyGotEgg2Water
+	writetext TakeGoodCareOfStarter2
 	waitbutton
 	closetext
 	end
-
-.FightDone:
-	writetext SabrinaFightDoneText
+	
+.GotChikoritaGiveCyndaquil
+	checkevent EVENT_EXPLODING_TRAP_19
+	iftrue .AfterBattleFakeGymFire
+	writetext PokefanMBeforeTextFire
 	waitbutton
 	closetext
-	end
-
-TrainerMediumRebecca:
-	trainer MEDIUM, REBECCA, EVENT_BEAT_MEDIUM_REBECCA, MediumRebeccaSeenText, MediumRebeccaBeatenText, 0, .Script
-
-.Script:
-	endifjustbattled
+	winlosstext PokefanMWinTextFake, PokefanMLossTextFake
+	loadtrainer HIKER, BAILEY,
+	startbattle
+	reloadmapafterbattle
+	setevent EVENT_EXPLODING_TRAP_19
 	opentext
-	writetext MediumRebeccaAfterBattleText
+.AfterBattleFakeGymFire
+	checkevent EVENT_EXPLODING_TRAP_20
+	iftrue .AlreadyGotEgg2Fire
+	writetext HaveStarter2Egg
+	waitbutton
+	checkcode VAR_PARTYCOUNT
+	ifequal PARTY_LENGTH, .PartyFullStarter2
+	giveegg CYNDAQUIL, 5
+	stringtotext .eggname2, MEM_BUFFER_1
+	scall .GetStarter2Egg
+	setevent EVENT_EXPLODING_TRAP_20
+.AlreadyGotEgg2Fire
+	writetext TakeGoodCareOfStarter2
 	waitbutton
 	closetext
 	end
-
-TrainerPsychicFranklin:
-	trainer PSYCHIC_T, FRANKLIN, EVENT_BEAT_PSYCHIC_FRANKLIN, PsychicFranklinSeenText, PsychicFranklinBeatenText, 0, .Script
-
-.Script:
-	endifjustbattled
+	
+.GotTotodileGiveChikorita
+	checkevent EVENT_EXPLODING_TRAP_19
+	iftrue .AfterBattleFakeGymGrass
+	writetext PokefanMBeforeTextGrass
+	waitbutton
+	closetext
+	winlosstext PokefanMWinTextFake, PokefanMLossTextFake
+	loadtrainer POKEFANM, CARTER,
+	startbattle
+	reloadmapafterbattle
+	setevent EVENT_EXPLODING_TRAP_19
 	opentext
-	writetext PsychicFranklinAfterBattleText
+.AfterBattleFakeGymGrass
+	checkevent EVENT_EXPLODING_TRAP_20
+	iftrue .AlreadyGotEgg2Grass
+	writetext HaveStarter2Egg
+	waitbutton
+	checkcode VAR_PARTYCOUNT
+	ifequal PARTY_LENGTH, .PartyFullStarter2
+	giveegg CHIKORITA, 5
+	stringtotext .eggname2, MEM_BUFFER_1
+	scall .GetStarter2Egg
+	setevent EVENT_EXPLODING_TRAP_20
+.AlreadyGotEgg2Grass
+	writetext TakeGoodCareOfStarter2
 	waitbutton
 	closetext
 	end
-
-TrainerMediumDoris:
-	trainer MEDIUM, DORIS, EVENT_BEAT_MEDIUM_DORIS, MediumDorisSeenText, MediumDorisBeatenText, 0, .Script
-
-.Script:
-	endifjustbattled
+	
+.PartyFullStarter2
+	writetext NoRoomForStarter2
+	waitbutton
+	closetext
+	end
+	
+.GetStarter2Egg:
+	jumpstd receivetogepiegg
+	end
+	
+.eggname2
+	db "EGG@"
+	
+Trainer1Scene:
+	playmusic MUSIC_BEAUTY_ENCOUNTER
+	showemote EMOTE_SHOCK, SAFFRON_GYM_LASS, 30
+	turnobject PLAYER, LEFT
 	opentext
-	writetext MediumDorisAfterBattleText
+	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
+	iftrue .Trainer1GotChikoritaUseFire
+	checkevent EVENT_GOT_TOTODILE_FROM_ELM
+	iftrue .Trainer1GotTotodileUseGrass
+	writetext LassTextBeforeWater
 	waitbutton
 	closetext
+	winlosstext LassWinTextWater, LassLossTextWater
+	loadtrainer LASS, LINDA,
+	startbattle
+	reloadmapafterbattle
+	setscene SCENE_SAFFRON_GYM_TRAINER_2
 	end
-
-TrainerPsychicJared:
-	trainer PSYCHIC_T, JARED, EVENT_BEAT_PSYCHIC_JARED, PsychicJaredSeenText, PsychicJaredBeatenText, 0, .Script
-
-.Script:
-	endifjustbattled
+	
+.Trainer1GotChikoritaUseFire
+	writetext LassTextBeforeFire
+	waitbutton
+	closetext
+	winlosstext LassWinTextFire, LassLossTextFire
+	loadtrainer LASS, ALICE,
+	startbattle
+	reloadmapafterbattle
+	setscene SCENE_SAFFRON_GYM_TRAINER_2
+	end
+	
+.Trainer1GotTotodileUseGrass
+	writetext LassTextBeforeGrass
+	waitbutton
+	closetext
+	winlosstext LassWinTextGrass, LassLossTextGrass
+	loadtrainer PICNICKER, TANYA,
+	startbattle
+	reloadmapafterbattle
+	setscene SCENE_SAFFRON_GYM_TRAINER_2
+	end
+	
+Trainer2Scene:
+	playmusic MUSIC_YOUNGSTER_ENCOUNTER
+	showemote EMOTE_SHOCK, SAFFRON_GYM_YOUNGSTER, 30
 	opentext
-	writetext PsychicJaredAfterBattleText
+	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
+	iftrue .Trainer2GotChikoritaUseFire
+	checkevent EVENT_GOT_TOTODILE_FROM_ELM
+	iftrue .Trainer2GotTotodileUseGrass
+	writetext YoungsterTextBeforeWater
+	waitbutton
+	closetext
+	winlosstext YoungsterWinTextWater, YoungsterLossTextWater
+	loadtrainer SCHOOLBOY, KIPP,
+	startbattle
+	reloadmapafterbattle
+	setscene SCENE_SAFFRON_GYM_NOTHING
+	end
+
+.Trainer2GotChikoritaUseFire
+	writetext YoungsterTextBeforeFire
+	waitbutton
+	closetext
+	winlosstext YoungsterWinTextFire, YoungsterLossTextFire
+	loadtrainer YOUNGSTER, JASON,
+	startbattle
+	reloadmapafterbattle
+	setscene SCENE_SAFFRON_GYM_NOTHING
+	end
+
+.Trainer2GotTotodileUseGrass
+	writetext YoungsterTextBeforeGrass
+	waitbutton
+	closetext
+	winlosstext YoungsterWinTextGrass, YoungsterLossTextGrass
+	loadtrainer YOUNGSTER, OWEN,
+	startbattle
+	reloadmapafterbattle
+	setscene SCENE_SAFFRON_GYM_NOTHING
+	end
+	
+SaffronGymYoungsterScript:
+	faceplayer
+	opentext
+	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
+	iftrue .Trainer2AfterFire
+	checkevent EVENT_GOT_TOTODILE_FROM_ELM
+	iftrue .Trainer2AfterGrass
+	writetext Trainer2AfterWaterText
 	waitbutton
 	closetext
 	end
-
+.Trainer2AfterFire
+	writetext Trainer2AfterFireText
+	waitbutton
+	closetext
+	end
+.Trainer2AfterGrass
+	writetext Trainer2AfterGrassText
+	waitbutton
+	closetext
+	end
+	
+SaffronGymLassScript:
+	jumptextfaceplayer SaffronGymLassText
+	
 SaffronGymGuyScript:
 	faceplayer
 	opentext
-	checkevent EVENT_BEAT_SABRINA
-	iftrue .SaffronGymGuyWinScript
-	writetext SaffronGymGuyText
+	checkevent EVENT_EXPLODING_TRAP_19
+	iftrue .GymGuyFakeGymAfter
+	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
+	iftrue .GymGuyFire
+	checkevent EVENT_GOT_TOTODILE_FROM_ELM
+	iftrue .GymGuyGrass
+	writetext GymGuyWaterText
+	waitbutton
+	closetext
+	end
+.GymGuyFire
+	writetext GymGuyFireText
+	waitbutton
+	closetext
+	end
+.GymGuyGrass
+	writetext GymGuyGrassText
+	waitbutton
+	closetext
+	end
+.GymGuyFakeGymAfter
+	writetext GymGuyFakeGymAfterText
 	waitbutton
 	closetext
 	end
 
-.SaffronGymGuyWinScript:
-	writetext SaffronGymGuyWinText
-	waitbutton
-	closetext
-	end
-
-SaffronGymStatue:
-	checkflag ENGINE_MARSHBADGE
-	iftrue .Beaten
-	jumpstd gymstatue1
-.Beaten:
-	trainertotext SABRINA, SABRINA1, MEM_BUFFER_1
-	jumpstd gymstatue2
-
-SabrinaIntroText:
-	text "SABRINA: I knew"
-	line "you were coming…"
-
-	para "Three years ago I"
-	line "had a vision of"
-	cont "your arrival."
-
-	para "You're after my"
-	line "BADGE."
-
-	para "I don't enjoy bat-"
-	line "tling, but it's my"
-
-	para "duty as a LEADER"
-	line "to confer BADGES"
-
-	para "on anyone who has"
-	line "proven him- or"
-	cont "herself worthy."
-
-	para "Since you wish it,"
-	line "I will show you my"
-	cont "psychic powers!"
+GymGuyFakeGymAfterText:
+	text "It's always fun to"
+	line "face off against"
+	para "a GYM, whether or"
+	line "not you actually"
+	cont "get a BADGE."
+	done
+	
+GymGuyFireText:
+	text "What's this?"
+	para "A #MON GYM?"
+	para "Well, not quite."
+	para "BAILEY here has"
+	line "always wanted to"
+	cont "be a GYM LEADER."
+	para "It's a long and"
+	line "difficult process"
+	para "to make it"
+	line "official, though."
+	para "But we're here,"
+	line "playing the part"
+	para "until he can do it"
+	line "for real!"
+	para "Oh, yeah. He uses"
+	line "FIRE #MON."
+	para "I'm sure you know"
+	line "what you'd need to"
+	cont "do to win."
+	done
+	
+GymGuyWaterText:
+	text "What's this?"
+	para "A #MON GYM?"
+	para "Well, not quite."
+	para "TREVOR here has"
+	line "always wanted to"
+	cont "be a GYM LEADER."
+	para "It's a long and"
+	line "difficult process"
+	para "to make it"
+	line "official, though."
+	para "But we're here,"
+	line "playing the part"
+	para "until he can do it"
+	line "for real!"
+	para "Oh, yeah. He uses"
+	line "WATER #MON."
+	para "I'm sure you know"
+	line "what you'd need to"
+	cont "do to win."
+	done
+	
+GymGuyGrassText:
+	text "What's this?"
+	para "A #MON GYM?"
+	para "Well, not quite."
+	para "CARTER here has"
+	line "always wanted to"
+	cont "be a GYM LEADER."
+	para "It's a long and"
+	line "difficult process"
+	para "to make it"
+	line "official, though."
+	para "But we're here,"
+	line "playing the part"
+	para "until he can do it"
+	line "for real!"
+	para "Oh, yeah. He uses"
+	line "GRASS #MON."
+	para "I'm sure you know"
+	line "what you'd need to"
+	cont "do to win."
+	done
+	
+SaffronGymLassText:
+	text "Isn't this fun?"
+	para "It's just like a"
+	line "real GYM!"
+	done
+	
+Trainer2AfterFireText:
+	text "BAILEY has always"
+	line "wanted to be a GYM"
+	cont "LEADER."
+	para "But it's tough to"
+	line "get the proper"
+	cont "accreditation."
+	done
+	
+Trainer2AfterGrassText:
+	text "CARTER has always"
+	line "wanted to be a GYM"
+	cont "LEADER."
+	para "But it's tough to"
+	line "get the proper"
+	cont "accreditation."
+	done
+	
+Trainer2AfterWaterText:
+	text "TREVOR has always"
+	line "wanted to be a GYM"
+	cont "LEADER."
+	para "But it's tough to"
+	line "get the proper"
+	cont "accreditation."
 	done
 
-SabrinaWinLossText:
-	text "SABRINA: Your"
-	line "power…"
-
-	para "It far exceeds"
-	line "what I foresaw…"
-
-	para "Maybe it isn't"
-	line "possible to fully"
-
-	para "predict what the"
-	line "future holds…"
-
-	para "OK, you win. You"
-	line "earned yourself"
-	cont "MARSHBADGE."
+TakeGoodCareOfStarter2:
+	text "Take good care of"
+	line "that #MON!"
+	para "It's one of my"
+	line "favorite kinds!"
+	done
+	
+HaveStarter2Egg:
+	text "Wow! That was a"
+	line "great battle!"
+	para "I feel like a real"
+	line "GYM LEADER, even"
+	cont "though I lost."
+	para "I can't give you"
+	line "a badge, but I've"
+	para "got an EGG of a"
+	line "rare #MON of"
+	cont "my favorite type!"
+	para "Here, have this!"
+	done
+	
+NoRoomForStarter2:
+	text "Oh, wait! You need"
+	line "to make room!"
+	done
+	
+	
+PokefanMBeforeTextWater:
+	text "Hey there!"
+	para "Welcome to my GYM!"
+	para "...Well, it's not"
+	line "an official one."
+	para "But one day!"
+	para "I'm going to be a"
+	line "GYM LEADER!"
+	para "As for now though,"
+	line "I can at least act"
+	cont "the part."
+	para "And there's"
+	line "nothing more I"
+	para "love than a good"
+	line "battle!"
+	para "WATER type #MON"
+	line "are my favorite!"
+	para "They'll drench you"
+	line "if you take them"
+	cont "on!"
+	para "Are you ready?"
 	done
 
-ReceivedMarshBadgeText:
-	text "<PLAYER> received"
-	line "MARSHBADGE."
+PokefanMLossTextFake:
+	text "I'm good at this!"
+	done
+	
+PokefanMWinTextFake:
+	text "Bahah! What a good"
+	line "time that was!"
 	done
 
-SabrinaMarshBadgeText:
-	text "SABRINA: MARSH-"
-	line "BADGE draws out"
-
-	para "your subliminal"
-	line "powers…"
-
-	para "Although I failed"
-	line "to accurately pre-"
-	cont "dict your power,"
-	cont "this much I know"
-	cont "to be true."
-
-	para "You will become a"
-	line "celebrated and"
-	cont "beloved CHAMPION!"
+	
+PokefanMBeforeTextGrass:
+	text "Hey there!"
+	para "Welcome to my GYM!"
+	para "...Well, it's not"
+	line "an official one."
+	para "But one day!"
+	para "I'm going to be a"
+	line "GYM LEADER!"
+	para "As for now though,"
+	line "I can at least act"
+	cont "the part."
+	para "And there's"
+	line "nothing more I"
+	para "love than a good"
+	line "battle!"
+	para "GRASS type #MON"
+	line "are my favorite!"
+	para "Their vines and"
+	line "leaves will beat"
+	cont "you down!"
+	para "Are you ready?"
 	done
 
-SabrinaFightDoneText:
-	text "SABRINA: Your love"
-	line "for your #MON"
 
-	para "overwhelmed my"
-	line "psychic power…"
-
-	para "The power of love,"
-	line "I think, is also a"
-
-	para "kind of psychic"
-	line "power…"
+	
+PokefanMBeforeTextFire:
+	text "Hey there!"
+	para "Welcome to my GYM!"
+	para "...Well, it's not"
+	line "an official one."
+	para "But one day!"
+	para "I'm going to be a"
+	line "GYM LEADER!"
+	para "As for now though,"
+	line "I can at least act"
+	cont "the part."
+	para "And there's"
+	line "nothing more I"
+	para "love than a good"
+	line "battle!"
+	para "FIRE type #MON"
+	line "are my favorite!"
+	para "They'll burn you"
+	line "if you take them"
+	cont "on!"
+	para "Are you ready?"
+	done
+	
+YoungsterTextBeforeWater:
+	text "You ever been"
+	line "swimming?"
+	para "My #MON have."
+	done
+	
+YoungsterLossTextWater:
+	text "Wahoo!"
+	done
+	
+YoungsterWinTextWater:
+	text "Looks like you can"
+	line "tread water!"
 	done
 
-MediumRebeccaSeenText:
-	text "The power of all"
-	line "those you defeated"
-	cont "comes to me!"
+YoungsterTextBeforeFire:
+	text "Can you handle the"
+	line "heat in here?"
+	done
+	
+YoungsterLossTextFire:
+	text "Wahoo!"
+	done
+	
+YoungsterWinTextFire:
+	text "Looks like I got"
+	line "scorched!"
 	done
 
-MediumRebeccaBeatenText:
-	text "Strong…"
-	line "Far too strong…"
+YoungsterTextBeforeGrass:
+	text "Don't trip over"
+	line "my #MON's"
+	cont "vines!"
 	done
-
-MediumRebeccaAfterBattleText:
-	text "What is the source"
-	line "of your power?"
+	
+YoungsterLossTextGrass:
+	text "Wahoo!"
 	done
-
-PsychicFranklinSeenText:
-	text "Psychic power is"
-	line "the power of your"
-	cont "soul."
+	
+YoungsterWinTextGrass:
+	text "I stumbled!"
 	done
-
-PsychicFranklinBeatenText:
-	text "Your soul has more"
-	line "power than mine!"
+	
+LassTextBeforeGrass:
+	text "Isn't it lovely"
+	line "in here?"
+	para "I brought snacks"
+	line "for a picnic!"
 	done
-
-PsychicFranklinAfterBattleText:
-	text "You made your soul"
-	line "stronger, not just"
-	cont "your abilities."
+	
+LassLossTextGrass:
+	text "Wahoo!"
+	
+LassWinTextGrass:
+	text "At least the air"
+	line "is still sweet."
 	done
-
-MediumDorisSeenText:
-	text "Fufufufu…"
-	line "I see it clearly."
-
-	para "I can see into"
-	line "your soul!"
+	
+LassTextBeforeWater:
+	text "Careful, the floor"
+	line "can get slick!"
 	done
-
-MediumDorisBeatenText:
-	text "Though I read you,"
-	line "I still lost…"
+	
+LassLossTextWater:
+	text "Wahoo!"
+	
+LassWinTextWater:
+	text "I slipped!"
 	done
-
-MediumDorisAfterBattleText:
-	text "Darn! I forgot"
-	line "that I predicted I"
-	cont "would lose to you."
+	
+LassTextBeforeFire:
+	text "Nothing is better"
+	line "for a hot room"
+	cont "than a hot battle!"
 	done
-
-PsychicJaredSeenText:
-	text "The FIGHTING DOJO"
-	line "next door was once"
-	cont "this city's GYM."
+	
+LassLossTextFire:
+	text "Wahoo!"
+	
+LassWinTextFire:
+	text "Too hot!"
 	done
-
-PsychicJaredBeatenText:
-	text "I was no match…"
-	done
-
-PsychicJaredAfterBattleText:
-	text "KARATE KING, the"
-	line "master of the"
-
-	para "FIGHTING DOJO, was"
-	line "just destroyed by"
-	cont "SABRINA."
-	done
-
-SaffronGymGuyText:
-	text "Yo, CHAMP in"
-	line "making!"
-
-	para "A trainer as"
-	line "skilled as you"
-
-	para "doesn't need to be"
-	line "told how to deal"
-
-	para "with psychic-type"
-	line "#MON, right?"
-
-	para "I expect great"
-	line "things from you!"
-
-	para "Good luck!"
-	done
-
-SaffronGymGuyWinText:
-	text "That was another"
-	line "fantastic battle!"
-	done
-
+	
 SaffronGym_MapEvents:
 	db 0, 0 ; filler
 
-	db 32 ; warp events
-	warp_event  8, 17, SAFFRON_CITY, 2
-	warp_event  9, 17, SAFFRON_CITY, 2
-	warp_event 11, 15, SAFFRON_GYM, 18
-	warp_event 19, 15, SAFFRON_GYM, 19
-	warp_event 19, 11, SAFFRON_GYM, 20
-	warp_event  1, 11, SAFFRON_GYM, 21
-	warp_event  5,  3, SAFFRON_GYM, 22
-	warp_event 11,  5, SAFFRON_GYM, 23
-	warp_event  1, 15, SAFFRON_GYM, 24
-	warp_event 19,  3, SAFFRON_GYM, 25
-	warp_event 15, 17, SAFFRON_GYM, 26
-	warp_event  5, 17, SAFFRON_GYM, 27
-	warp_event  5,  9, SAFFRON_GYM, 28
-	warp_event  9,  3, SAFFRON_GYM, 29
-	warp_event 15,  9, SAFFRON_GYM, 30
-	warp_event 15,  5, SAFFRON_GYM, 31
-	warp_event  1,  5, SAFFRON_GYM, 32
-	warp_event 19, 17, SAFFRON_GYM, 3
-	warp_event 19,  9, SAFFRON_GYM, 4
-	warp_event  1,  9, SAFFRON_GYM, 5
-	warp_event  5,  5, SAFFRON_GYM, 6
-	warp_event 11,  3, SAFFRON_GYM, 7
-	warp_event  1, 17, SAFFRON_GYM, 8
-	warp_event 19,  5, SAFFRON_GYM, 9
-	warp_event 15, 15, SAFFRON_GYM, 10
-	warp_event  5, 15, SAFFRON_GYM, 11
-	warp_event  5, 11, SAFFRON_GYM, 12
-	warp_event  9,  5, SAFFRON_GYM, 13
-	warp_event 15, 11, SAFFRON_GYM, 14
-	warp_event 15,  3, SAFFRON_GYM, 15
-	warp_event  1,  3, SAFFRON_GYM, 16
-	warp_event 11,  9, SAFFRON_GYM, 17
+	db 2 ; warp events
+	warp_event  8, 17, SAFFRON_CITY, 10
+	warp_event  9, 17, SAFFRON_CITY, 10
 
-	db 0 ; coord events
 
-	db 1 ; bg events
-	bg_event  8, 15, BGEVENT_READ, SaffronGymStatue
+	db 2 ; coord events
+	coord_event  8, 11, SCENE_DEFAULT, Trainer1Scene
+	coord_event  7,  7, SCENE_SAFFRON_GYM_TRAINER_2, Trainer2Scene
 
-	db 6 ; object events
-	object_event  9,  8, SPRITE_SABRINA, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, SaffronGymSabrinaScript, -1
-	object_event 17, 16, SPRITE_GRANNY, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 3, TrainerMediumRebecca, -1
-	object_event  3, 16, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerPsychicFranklin, -1
-	object_event  3,  4, SPRITE_GRANNY, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 2, TrainerMediumDoris, -1
-	object_event 17,  4, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 2, TrainerPsychicJared, -1
-	object_event  9, 14, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, SaffronGymGuyScript, -1
+	db 0 ; bg events
+
+	db 4 ; object events
+	object_event  7, 11, SPRITE_LASS, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, SaffronGymLassScript, -1
+	object_event  7,  6, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, SaffronGymYoungsterScript, -1
+	object_event  9,  0, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, SaffronGymPokefanMScript, -1
+	object_event 10, 15, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, SaffronGymGuyScript, -1

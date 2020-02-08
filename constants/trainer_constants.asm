@@ -267,7 +267,7 @@ KRIS EQU __enum__
 	const ETHAN
 	const BRENT2
 	const BRENT3
-	const ISSAC
+	const ISAAC
 	const DONALD
 	const ZACH
 	const BRENT4
@@ -648,8 +648,8 @@ KRIS EQU __enum__
 	const COLIN
 	const DEREK2
 	const DEREK3
-	const ALEX
 	const REX
+	const ALEX
 	const ALLAN
 
 	trainerclass KIMONO_GIRL ; 3c
@@ -699,5 +699,35 @@ KRIS EQU __enum__
 
 	trainerclass MYSTICALMAN ; 43
 	const EUSINE
+	
+	trainerclass ENGINEER
+	const DAVIDSON
+	const LANDON
+	const RICARDO
+	const MARKSON
+	
+	trainerclass SPORTSMAN
+	const JACOB
+	const MANNY
+	const ARTHUR
+	const BRYSON
+	
+	trainerclass SOLDIER
+	const GERALD
+	const ANTONIO
+	const DAN
+	const WARNELL
+	
+	trainerclass INSTRUCTOR
+	const CLIFF
+	const RAND
+	const MORGAN
+	const GEOFF
+	
+	trainerclass FLEDGLING
+	const CLAYTON
+	const EARNEST
+	const HIDALGO
+	const PAULSON
 
 NUM_TRAINER_CLASSES EQU __enum__

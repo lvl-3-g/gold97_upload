@@ -1,5 +1,4 @@
 	const_def 2 ; object constants
-	const BILLSBROTHERSHOUSE_POKEFAN_F
 	const BILLSBROTHERSHOUSE_YOUNGSTER
 
 BillsBrothersHouse_MapScripts:
@@ -7,35 +6,51 @@ BillsBrothersHouse_MapScripts:
 
 	db 0 ; callbacks
 
-BillsBrotherScript:
-	jumptextfaceplayer BillsBrotherText
-
 BillsBrothersHouseYoungsterScript:
-	jumptextfaceplayer BillsBrothersHouseYoungsterText
-
-BillsBrotherText:
-	text "My grandpa is at "
-	line "my brother BILL's"
-	cont "on CERULEAN CAPE."
-	done
+	faceplayer
+	opentext
+	checkevent EVENT_CLEARED_RADIO_TOWER
+	iftrue .BillsBrotherRocketsGone
+	writetext BillsBrothersHouseYoungsterText
+	waitbutton
+	closetext
+	end
+	
+.BillsBrotherRocketsGone
+	writetext BillsBrothersHouseYoungsterAllGoodText
+	waitbutton
+	closetext
+	end
+	
 
 BillsBrothersHouseYoungsterText:
-	text "I saw these weird,"
-	line "slow #MON on"
-	cont "CYCLING ROAD."
+	text "The house next"
+	line "door is really"
+	cont "suspicious."
+	para "That seems to be"
+	line "where all of these"
+	para "TEAM ROCKET"
+	line "members are coming"
+	cont "and going from."
+	done
+
+BillsBrothersHouseYoungsterAllGoodText:
+	text "STAND CITY is no"
+	line "place for crime."
+	para "Good riddance to"
+	line "TEAM ROCKET!"
 	done
 
 BillsBrothersHouse_MapEvents:
 	db 0, 0 ; filler
 
 	db 2 ; warp events
-	warp_event  2,  7, FUCHSIA_CITY, 4
-	warp_event  3,  7, FUCHSIA_CITY, 4
+	warp_event  4,  7, FUCHSIA_CITY, 4
+	warp_event  5,  7, FUCHSIA_CITY, 4
 
 	db 0 ; coord events
 
 	db 0 ; bg events
 
-	db 2 ; object events
-	object_event  2,  3, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, BillsBrotherScript, -1
-	object_event  6,  4, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WALK_UP_DOWN, 0, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BillsBrothersHouseYoungsterScript, -1
+	db 1 ; object events
+	object_event  2,  3, SPRITE_SUPER_NERD, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BillsBrothersHouseYoungsterScript, -1

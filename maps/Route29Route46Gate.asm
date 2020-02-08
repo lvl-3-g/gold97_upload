@@ -14,34 +14,32 @@ Route29Route46GateYoungsterScript:
 	jumptextfaceplayer Route29Route46GateYoungsterText
 
 Route29Route46GateOfficerText:
-	text "You can't climb"
-	line "ledges."
-
-	para "But you can jump"
-	line "down from them to"
-	cont "take a shortcut."
+	text "NIHON's known for"
+	line "having rough north"
+	cont "waters."
+	para "The area around"
+	line "the aptly named"
+	para "WHIRL ISLAND is"
+	line "probably the best"
+	cont "example."
+	para "Don't go north"
+	line "unprepared!"
 	done
 
 Route29Route46GateYoungsterText:
-	text "Different kinds of"
-	line "#MON appear"
-	cont "past here."
-
-	para "If you want to"
-	line "catch them all,"
-
-	para "you have to look"
-	line "everywhere."
+	text "I hear rare"
+	line "#MON appear in"
+	cont "WHIRL ISLAND."
 	done
 
 Route29Route46Gate_MapEvents:
 	db 0, 0 ; filler
 
 	db 4 ; warp events
-	warp_event  4,  0, ROUTE_46, 1
-	warp_event  5,  0, ROUTE_46, 2
-	warp_event  4,  7, ROUTE_29, 1
-	warp_event  5,  7, ROUTE_29, 1
+	warp_event  4,  0, ROUTE_41, 3
+	warp_event  5,  0, ROUTE_41, 4
+	warp_event  4,  7, BLACKTHORN_CITY, 9
+	warp_event  5,  7, BLACKTHORN_CITY, 10
 
 	db 0 ; coord events
 

@@ -1,21 +1,19 @@
 	const_def 2 ; object constants
 	const DRAGONSDENB1F_POKE_BALL1
-	const DRAGONSDENB1F_CLAIR
-	const DRAGONSDENB1F_SILVER
 	const DRAGONSDENB1F_COOLTRAINER_M
 	const DRAGONSDENB1F_COOLTRAINER_F
 	const DRAGONSDENB1F_TWIN1
 	const DRAGONSDENB1F_TWIN2
 	const DRAGONSDENB1F_POKE_BALL2
 	const DRAGONSDENB1F_POKE_BALL3
+	const DRAGONSDENB1F_GENTLEMAN
 
 DragonsDenB1F_MapScripts:
 	db 2 ; scene scripts
 	scene_script .DummyScene0 ; SCENE_DRAGONSDENB1F_NOTHING
 	scene_script .DummyScene1 ; SCENE_DRAGONSDENB1F_CLAIR_GIVES_TM
 
-	db 1 ; callbacks
-	callback MAPCALLBACK_NEWMAP, .CheckSilver
+	db 0 ; callbacks
 
 .DummyScene0:
 	end
@@ -23,158 +21,237 @@ DragonsDenB1F_MapScripts:
 .DummyScene1:
 	end
 
-.CheckSilver:
-	checkevent EVENT_BEAT_RIVAL_IN_MT_MOON
-	iftrue .CheckDay
-	disappear DRAGONSDENB1F_SILVER
-	return
 
-.CheckDay:
-	checkcode VAR_WEEKDAY
-	ifequal TUESDAY, .AppearSilver
-	ifequal THURSDAY, .AppearSilver
-	disappear DRAGONSDENB1F_SILVER
-	return
+	;giveitem TM_DRAGONBREATH
+	;setevent EVENT_GOT_TM24_DRAGONBREATH
 
-.AppearSilver:
-	appear DRAGONSDENB1F_SILVER
-	return
-
-DragonsDenB1F_ClairScene:
-	appear DRAGONSDENB1F_CLAIR
-	opentext
-	writetext ClairText_Wait
-	pause 30
-	closetext
-	showemote EMOTE_SHOCK, PLAYER, 15
-	turnobject PLAYER, LEFT
-	playmusic MUSIC_CLAIR
-	applymovement DRAGONSDENB1F_CLAIR, MovementDragonsDen_ClairWalksToYou
-	opentext
-	writetext ClairText_GiveDragonbreathDragonDen
-	buttonsound
-	giveitem TM_DRAGONBREATH
-	iffalse .BagFull
-	itemtotext TM_DRAGONBREATH, MEM_BUFFER_0
-	writetext NotifyReceiveDragonbreath
-	playsound SFX_ITEM
-	waitsfx
-	itemnotify
-	setevent EVENT_GOT_TM24_DRAGONBREATH
-	writetext ClairText_DescribeDragonbreathDragonDen
-	buttonsound
-	writetext ClairText_WhatsTheMatterDragonDen
-	waitbutton
-	closetext
-	jump .FinishClair
-
-.BagFull:
-	writetext ClairText_NoRoom
-	waitbutton
-	closetext
-.FinishClair:
-	applymovement DRAGONSDENB1F_CLAIR, MovementDragonsDen_ClairWalksAway
-	special FadeOutMusic
-	pause 30
-	special RestartMapMusic
-	disappear DRAGONSDENB1F_CLAIR
-	setscene SCENE_DRAGONSDENB1F_NOTHING
-	end
 
 TrainerCooltrainermDarin:
 	trainer COOLTRAINERM, DARIN, EVENT_BEAT_COOLTRAINERM_DARIN, CooltrainermDarinSeenText, CooltrainermDarinBeatenText, 0, .Script
 
 .Script:
-	endifjustbattled
+	checkevent EVENT_BEAT_COOLTRAINERF_CARA
+	iftrue .DarinCheck2
+	opentext
+	writetext CooltrainermDarinAfterBattleTextNotDone
+	waitbutton
+	closetext
+	end
+
+.DarinCheck2
+	checkevent EVENT_BEAT_INSTRUCTOR_RAND
+	iftrue .DarinCheck3
+	opentext
+	writetext CooltrainermDarinAfterBattleTextNotDone
+	waitbutton
+	closetext
+	end
+	
+.DarinCheck3
+	checkevent EVENT_BEAT_TWINS_LEA_AND_PIA
+	iftrue .DarinOrbCheck
+	opentext
+	writetext CooltrainermDarinAfterBattleTextNotDone
+	waitbutton
+	closetext
+	end
+	
+.DarinOrbCheck
+	checkevent EVENT_FOUND_MACHINE_PART_IN_CERULEAN_GYM
+	iffalse .DarinGetDragonOrb
 	opentext
 	writetext CooltrainermDarinAfterBattleText
 	waitbutton
 	closetext
 	end
 
+.DarinGetDragonOrb
+	jump DragonOrbGetScript
+	end
+
+TrainerInstructorRand:
+	trainer INSTRUCTOR, RAND, EVENT_BEAT_INSTRUCTOR_RAND, InstructorRandSeenText, InstructorRandBeatenText, 0, .Script
+
+.Script:
+	checkevent EVENT_BEAT_COOLTRAINERF_CARA
+	iftrue .RandCheck2
+	opentext
+	writetext InstructorRandAfterBattleTextNotDone
+	waitbutton
+	closetext
+	end
+
+.RandCheck2
+	checkevent EVENT_BEAT_COOLTRAINERM_DARIN
+	iftrue .RandCheck3
+	opentext
+	writetext InstructorRandAfterBattleTextNotDone
+	waitbutton
+	closetext
+	end
+	
+.RandCheck3
+	checkevent EVENT_BEAT_TWINS_LEA_AND_PIA
+	iftrue .RandOrbCheck
+	opentext
+	writetext InstructorRandAfterBattleTextNotDone
+	waitbutton
+	closetext
+	end
+	
+.RandOrbCheck
+	checkevent EVENT_FOUND_MACHINE_PART_IN_CERULEAN_GYM
+	iffalse .RandGetDragonOrb
+	opentext
+	writetext InstructorRandAfterBattleText
+	waitbutton
+	closetext
+	end
+
+.RandGetDragonOrb
+	jump DragonOrbGetScript
+	end
+
 TrainerCooltrainerfCara:
 	trainer COOLTRAINERF, CARA, EVENT_BEAT_COOLTRAINERF_CARA, CooltrainerfCaraSeenText, CooltrainerfCaraBeatenText, 0, .Script
 
+
 .Script:
-	endifjustbattled
+	checkevent EVENT_BEAT_INSTRUCTOR_RAND
+	iftrue .CaraCheck2
+	opentext
+	writetext CooltrainerfCaraAfterBattleTextNotDone
+	waitbutton
+	closetext
+	end
+
+.CaraCheck2
+	checkevent EVENT_BEAT_INSTRUCTOR_RAND
+	iftrue .CaraCheck3
+	opentext
+	writetext CooltrainerfCaraAfterBattleTextNotDone
+	waitbutton
+	closetext
+	end
+	
+.CaraCheck3
+	checkevent EVENT_BEAT_TWINS_LEA_AND_PIA
+	iftrue .CaraOrbCheck
+	opentext
+	writetext CooltrainerfCaraAfterBattleTextNotDone
+	waitbutton
+	closetext
+	end
+	
+.CaraOrbCheck
+	checkevent EVENT_FOUND_MACHINE_PART_IN_CERULEAN_GYM
+	iffalse .CaraGetDragonOrb
 	opentext
 	writetext CooltrainerfCaraAfterBattleText
 	waitbutton
 	closetext
+	end
+	
+.CaraGetDragonOrb
+	jump DragonOrbGetScript
 	end
 
 TrainerTwinsLeaandpia1:
 	trainer TWINS, LEAANDPIA1, EVENT_BEAT_TWINS_LEA_AND_PIA, TwinsLeaandpia1SeenText, TwinsLeaandpia1BeatenText, 0, .Script
 
 .Script:
-	endifjustbattled
+	checkevent EVENT_BEAT_COOLTRAINERF_CARA
+	iftrue .Twin1Check2
+	opentext
+	writetext TwinsLeaandpia1AfterBattleTextNotDone
+	waitbutton
+	closetext
+	end
+
+.Twin1Check2
+	checkevent EVENT_BEAT_COOLTRAINERM_DARIN
+	iftrue .Twin1Check3
+	opentext
+	writetext TwinsLeaandpia1AfterBattleTextNotDone
+	waitbutton
+	closetext
+	end
+	
+.Twin1Check3
+	checkevent EVENT_BEAT_INSTRUCTOR_RAND
+	iftrue .Twin1OrbCheck
+	opentext
+	writetext TwinsLeaandpia1AfterBattleTextNotDone
+	waitbutton
+	closetext
+	end
+	
+.Twin1OrbCheck
+	checkevent EVENT_FOUND_MACHINE_PART_IN_CERULEAN_GYM
+	iffalse .Twin1GetDragonOrb
 	opentext
 	writetext TwinsLeaandpia1AfterBattleText
 	waitbutton
 	closetext
 	end
 
+.Twin1GetDragonOrb
+	jump DragonOrbGetScript
+	end
+
 TrainerTwinsLeaandpia2:
 	trainer TWINS, LEAANDPIA1, EVENT_BEAT_TWINS_LEA_AND_PIA, TwinsLeaandpia2SeenText, TwinsLeaandpia2BeatenText, 0, .Script
 
 .Script:
-	endifjustbattled
+	checkevent EVENT_BEAT_COOLTRAINERF_CARA
+	iftrue .Twin2Check2
+	opentext
+	writetext TwinsLeaandpia2AfterBattleTextNotDone
+	waitbutton
+	closetext
+	end
+
+.Twin2Check2
+	checkevent EVENT_BEAT_COOLTRAINERM_DARIN
+	iftrue .Twin2Check3
+	opentext
+	writetext TwinsLeaandpia2AfterBattleTextNotDone
+	waitbutton
+	closetext
+	end
+	
+.Twin2Check3
+	checkevent EVENT_BEAT_INSTRUCTOR_RAND
+	iftrue .Twin2OrbCheck
+	opentext
+	writetext TwinsLeaandpia2AfterBattleTextNotDone
+	waitbutton
+	closetext
+	end
+	
+.Twin2OrbCheck
+	checkevent EVENT_FOUND_MACHINE_PART_IN_CERULEAN_GYM
+	iffalse .Twin2GetDragonOrb
 	opentext
 	writetext TwinsLeaandpia2AfterBattleText
 	waitbutton
 	closetext
 	end
+	
+.Twin2GetDragonOrb
+	jump DragonOrbGetScript
+	end
 
 DragonsDenB1FDragonFangScript:
-; This whole script is written out rather than as an itemball
-; because it's left over from the GS event.
-	giveitem DRAGON_FANG
-	iffalse .BagFull
-	disappear DRAGONSDENB1F_POKE_BALL1
-	opentext
-	itemtotext DRAGON_FANG, MEM_BUFFER_0
-	writetext Text_FoundDragonFang
-	playsound SFX_ITEM
-	waitsfx
-	itemnotify
-	closetext
-	end
+	itemball DRAGON_FANG
 
-.BagFull:
-	opentext
-	itemtotext DRAGON_FANG, MEM_BUFFER_0
-	writetext Text_FoundDragonFang
-	buttonsound
-	writetext Text_NoRoomForDragonFang
-	waitbutton
-	closetext
-	end
 
-DragonsDenB1FSilverScript:
-	playmusic MUSIC_RIVAL_ENCOUNTER
-	faceplayer
-	opentext
-	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
-	iftrue .SilverTalkAgain
-	writetext SilverText_Training1
-	waitbutton
-	closetext
-	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
-	special RestartMapMusic
-	end
-
-.SilverTalkAgain:
-	writetext SilverText_Training2
-	waitbutton
-	closetext
-	special RestartMapMusic
-	end
 
 DragonShrineSignpost:
 	jumptext DragonShrineSignpostText
 
 DragonsDenB1FCalcium:
-	itemball CALCIUM
+	itemball TM_DRAGONBREATH
 
 DragonsDenB1FMaxElixer:
 	itemball MAX_ELIXER
@@ -188,92 +265,28 @@ DragonsDenB1FHiddenMaxPotion:
 DragonsDenB1FHiddenMaxElixer:
 	hiddenitem MAX_ELIXER, EVENT_DRAGONS_DEN_B1F_HIDDEN_MAX_ELIXER
 
-MovementDragonsDen_ClairWalksToYou:
-	slow_step RIGHT
-	slow_step RIGHT
-	slow_step RIGHT
-	slow_step RIGHT
-	step_end
-
-MovementDragonsDen_ClairWalksAway:
-	slow_step LEFT
-	slow_step LEFT
-	slow_step LEFT
-	slow_step LEFT
-	step_end
-
-ClairText_Wait:
-	text "Wait!"
+DragonOrbGetScript:
+	opentext
+	writetext HeresTheOrb
+	waitbutton
+	verbosegiveitem MACHINE_PART
+	setevent EVENT_FOUND_MACHINE_PART_IN_CERULEAN_GYM
+;	writetext HeresTheOrb2
+;	waitbutton
+	closetext
+	end
+	
+HeresTheOrb:
+	text "At last, you"
+	line "figured out who"
+	para "has the DRAGON"
+	line "ORB."
+	para "Take this, and"
+	line "bring it to CLAIR."
 	done
-
-ClairText_GiveDragonbreathDragonDen:
-	text "CLAIR: I'm sorry"
-	line "about this."
-
-	para "Here, take this as"
-	line "my apology."
-	done
-
-NotifyReceiveDragonbreath:
-	text "<PLAYER> received"
-	line "TM24."
-	done
-
-ClairText_DescribeDragonbreathDragonDen:
-	text "That contains"
-	line "DRAGONBREATH."
-
-	para "No, it doesn't"
-	line "have anything to"
-	cont "do with my breath."
-
-	para "If you don't want"
-	line "it, you don't have"
-	cont "to take it."
-	done
-
-ClairText_NoRoom:
-	text "Oh? You don't have"
-	line "any room for this."
-
-	para "I'm going back to"
-	line "the GYM, so make"
-
-	para "room, then come"
-	line "see me there."
-	done
-
-ClairText_WhatsTheMatterDragonDen:
-	text "CLAIR: What's the"
-	line "matter? Aren't you"
-
-	para "going on to the"
-	line "#MON LEAGUE?"
-
-	para "Do you know how to"
-	line "get there?"
-
-	para "From here, go to"
-	line "NEW BARK TOWN."
-
-	para "Then SURF east to"
-	line "#MON LEAGUE."
-
-	para "The route there is"
-	line "very tough."
-
-	para "Don't you dare"
-	line "lose at the #-"
-	cont "MON LEAGUE!"
-
-	para "If you do, I'll"
-	line "feel even worse"
-
-	para "about having lost"
-	line "to you!"
-
-	para "Give it everything"
-	line "you've got."
+	
+HeresTheOrb2:
+	text "got orb"
 	done
 
 DragonShrineSignpostText:
@@ -286,38 +299,11 @@ DragonShrineSignpostText:
 	line "in DRAGON'S DEN."
 	done
 
-SilverText_Training1:
-	text "…"
-	line "What? <PLAYER>?"
-
-	para "…No, I won't"
-	line "battle you now…"
-
-	para "My #MON aren't"
-	line "ready to beat you."
-
-	para "I can't push them"
-	line "too hard now."
-
-	para "I have to be dis-"
-	line "ciplined to become"
-
-	para "the greatest #-"
-	line "MON trainer…"
-	done
-
-SilverText_Training2:
-	text "…"
-
-	para "Whew…"
-
-	para "Learn to stay out"
-	line "of my way…"
-	done
-
 CooltrainermDarinSeenText:
-	text "You! How dare you"
-	line "enter uninvited!"
+	text "You! Do you have"
+	line "what it takes to"
+	para "train the powerful"
+	line "DRAGON #MON?"
 	done
 
 CooltrainermDarinBeatenText:
@@ -325,40 +311,67 @@ CooltrainermDarinBeatenText:
 	done
 
 CooltrainermDarinAfterBattleText:
-	text "The SHRINE ahead"
-	line "is home to the"
+	text "I trust you will"
+	line "find these grounds"
+	para "a great place to"
+	line "train."
+	done
 
-	para "MASTER of our"
-	line "dragon-user clan."
-
-	para "You're not allowed"
-	line "to just go in!"
+CooltrainermDarinAfterBattleTextNotDone:
+	text "DRAGON ORB?"
+	para "It is not me who"
+	line "is holding it."
 	done
 
 CooltrainerfCaraSeenText:
-	text "You shouldn't be"
-	line "in here!"
+	text "Did CLAIR give you"
+	line "permission to be"
+	cont "in here?"
 	done
 
 CooltrainerfCaraBeatenText:
 	text "Oh yikes, I lost!"
 	done
 
+CooltrainerfCaraAfterBattleTextNotDone:
+	text "Nope, I'm not the"
+	line "holder of the ORB."
+	para "Try again!"
+	done
+
 CooltrainerfCaraAfterBattleText:
-	text "Soon I'm going to"
-	line "get permission"
+	text "Raising DRAGONs is"
+	line "more rewarding"
+	para "than other types,"
+	line "I think."
+	done
 
-	para "from our MASTER to"
-	line "use dragons."
 
-	para "When I do, I'm"
-	line "going to become an"
+InstructorRandSeenText:
+	text "Have you learned"
+	line "enough about"
+	para "mystical DRAGON"
+	line "#MON in order"
+	para "to respect them"
+	line "properly?"
+	done
 
-	para "admirable dragon"
-	line "trainer and gain"
+InstructorRandBeatenText:
+	text "Oh yikes, I lost!"
+	done
 
-	para "our MASTER's"
-	line "approval."
+InstructorRandAfterBattleText:
+	text "The history of"
+	line "people training"
+	para "DRAGON #MON is"
+	line "long and storied."
+	para "But some suspect"
+	line "it began here."
+	done
+
+InstructorRandAfterBattleTextNotDone:
+	text "The ORB? Not here."
+	line "Try someone else."
 	done
 
 TwinsLeaandpia1SeenText:
@@ -371,8 +384,17 @@ TwinsLeaandpia1BeatenText:
 	done
 
 TwinsLeaandpia1AfterBattleText:
-	text "It was like having"
-	line "to battle LANCE."
+	text "Have you ever"
+	line "battled LANCE?"
+	para "He is the only"
+	line "DRAGON TRAINER"
+	para "considered CLAIR's"
+	line "superior."
+	done
+	
+TwinsLeaandpia1AfterBattleTextNotDone:
+	text "A DRAGON ORB?"
+	line "Nope, not here!"
 	done
 
 TwinsLeaandpia2SeenText:
@@ -383,49 +405,39 @@ TwinsLeaandpia2BeatenText:
 	text "Meanie."
 	done
 
+TwinsLeaandpia2AfterBattleTextNotDone:
+	text "DRAGON ORB? I"
+	line "don't have it!"
+	done
+
 TwinsLeaandpia2AfterBattleText:
-	text "We'll tell on you."
-
-	para "MASTER will be"
-	line "angry with you."
-	done
-
-Text_FoundDragonFang:
-	text "<PLAYER> found"
-	line "@"
-	text_ram wStringBuffer3
-	text "!"
-	done
-
-Text_NoRoomForDragonFang:
-	text "But <PLAYER> can't"
-	line "carry any more"
-	cont "items."
+	text "Me and my sister"
+	line "are going to rival"
+	para "CLAIR and LANCE"
+	line "someday!"
 	done
 
 DragonsDenB1F_MapEvents:
 	db 0, 0 ; filler
 
 	db 2 ; warp events
-	warp_event 20,  3, DRAGONS_DEN_1F, 3
-	warp_event 19, 29, DRAGON_SHRINE, 1
+	warp_event  9, 31, PALLET_TOWN, 5
+	warp_event  3, 25, DRAGON_SHRINE, 1
 
-	db 1 ; coord events
-	coord_event 19, 30, SCENE_DRAGONSDENB1F_CLAIR_GIVES_TM, DragonsDenB1F_ClairScene
+	db 0 ; coord events
 
 	db 4 ; bg events
-	bg_event 18, 24, BGEVENT_READ, DragonShrineSignpost
+	bg_event  3, 27, BGEVENT_READ, DragonShrineSignpost
 	bg_event 33, 29, BGEVENT_ITEM, DragonsDenB1FHiddenRevive
-	bg_event 21, 17, BGEVENT_ITEM, DragonsDenB1FHiddenMaxPotion
-	bg_event 31, 15, BGEVENT_ITEM, DragonsDenB1FHiddenMaxElixer
+	bg_event  6,  4, BGEVENT_ITEM, DragonsDenB1FHiddenMaxPotion
+	bg_event 28, 16, BGEVENT_ITEM, DragonsDenB1FHiddenMaxElixer
 
-	db 9 ; object events
-	object_event 35, 16, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, DragonsDenB1FDragonFangScript, EVENT_DRAGONS_DEN_B1F_DRAGON_FANG
-	object_event 14, 30, SPRITE_CLAIR, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_DRAGONS_DEN_CLAIR
-	object_event 20, 23, SPRITE_SILVER, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, DragonsDenB1FSilverScript, EVENT_RIVAL_DRAGONS_DEN
-	object_event 20,  8, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 4, TrainerCooltrainermDarin, -1
-	object_event  8,  8, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 3, TrainerCooltrainerfCara, -1
-	object_event  4, 17, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 1, TrainerTwinsLeaandpia1, -1
-	object_event  4, 18, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 1, TrainerTwinsLeaandpia2, -1
-	object_event 30,  4, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, DragonsDenB1FCalcium, EVENT_DRAGONS_DEN_B1F_CALCIUM
-	object_event  5, 20, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, DragonsDenB1FMaxElixer, EVENT_DRAGONS_DEN_B1F_MAX_ELIXER
+	db 8 ; object events
+	object_event 33, 15, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, DragonsDenB1FDragonFangScript, EVENT_DRAGONS_DEN_B1F_DRAGON_FANG
+	object_event 23,  7, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 4, TrainerCooltrainermDarin, -1
+	object_event 16,  2, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 3, TrainerCooltrainerfCara, -1
+	object_event  2, 12, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 1, TrainerTwinsLeaandpia1, -1
+	object_event  2, 13, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 1, TrainerTwinsLeaandpia2, -1
+	object_event 19, 13, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, DragonsDenB1FCalcium, EVENT_DRAGONS_DEN_B1F_CALCIUM
+	object_event 26, 31, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, DragonsDenB1FMaxElixer, EVENT_DRAGONS_DEN_B1F_MAX_ELIXER
+	object_event 24, 25, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 4, TrainerInstructorRand, -1

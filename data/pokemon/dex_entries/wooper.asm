@@ -1,10 +1,10 @@
-	db "WATER FISH@" ; species name
-	dw 104, 190 ; height, weight
+	db "STEEL FISH@" ; species name
+	dw 311, 360 ; height, weight
 
-	db   "A mucous"
-	next "membrane covers"
-	next "its body. Touching"
+	db   "This #MON's"
+	next "body is made of a"
+	next "metallic compound"
 
-	page "it barehanded will"
-	next "cause a shooting"
-	next "pain.@"
+	page "that gives it"
+	next "excellent defense"
+	next "against attacks.@"

@@ -92,6 +92,8 @@
 	const SPRITE_OLD_LINK_RECEPTIONIST ; 58
 	const SPRITE_ROCK ; 59
 	const SPRITE_BOULDER ; 5a
+	const SPRITE_MINELR ; hope it works
+	const SPRITE_MINEUD ; hope it works
 	const SPRITE_SNES ; 5b
 	const SPRITE_FAMICOM ; 5c
 	const SPRITE_FRUIT_TREE ; 5d

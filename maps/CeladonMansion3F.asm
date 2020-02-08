@@ -192,21 +192,21 @@ CeladonMansion3F_MapEvents:
 	db 0, 0 ; filler
 
 	db 4 ; warp events
-	warp_event  0,  0, CELADON_MANSION_ROOF, 1
-	warp_event  1,  0, CELADON_MANSION_2F, 2
+	warp_event  2,  0, CELADON_MANSION_ROOF, 1
+	warp_event  4,  0, CELADON_MANSION_2F, 2
 	warp_event  6,  0, CELADON_MANSION_2F, 3
 	warp_event  7,  0, CELADON_MANSION_ROOF, 2
 
 	db 0 ; coord events
 
 	db 4 ; bg events
-	bg_event  5,  8, BGEVENT_UP, CeladonMansion3FDevRoomSign
-	bg_event  4,  3, BGEVENT_UP, CeladonMansion3FDrawing
+	bg_event  4,  9, BGEVENT_UP, CeladonMansion3FDevRoomSign
+	bg_event  3,  3, BGEVENT_UP, CeladonMansion3FDrawing
 	bg_event  1,  6, BGEVENT_UP, CeladonMansion3FGameProgram
-	bg_event  1,  3, BGEVENT_UP, CeladonMansion3FReferenceMaterial
+	bg_event  1,  4, BGEVENT_UP, CeladonMansion3FReferenceMaterial
 
 	db 4 ; object events
-	object_event  3,  6, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, GameFreakGameDesignerScript, -1
+	object_event  0,  5, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, GameFreakGameDesignerScript, -1
 	object_event  3,  4, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, GameFreakGraphicArtistScript, -1
-	object_event  0,  7, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, GameFreakProgrammerScript, -1
-	object_event  0,  4, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_UP, 2, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, GameFreakCharacterDesignerScript, -1
+	object_event  0,  7, SPRITE_PHARMACIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, GameFreakProgrammerScript, -1
+	object_event  2,  7, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_UP, 2, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, GameFreakCharacterDesignerScript, -1

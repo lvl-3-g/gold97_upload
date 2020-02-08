@@ -11,19 +11,22 @@ VermilionDiglettsCaveSpeechHouseGentlemanScript:
 
 VermilionDiglettsCaveSpeechHouseGentlemanText:
 	text "Over many years,"
-	line "DIGLETT dug a"
-	cont "large tunnel."
-
-	para "That tunnel goes"
-	line "to a distant town."
+	line "a long time ago,"
+	para "people from the"
+	line "mainland sailed"
+	para "here and settled"
+	line "on the islands."
+	para "I feel our culture"
+	line "is slightly more"
+	cont "relaxed here."
 	done
 
 VermilionDiglettsCaveSpeechHouse_MapEvents:
 	db 0, 0 ; filler
 
 	db 2 ; warp events
-	warp_event  2,  7, VERMILION_CITY, 6
-	warp_event  3,  7, VERMILION_CITY, 6
+	warp_event  4,  7, VERMILION_CITY, 9
+	warp_event  5,  7, VERMILION_CITY, 9
 
 	db 0 ; coord events
 

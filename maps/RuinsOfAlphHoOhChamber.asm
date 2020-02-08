@@ -7,14 +7,8 @@ RuinsOfAlphHoOhChamber_MapScripts:
 	callback MAPCALLBACK_TILES, .HiddenDoors
 
 .CheckWall:
-	special HoOhChamber
-	checkevent EVENT_WALL_OPENED_IN_HO_OH_CHAMBER
-	iftrue .OpenWall
 	end
 
-.OpenWall:
-	priorityjump .WallOpenScript
-	end
 
 .DummyScene:
 	end
@@ -22,7 +16,6 @@ RuinsOfAlphHoOhChamber_MapScripts:
 .HiddenDoors:
 	checkevent EVENT_WALL_OPENED_IN_HO_OH_CHAMBER
 	iftrue .WallOpen
-	changeblock 4, 0, $2e ; closed wall
 .WallOpen:
 	checkevent EVENT_SOLVED_HO_OH_PUZZLE
 	iffalse .FloorClosed
@@ -34,16 +27,6 @@ RuinsOfAlphHoOhChamber_MapScripts:
 	return
 
 .WallOpenScript:
-	pause 30
-	earthquake 30
-	showemote EMOTE_SHOCK, PLAYER, 20
-	pause 30
-	playsound SFX_STRENGTH
-	changeblock 4, 0, $30 ; open wall
-	reloadmappart
-	earthquake 50
-	setscene SCENE_FINISHED
-	closetext
 	end
 
 RuinsOfAlphHoOhChamberPuzzle:
@@ -145,21 +128,18 @@ RuinsOfAlphHoOhChamberDescriptionText:
 RuinsOfAlphHoOhChamber_MapEvents:
 	db 0, 0 ; filler
 
-	db 5 ; warp events
+	db 4 ; warp events
 	warp_event  3,  9, RUINS_OF_ALPH_OUTSIDE, 1
 	warp_event  4,  9, RUINS_OF_ALPH_OUTSIDE, 1
 	warp_event  3,  3, RUINS_OF_ALPH_INNER_CHAMBER, 2
 	warp_event  4,  3, RUINS_OF_ALPH_INNER_CHAMBER, 3
-	warp_event  4,  0, RUINS_OF_ALPH_HO_OH_ITEM_ROOM, 1
 
 	db 0 ; coord events
 
-	db 6 ; bg events
+	db 4 ; bg events
 	bg_event  2,  3, BGEVENT_READ, RuinsOfAlphHoOhChamberAncientReplica
 	bg_event  5,  3, BGEVENT_READ, RuinsOfAlphHoOhChamberAncientReplica
 	bg_event  3,  2, BGEVENT_UP, RuinsOfAlphHoOhChamberPuzzle
 	bg_event  4,  2, BGEVENT_UP, RuinsOfAlphHoOhChamberDescriptionSign
-	bg_event  3,  0, BGEVENT_UP, RuinsOfAlphHoOhChamberWallPatternLeft
-	bg_event  4,  0, BGEVENT_UP, RuinsOfAlphHoOhChamberWallPatternRight
 
 	db 0 ; object events

@@ -1542,18 +1542,15 @@ UnknownText_0x176d85:
 
 UnknownText_0x176dd1:
 	text "Hello? What? Where"
-	line "is DUNSPARCE?"
+	line "are the EEVEE?"
 
-	para "DARK CAVE! Hurry!"
+	para "ROUTE 106! Hurry!"
 
 	para "I know I've said"
 	line "it before, but"
 
-	para "DUNSPARCE don't"
-	line "appear when there"
-
-	para "are strong #MON"
-	line "around."
+	para "EEVEE won't be"
+	line "around long!"
 	done
 
 ToddLooksCuteLikeMeText:

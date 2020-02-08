@@ -7,7 +7,7 @@ PlaySlowCry:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	ld bc, -$140
+	ld bc, -$10
 	add hl, bc
 	ld a, l
 	ld [wCryPitch], a
@@ -17,7 +17,7 @@ PlaySlowCry:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	ld bc, $60
+	ld bc, $90
 	add hl, bc
 	ld a, l
 	ld [wCryLength], a

@@ -10,41 +10,29 @@
 	const ROUTE27_FISHER
 
 Route27_MapScripts:
-	db 2 ; scene scripts
-	scene_script .DummyScene0 ; SCENE_DEFAULT
-	scene_script .DummyScene1 ; SCENE_FINISHED
+	db 0 ; scene scripts
 
-	db 0 ; callbacks
+	db 1 ; callbacks
+	callback MAPCALLBACK_TILES, .ClearRocks27
 
-.DummyScene0:
-	end
+.ClearRocks27:
+	checkevent EVENT_BEAT_ERIKA
+	iftrue .Check27_2
+	changeblock   5,  7, $25 ; rock
+	changeblock   7,  5, $25 ; rock
+	changeblock   5,  9, $25 ; rock
+	return
 
-.DummyScene1:
-	end
-
-FirstStepIntoKantoLeftScene:
-	turnobject ROUTE27_FISHER, LEFT
-	showemote EMOTE_SHOCK, ROUTE27_FISHER, 15
-	applymovement ROUTE27_FISHER, MovementData_0x1a0a66
-	jump FirstStepIntoKantoScene_Continue
-
-FirstStepIntoKantoRightScene:
-	turnobject ROUTE27_FISHER, LEFT
-	showemote EMOTE_SHOCK, ROUTE27_FISHER, 15
-	applymovement ROUTE27_FISHER, MovementData_0x1a0a69
-FirstStepIntoKantoScene_Continue:
-	turnobject PLAYER, RIGHT
-	opentext
-	writetext Route27FisherHeyText
-	buttonsound
-	writetext Route27FisherText
-	waitbutton
-	closetext
-	setscene SCENE_FINISHED
-	end
-
-Route27FisherScript:
-	jumptextfaceplayer Route27FisherText
+.Check27_2:
+	checkevent EVENT_RELEASED_THE_BEASTS
+	iftrue .R27RocksDone
+	changeblock   5,  7, $25 ; rock
+	changeblock   7,  5, $25 ; rock
+	changeblock   5,  9, $25 ; rock
+	return
+	
+.R27RocksDone
+	return
 
 TrainerPsychicGilbert:
 	trainer PSYCHIC_T, GILBERT, EVENT_BEAT_PSYCHIC_GILBERT, PsychicGilbertSeenText, PsychicGilbertBeatenText, 0, .Script
@@ -96,7 +84,7 @@ TrainerBirdKeeperJose2:
 	ifequal 1, .Fight1
 	ifequal 0, .LoadFight0
 .Fight2:
-	checkevent EVENT_RESTORED_POWER_TO_KANTO
+	checkevent EVENT_FAST_SHIP_CABINS_SE_SSE_GENTLEMAN
 	iftrue .LoadFight2
 .Fight1:
 	checkevent EVENT_BEAT_ELITE_FOUR
@@ -229,7 +217,7 @@ TrainerCooltrainerfReena:
 	ifequal 1, .Fight1
 	ifequal 0, .LoadFight0
 .Fight2:
-	checkevent EVENT_RESTORED_POWER_TO_KANTO
+	checkevent EVENT_FAST_SHIP_CABINS_SE_SSE_GENTLEMAN
 	iftrue .LoadFight2
 .Fight1:
 	checkevent EVENT_BEAT_ELITE_FOUR
@@ -296,38 +284,86 @@ TrainerCooltrainerfMegan:
 	closetext
 	end
 
-TohjoFallsSign:
-	jumptext TohjoFallsSignText
 
 Route27TMSolarbeam:
 	itemball TM_SOLARBEAM
 
 Route27RareCandy:
 	itemball RARE_CANDY
+	
+Route27FisherScript:
+	faceplayer
+	opentext
+	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
+	iftrue .RocksStillThere
+	checkevent EVENT_BEAT_ERIKA
+	iffalse .RocksStillThere
+	checkevent EVENT_RELEASED_THE_BEASTS
+	iffalse .RocksStillThere
+	checkevent EVENT_GOT_HM07_WATERFALL
+	iffalse .GiveWaterfallScript
+	writetext Route27FisherRocksGoneText
+	waitbutton
+	closetext
+	end
+	
+.GiveWaterfallScript
+	writetext IFoundThisInTheRubble
+	waitbutton
+	verbosegiveitem HM_WATERFALL
+	setevent EVENT_GOT_HM07_WATERFALL
+	writetext IFoundThisInTheRubble2
+	waitbutton
+	closetext
+	end
 
-MovementData_0x1a0a66:
-	step LEFT
-	step LEFT
-	step_end
-
-MovementData_0x1a0a69:
-	step LEFT
-	step_end
-
-Route27FisherHeyText:
-	text "Hey!"
+.RocksStillThere
+	writetext Route27FisherRocksStillThereText
+	waitbutton
+	closetext
+	setevent EVENT_RELEASED_THE_BEASTS
+	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
+	end
+	
+Route27FisherRocksStillThereText:
+	text "I'm so sick of"
+	line "these rocks that"
+	para "have been blocking"
+	line "the path to SILENT"
+	cont "TOWN for months!"
+	para "Since no one wants"
+	line "to get them out"
+	para "of the way, I'll"
+	line "just do it myself!"
+	para "Hopefully I'll"
+	line "have them gone"
+	cont "soon."
 	done
-
-Route27FisherText:
-	text "Do you know what"
-	line "you just did?"
-
-	para "You've taken your"
-	line "first step into"
-	cont "KANTO."
-
-	para "Check your #-"
-	line "GEAR MAP and see."
+	
+IFoundThisInTheRubble:
+	text "Ah, finally!"
+	para "The rocks have"
+	line "been cleared!"
+	para "Hey, kid! I found"
+	line "this in the"
+	cont "rubble."
+	para "I have no use for"
+	line "it, so you can"
+	cont "have it."
+	done
+	
+Route27FisherRocksGoneText:
+	text "What a nice clear"
+	line "path this is!"
+	done
+	
+IFoundThisInTheRubble2:
+	text "I'm so glad the"
+	line "path is clear."
+	para "Sometimes, if you"
+	line "want something"
+	para "done, you gotta"
+	line "do it yourself!"
 	done
 
 CooltrainermBlakeSeenText:
@@ -341,15 +377,8 @@ CooltrainermBlakeBeatenText:
 	done
 
 CooltrainermBlakeAfterBattleText:
-	text "If you prevail on"
-	line "this harsh trek,"
-
-	para "the truth will be"
-	line "revealed!"
-
-	para "Heh, sorry, I just"
-	line "wanted to say"
-	cont "something cool."
+	text "You making your"
+	line "way to MT.FUJI?"
 	done
 
 CooltrainermBrianSeenText:
@@ -389,9 +418,8 @@ CooltrainerfReenaAfterBattleText:
 	done
 
 CooltrainerfMeganSeenText:
-	text "It's rare to see"
-	line "anyone come here."
-
+	text "What brings you"
+	line "out here?"
 	para "Are you training"
 	line "on your own?"
 	done
@@ -458,35 +486,24 @@ BirdKeeperJose2AfterBattleText:
 	line "mand #MON."
 	done
 
-TohjoFallsSignText:
-	text "TOHJO FALLS"
-
-	para "THE LINK BETWEEN"
-	line "KANTO AND JOHTO"
-	done
 
 Route27_MapEvents:
 	db 0, 0 ; filler
 
-	db 3 ; warp events
-	warp_event 33,  7, ROUTE_27_SANDSTORM_HOUSE, 1
-	warp_event 26,  5, TOHJO_FALLS, 1
-	warp_event 36,  5, TOHJO_FALLS, 2
+	db 1 ; warp events
+	warp_event 53,  9, ILEX_FOREST_AZALEA_GATE, 1
 
-	db 2 ; coord events
-	coord_event 18, 10, SCENE_DEFAULT, FirstStepIntoKantoLeftScene
-	coord_event 19, 10, SCENE_DEFAULT, FirstStepIntoKantoRightScene
+	db 0 ; coord events
 
-	db 1 ; bg events
-	bg_event 25,  7, BGEVENT_READ, TohjoFallsSign
+	db 0 ; bg events
 
 	db 9 ; object events
-	object_event 48,  7, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 3, TrainerCooltrainermBlake, -1
-	object_event 58,  6, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 4, TrainerCooltrainermBrian, -1
-	object_event 72, 10, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 4, TrainerCooltrainerfReena, -1
-	object_event 37,  6, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 2, TrainerCooltrainerfMegan, -1
-	object_event 65,  7, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerPsychicGilbert, -1
-	object_event 58, 13, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerBirdKeeperJose2, -1
-	object_event 60, 12, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route27TMSolarbeam, EVENT_ROUTE_27_TM_SOLARBEAM
-	object_event 53, 12, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route27RareCandy, EVENT_ROUTE_27_RARE_CANDY
-	object_event 21, 10, SPRITE_FISHER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 3, Route27FisherScript, -1
+	object_event 39,  7, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 3, TrainerCooltrainermBlake, -1
+	object_event 48,  7, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 4, TrainerCooltrainermBrian, -1
+	object_event 27,  5, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 4, TrainerCooltrainerfReena, -1
+	object_event 18,  9, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 3, TrainerCooltrainerfMegan, -1
+	object_event 33, 11, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerPsychicGilbert, -1
+	object_event  9, 10, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerBirdKeeperJose2, -1
+	object_event 31, 13, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route27TMSolarbeam, EVENT_ROUTE_27_TM_SOLARBEAM
+	object_event 15,  4, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route27RareCandy, EVENT_ROUTE_27_RARE_CANDY
+	object_event  8,  5, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_LEFT, 1,  0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, Route27FisherScript, -1

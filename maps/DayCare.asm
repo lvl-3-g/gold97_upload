@@ -157,16 +157,16 @@ DayCare_MapEvents:
 	db 0, 0 ; filler
 
 	db 4 ; warp events
-	warp_event  0,  5, ROUTE_34, 3
-	warp_event  0,  6, ROUTE_34, 4
-	warp_event  2,  7, ROUTE_34, 5
-	warp_event  3,  7, ROUTE_34, 5
+	warp_event  0,  7, ROUTE_31, 7
+	warp_event  1,  7, ROUTE_31, 7
+	warp_event  4,  7, ROUTE_31, 8
+	warp_event  5,  7, ROUTE_31, 8
 
 	db 0 ; coord events
 
 	db 2 ; bg events
-	bg_event  0,  1, BGEVENT_READ, DayCareBookshelf
-	bg_event  1,  1, BGEVENT_READ, DayCareBookshelf
+	bg_event  0,  0, BGEVENT_READ, DayCareBookshelf
+	bg_event  1,  0, BGEVENT_READ, DayCareBookshelf
 
 	db 2 ; object events
 	object_event  2,  3, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, DayCareManScript_Inside, EVENT_DAY_CARE_MAN_IN_DAY_CARE

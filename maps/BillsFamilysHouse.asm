@@ -11,22 +11,46 @@ BillsFamilysHouse_MapScripts:
 BillScript:
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_EEVEE
-	iftrue .GotEevee
-	writetext BillTakeThisEeveeText
+	checkflag ENGINE_ZEPHYRBADGE
+	iftrue .GiveCut
+	writetext BillGoGetBadge
+	waitbutton
+	closetext
+	
+	end
+	
+;BillScript:
+;	faceplayer
+;	opentext
+;	checkevent EVENT_GOT_EEVEE
+;	iftrue .GotEevee
+;	writetext BillTakeThisEeveeText
+;	yesorno
+;	iffalse .Refused
+;	writetext BillImCountingOnYouText
+;	buttonsound
+;	waitsfx
+;	checkcode VAR_PARTYCOUNT
+;	ifequal PARTY_LENGTH, .NoRoom
+;	writetext ReceivedEeveeText
+;	playsound SFX_CAUGHT_MON
+;	waitsfx
+;	givepoke EEVEE, 20
+;	setevent EVENT_GOT_EEVEE
+;	writetext BillEeveeMayEvolveText
+;	waitbutton
+;	closetext
+;	end
+
+.GiveCut
+	checkevent EVENT_GOT_HM01_CUT
+	iftrue .GotCut
+	writetext BillTakeThisCutText
 	yesorno
 	iffalse .Refused
+	verbosegiveitem HM_CUT
+	setevent EVENT_GOT_HM01_CUT
 	writetext BillImCountingOnYouText
-	buttonsound
-	waitsfx
-	checkcode VAR_PARTYCOUNT
-	ifequal PARTY_LENGTH, .NoRoom
-	writetext ReceivedEeveeText
-	playsound SFX_CAUGHT_MON
-	waitsfx
-	givepoke EEVEE, 20
-	setevent EVENT_GOT_EEVEE
-	writetext BillEeveeMayEvolveText
 	waitbutton
 	closetext
 	end
@@ -43,7 +67,7 @@ BillScript:
 	closetext
 	end
 
-.GotEevee:
+.GotCut:
 	writetext BillPopWontWorkText
 	waitbutton
 	closetext
@@ -105,39 +129,56 @@ BillsHouseBookshelf2:
 
 BillsHouseRadio:
 	jumpstd radio2
+	
+BillGoGetBadge:
+	text "Hm! You shouldn't"
+	line "see this text!"
+	para "I changed the"
+	line "sequence of events"
+	para "so that I shouldnt"
+	line "be here if you"
+	para "don't have the"
+	line "badge. So"
+	para "somethings wrong"
+	line "here!"
+	done
 
-BillTakeThisEeveeText:
-	text "BILL: Hi, <PLAYER>!"
-	line "Do us a favor and"
-	cont "take this EEVEE."
-
-	para "It came over when"
-	line "I was adjusting"
-	cont "the TIME CAPSULE."
-
-	para "Someone has to"
-	line "take care of it,"
-
-	para "but I don't like"
-	line "being outside."
-
-	para "Can I count on you"
-	line "to play with it,"
-	cont "<PLAYER>?"
+BillTakeThisCutText:
+	text "BILL: Hello!"
+	line "Well, now allow"
+	para "me to introduce"
+	line "myself!"
+	para "I'm BILL! I made"
+	line "the PC system that"
+	para "trainers use to"
+	line "store #MON in!"
+	para "I hope you find it"
+	line "useful."
+	para "If you're planning"
+	line "on traveling"
+	para "around, though,"
+	line "I have something"
+	para "else that you may"
+	line "find useful."
+	para "Won't you take"
+	line "this?"
 	done
 
 BillImCountingOnYouText:
-	text "BILL: I knew you'd"
-	line "come through!"
-
-	para "Way to go! You're"
-	line "the real deal!"
-
-	para "OK, I'm counting"
-	line "on you."
-
-	para "Take good care of"
-	line "it!"
+	text "CUT allows your"
+	line "#MON to chop"
+	cont "away small trees!"
+	para "It may prove"
+	line "indespensible!"
+	para "And remember,"
+	line "unlike a TM, an HM"
+	para "can be reused as"
+	line "many times as you"
+	cont "want to!"
+	para "Well, good luck on"
+	line "your pursuits as"
+	cont "a trainer!"
+	para "I'll be around!"
 	done
 
 ReceivedEeveeText:
@@ -160,37 +201,22 @@ BillPartyFullText:
 	done
 
 BillNoEeveeText:
-	text "Oh… Now what to"
-	line "do?"
+	text "Oh… Well you might"
+	line "need this at some"
+	cont "point…"
 	done
 
 BillPopWontWorkText:
-	text "BILL: My pop, he"
-	line "won't work. All he"
-
-	para "does is goof off"
-	line "all day long."
-
-	para "He's getting to be"
-	line "a real headache…"
+	text "BILL: Hi, <PLAY_G>!"
+	line "I hope your"
+	para "adventures are"
+	line "going well!"
 	done
 
 BillsPopText:
 	text "Oh, you collect"
 	line "#MON? My son"
 	cont "BILL is an expert."
-
-	para "He just got called"
-	line "to the #MON"
-
-	para "CENTER in ECRUTEAK"
-	line "CITY."
-
-	para "My husband went"
-	line "off to the GAME"
-
-	para "CORNER without"
-	line "being called…"
 	done
 
 BillsMomText:
@@ -244,17 +270,17 @@ BillsFamilysHouse_MapEvents:
 	db 0, 0 ; filler
 
 	db 2 ; warp events
-	warp_event  2,  7, GOLDENROD_CITY, 4
-	warp_event  3,  7, GOLDENROD_CITY, 4
+	warp_event  3,  7, VIOLET_CITY, 15
+	warp_event  4,  7, VIOLET_CITY, 15
 
 	db 0 ; coord events
 
 	db 3 ; bg events
-	bg_event  0,  1, BGEVENT_READ, BillsHouseBookshelf2
-	bg_event  1,  1, BGEVENT_READ, BillsHouseBookshelf1
-	bg_event  7,  1, BGEVENT_READ, BillsHouseRadio
+	bg_event  2,  1, BGEVENT_READ, BillsHouseBookshelf2
+	bg_event  3,  1, BGEVENT_READ, BillsHouseBookshelf1
+	bg_event  6,  1, BGEVENT_READ, BillsHouseRadio
 
 	db 3 ; object events
-	object_event  2,  3, SPRITE_BILL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BillScript, EVENT_MET_BILL
-	object_event  5,  3, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BillsMomScript, -1
-	object_event  5,  4, SPRITE_TWIN, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, BillsSisterScript, -1
+	object_event  5,  4, SPRITE_BILL, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BillScript, EVENT_MET_BILL
+	object_event  2,  3, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BillsMomScript, -1
+	object_event  7,  4, SPRITE_TWIN, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, BillsSisterScript, -1

@@ -1,10 +1,10 @@
-	db "VOLCANO@" ; species name
-	dw 211, 420 ; height, weight
+	db "FIRE BEAR@" ; species name
+	dw 305, 720 ; height, weight
 
-	db   "Before battle, it"
-	next "turns its back on"
-	next "its opponent to"
+	db   "The fur on its"
+	next "back can become"
+	next "alight with flame"
 
-	page "demonstrate how"
-	next "ferociously its"
-	next "fire blazes.@"
+	page "whenever it wills."
+	next "Touching it causes"
+	next "instant burns.@"

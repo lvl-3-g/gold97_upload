@@ -24,13 +24,14 @@ VioletPokecenter1F_ElmsAideScript:
 	iffalse .RefusedEgg
 	checkcode VAR_PARTYCOUNT
 	ifequal PARTY_LENGTH, .PartyFull
-	giveegg TOGEPI, 5
+	special GiveOddEgg
 	stringtotext .eggname, MEM_BUFFER_1
 	scall .AideGivesEgg
 	setevent EVENT_GOT_TOGEPI_EGG_FROM_ELMS_AIDE
+	;setevent EVENT_TOGEPI_HATCHED
 	clearevent EVENT_ELMS_AIDE_IN_LAB
 	clearevent EVENT_TOGEPI_HATCHED
-	setmapscene ROUTE_32, SCENE_ROUTE32_OFFER_SLOWPOKETAIL
+	;setmapscene ROUTE_32, SCENE_ROUTE32_OFFER_SLOWPOKETAIL
 	writetext UnknownText_0x695c5
 	waitbutton
 	closetext
@@ -41,6 +42,7 @@ VioletPokecenter1F_ElmsAideScript:
 	playsound SFX_EXIT_BUILDING
 	disappear VIOLETPOKECENTER1F_SCIENTIST
 	waitsfx
+	clearevent EVENT_MET_BILL
 	end
 
 .AideWalksAroundPlayer:
@@ -49,6 +51,7 @@ VioletPokecenter1F_ElmsAideScript:
 	applymovement VIOLETPOKECENTER1F_SCIENTIST, MovementData_AideFinishesLeavingPokecenter
 	playsound SFX_EXIT_BUILDING
 	disappear VIOLETPOKECENTER1F_SCIENTIST
+	clearevent EVENT_MET_BILL
 	waitsfx
 	end
 
@@ -89,6 +92,7 @@ MovementData_AideWalksStraightOutOfPokecenter:
 	step DOWN
 	step DOWN
 	step DOWN
+	step RIGHT
 	step DOWN
 	step_end
 
@@ -100,6 +104,8 @@ MovementData_AideWalksLeftToExitPokecenter:
 MovementData_AideFinishesLeavingPokecenter:
 	step DOWN
 	step DOWN
+	step RIGHT
+	step RIGHT
 	step DOWN
 	step_end
 
@@ -107,34 +113,54 @@ UnknownText_0x69555:
 	text "<PLAY_G>, long"
 	line "time, no see."
 
-	para "PROF.ELM asked me"
+	para "PROF.OAK asked me"
 	line "to find you."
 
 	para "He has another"
 	line "favor to ask."
 
-	para "Would you take the"
-	line "#MON EGG?"
+	para "Would you take"
+	line "this #MON EGG?"
+	
+	para "It would benefit"
+	line "our research to"
+	para "learn a bit more"
+	line "about how baby"
+	para "#MON interact"
+	line "with other"
+	para "#MON and how"
+	line "this affects their"
+	cont "growth."
+	para "So could you keep"
+	line "this egg with you?"
 	done
 
 UnknownText_0x695c5:
-	text "We discovered that"
-	line "a #MON will not"
-
-	para "hatch until it"
-	line "grows in the EGG."
-
-	para "It also has to be"
-	line "with other active"
-	cont "#MON to hatch."
-
-	para "<PLAY_G>, you're"
-	line "the only person"
-	cont "we can rely on."
-
-	para "Please call PROF."
-	line "ELM when that EGG"
-	cont "hatches!"
+	text "What's in the egg?"
+	para "Well, we thought"
+	line "we'd keep that a"
+	cont "surprise!"
+	para "I'm sure it could"
+	line "be a helpful"
+	para "addition to your"
+	line "party!"
+	para "Consider it a"
+	line "gift!"
+	para "Also, did you hear"
+	line "that BILL is in"
+	cont "town?"
+	para "If you don't know,"
+	line "BILL created the"
+	cont "PC storage system!"
+	para "He's highly"
+	line "respected among"
+	para "#MON"
+	line "researchers."
+	para "You should pay him"
+	line "a visit if you've"
+	cont "got a chance."
+	para "Anyways, I'm off!"
+	line "See you around!"
 	done
 
 UnknownText_0x69693:
@@ -148,7 +174,7 @@ UnknownText_0x69693:
 	done
 
 UnknownText_0x696f2:
-	text "B-but… PROF.ELM"
+	text "B-but… PROF.OAK"
 	line "asked for you…"
 	done
 
@@ -188,7 +214,7 @@ VioletPokecenter1FGameboyKidText:
 
 VioletPokecenter1FGentlemanText:
 	text "It was around"
-	line "three years ago."
+	line "a year or so ago."
 
 	para "TEAM ROCKET was up"
 	line "to no good with"
@@ -217,8 +243,8 @@ VioletPokecenter1F_MapEvents:
 	db 0, 0 ; filler
 
 	db 3 ; warp events
-	warp_event  3,  7, VIOLET_CITY, 5
-	warp_event  4,  7, VIOLET_CITY, 5
+	warp_event  5,  7, VIOLET_CITY, 5
+	warp_event  6,  7, VIOLET_CITY, 5
 	warp_event  0,  7, POKECENTER_2F, 1
 
 	db 0 ; coord events
@@ -226,8 +252,8 @@ VioletPokecenter1F_MapEvents:
 	db 0 ; bg events
 
 	db 5 ; object events
-	object_event  3,  1, SPRITE_NURSE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, VioletPokecenterNurse, -1
-	object_event  7,  6, SPRITE_GAMEBOY_KID, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, VioletPokecenter1FGameboyKidScript, -1
+	object_event  5,  1, SPRITE_NURSE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, VioletPokecenterNurse, -1
+	object_event  11,  4, SPRITE_GAMEBOY_KID, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, VioletPokecenter1FGameboyKidScript, -1
 	object_event  1,  4, SPRITE_GENTLEMAN, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, VioletPokecenter1FGentlemanScript, -1
 	object_event  8,  1, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, VioletPokecenter1FYoungsterScript, -1
 	object_event  4,  3, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, VioletPokecenter1F_ElmsAideScript, EVENT_ELMS_AIDE_IN_VIOLET_POKEMON_CENTER

@@ -11,57 +11,11 @@ Route35GoldenrodGate_MapScripts:
 RandyScript:
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_HP_UP_FROM_RANDY
-	iftrue .gothpup
-	checkevent EVENT_GAVE_KENYA
-	iftrue .questcomplete
-	checkevent EVENT_GOT_KENYA
-	iftrue .alreadyhavekenya
 	writetext UnknownText_0x69ddd
-	yesorno
-	iffalse .refused
-	writetext UnknownText_0x69e48
-	buttonsound
-	waitsfx
-	checkcode VAR_PARTYCOUNT
-	ifequal PARTY_LENGTH, .partyfull
-	writetext UnknownText_0x69eb8
-	playsound SFX_KEY_ITEM
-	waitsfx
-	givepoke SPEAROW, 10, NO_ITEM, TRUE, GiftSpearowName, GiftSpearowOTName
-	givepokemail GiftSpearowMail
-	setevent EVENT_GOT_KENYA
-.alreadyhavekenya
-	writetext UnknownText_0x69ed6
 	waitbutton
 	closetext
 	end
-
-.partyfull
-	writetext UnknownText_0x69f56
-	waitbutton
-	closetext
-	end
-
-.refused
-	writetext UnknownText_0x69f74
-	waitbutton
-	closetext
-	end
-
-.questcomplete
-	writetext UnknownText_0x69f8b
-	buttonsound
-	verbosegiveitem HP_UP
-	iffalse .bagfull
-	setevent EVENT_GOT_HP_UP_FROM_RANDY
-.gothpup
-	writetext UnknownText_0x69fd9
-	waitbutton
-.bagfull
-	closetext
-	end
-
+	
 GiftSpearowMail:
 	db FLOWER_MAIL
 	db   "DARK CAVE leads"
@@ -78,7 +32,7 @@ GiftSpearowOTName:
 Route35GoldenrodGatePokefanFScript:
 	faceplayer
 	opentext
-	checkevent EVENT_FOUGHT_SUDOWOODO
+	checkevent EVENT_BEAT_WHITNEY
 	iftrue .FoughtSudowoodo
 	writetext Route35GoldenrodGatePokefanFText
 	waitbutton
@@ -95,15 +49,12 @@ Route35GoldenrodGateFisherScript:
 	jumptextfaceplayer Route35GoldenrodGateFisherText
 
 UnknownText_0x69ddd:
-	text "Excuse me, kid!"
-	line "Can you do a guy"
-	cont "a favor?"
-
-	para "Can you take this"
-	line "#MON with MAIL"
-	cont "to my friend?"
-
-	para "He's on ROUTE 31."
+	text "WEST CITY kind of"
+	line "bores me."
+	para "Everyone loves the"
+	line "city, but I'd"
+	para "rather live where"
+	line "it's quiet."
 	done
 
 UnknownText_0x69e48:
@@ -162,23 +113,27 @@ UnknownText_0x69fd9:
 	done
 
 Route35GoldenrodGatePokefanFText:
-	text "A strange tree is"
-	line "blocking the road."
-
-	para "It wriggles around"
-	line "if you talk to it."
-
-	para "I heard it became"
-	line "wild when someone"
-
-	para "watered it with a"
-	line "SQUIRTBOTTLE."
+	text "The ground north"
+	line "of here is prone"
+	para "to instability"
+	line "due to the lack"
+	cont "of foliage."
+	para "Some rocks have"
+	line "moved and blocked"
+	cont "the road ahead."
+	para "I don't think"
+	line "you'll be able"
+	para "to get by right"
+	line "now."
 	done
 
 Route35GoldenrodGatePokefanFText_FoughtSudowoodo:
-	text "I like the #MON"
-	line "Lullaby they play"
-	cont "on the radio."
+	text "The path ahead has"
+	line "been cleared."
+	para "That's good, since"
+	line "travelers have"
+	para "been wanting to"
+	line "visit BIRDON TOWN."
 	done
 
 Route35GoldenrodGateFisherText:
@@ -188,7 +143,7 @@ Route35GoldenrodGateFisherText:
 	para "there are in the"
 	line "world."
 
-	para "Three years ago,"
+	para "One year ago,"
 	line "PROF.OAK said that"
 
 	para "there were 150"
@@ -201,14 +156,14 @@ Route35GoldenrodGate_MapEvents:
 	db 4 ; warp events
 	warp_event  4,  0, ROUTE_35, 1
 	warp_event  5,  0, ROUTE_35, 2
-	warp_event  4,  7, GOLDENROD_CITY, 12
-	warp_event  5,  7, GOLDENROD_CITY, 12
+	warp_event  4,  7, GOLDENROD_CITY, 7
+	warp_event  5,  7, GOLDENROD_CITY, 10
 
 	db 0 ; coord events
 
 	db 0 ; bg events
 
 	db 3 ; object events
-	object_event  0,  4, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, RandyScript, -1
-	object_event  6,  4, SPRITE_POKEFAN_F, SPRITEMOVEDATA_WALK_UP_DOWN, 0, 1, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, Route35GoldenrodGatePokefanFScript, -1
-	object_event  3,  2, SPRITE_FISHER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, Route35GoldenrodGateFisherScript, -1
+	object_event  0,  4, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, Route35GoldenrodGatePokefanFScript, -1
+	object_event  6,  4, SPRITE_POKEFAN_M, SPRITEMOVEDATA_WALK_UP_DOWN, 0, 1, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, RandyScript, -1
+	object_event  3,  2, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, Route35GoldenrodGateFisherScript, -1

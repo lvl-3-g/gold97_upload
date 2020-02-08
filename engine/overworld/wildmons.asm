@@ -41,8 +41,8 @@ FindNest:
 	call .FindGrass
 	ld hl, JohtoWaterWildMons
 	call .FindWater
-	call .RoamMon1
-	call .RoamMon2
+;	call .RoamMon1
+;	call .RoamMon2
 	ret
 
 .kanto

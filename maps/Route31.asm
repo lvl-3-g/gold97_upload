@@ -1,26 +1,90 @@
 	const_def 2 ; object constants
-	const ROUTE31_FISHER
+	;const ROUTE31_FISHER
 	const ROUTE31_YOUNGSTER
 	const ROUTE31_BUG_CATCHER
 	const ROUTE31_COOLTRAINER_M
 	const ROUTE31_FRUIT_TREE
 	const ROUTE31_POKE_BALL1
 	const ROUTE31_POKE_BALL2
+	const ROUTE31_GRAMPS
+	const ROUTE34_DAY_CARE_MON_1
+	const ROUTE34_DAY_CARE_MON_2
+	const ROUTE31_POKEFAN_M
+	const ROUTE31_BUG_CATCHER_2
 
 Route31_MapScripts:
 	db 0 ; scene scripts
 
+
 	db 1 ; callbacks
-	callback MAPCALLBACK_NEWMAP, .CheckMomCall
+	callback MAPCALLBACK_OBJECTS, .EggCheckCallback
 
-.CheckMomCall:
-	checkevent EVENT_TALKED_TO_MOM_AFTER_MYSTERY_EGG_QUEST
-	iffalse .DoMomCall
+.EggCheckCallback:
+	checkflag ENGINE_DAY_CARE_MAN_HAS_EGG
+	iftrue .PutDayCareManOutside
+	clearevent EVENT_DAY_CARE_MAN_IN_DAY_CARE
+	setevent EVENT_DAY_CARE_MAN_ON_ROUTE_34
+	jump .CheckMon1
+
+.PutDayCareManOutside:
+	setevent EVENT_DAY_CARE_MAN_IN_DAY_CARE
+	clearevent EVENT_DAY_CARE_MAN_ON_ROUTE_34
+	jump .CheckMon1
+
+.CheckMon1:
+	checkflag ENGINE_DAY_CARE_MAN_HAS_MON
+	iffalse .HideMon1
+	clearevent EVENT_DAY_CARE_MON_1
+	jump .CheckMon2
+
+.HideMon1:
+	setevent EVENT_DAY_CARE_MON_1
+	jump .CheckMon2
+
+.CheckMon2:
+	checkflag ENGINE_DAY_CARE_LADY_HAS_MON
+	iffalse .HideMon2
+	clearevent EVENT_DAY_CARE_MON_2
 	return
 
-.DoMomCall:
-	specialphonecall SPECIALCALL_WORRIED
+.HideMon2:
+	setevent EVENT_DAY_CARE_MON_2
 	return
+
+DayCareManScript_Outside:
+	faceplayer
+	opentext
+	special DayCareManOutside
+	waitbutton
+	closetext
+	ifequal TRUE, .end_fail
+	clearflag ENGINE_DAY_CARE_MAN_HAS_EGG
+	checkcode VAR_FACING
+	ifequal RIGHT, .walk_around_player
+	applymovement ROUTE31_GRAMPS, Route34MovementData_DayCareManWalksBackInside
+	playsound SFX_ENTER_DOOR
+	disappear ROUTE31_GRAMPS
+.end_fail
+	end
+
+.walk_around_player
+	applymovement ROUTE31_GRAMPS, Route34MovementData_DayCareManWalksBackInside_WalkAroundPlayer
+	playsound SFX_ENTER_DOOR
+	disappear ROUTE31_GRAMPS
+	end
+
+DayCareMon1Script:
+	opentext
+	special DayCareMon1
+	closetext
+	end
+
+DayCareMon2Script:
+	opentext
+	special DayCareMon2
+	closetext
+	end
+
 
 TrainerBugCatcherWade1:
 	trainer BUG_CATCHER, WADE1, EVENT_BEAT_BUG_CATCHER_WADE, BugCatcherWade1SeenText, BugCatcherWade1BeatenText, 0, .Script
@@ -69,10 +133,10 @@ TrainerBugCatcherWade1:
 	checkevent EVENT_CLEARED_RADIO_TOWER
 	iftrue .LoadFight3
 .Fight2:
-	checkflag ENGINE_FLYPOINT_MAHOGANY
+	checkevent EVENT_BEAT_CHUCK
 	iftrue .LoadFight2
 .Fight1:
-	checkflag ENGINE_FLYPOINT_GOLDENROD
+	checkevent EVENT_BEAT_PRYCE
 	iftrue .LoadFight1
 .LoadFight0:
 	loadtrainer BUG_CATCHER, WADE1
@@ -180,69 +244,143 @@ TrainerBugCatcherWade1:
 	jumpstd packfullm
 	end
 
-Route31MailRecipientScript:
-	faceplayer
+
+TrainerHikerAnthony:
+	trainer HIKER, ANTHONY1, EVENT_BEAT_HIKER_ANTHONY, HikerAnthony2SeenText, HikerAnthony2BeatenText, 0, .Script
+
+.Script:
+	writecode VAR_CALLERID, PHONE_HIKER_ANTHONY
+	endifjustbattled
 	opentext
-	checkevent EVENT_GOT_TM50_NIGHTMARE
-	iftrue .DescribeNightmare
-	checkevent EVENT_GOT_KENYA
-	iftrue .TryGiveKenya
-	writetext Text_Route31SleepyMan
-	waitbutton
-	closetext
-	end
-
-.TryGiveKenya:
-	writetext Text_Route31SleepyManGotMail
+	checkflag ENGINE_ANTHONY
+	iftrue .Rematch
+	checkflag ENGINE_DUNSPARCE_SWARM
+	iftrue .Swarm
+	checkcellnum PHONE_HIKER_ANTHONY
+	iftrue .NumberAccepted
+	checkevent EVENT_ANTHONY_ASKED_FOR_PHONE_NUMBER
+	iftrue .AskAgain
+	writetext HikerAnthony2AfterText
 	buttonsound
-	checkpokemail ReceivedSpearowMailText
-	ifequal POKEMAIL_WRONG_MAIL, .WrongMail
-	ifequal POKEMAIL_REFUSED, .Refused
-	ifequal POKEMAIL_NO_MAIL, .NoMail
-	ifequal POKEMAIL_LAST_MON, .LastMon
-	; POKEMAIL_CORRECT
-	writetext Text_Route31HandOverMailMon
-	buttonsound
-	writetext Text_Route31ReadingMail
-	buttonsound
-	setevent EVENT_GAVE_KENYA
-	verbosegiveitem TM_NIGHTMARE
-	iffalse .NoRoomForItems
-	setevent EVENT_GOT_TM50_NIGHTMARE
-.DescribeNightmare:
-	writetext Text_Route31DescribeNightmare
+	setevent EVENT_ANTHONY_ASKED_FOR_PHONE_NUMBER
+	scall .AskNumber1
+	jump .AskForPhoneNumber
+
+.AskAgain:
+	scall .AskNumber2
+.AskForPhoneNumber:
+	askforphonenumber PHONE_HIKER_ANTHONY
+	ifequal PHONE_CONTACTS_FULL, .PhoneFull
+	ifequal PHONE_CONTACT_REFUSED, .NumberDeclined
+	trainertotext HIKER, ANTHONY2, MEM_BUFFER_0
+	scall .RegisteredNumber
+	jump .NumberAccepted
+
+.Rematch:
+	scall .RematchStd
+	winlosstext HikerAnthony2BeatenText, 0
+	copybytetovar wAnthonyFightCount
+	ifequal 4, .Fight4
+	ifequal 3, .Fight3
+	ifequal 2, .Fight2
+	ifequal 1, .Fight1
+	ifequal 0, .LoadFight0
+.Fight4:
+	checkevent EVENT_FAST_SHIP_CABINS_SE_SSE_GENTLEMAN
+	iftrue .LoadFight4
+.Fight3:
+	checkevent EVENT_BEAT_ERIKA
+	iftrue .LoadFight3
+.Fight2:
+	checkevent EVENT_CLEARED_RADIO_TOWER
+	iftrue .LoadFight2
+.Fight1:
+	checkevent EVENT_BEAT_PRYCE
+	iftrue .LoadFight1
+.LoadFight0:
+	loadtrainer HIKER, ANTHONY1
+	startbattle
+	reloadmapafterbattle
+	loadvar wAnthonyFightCount, 1
+	clearflag ENGINE_ANTHONY
+	end
+
+.LoadFight1:
+	loadtrainer HIKER, ANTHONY2
+	startbattle
+	reloadmapafterbattle
+	loadvar wAnthonyFightCount, 2
+	clearflag ENGINE_ANTHONY
+	end
+
+.LoadFight2:
+	loadtrainer HIKER, ANTHONY3
+	startbattle
+	reloadmapafterbattle
+	loadvar wAnthonyFightCount, 3
+	clearflag ENGINE_ANTHONY
+	end
+
+.LoadFight3:
+	loadtrainer HIKER, ANTHONY4
+	startbattle
+	reloadmapafterbattle
+	loadvar wAnthonyFightCount, 4
+	clearflag ENGINE_ANTHONY
+	end
+
+.LoadFight4:
+	loadtrainer HIKER, ANTHONY5
+	startbattle
+	reloadmapafterbattle
+	clearflag ENGINE_ANTHONY
+	end
+
+.Swarm:
+	writetext HikerAnthonyDunsparceText
 	waitbutton
-.NoRoomForItems:
 	closetext
 	end
 
-.WrongMail:
-	writetext Text_Route31WrongMail
+.AskNumber1:
+	jumpstd asknumber1m
+	end
+
+.AskNumber2:
+	jumpstd asknumber2m
+	end
+
+.RegisteredNumber:
+	jumpstd registerednumberm
+	end
+
+.NumberAccepted:
+	jumpstd numberacceptedm
+	end
+
+.NumberDeclined:
+	jumpstd numberdeclinedm
+	end
+
+.PhoneFull:
+	jumpstd phonefullm
+	end
+
+.RematchStd:
+	jumpstd rematchm
+	end
+
+TrainerFledglingPaulson:
+	trainer FLEDGLING, PAULSON, EVENT_BEAT_FLEDGLING_PAULSON, FledglingPaulsonSeenText, FledglingPaulsonBeatenText, 0, .Script
+
+.Script:
+	endifjustbattled
+	opentext
+	writetext FledglingPaulsonAfterText
 	waitbutton
 	closetext
 	end
 
-.NoMail:
-	writetext Text_Route31MissingMail
-	waitbutton
-	closetext
-	end
-
-.Refused:
-	writetext Text_Route31DeclinedToHandOverMail
-	waitbutton
-	closetext
-	end
-
-.LastMon:
-	writetext Text_Route31CantTakeLastMon
-	waitbutton
-	closetext
-	end
-
-ReceivedSpearowMailText:
-	db   "DARK CAVE leads"
-	next "to another road@"
 
 Route31YoungsterScript:
 	jumptextfaceplayer Route31YoungsterText
@@ -252,6 +390,12 @@ Route31Sign:
 
 DarkCaveSign:
 	jumptext DarkCaveSignText
+
+IlexSign:
+	jumptext IlexSignText
+	
+Route31PokecenterSign:
+	jumpstd pokecentersign
 
 Route31CooltrainerMScript:
 	jumptextfaceplayer Route31CooltrainerMText
@@ -264,13 +408,50 @@ Route31Potion:
 
 Route31PokeBall:
 	itemball POKE_BALL
+	
+Route34MovementData_DayCareManWalksBackInside:
+	slow_step LEFT
+	slow_step LEFT
+	slow_step UP
+	step_end
+
+Route34MovementData_DayCareManWalksBackInside_WalkAroundPlayer:
+	slow_step DOWN
+	slow_step LEFT
+	slow_step LEFT
+	slow_step UP
+	slow_step UP
+	step_end
+
+
+FledglingPaulsonSeenText:
+	text "I battle right"
+	line "by the #MON"
+	cont "CENTER."
+	para "That way it's easy"
+	line "to heal after I"
+	cont "lose."
+	done
+
+FledglingPaulsonBeatenText:
+	text "Not again!"
+	done
+
+FledglingPaulsonAfterText:
+	text "My #MON are"
+	line "getting stronger,"
+	cont "slowly but surely."
+	done
+	
+
 
 Route31CooltrainerMText:
-	text "DARK CAVE…"
-
-	para "If #MON could"
-	line "light it up, I'd"
-	cont "explore it."
+	text "Have you ever used"
+	line "a #MON DAYCARE?"
+	para "The friendly old"
+	line "couple in that"
+	para "house will raise"
+	line "your #MON."
 	done
 
 BugCatcherWade1SeenText:
@@ -295,145 +476,101 @@ BugCatcherWade1AfterText:
 	cont "BOX automatically."
 	done
 
-Text_Route31SleepyMan:
-	text "… Hnuurg… Huh?"
-
-	para "I walked too far"
-	line "today looking for"
-	cont "#MON."
-
-	para "My feet hurt and"
-	line "I'm sleepy…"
-
-	para "If I were a wild"
-	line "#MON, I'd be"
-	cont "easy to catch…"
-
-	para "…Zzzz…"
-	done
-
-Text_Route31SleepyManGotMail:
-	text "…Zzzz… Huh?"
-
-	para "What's that? You"
-	line "have MAIL for me?"
-	done
-
-Text_Route31HandOverMailMon:
-	text "<PLAYER> handed"
-	line "over the #MON"
-	cont "holding the MAIL."
-	done
-
-Text_Route31ReadingMail:
-	text "Let's see…"
-
-	para "…DARK CAVE leads"
-	line "to another road…"
-
-	para "That's good to"
-	line "know."
-
-	para "Thanks for bring-"
-	line "ing this to me."
-
-	para "My friend's a good"
-	line "guy, and you're"
-	cont "swell too!"
-
-	para "I'd like to do"
-	line "something good in"
-	cont "return too!"
-
-	para "I know! I want you"
-	line "to have this!"
-	done
-
-Text_Route31DescribeNightmare:
-	text "TM50 is NIGHTMARE."
-
-	para "It's a wicked move"
-	line "that steadily cuts"
-
-	para "the HP of a sleep-"
-	line "ing enemy."
-
-	para "Ooooh…"
-	line "That's scary…"
-
-	para "I don't want to"
-	line "have bad dreams."
-	done
-
-Text_Route31WrongMail:
-	text "This MAIL isn't"
-	line "for me."
-	done
-
-Text_Route31MissingMail:
-	text "Why is this #-"
-	line "MON so special?"
-
-	para "It doesn't have"
-	line "any MAIL."
-	done
-
-Text_Route31DeclinedToHandOverMail:
-	text "What? You don't"
-	line "want anything?"
-	done
-
-Text_Route31CantTakeLastMon:
-	text "If I take that"
-	line "#MON from you,"
-
-	para "what are you going"
-	line "to use in battle?"
-	done
 
 Route31YoungsterText:
 	text "I found a good"
-	line "#MON in DARK"
-	cont "CAVE."
+	line "#MON in NIHON"
+	cont "FOREST."
 
 	para "I'm going to raise"
 	line "it to take on"
-	cont "FALKNER."
+	cont "JASMINE."
 
-	para "He's the leader of"
-	line "VIOLET CITY's GYM."
+	para "She's the leader"
+	line "of NUTYPE CITY's"
+	cont "GYM."
 	done
 
 Route31SignText:
-	text "ROUTE 31"
+	text "ROUTE 106"
 
-	para "VIOLET CITY -"
-	line "CHERRYGROVE CITY"
+	para "NUTYPE CITY -"
+	line "BIRDON TOWN"
 	done
 
 DarkCaveSignText:
-	text "DARK CAVE"
+	text "#MON DAYCARE"
+	para "Let us raise your"
+	line "#MON!"
+	done
+
+IlexSignText:
+	text "NIHON FOREST"
+	para "Entrance to the"
+	line "right."
+	done
+
+HikerAnthony2SeenText:
+	text "I came through the"
+	line "forest, but I"
+
+	para "still have plenty"
+	line "of energy left."
+	done
+
+HikerAnthony2BeatenText:
+	text "Whoa! You've got"
+	line "more zip than me!"
+	done
+
+HikerAnthony2AfterText:
+	text "We HIKERS are at"
+	line "our best when"
+	para "we're free to"
+	line "explore endlessly."
+	done
+
+HikerAnthonyDunsparceText:
+	text "Hey, did you get"
+	line "an EEVEE?"
+
+	para "I caught one too."
+
+	para "They're so fluffy!"
 	done
 
 Route31_MapEvents:
 	db 0, 0 ; filler
 
-	db 3 ; warp events
-	warp_event  4,  6, ROUTE_31_VIOLET_GATE, 3
-	warp_event  4,  7, ROUTE_31_VIOLET_GATE, 4
-	warp_event 34,  5, DARK_CAVE_VIOLET_ENTRANCE, 1
+	db 9 ; warp events
+	warp_event  8,  5, NEW_ECRUTEAK_GATE_SOUTH, 3
+	warp_event  9,  5, NEW_ECRUTEAK_GATE_SOUTH, 4
+	warp_event 16, 12, ILEX_FOREST, 1
+	warp_event 16, 13, ILEX_FOREST, 2
+	warp_event 23,  8, ILEX_FOREST, 3
+	warp_event 23,  9, ILEX_FOREST, 4
+	warp_event 33,  5, DAY_CARE, 1
+	warp_event 36,  5, DAY_CARE, 3
+	warp_event  9, 10, ROUTE_32_POKECENTER_1F, 1
 
 	db 0 ; coord events
 
-	db 2 ; bg events
-	bg_event  7,  5, BGEVENT_READ, Route31Sign
+	db 4 ; bg events
+	bg_event 52,  8, BGEVENT_READ, Route31Sign
 	bg_event 31,  5, BGEVENT_READ, DarkCaveSign
+	bg_event 12, 12, BGEVENT_READ, IlexSign
+	bg_event 10, 10, BGEVENT_READ, Route31PokecenterSign
 
-	db 7 ; object events
-	object_event 17,  7, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route31MailRecipientScript, -1
-	object_event  9,  5, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route31YoungsterScript, -1
-	object_event 21, 13, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 5, TrainerBugCatcherWade1, -1
-	object_event 33,  8, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route31CooltrainerMScript, -1
-	object_event 16,  7, SPRITE_FRUIT_TREE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route31FruitTree, -1
-	object_event 29,  5, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route31Potion, EVENT_ROUTE_31_POTION
-	object_event 19, 15, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route31PokeBall, EVENT_ROUTE_31_POKE_BALL
+	db 11 ; object events
+	;object_event 52, 11, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route31MailRecipientScript, -1
+	object_event  7, 13, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route31YoungsterScript, -1
+	object_event 24,  5, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 4, TrainerBugCatcherWade1, -1
+	object_event 42, 12, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route31CooltrainerMScript, -1
+	object_event  4, 11, SPRITE_FRUIT_TREE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route31FruitTree, -1
+	object_event 11,  6, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route31Potion, EVENT_ROUTE_31_POTION
+	object_event 33, 13, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route31PokeBall, EVENT_ROUTE_31_POKE_BALL
+	object_event 38,  6, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, DayCareManScript_Outside, EVENT_DAY_CARE_MAN_ON_ROUTE_34
+	object_event 40,  7, SPRITE_DAY_CARE_MON_1, SPRITEMOVEDATA_POKEMON, 2, 2, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, DayCareMon1Script, EVENT_DAY_CARE_MON_1
+	object_event 42,  6, SPRITE_DAY_CARE_MON_2, SPRITEMOVEDATA_POKEMON, 2, 2, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, DayCareMon2Script, EVENT_DAY_CARE_MON_2
+	object_event 49,  5, SPRITE_POKEFAN_M, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 2, TrainerHikerAnthony, -1
+	object_event  4,  9, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 4, TrainerFledglingPaulson, -1

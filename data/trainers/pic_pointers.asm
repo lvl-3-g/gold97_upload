@@ -69,3 +69,8 @@ TrainerPicPointers::
 	dba_pic OfficerPic
 	dba_pic GruntfPic
 	dba_pic MysticalmanPic
+	dba_pic EngineerPic
+	dba_pic SportsmanPic
+	dba_pic SoldierPic
+	dba_pic InstructorPic
+	dba_pic FledglingPic

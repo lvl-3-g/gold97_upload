@@ -1,151 +1,164 @@
 	const_def 2 ; object constants
-	const MOUNTMOONSQUARE_FAIRY1
-	const MOUNTMOONSQUARE_FAIRY2
-	const MOUNTMOONSQUARE_ROCK
+	const MOUNTMOONSQUARE_POKEFAN_M
+	const MOUNTMOONSQUARE_SPORTSMAN
+	const MOUNTMOONSQUARE_LASS
 
 MountMoonSquare_MapScripts:
-	db 1 ; scene scripts
-	scene_script .DummyScene ; SCENE_DEFAULT
+	db 0 ; scene scripts
 
-	db 2 ; callbacks
-	callback MAPCALLBACK_NEWMAP, .DisappearMoonStone
-	callback MAPCALLBACK_OBJECTS, .DisappearRock
+	db 0 ; callbacks
 
-.DummyScene:
+
+TrainerHikerBenjamin:
+	trainer HIKER, BENJAMIN, EVENT_BEAT_HIKER_BENJAMIN, HikerBenjaminSeenText, HikerBenjaminBeatenText, 0, .Script
+
+.Script:
+	endifjustbattled
+	opentext
+	writetext HikerBenjaminAfterBattleText
+	waitbutton
+	closetext
+	end
+	
+TrainerSportsmanArthur:
+	trainer SPORTSMAN, ARTHUR, EVENT_BEAT_SPORTSMAN_ARTHUR, SportsmanArthurSeenText, SportsmanArthurBeatenText, 0, .Script
+
+.Script:
+	endifjustbattled
+	opentext
+	writetext SportsmanArthurAfterBattleText
+	waitbutton
+	closetext
 	end
 
-.DisappearMoonStone:
-	setevent EVENT_MOUNT_MOON_SQUARE_HIDDEN_MOON_STONE
-	return
-
-.DisappearRock:
-	disappear MOUNTMOONSQUARE_ROCK
-	return
-
-ClefairyDance:
-	checkflag ENGINE_MT_MOON_SQUARE_CLEFAIRY
-	iftrue .NoDancing
-	checkcode VAR_WEEKDAY
-	ifnotequal MONDAY, .NoDancing
-	checktime NITE
-	iffalse .NoDancing
-	appear MOUNTMOONSQUARE_FAIRY1
-	appear MOUNTMOONSQUARE_FAIRY2
-	applymovement PLAYER, PlayerWalksUpToDancingClefairies
-	pause 15
-	appear MOUNTMOONSQUARE_ROCK
-	turnobject MOUNTMOONSQUARE_FAIRY1, RIGHT
-	cry CLEFAIRY
-	waitsfx
-	pause 30
-	follow MOUNTMOONSQUARE_FAIRY1, MOUNTMOONSQUARE_FAIRY2
-	cry CLEFAIRY
-	applymovement MOUNTMOONSQUARE_FAIRY1, ClefairyDanceStep1
-	cry CLEFAIRY
-	applymovement MOUNTMOONSQUARE_FAIRY1, ClefairyDanceStep2
-	cry CLEFAIRY
-	applymovement MOUNTMOONSQUARE_FAIRY1, ClefairyDanceStep3
-	cry CLEFAIRY
-	applymovement MOUNTMOONSQUARE_FAIRY1, ClefairyDanceStep4
-	cry CLEFAIRY
-	applymovement MOUNTMOONSQUARE_FAIRY1, ClefairyDanceStep5
-	stopfollow
-	applymovement MOUNTMOONSQUARE_FAIRY2, ClefairyDanceStep6
-	follow MOUNTMOONSQUARE_FAIRY1, MOUNTMOONSQUARE_FAIRY2
-	applymovement MOUNTMOONSQUARE_FAIRY1, ClefairyDanceStep7
-	stopfollow
-	turnobject MOUNTMOONSQUARE_FAIRY1, DOWN
-	pause 10
-	showemote EMOTE_SHOCK, MOUNTMOONSQUARE_FAIRY1, 15
-	turnobject MOUNTMOONSQUARE_FAIRY1, DOWN
-	cry CLEFAIRY
-	pause 15
-	follow MOUNTMOONSQUARE_FAIRY1, MOUNTMOONSQUARE_FAIRY2
-	applymovement MOUNTMOONSQUARE_FAIRY1, ClefairyFleeMovement
-	disappear MOUNTMOONSQUARE_FAIRY1
-	disappear MOUNTMOONSQUARE_FAIRY2
-	stopfollow
-	clearevent EVENT_MOUNT_MOON_SQUARE_HIDDEN_MOON_STONE
-	setflag ENGINE_MT_MOON_SQUARE_CLEFAIRY
+HealerLassScript:
+	faceplayer
+	opentext
+	checkevent EVENT_SWITCH_9
+	iftrue .LassHealSequence
+	writetext LassIntroText
+	setevent EVENT_SWITCH_9
+	waitbutton
+	jump .LassHealSequence
 	end
 
-.NoDancing:
+.LassHealSequence
+	writetext LassAsksToHeal
+	yesorno
+	iftrue .LassHealTime
+	writetext NoHealThisTime
+	waitbutton
+	closetext
 	end
+	
+.LassHealTime
+	writetext LassHealTimeText
+	waitbutton
+	closetext
+	special FadeOutPalettes
+	playmusic MUSIC_HEAL
+	pause 60
+	special HealParty
+	special FadeInPalettes
+	special RestartMapMusic
+	opentext
+	writetext LassHealTimeText2
+	waitbutton
+	closetext
+	end
+	
+LassIntroText:
+	text "We're already"
+	line "pretty high up the"
+	cont "mountain."
+	para "Hm? Yes, I'm a"
+	line "trainer, but I'm"
+	cont "taking a break."
+	para "I've brought"
+	line "plenty of medicine"
+	cont "with me."
+	para "If your #MON"
+	line "need restored, let"
+	para "me know, and I can"
+	line "help you out."
+	done
+	
+LassAsksToHeal:
+	text "How about it?"
+	para "Your #MON need"
+	line "healed?"
+	done
+	
+NoHealThisTime:
+	text "Well, okay."
+	para "I'll be here a"
+	line "while, so stop by"
+	cont "if you need to."
+	done
+	
+LassHealTimeText:
+	text "Okay, let me see"
+	line "your #MON for"
+	cont "just a second..."
+	done
+	
+LassHealTimeText2:
+	text "There we are!"
+	para "Your team looks"
+	line "ready to go!"
+	done
 
-MountMoonSquareHiddenMoonStone:
-	hiddenitem MOON_STONE, EVENT_MOUNT_MOON_SQUARE_HIDDEN_MOON_STONE
+SportsmanArthurSeenText:
+	text "I think I can jog"
+	line "my way to the top."
+	done
 
-DontLitterSign:
-	jumptext DontLitterSignText
+SportsmanArthurBeatenText:
+	text "Out of breath!"
+	done
 
-MtMoonSquareRock:
-	jumpstd smashrock
+SportsmanArthurAfterBattleText:
+	text "I'm not much of a"
+	line "HIKER, after all."
+	done
 
-PlayerWalksUpToDancingClefairies:
-	step UP
-	step_end
+HikerBenjaminSeenText:
+	text "Ah, it's good to"
+	line "be outside!"
+	cont "I feel so free!"
+	done
 
-ClefairyDanceStep1:
-	slow_step DOWN
-	slow_jump_step DOWN
-	step_end
+HikerBenjaminBeatenText:
+	text "Gahahah!"
+	done
 
-ClefairyDanceStep2:
-	slow_jump_step RIGHT
-	step_end
-
-ClefairyDanceStep3:
-	slow_step UP
-	slow_jump_step UP
-	step_end
-
-ClefairyDanceStep4:
-	slow_jump_step LEFT
-	step_end
-
-ClefairyDanceStep5:
-	slow_step DOWN
-	slow_jump_step DOWN
-	step_end
-
-ClefairyDanceStep6:
-	slow_step DOWN
-	step_end
-
-ClefairyDanceStep7:
-	slow_step RIGHT
-	step_end
-
-ClefairyFleeMovement:
-	step RIGHT
-	step RIGHT
-	step RIGHT
-	jump_step RIGHT
-	step RIGHT
-	step RIGHT
-	step_end
-
-DontLitterSignText:
-	text "MT.MOON SQUARE"
-	line "DON'T LITTER"
+HikerBenjaminAfterBattleText:
+	text "It takes a long"
+	line "time to reach the"
+	cont "summit."
+	para "Stepping outside"
+	line "is a breath of"
+	cont "fresh air!"
 	done
 
 MountMoonSquare_MapEvents:
 	db 0, 0 ; filler
 
-	db 3 ; warp events
-	warp_event 20,  5, MOUNT_MOON, 5
-	warp_event 22, 11, MOUNT_MOON, 6
-	warp_event 13,  7, MOUNT_MOON_GIFT_SHOP, 1
+	db 8 ; warp events
+	warp_event 11, 15, VICTORY_ROAD, 2
+	warp_event  5, 13, VICTORY_ROAD, 3
+	warp_event 15, 11, VICTORY_ROAD, 4
+	warp_event 11,  9, VICTORY_ROAD, 5
+	warp_event  1,  7, VICTORY_ROAD, 6
+	warp_event 17,  5, VICTORY_ROAD_2F, 1
+	warp_event 11,  3, VICTORY_ROAD_2F, 2
+	warp_event  7,  1, VICTORY_ROAD_2F, 3
 
-	db 1 ; coord events
-	coord_event  7, 11, SCENE_DEFAULT, ClefairyDance
+	db 0 ; coord events
 
-	db 2 ; bg events
-	bg_event  7,  7, BGEVENT_ITEM, MountMoonSquareHiddenMoonStone
-	bg_event 17,  7, BGEVENT_READ, DontLitterSign
+	db 0 ; bg events
 
 	db 3 ; object events
-	object_event  6,  6, SPRITE_FAIRY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_MT_MOON_SQUARE_CLEFAIRY
-	object_event  7,  6, SPRITE_FAIRY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_MT_MOON_SQUARE_CLEFAIRY
-	object_event  7,  7, SPRITE_ROCK, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, MtMoonSquareRock, EVENT_MT_MOON_SQUARE_ROCK
+	object_event  3, 14, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 2, TrainerHikerBenjamin, -1
+	object_event  3,  6, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 1, TrainerSportsmanArthur, -1
+	object_event  7,  8, SPRITE_LASS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 1, HealerLassScript, -1

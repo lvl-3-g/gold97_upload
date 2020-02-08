@@ -1,10 +1,10 @@
-	db "AQUARABBIT@" ; species name
-	dw 207, 630 ; height, weight
+	db "FLAME SEAL@" ; species name
+	dw 208, 230 ; height, weight
 
-	db   "The bubble-like"
-	next "pattern on its"
-	next "stomach helps it"
+	db   "Is able to live in"
+	next "extremely varied"
+	next "environments such"
 
-	page "camouflage itself"
-	next "when it's in the"
-	next "water.@"
+	page "as in the ocean"
+	next "or inside of an"
+	next "active volcano.@"

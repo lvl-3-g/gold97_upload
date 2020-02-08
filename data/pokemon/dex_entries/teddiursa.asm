@@ -1,10 +1,10 @@
-	db "LITTLE BEAR@" ; species name
-	dw 200, 190 ; height, weight
+	db "BALLOON@" ; species name
+	dw 108, 90 ; height, weight
 
-	db   "It always licks"
-	next "honey. Its palm"
-	next "tastes sweet"
+	db   "When faced with a"
+	next "larger opponent,"
+	next "it swallows as"
 
-	page "because of all the"
-	next "honey it has"
-	next "absorbed.@"
+	page "much water as it"
+	next "can to match the"
+	next "opponent's size.@"

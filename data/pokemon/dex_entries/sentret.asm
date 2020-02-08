@@ -1,10 +1,10 @@
-	db "SCOUT@" ; species name
-	dw 207, 130 ; height, weight
+	db "VINE@" ; species name
+	dw 205, 440 ; height, weight
 
-	db   "When acting as a"
-	next "lookout, it warns"
-	next "others of danger"
+	db   "The unruly vines"
+	next "hanging from its"
+	next "head often obscure"
 
-	page "by screeching and"
-	next "hitting the ground"
-	next "with its tail.@"
+	page "its vision. Is"
+	next "able to camouflage"
+	next "itself in shrubs.@"

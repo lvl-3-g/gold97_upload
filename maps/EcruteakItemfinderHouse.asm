@@ -32,50 +32,45 @@ EcruteakItemfinderGuy:
 	end
 
 EcruteakHistoryBook:
+	faceplayer
 	opentext
 	writetext EcruteakHistoryBookText
-	yesorno
-	iftrue .ReadBook
-	closetext
-	end
-
-.ReadBook:
-	writetext EcruteakTwoTowersText
-	yesorno
-	iftrue .KeepReading
-	closetext
-	end
-
-.KeepReading:
-	writetext EcruteakThreeMonText
 	waitbutton
 	closetext
 	end
+
 
 ItemFinderHouseRadio:
 	jumpstd radio2
 
 EcruteakItemfinderAdventureText:
-	text "Ah. You're on an"
-	line "adventure with"
-	cont "your #MON?"
-
-	para "Well, what's an"
-	line "adventure without"
-	cont "treasure hunting?"
-
-	para "Am I right, or am"
-	line "I right?"
+	text "I can't thank you"
+	line "enough for finding"
+	cont "my granddaughter!"
+	para "She needs to be"
+	line "more mindful in"
+	para "the future, but"
+	line "right now I'm"
+	para "just glad she's"
+	line "okay!"
+	para "You handled"
+	line "yourself very well"
+	cont "in the MINE."
+	para "If you know where"
+	line "to look, you can"
+	para "find a lot of"
+	line "interesting items"
+	para "hidden in caves"
+	line "like that."
+	para "If you want, I can"
+	line "give you something"
+	para "that could help"
+	line "you find more"
+	cont "items."
 	done
 
 EcruteakItemfinderTrueSpiritText:
-	text "Good! You under-"
-	line "stand the true"
-
-	para "spirit of adven-"
-	line "ture."
-
-	para "I like that! Take"
+	text "Here you go! Take"
 	line "this with you."
 	done
 
@@ -97,81 +92,37 @@ ItemfinderExplanationText:
 
 	para "so you'll have to"
 	line "look yourself."
-
-	para "Oh yeah--I heard"
-	line "there are items"
-
-	para "in ECRUTEAK's"
-	line "BURNED TOWER."
 	done
 
 EcruteakItemfinderToEachHisOwnText:
-	text "Oh… To each his"
-	line "own, I suppose…"
+	text "You sure? I think"
+	line "you'd find this"
+	cont "useful."
 	done
 
 EcruteakHistoryBookText:
-	text "HISTORY OF"
-	line "ECRUTEAK"
-
-	para "Want to read it?"
+	text "Grandpa doesn't"
+	line "want me playing in"
+	cont "the MINE."
+	para "I guess that makes"
+	line "sense. He just"
+	para "wants me to be"
+	line "safe."
 	done
 
-EcruteakTwoTowersText:
-	text "In ECRUTEAK, there"
-	line "were two towers."
-
-	para "Each tower was the"
-	line "roost of powerful"
-	cont "flying #MON."
-
-	para "But one of the"
-	line "towers burned to"
-	cont "the ground."
-
-	para "The two #MON"
-	line "haven't been seen"
-	cont "since…"
-
-	para "Keep reading?"
-	done
-
-EcruteakThreeMonText:
-	text "ECRUTEAK was also"
-	line "home to three"
-
-	para "#MON that raced"
-	line "around the town."
-
-	para "They were said to"
-	line "have been born of"
-
-	para "water, lightning"
-	line "and fire."
-
-	para "But they could not"
-	line "contain their"
-	cont "excessive power."
-
-	para "So they say the"
-	line "three ran like the"
-
-	para "wind off into the"
-	line "grassland."
-	done
 
 EcruteakItemfinderHouse_MapEvents:
 	db 0, 0 ; filler
 
 	db 2 ; warp events
-	warp_event  3,  7, ECRUTEAK_CITY, 11
-	warp_event  4,  7, ECRUTEAK_CITY, 11
+	warp_event  4,  7, ECRUTEAK_CITY, 8
+	warp_event  5,  7, ECRUTEAK_CITY, 8
 
 	db 0 ; coord events
 
 	db 1 ; bg events
-	bg_event  2,  1, BGEVENT_READ, ItemFinderHouseRadio
+	bg_event  4,  1, BGEVENT_READ, ItemFinderHouseRadio
 
 	db 2 ; object events
-	object_event  2,  3, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, EcruteakItemfinderGuy, -1
-	object_event  3,  3, SPRITE_POKEDEX, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, EcruteakHistoryBook, -1
+	object_event  4,  4, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, EcruteakItemfinderGuy, EVENT_ECRUTEAK_GYM_GRAMPS
+	object_event  2,  6, SPRITE_TWIN, SPRITEMOVEDATA_WANDER, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, EcruteakHistoryBook, EVENT_WISE_TRIOS_ROOM_WISE_TRIO_2

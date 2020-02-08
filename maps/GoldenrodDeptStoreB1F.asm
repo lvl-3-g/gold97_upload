@@ -11,38 +11,8 @@
 GoldenrodDeptStoreB1F_MapScripts:
 	db 0 ; scene scripts
 
-	db 2 ; callbacks
-	callback MAPCALLBACK_TILES, .ClearBoxes
-	callback MAPCALLBACK_NEWMAP, .Unblock
+	db 0 ; callbacks
 
-.ClearBoxes:
-	checkevent EVENT_RECEIVED_CARD_KEY
-	iftrue .GotCardKey
-	jump .Continue
-
-.GotCardKey:
-	changeblock 16, 4, $0d ; floor
-	jump .Continue
-
-.Continue:
-	checkevent EVENT_GOLDENROD_DEPT_STORE_B1F_LAYOUT_2
-	iftrue .Layout2
-	checkevent EVENT_GOLDENROD_DEPT_STORE_B1F_LAYOUT_3
-	iftrue .Layout3
-	changeblock 10, 8, $0d ; floor
-	return
-
-.Layout2:
-	changeblock 4, 10, $0d ; floor
-	return
-
-.Layout3:
-	changeblock 10, 12, $0d ; floor
-	return
-
-.Unblock:
-	clearevent EVENT_GOLDENROD_UNDERGROUND_WAREHOUSE_BLOCKED_OFF
-	return
 
 GoldenrodDeptStoreB1FBlackBelt1Script:
 	jumptextfaceplayer GoldenrodDeptStoreB1FBlackBelt1Text

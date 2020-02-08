@@ -7,11 +7,15 @@ Route20_MapScripts:
 	db 0 ; scene scripts
 
 	db 1 ; callbacks
-	callback MAPCALLBACK_NEWMAP, .ClearRocks
-
-.ClearRocks:
-	setevent EVENT_CINNABAR_ROCKS_CLEARED
+	callback MAPCALLBACK_TILES, .Route20ClearRocks
+	
+.Route20ClearRocks:
+	checkevent EVENT_FAST_SHIP_CABINS_SE_SSE_GENTLEMAN
+	iftrue .Done20
+	changeblock  51, 5, $39 ; rock
+.Done20:
 	return
+
 
 TrainerSwimmerfNicole:
 	trainer SWIMMERF, NICOLE, EVENT_BEAT_SWIMMERF_NICOLE, SwimmerfNicoleSeenText, SwimmerfNicoleBeatenText, 0, .Script
@@ -89,7 +93,7 @@ SwimmermCameronSeenText:
 	line "possible to swim"
 
 	para "all the way to"
-	line "JOHTO."
+	line "the mainland."
 	done
 
 SwimmermCameronBeatenText:
@@ -103,25 +107,27 @@ SwimmermCameronAfterBattleText:
 	done
 
 CinnabarGymSignText:
-	text "What does this"
-	line "sign say?"
-
-	para "CINNABAR GYM"
-	line "LEADER: BLAINE"
+	text "#MON RESEARCH"
+	line "FACILITY"
+	para "...The sign reads,"
+	line "with the word"
+	para "'CONDEMNED'"
+	line "written over it..."
 	done
 
 Route20_MapEvents:
 	db 0, 0 ; filler
 
-	db 1 ; warp events
-	warp_event 38,  7, SEAFOAM_GYM, 1
+	db 2 ; warp events
+	warp_event 53, 11, ROUTE_17_ROUTE_18_GATE, 1
+	warp_event 18,  3, BLACKTHORN_GYM_2F, 1
 
 	db 0 ; coord events
 
 	db 1 ; bg events
-	bg_event 37, 11, BGEVENT_READ, CinnabarGymSign
+	bg_event 20,  2, BGEVENT_READ, CinnabarGymSign
 
 	db 3 ; object events
-	object_event 52,  8, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 3, TrainerSwimmerfNicole, -1
-	object_event 45, 13, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 3, TrainerSwimmerfLori, -1
-	object_event 12, 13, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 3, TrainerSwimmermCameron, -1
+	object_event 14, 13, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 3, TrainerSwimmerfNicole, -1
+	object_event 24, 13, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 3, TrainerSwimmerfLori, -1
+	object_event 36, 11, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 3, TrainerSwimmermCameron, -1

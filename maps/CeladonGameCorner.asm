@@ -8,6 +8,7 @@
 	const CELADONGAMECORNER_FISHER2
 	const CELADONGAMECORNER_GYM_GUY
 	const CELADONGAMECORNER_GRAMPS
+	const CELADONGAMECORNER_N64_ROCKER
 
 CeladonGameCorner_MapScripts:
 	db 0 ; scene scripts
@@ -26,7 +27,7 @@ CeladonGameCornerPokefanMScript:
 	writetext CeladonGameCornerPokefanMText
 	waitbutton
 	closetext
-	turnobject CELADONGAMECORNER_POKEFAN_M, LEFT
+	turnobject CELADONGAMECORNER_POKEFAN_M, RIGHT
 	end
 
 CeladonGameCornerTeacherScript:
@@ -140,12 +141,84 @@ CeladonGameCornerSodaCanScript:
 	special CardFlip
 	closetext
 	end
+	
+CeladonGameCornerPokefanMScript2:
+	faceplayer
+	opentext
+	writetext CeladonGameCornerPokefanMText2
+	waitbutton
+	closetext
+	turnobject CELADONGAMECORNER_FISHER1, LEFT
+	end
 
-CeladonGameCornerUnusedMovementData:
-; unreferenced
-	step RIGHT
-	turn_head LEFT
+CeladonGameCornerN64RockerScript:
+	faceplayer
+	opentext
+	writetext SendN64RockerOffText
+	waitbutton
+	closetext
+	checkcode VAR_FACING
+	ifequal DOWN, GameCornerN64RockerDownScript
+	jump GameCornerN64RockerLeftScript
+	end
+	
+GameCornerN64RockerDownScript:
+	applymovement CELADONGAMECORNER_N64_ROCKER, GameCornerN64RockerDownMovement
+	playsound SFX_EXIT_BUILDING
+	disappear CELADONGAMECORNER_N64_ROCKER
+	setevent EVENT_GOLDENROD_DEPT_STORE_B1F_LAYOUT_1
+	clearevent EVENT_GOLDENROD_DEPT_STORE_B1F_LAYOUT_2
+	clearevent EVENT_GOLDENROD_DEPT_STORE_B1F_LAYOUT_3
+	waitsfx
+	end
+	
+GameCornerN64RockerLeftScript:
+	applymovement CELADONGAMECORNER_N64_ROCKER, GameCornerN64RockerLeftMovement
+	playsound SFX_EXIT_BUILDING
+	disappear CELADONGAMECORNER_N64_ROCKER
+	setevent EVENT_GOLDENROD_DEPT_STORE_B1F_LAYOUT_1
+	clearevent EVENT_GOLDENROD_DEPT_STORE_B1F_LAYOUT_2
+	clearevent EVENT_GOLDENROD_DEPT_STORE_B1F_LAYOUT_3
+	waitsfx
+	end
+	
+GameCornerN64RockerLeftMovement:
+	step UP
+	step UP
+	step LEFT
+	step LEFT
+	step DOWN
+	step DOWN
 	step_end
+	
+	
+GameCornerN64RockerDownMovement:	
+	step RIGHT
+	step UP
+	step UP
+	step LEFT
+	step LEFT
+	step LEFT
+	step DOWN
+	step DOWN
+	step_end
+
+SendN64RockerOffText:
+	text "I like games, but"
+	line "I'm kind of tired"
+	para "of games of"
+	line "chance."
+	para "I'd like to play"
+	line "a good video game"
+	cont "or something."
+	para "Huh?"
+	para "There's a place"
+	line "near WEST CITY"
+	para "that I should"
+	line "check out?"
+	para "Alright, I'll give"
+	line "it a go, thanks!"
+	done
 
 CeladonGameCornerReceptionistText:
 	text "Welcome!"
@@ -225,10 +298,7 @@ CeladonGameCornerFisherFullCoinCaseText:
 	done
 
 CeladonGymGuyText:
-	text "Hey! CHAMP in"
-	line "making!"
-
-	para "Are you playing"
+	text "Are you playing"
 	line "the slots too?"
 
 	para "I'm trying to get"
@@ -239,12 +309,19 @@ CeladonGymGuyText:
 	line "enough coins yet…"
 	done
 
-CeladonGameCornerGrampsText:
+CeladonGameCornerPokefanMText2:
 	text "Hmmm… The odds are"
 	line "surely better for"
 
 	para "PIKACHU's line,"
 	line "but… What to do?"
+	done
+	
+CeladonGameCornerGrampsText:
+	text "My daddy takes me"
+	line "here sometimes."
+	para "I'm not old enough"
+	line "to play, though."
 	done
 
 CeladonGameCornerPoster1Text:
@@ -282,59 +359,63 @@ CeladonGameCornerSodaCanText:
 CeladonGameCorner_MapEvents:
 	db 0, 0 ; filler
 
-	db 2 ; warp events
-	warp_event 14, 13, CELADON_CITY, 6
-	warp_event 15, 13, CELADON_CITY, 6
+	db 4 ; warp events
+	warp_event  9, 13, CELADON_CITY, 6
+	warp_event 10, 13, CELADON_CITY, 6
+	warp_event  8, 13, CELADON_CITY, 6
+	warp_event 11, 13, CELADON_CITY, 6
+
 
 	db 0 ; coord events
 
 	db 38 ; bg events
+	bg_event  1,  4, BGEVENT_READ, CeladonGameCornerCardFlipScript
+	bg_event  1,  5, BGEVENT_READ, CeladonGameCornerCardFlipScript
 	bg_event  1,  6, BGEVENT_READ, CeladonGameCornerCardFlipScript
 	bg_event  1,  7, BGEVENT_READ, CeladonGameCornerCardFlipScript
 	bg_event  1,  8, BGEVENT_READ, CeladonGameCornerCardFlipScript
-	bg_event  1,  9, BGEVENT_READ, CeladonGameCornerCardFlipScript
-	bg_event  1, 10, BGEVENT_READ, CeladonGameCornerCardFlipScript
-	bg_event  1, 11, BGEVENT_LEFT, CeladonGameCornerCardFlipScript
+	bg_event  2,  0, BGEVENT_LEFT, CeladonGameCornerCardFlipScript
+	bg_event  6,  4, BGEVENT_READ, CeladonGameCornerCardFlipScript
+	bg_event  6,  5, BGEVENT_READ, CeladonGameCornerCardFlipScript
 	bg_event  6,  6, BGEVENT_READ, CeladonGameCornerCardFlipScript
-	bg_event  6,  7, BGEVENT_READ, CeladonGameCornerCardFlipScript
+	bg_event  6,  7, BGEVENT_READ, CeladonGameCornerSodaCanScript
 	bg_event  6,  8, BGEVENT_READ, CeladonGameCornerCardFlipScript
-	bg_event  6,  9, BGEVENT_READ, CeladonGameCornerSodaCanScript
-	bg_event  6, 10, BGEVENT_READ, CeladonGameCornerCardFlipScript
-	bg_event  6, 11, BGEVENT_RIGHT, CeladonGameCornerCardFlipScript
+	bg_event  0,  0, BGEVENT_RIGHT, CeladonGameCornerCardFlipScript
+	bg_event  7,  4, BGEVENT_READ, CeladonGameCornerLuckySlotMachineScript
+	bg_event  7,  5, BGEVENT_READ, CeladonGameCornerLuckySlotMachineScript
 	bg_event  7,  6, BGEVENT_READ, CeladonGameCornerLuckySlotMachineScript
 	bg_event  7,  7, BGEVENT_READ, CeladonGameCornerLuckySlotMachineScript
-	bg_event  7,  8, BGEVENT_READ, CeladonGameCornerLuckySlotMachineScript
-	bg_event  7,  9, BGEVENT_READ, CeladonGameCornerLuckySlotMachineScript
-	bg_event  7, 10, BGEVENT_READ, CeladonGameCornerSlotMachineScript
-	bg_event  7, 11, BGEVENT_LEFT, CeladonGameCornerLuckySlotMachineScript
+	bg_event  7,  8, BGEVENT_READ, CeladonGameCornerSlotMachineScript
+	bg_event  1,  0, BGEVENT_LEFT, CeladonGameCornerLuckySlotMachineScript
+	bg_event 12,  4, BGEVENT_READ, CeladonGameCornerLuckySlotMachineScript
+	bg_event 12,  5, BGEVENT_READ, CeladonGameCornerLuckySlotMachineScript
 	bg_event 12,  6, BGEVENT_READ, CeladonGameCornerLuckySlotMachineScript
 	bg_event 12,  7, BGEVENT_READ, CeladonGameCornerLuckySlotMachineScript
 	bg_event 12,  8, BGEVENT_READ, CeladonGameCornerLuckySlotMachineScript
-	bg_event 12,  9, BGEVENT_READ, CeladonGameCornerLuckySlotMachineScript
-	bg_event 12, 10, BGEVENT_READ, CeladonGameCornerLuckySlotMachineScript
-	bg_event 12, 11, BGEVENT_RIGHT, CeladonGameCornerLuckySlotMachineScript
+	bg_event  5,  0, BGEVENT_RIGHT, CeladonGameCornerLuckySlotMachineScript
+	bg_event 13,  4, BGEVENT_READ, CeladonGameCornerLuckySlotMachineScript
+	bg_event 13,  5, BGEVENT_READ, CeladonGameCornerLuckySlotMachineScript
 	bg_event 13,  6, BGEVENT_READ, CeladonGameCornerLuckySlotMachineScript
 	bg_event 13,  7, BGEVENT_READ, CeladonGameCornerLuckySlotMachineScript
 	bg_event 13,  8, BGEVENT_READ, CeladonGameCornerLuckySlotMachineScript
-	bg_event 13,  9, BGEVENT_READ, CeladonGameCornerLuckySlotMachineScript
-	bg_event 13, 10, BGEVENT_READ, CeladonGameCornerLuckySlotMachineScript
-	bg_event 13, 11, BGEVENT_LEFT, CeladonGameCornerLuckySlotMachineScript
-	bg_event 18,  6, BGEVENT_READ, CeladonGameCornerLuckySlotMachineScript
+	bg_event  6,  0, BGEVENT_LEFT, CeladonGameCornerLuckySlotMachineScript
+	bg_event 18,  4, BGEVENT_READ, CeladonGameCornerLuckySlotMachineScript
+	bg_event 18,  5, BGEVENT_READ, CeladonGameCornerLuckySlotMachineScript
+	bg_event 18,  6, BGEVENT_READ, CeladonGameCornerLighterScript
 	bg_event 18,  7, BGEVENT_READ, CeladonGameCornerLuckySlotMachineScript
-	bg_event 18,  8, BGEVENT_READ, CeladonGameCornerLighterScript
-	bg_event 18,  9, BGEVENT_READ, CeladonGameCornerLuckySlotMachineScript
-	bg_event 18, 10, BGEVENT_READ, CeladonGameCornerLuckySlotMachineScript
-	bg_event 18, 11, BGEVENT_RIGHT, CeladonGameCornerLuckySlotMachineScript
-	bg_event 15,  0, BGEVENT_READ, CeladonGameCornerPoster1Script
-	bg_event  9,  0, BGEVENT_READ, CeladonGameCornerPoster2Script
+	bg_event 18,  8, BGEVENT_READ, CeladonGameCornerLuckySlotMachineScript
+	bg_event  7,  0, BGEVENT_RIGHT, CeladonGameCornerLuckySlotMachineScript
+	bg_event  4,  0, BGEVENT_READ, CeladonGameCornerPoster1Script
+	bg_event  3,  0, BGEVENT_READ, CeladonGameCornerPoster2Script
 
-	db 9 ; object events
-	object_event  5,  2, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, CeladonGameCornerClerkScript, -1
-	object_event  3,  2, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, CeladonGameCornerReceptionistScript, -1
-	object_event 14, 10, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CeladonGameCornerPokefanMScript, -1
-	object_event 17,  7, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, CeladonGameCornerTeacherScript, -1
-	object_event 11,  7, SPRITE_FISHING_GURU, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, CeladonGameCornerFishingGuruScript, -1
-	object_event  8, 10, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, DAY, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CeladonGameCornerFisherScript, -1
-	object_event  8, 10, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, NITE, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CeladonGameCornerFisherScript, -1
-	object_event 11,  3, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CeladonGymGuyScript, -1
-	object_event  2,  8, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, CeladonGameCornerGrampsScript, -1
+	db 10 ; object events
+	object_event  4,  1, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, CeladonGameCornerClerkScript, -1
+	object_event  3,  1, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, CeladonGameCornerReceptionistScript, -1
+	object_event 17,  8, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CeladonGameCornerPokefanMScript, -1
+	object_event 11,  8, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, CeladonGameCornerTeacherScript, -1
+	object_event 11,  6, SPRITE_JANINE, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, CeladonGameCornerFishingGuruScript, -1
+	object_event  2,  6, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CeladonGameCornerPokefanMScript2, -1
+	object_event 14,  6, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CeladonGameCornerFisherScript, -1
+	object_event  5,  8, SPRITE_ROCKER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CeladonGymGuyScript, -1
+	object_event  2,  7, SPRITE_TWIN, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, CeladonGameCornerGrampsScript, -1
+	object_event 13, 13, SPRITE_ROCKER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, CeladonGameCornerN64RockerScript, EVENT_GOLDENROD_DEPT_STORE_B1F_LAYOUT_1

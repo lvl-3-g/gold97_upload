@@ -151,7 +151,7 @@ SPAWN_RED   EQU 2
 
 ; wMapObjects:: ; d71e
 PLAYER_OBJECT EQU 0
-NUM_OBJECTS   EQU 16
+NUM_OBJECTS   EQU 18
 
 ; wStatusFlags:: ; d84c
 	const_def
@@ -246,11 +246,11 @@ CELEBIEVENT_FOREST_IS_RESTLESS_F EQU 2
 	const DAILYFLAGS1_ALL_FRUIT_TREES_F               ; 4
 	const DAILYFLAGS1_GOT_SHUCKIE_TODAY_F             ; 5
 	const DAILYFLAGS1_GOLDENROD_UNDERGROUND_BARGAIN_F ; 6
-	const DAILYFLAGS1_TRAINER_HOUSE_F                 ; 7
+	const DAILYFLAGS1_TRAINER_HOUSE_F                 ; 7 used for kanto battle club b1f
 
 ; wDailyFlags2:: ; dc1f
 	const_def
-	const DAILYFLAGS2_MT_MOON_SQUARE_CLEFAIRY_F           ; 0
+	const DAILYFLAGS2_MT_MOON_SQUARE_CLEFAIRY_F           ; 0 used for kanto battle club 1f
 	const DAILYFLAGS2_UNION_CAVE_LAPRAS_F                 ; 1
 	const DAILYFLAGS2_GOLDENROD_UNDERGROUND_GOT_HAIRCUT_F ; 2
 	const DAILYFLAGS2_GOLDENROD_DEPT_STORE_TM27_RETURN_F  ; 3

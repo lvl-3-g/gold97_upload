@@ -1,11 +1,11 @@
 	db YANMA ; 193
 
-	db  65,  65,  45,  95,  75,  45
+	db  55,  45,  65,  75,  75,  85
 	;   hp  atk  def  spd  sat  sdf
 
-	db BUG, FLYING ; type
-	db 75 ; catch rate
-	db 147 ; base exp
+	db WATER, WATER ; type
+	db 45 ; catch rate
+	db 194 ; base exp
 	db NO_ITEM, NO_ITEM ; items
 	db GENDER_F50 ; gender ratio
 	db 100 ; unknown 1
@@ -14,8 +14,8 @@
 	INCBIN "gfx/pokemon/yanma/front.dimensions"
 	db 0, 0, 0, 0 ; padding
 	db GROWTH_MEDIUM_FAST ; growth rate
-	dn EGG_BUG, EGG_BUG ; egg groups
+	dn EGG_WATER_2, EGG_WATER_2 ; egg groups
 
 	; tm/hm learnset
-	tmhm HEADBUTT, CURSE, TOXIC, HIDDEN_POWER, SUNNY_DAY, SNORE, PROTECT, GIGA_DRAIN, ENDURE, FRUSTRATION, SOLARBEAM, RETURN, DOUBLE_TEAM, SWAGGER, SLEEP_TALK, SWIFT, DETECT, REST, ATTRACT, THIEF, FLASH
+	tmhm TOXIC, HIDDEN_POWER, BLIZZARD, HYPER_BEAM, PROTECT, RAIN_DANCE, ENDURE, FRUSTRATION, RETURN, MUD_SLAP, DOUBLE_TEAM, SWIFT, DEFENSE_CURL, REST, SURF, WATERFALL, WHIRLPOOL
 	; end

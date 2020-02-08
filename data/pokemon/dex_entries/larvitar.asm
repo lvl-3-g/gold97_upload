@@ -1,10 +1,10 @@
-	db "ROCK SKIN@" ; species name
-	dw 200, 1590 ; height, weight
+	db "ICE MONSTER@" ; species name
+	dw 203, 750 ; height, weight
 
-	db   "Born deep under-"
-	next "ground, this"
-	next "#MON becomes a"
+	db   "The fur that"
+	next "surrounds its body"
+	next "is an outer cover"
 
-	page "pupa after eating"
-	next "enough dirt to"
-	next "make a mountain.@"
+	page "that conceals its"
+	next "true form, which"
+	next "is never seen.@"

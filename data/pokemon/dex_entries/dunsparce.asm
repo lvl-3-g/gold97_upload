@@ -1,10 +1,10 @@
-	db "LAND SNAKE@" ; species name
-	dw 411, 310 ; height, weight
+	db "MUSHROOM@" ; species name
+	dw 009, 100 ; height, weight
 
-	db   "It hides deep"
-	next "inside caves where"
-	next "no light ever"
+	db   "It hatched from"
+	next "an egg that was"
+	next "engulfed in a"
 
-	page "reaches it and"
-	next "remains virtually"
-	next "motionless there.@"
+	page "mushroom that"
+	next "remains attached"
+	next "to its body.@"

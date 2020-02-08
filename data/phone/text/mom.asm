@@ -40,8 +40,28 @@ MomPhoneNewBarkText:
 	line "sometime!"
 	done
 
+MomPhoneIndigoText:
+	text "You're up on"
+	line "@"
+	text_ram wStringBuffer3
+	text "?"
+
+	para "I'm so proud of"
+	line "you, dear!"
+	done
+
 MomPhoneCherrygroveText:
-	text "You're visiting"
+	text "You're up in"
+	line "@"
+	text_ram wStringBuffer3
+	text "?"
+
+	para "I'm so proud of"
+	line "you, dear!"
+	done
+	
+MomPhoneSilentHillsText:
+	text "You're over in"
 	line "@"
 	text_ram wStringBuffer3
 	text "?"
@@ -154,7 +174,7 @@ MomPhoneLectureText:
 	para "…… <PLAYER>?"
 	line "I heard from PROF."
 
-	para "ELM that you went"
+	para "OAK that you went"
 	line "on a long trip."
 
 	para "I wish you would"

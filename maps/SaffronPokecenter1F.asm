@@ -13,17 +13,12 @@ SaffronPokecenter1FNurseScript:
 	jumpstd pokecenternurse
 
 SaffronPokecenter1FTeacherScript:
-	special Mobile_DummyReturnFalse
-	iftrue .mobile
 	jumptextfaceplayer SaffronPokecenter1FTeacherText
-
-.mobile
-	jumptextfaceplayer SaffronPokecenter1FTeacherMobileText
 
 SaffronPokecenter1FFisherScript:
 	faceplayer
 	opentext
-	checkevent EVENT_RETURNED_MACHINE_PART
+	checkevent EVENT_FAST_SHIP_CABINS_SE_SSE_GENTLEMAN
 	iftrue .SolvedKantoPowerCrisis
 	writetext SaffronPokecenter1FFisherText
 	waitbutton
@@ -40,81 +35,51 @@ SaffronPokecenter1FYoungsterScript:
 	jumptextfaceplayer SaffronPokecenter1FYoungsterText
 
 SaffronPokecenter1FTeacherText:
-	text "What are JOHTO's"
-	line "#MON CENTERS"
-	cont "like?"
+	text "What are the"
+	line "mainland's #MON"
+	cont "CENTERS like?"
 
 	para "…Oh, I see. So"
 	line "they're not much"
 
 	para "different from the"
-	line "ones in KANTO."
+	line "ones here."
 
-	para "I can go to JOHTO"
+	para "I can take a trip"
 	line "without worrying,"
 	cont "then!"
 	done
 
-SaffronPokecenter1FTeacherMobileText:
-	text "What are JOHTO's"
-	line "#MON CENTERS"
-	cont "like?"
 
-	para "…Oh, I see."
-	line "So they let you"
-
-	para "link with people"
-	line "far away?"
-
-	para "Then I'll get my"
-	line "friend in JOHTO to"
-
-	para "catch a MARILL and"
-	line "trade it to me!"
-	done
 
 SaffronPokecenter1FFisherText:
 	text "I just happened to"
-	line "come through ROCK"
-
-	para "TUNNEL. There was"
-	line "some commotion at"
-	cont "the POWER PLANT."
+	line "come from AMAMI"
+	cont "TOWN."
+	para "I heard something"
+	line "was up with the"
+	cont "S.S.AQUA?"
 	done
 
 SaffronPokecenter1FFisherReturnedMachinePartText:
-	text "Caves collapse"
-	line "easily."
-
-	para "Several caves have"
-	line "disappeared in the"
-
-	para "past few years,"
-	line "like the one out-"
-	cont "side CERULEAN."
-
-	para "As a pro HIKER,"
-	line "that's common"
-	cont "knowledge."
+	text "Looks like trips"
+	line "from AMAMI TOWN"
+	para "have resumed their"
+	line "normal schedules."
 	done
 
 SaffronPokecenter1FYoungsterText:
-	text "SILPH CO.'s HEAD"
-	line "OFFICE and the"
-
-	para "MAGNET TRAIN STA-"
-	line "TION--they're the"
-
-	para "places to see in"
-	line "SAFFRON."
+	text "This city is a"
+	line "popular tourist"
+	cont "atttraction."
 	done
 
 SaffronPokecenter1F_MapEvents:
 	db 0, 0 ; filler
 
 	db 3 ; warp events
-	warp_event  3,  7, SAFFRON_CITY, 4
-	warp_event  4,  7, SAFFRON_CITY, 4
+	warp_event  5,  7, SAFFRON_CITY, 2
+	warp_event  6,  7, SAFFRON_CITY, 2
 	warp_event  0,  7, POKECENTER_2F, 1
 
 	db 0 ; coord events
@@ -122,7 +87,7 @@ SaffronPokecenter1F_MapEvents:
 	db 0 ; bg events
 
 	db 4 ; object events
-	object_event  3,  1, SPRITE_NURSE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, SaffronPokecenter1FNurseScript, -1
-	object_event  7,  2, SPRITE_TEACHER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, SaffronPokecenter1FTeacherScript, -1
-	object_event  8,  6, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, SaffronPokecenter1FFisherScript, -1
-	object_event  1,  4, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, SaffronPokecenter1FYoungsterScript, -1
+	object_event  5,  1, SPRITE_NURSE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, SaffronPokecenter1FNurseScript, -1
+	object_event  9,  2, SPRITE_TEACHER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, SaffronPokecenter1FTeacherScript, -1
+	object_event 10,  6, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, SaffronPokecenter1FFisherScript, -1
+	object_event  3,  4, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, SaffronPokecenter1FYoungsterScript, -1

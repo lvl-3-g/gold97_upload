@@ -108,16 +108,16 @@ TrainerSchoolboyJack1:
 	ifequal 1, .Fight1
 	ifequal 0, .LoadFight0
 .Fight4:
-	checkevent EVENT_RESTORED_POWER_TO_KANTO
+	checkevent EVENT_EXPLODING_TRAP_16
 	iftrue .LoadFight4
 .Fight3:
-	checkevent EVENT_BEAT_ELITE_FOUR
+	checkevent EVENT_FAST_SHIP_CABINS_SE_SSE_GENTLEMAN
 	iftrue .LoadFight3
 .Fight2:
-	checkevent EVENT_CLEARED_RADIO_TOWER
+	checkevent EVENT_BEAT_ELITE_FOUR
 	iftrue .LoadFight2
 .Fight1:
-	checkflag ENGINE_FLYPOINT_OLIVINE
+	checkevent EVENT_BEAT_ERIKA
 	iftrue .LoadFight1
 .LoadFight0:
 	loadtrainer SCHOOLBOY, JACK1
@@ -306,20 +306,17 @@ NationalParkHiddenFullHeal:
 	hiddenitem FULL_HEAL, EVENT_NATIONAL_PARK_HIDDEN_FULL_HEAL
 
 NationalParkLassText:
-	text "Look! Check out my"
-	line "bag!"
-
-	para "I printed out my"
-	line "favorites from my"
-
-	para "#DEX and stuck"
-	line "them on my bag."
+	text "How many #MON"
+	line "are there?"
+	para "There has to be"
+	line "at least 200."
 	done
 
 NationalParkPokefanFText:
-	text "This is MAIL I got"
-	line "from my daughter."
-	cont "It cheers me up."
+	text "My daughter calls"
+	line "me from her #-"
+	cont "GEAR."
+	para "It cheers me up."
 	done
 
 NationalParkTeacher1Text:
@@ -353,13 +350,13 @@ NationalParkTeacher1Text_GotQuickClaw:
 
 NationalParkYoungster1Text:
 	text "I'm playing with"
-	line "stickers I printed"
-	cont "from my #DEX."
+	line "stickers of my"
+	cont "#MON!"
 	done
 
 NationalParkYoungster2Text:
 	text "I get the other"
-	line "guy's #DEX"
+	line "guy's BOMSEAL"
 	cont "sticker if I win."
 	done
 
@@ -379,14 +376,12 @@ NationalParkPersianText:
 	done
 
 NationalParkGameboyKidText:
-	text "I'm printing out"
-	line "my #DEX."
-
-	para "You can also print"
-	line "out stuff like"
-
-	para "MAIL and your PC"
-	line "BOXES."
+	text "I'm playing #MON"
+	line "RED!"
+	para "Did you know that"
+	line "you can connect"
+	para "to previous games"
+	line "to trade?"
 	done
 
 SchoolboyJack1SeenText:
@@ -506,40 +501,41 @@ NationalParkBattleNoticeText:
 NationalParkTrainerTipsText:
 	text "TRAINER TIPS"
 
-	para "Print out MAIL by"
-	line "opening it then"
-	cont "pressing START."
+	para "Different #MON"
+	line "appear during"
+	para "different times of"
+	line "the day."
 	done
 
 NationalPark_MapEvents:
 	db 0, 0 ; filler
 
 	db 4 ; warp events
-	warp_event 33, 18, ROUTE_36_NATIONAL_PARK_GATE, 1
-	warp_event 33, 19, ROUTE_36_NATIONAL_PARK_GATE, 2
-	warp_event 10, 47, ROUTE_35_NATIONAL_PARK_GATE, 1
-	warp_event 11, 47, ROUTE_35_NATIONAL_PARK_GATE, 2
+	warp_event 32, 31, ROUTE_36_NATIONAL_PARK_GATE, 1
+	warp_event 33, 31, ROUTE_36_NATIONAL_PARK_GATE, 2
+	warp_event  6, 53, ROUTE_35_NATIONAL_PARK_GATE, 1
+	warp_event  7, 53, ROUTE_35_NATIONAL_PARK_GATE, 2
 
 	db 0 ; coord events
 
 	db 4 ; bg events
-	bg_event 14, 44, BGEVENT_READ, NationalParkRelaxationSquareSign
-	bg_event 27, 31, BGEVENT_READ, NationalParkBattleNoticeSign
-	bg_event  6, 47, BGEVENT_ITEM, NationalParkHiddenFullHeal
-	bg_event 12,  4, BGEVENT_READ, NationalParkTrainerTipsSign
+	bg_event  8, 48, BGEVENT_READ, NationalParkRelaxationSquareSign
+	bg_event 12, 24, BGEVENT_READ, NationalParkBattleNoticeSign
+	bg_event 24, 53, BGEVENT_ITEM, NationalParkHiddenFullHeal
+	bg_event 26, 38, BGEVENT_READ, NationalParkTrainerTipsSign
 
 	db 14 ; object events
-	object_event 15, 24, SPRITE_LASS, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, NationalParkLassScript, -1
-	object_event 14,  4, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, NationalParkPokefanFScript, -1
-	object_event 27, 40, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, NationalParkTeacher1Script, -1
-	object_event 11, 41, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, NationalParkYoungster1Script, -1
-	object_event 10, 41, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, NationalParkYoungster2Script, -1
+	object_event 14, 33, SPRITE_LASS, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, NationalParkLassScript, -1
+	object_event 16,  1, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, NationalParkPokefanFScript, -1
+	object_event  5, 41, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, NationalParkTeacher1Script, -1
+	object_event  7, 48, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, NationalParkYoungster1Script, -1
+	object_event  6, 48, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, NationalParkYoungster2Script, -1
 	object_event 17, 41, SPRITE_TEACHER, SPRITEMOVEDATA_WANDER, 1, 2, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, NationalParkTeacher2Script, -1
-	object_event 26, 40, SPRITE_GROWLITHE, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, NationalParkPersian, -1
-	object_event 27, 23, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerSchoolboyJack1, -1
-	object_event 18, 29, SPRITE_POKEFAN_F, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 2, TrainerPokefanfBeverly1, -1
-	object_event 16,  9, SPRITE_POKEFAN_M, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 2, TrainerPokefanmWilliam, -1
-	object_event  8, 14, SPRITE_LASS, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerLassKrise, -1
-	object_event 35, 12, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, NationalParkParlyzHeal, EVENT_NATIONAL_PARK_PARLYZ_HEAL
-	object_event 26,  6, SPRITE_GAMEBOY_KID, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, NationalParkGameboyKidScript, -1
-	object_event  1, 43, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, NationalParkTMDig, EVENT_NATIONAL_PARK_TM_DIG
+	object_event  4, 41, SPRITE_GROWLITHE, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, NationalParkPersian, -1
+	object_event 35, 14, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerSchoolboyJack1, -1
+	object_event 20, 18, SPRITE_POKEFAN_F, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 2, TrainerPokefanfBeverly1, -1
+	object_event 15,  8, SPRITE_POKEFAN_M, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 2, TrainerPokefanmWilliam, -1
+	object_event  9, 10, SPRITE_LASS, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerLassKrise, -1
+	object_event 36,  7, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, NationalParkParlyzHeal, EVENT_NATIONAL_PARK_PARLYZ_HEAL
+	object_event 30,  1, SPRITE_GAMEBOY_KID, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, NationalParkGameboyKidScript, -1
+	object_event 37, 48, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, NationalParkTMDig, EVENT_NATIONAL_PARK_TM_DIG

@@ -6,26 +6,41 @@ ENDM
 OddEggProbabilities:
 prob_total = 0
 ; Pichu
-	prob 8
-	prob 1
+	prob 6
+	prob 2
 ; Cleffa
-	prob 16
-	prob 3
+	prob 6
+	prob 2
 ; Igglybuff
-	prob 16
-	prob 3
+	prob 6
+	prob 2
 ; Smoochum
-	prob 14
+	prob 6
 	prob 2
 ; Magby
-	prob 10
+	prob 6
 	prob 2
 ; Elekid
-	prob 12
+	prob 6
 	prob 2
-; Tyrogue
-	prob 10
-	prob 1
+; Mime Jr/Stantler
+	prob 6
+	prob 2
+; Ponittle/Togetic
+	prob 7
+	prob 2
+; Tritales/Misdreavus
+	prob 7
+	prob 2
+; Grimby/Forretress
+	prob 6
+	prob 2
+; Meowsy/Slugma
+	prob 7
+	prob 2
+; Growlite/Corsola
+	prob 7
+	prob 2
 
 OddEggs:
 
@@ -343,9 +358,9 @@ OddEgg1End:
 	bigdw 11 ; SDef
 	db "EGG@@@@@@@@"
 
-	db TYROGUE
+	db STANTLER
 	db NO_ITEM
-	db TACKLE, DIZZY_PUNCH, 0, 0
+	db BARRIER, DIZZY_PUNCH, 0, 0
 	dw 02560 ; OT ID
 	dt 125 ; Exp
 	; Stat exp
@@ -361,17 +376,17 @@ OddEgg1End:
 	db 5 ; Level
 	db 0, 0 ; Status
 	bigdw 0 ; HP
-	bigdw 18 ; Max HP
-	bigdw 8 ; Atk
-	bigdw 8 ; Def
-	bigdw 8 ; Spd
-	bigdw 8 ; SAtk
-	bigdw 8 ; SDef
+	bigdw 19 ; Max HP
+	bigdw 9 ; Atk
+	bigdw 11 ; Def
+	bigdw 12 ; Spd
+	bigdw 12 ; SAtk
+	bigdw 12 ; SDef
 	db "EGG@@@@@@@@"
 
-	db TYROGUE
+	db STANTLER
 	db NO_ITEM
-	db TACKLE, DIZZY_PUNCH, 0, 0
+	db BARRIER, DIZZY_PUNCH, 0, 0
 	dw 00256 ; OT ID
 	dt 125 ; Exp
 	; Stat exp
@@ -387,10 +402,270 @@ OddEgg1End:
 	db 5 ; Level
 	db 0, 0 ; Status
 	bigdw 0 ; HP
-	bigdw 18 ; Max HP
-	bigdw 8 ; Atk
+	bigdw 19 ; Max HP
+	bigdw 9 ; Atk
+	bigdw 11 ; Def
+	bigdw 12 ; Spd
+	bigdw 12 ; SAtk
+	bigdw 12 ; SDef
+	db "EGG@@@@@@@@"
+	
+	db TOGETIC
+	db NO_ITEM
+	db TACKLE, FLAME_WHEEL, 0, 0
+	dw 02560 ; OT ID
+	dt 125 ; Exp
+	; Stat exp
+	bigdw 0
+	bigdw 0
+	bigdw 0
+	bigdw 0
+	bigdw 0
+	dn 0, 0, 0, 0 ; DVs
+	db 35, 25, 0, 0 ; PP
+	db 20 ; Happiness
+	db 0, 0, 0 ; Pokerus, Caught data
+	db 5 ; Level
+	db 0, 0 ; Status
+	bigdw 0 ; HP
+	bigdw 20 ; Max HP
+	bigdw 12 ; Atk
 	bigdw 9 ; Def
-	bigdw 9 ; Spd
+	bigdw 12 ; Spd
+	bigdw 11 ; SAtk
+	bigdw 11 ; SDef
+	db "EGG@@@@@@@@"
+
+	db TOGETIC
+	db NO_ITEM
+	db TACKLE, FLAME_WHEEL, 0, 0
+	dw 00256 ; OT ID
+	dt 125 ; Exp
+	; Stat exp
+	bigdw 0
+	bigdw 0
+	bigdw 0
+	bigdw 0
+	bigdw 0
+	dn 2, 10, 10, 10 ; DVs
+	db 35, 25, 0, 0 ; PP
+	db 20 ; Happiness
+	db 0, 0, 0 ; Pokerus, Caught data
+	db 5 ; Level
+	db 0, 0 ; Status
+	bigdw 0 ; HP
+	bigdw 20 ; Max HP
+	bigdw 12 ; Atk
+	bigdw 9 ; Def
+	bigdw 12 ; Spd
+	bigdw 11 ; SAtk
+	bigdw 11 ; SDef
+	db "EGG@@@@@@@@"
+	
+	db MISDREAVUS
+	db NO_ITEM
+	db EMBER, FAINT_ATTACK, 0, 0
+	dw 02560 ; OT ID
+	dt 125 ; Exp
+	; Stat exp
+	bigdw 0
+	bigdw 0
+	bigdw 0
+	bigdw 0
+	bigdw 0
+	dn 0, 0, 0, 0 ; DVs
+	db 25, 20, 0, 0 ; PP
+	db 20 ; Happiness
+	db 0, 0, 0 ; Pokerus, Caught data
+	db 5 ; Level
+	db 0, 0 ; Status
+	bigdw 0 ; HP
+	bigdw 19 ; Max HP
+	bigdw 10 ; Atk
+	bigdw 9 ; Def
+	bigdw 11 ; Spd
+	bigdw 10 ; SAtk
+	bigdw 10 ; SDef
+	db "EGG@@@@@@@@"
+
+	db MISDREAVUS
+	db NO_ITEM
+	db EMBER, FAINT_ATTACK, 0, 0
+	dw 00256 ; OT ID
+	dt 125 ; Exp
+	; Stat exp
+	bigdw 0
+	bigdw 0
+	bigdw 0
+	bigdw 0
+	bigdw 0
+	dn 2, 10, 10, 10 ; DVs
+	db 25, 20, 0, 0 ; PP
+	db 20 ; Happiness
+	db 0, 0, 0 ; Pokerus, Caught data
+	db 5 ; Level
+	db 0, 0 ; Status
+	bigdw 0 ; HP
+	bigdw 19 ; Max HP
+	bigdw 10 ; Atk
+	bigdw 9 ; Def
+	bigdw 11 ; Spd
+	bigdw 10 ; SAtk
+	bigdw 10 ; SDef
+	db "EGG@@@@@@@@"
+	
+	db FORRETRESS
+	db NO_ITEM
+	db LICK, MEAN_LOOK, POISON_GAS, 0
+	dw 02560 ; OT ID
+	dt 125 ; Exp
+	; Stat exp
+	bigdw 0
+	bigdw 0
+	bigdw 0
+	bigdw 0
+	bigdw 0
+	dn 0, 0, 0, 0 ; DVs
+	db 30, 5, 40, 0 ; PP
+	db 20 ; Happiness
+	db 0, 0, 0 ; Pokerus, Caught data
+	db 5 ; Level
+	db 0, 0 ; Status
+	bigdw 0 ; HP
+	bigdw 23 ; Max HP
+	bigdw 13 ; Atk
+	bigdw 10 ; Def
+	bigdw 6 ; Spd
+	bigdw 8 ; SAtk
+	bigdw 10 ; SDef
+	db "EGG@@@@@@@@"
+
+	db FORRETRESS
+	db NO_ITEM
+	db LICK, MEAN_LOOK, POISON_GAS, 0
+	dw 02560 ; OT ID
+	dt 125 ; Exp
+	; Stat exp
+	bigdw 0
+	bigdw 0
+	bigdw 0
+	bigdw 0
+	bigdw 0
+	dn 2, 10, 10, 10 ; DVs
+	db 30, 5, 40, 0 ; PP
+	db 20 ; Happiness
+	db 0, 0, 0 ; Pokerus, Caught data
+	db 5 ; Level
+	db 0, 0 ; Status
+	bigdw 0 ; HP
+	bigdw 23 ; Max HP
+	bigdw 13 ; Atk
+	bigdw 10 ; Def
+	bigdw 6 ; Spd
+	bigdw 8 ; SAtk
+	bigdw 10 ; SDef
+	db "EGG@@@@@@@@"
+	
+	db SLUGMA
+	db NO_ITEM
+	db SCRATCH, CHARM, 0, 0
+	dw 02560 ; OT ID
+	dt 125 ; Exp
+	; Stat exp
+	bigdw 0
+	bigdw 0
+	bigdw 0
+	bigdw 0
+	bigdw 0
+	dn 0, 0, 0, 0 ; DVs
+	db 35, 20, 0, 0 ; PP
+	db 20 ; Happiness
+	db 0, 0, 0 ; Pokerus, Caught data
+	db 5 ; Level
+	db 0, 0 ; Status
+	bigdw 0 ; HP
+	bigdw 18 ; Max HP
+	bigdw 9 ; Atk
+	bigdw 9 ; Def
+	bigdw 14 ; Spd
 	bigdw 9 ; SAtk
 	bigdw 9 ; SDef
+	db "EGG@@@@@@@@"
+
+	db SLUGMA
+	db NO_ITEM
+	db SCRATCH, CHARM, 0, 0
+	dw 02560 ; OT ID
+	dt 125 ; Exp
+	; Stat exp
+	bigdw 0
+	bigdw 0
+	bigdw 0
+	bigdw 0
+	bigdw 0
+	dn 2, 10, 10, 10 ; DVs
+	db 35, 20, 0, 0 ; PP
+	db 20 ; Happiness
+	db 0, 0, 0 ; Pokerus, Caught data
+	db 5 ; Level
+	db 0, 0 ; Status
+	bigdw 0 ; HP
+	bigdw 18 ; Max HP
+	bigdw 9 ; Atk
+	bigdw 9 ; Def
+	bigdw 14 ; Spd
+	bigdw 9 ; SAtk
+	bigdw 9 ; SDef
+	db "EGG@@@@@@@@"
+	
+	db CORSOLA
+	db NO_ITEM
+	db CRUNCH, ROAR, 0, 0
+	dw 02560 ; OT ID
+	dt 156 ; Exp
+	; Stat exp
+	bigdw 0
+	bigdw 0
+	bigdw 0
+	bigdw 0
+	bigdw 0
+	dn 0, 0, 0, 0 ; DVs
+	db 15, 20, 0, 0 ; PP
+	db 20 ; Happiness
+	db 0, 0, 0 ; Pokerus, Caught data
+	db 5 ; Level
+	db 0, 0 ; Status
+	bigdw 0 ; HP
+	bigdw 21 ; Max HP
+	bigdw 12 ; Atk
+	bigdw 10 ; Def
+	bigdw 11 ; Spd
+	bigdw 12 ; SAtk
+	bigdw 10 ; SDef
+	db "EGG@@@@@@@@"
+
+	db CORSOLA
+	db NO_ITEM
+	db CRUNCH, ROAR, 0, 0
+	dw 02560 ; OT ID
+	dt 156 ; Exp
+	; Stat exp
+	bigdw 0
+	bigdw 0
+	bigdw 0
+	bigdw 0
+	bigdw 0
+	dn 2, 10, 10, 10 ; DVs
+	db 15, 20, 0, 0 ; PP
+	db 20 ; Happiness
+	db 0, 0, 0 ; Pokerus, Caught data
+	db 5 ; Level
+	db 0, 0 ; Status
+	bigdw 0 ; HP
+	bigdw 21 ; Max HP
+	bigdw 12 ; Atk
+	bigdw 10 ; Def
+	bigdw 11 ; Spd
+	bigdw 12 ; SAtk
+	bigdw 10 ; SDef
 	db "EGG@@@@@@@@"

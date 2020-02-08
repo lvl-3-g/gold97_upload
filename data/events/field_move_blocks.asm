@@ -1,24 +1,20 @@
 CutTreeBlockPointers:
 ; tileset, block list pointer
-	dbw TILESET_JOHTO,        .johto
 	dbw TILESET_JOHTO_MODERN, .johto_modern
 	dbw TILESET_KANTO,        .kanto
+	dbw TILESET_JOHTO,        .johto
 	dbw TILESET_PARK,         .park
 	dbw TILESET_FOREST,       .forest
+	dbw TILESET_BATTLE_TOWER_OUTSIDE, .battle_tower_outside
+	dbw TILESET_BATTLE_TOWER, .battle_tower
 	db -1 ; end
 
-.johto:
-; facing block, replacement block, animation
-	db $03, $02, 1 ; grass
-	db $5b, $3c, 0 ; tree
-	db $5f, $3d, 0 ; tree
-	db $63, $3f, 0 ; tree
-	db $67, $3e, 0 ; tree
-	db -1 ; end
 
 .johto_modern:
 ; facing block, replacement block, animation
-	db $03, $02, $01 ; grass
+	db $03, $02, 1 ; grass
+	db $3c, $0c, 0 ; tree
+	db $4c, $5C, 0 ; tree
 	db -1 ; end
 
 .kanto:
@@ -31,10 +27,26 @@ CutTreeBlockPointers:
 	db $60, $6e, 0 ; tree
 	db -1 ; end
 
+.johto:
+; facing block, replacement block, animation
+	db $03, $02, 1 ; grass
+	db $77, $07, 0 ; tree
+	db -1 ; end
+	
 .park:
 ; facing block, replacement block, animation
-	db $13, $03, 1 ; grass
-	db $03, $04, 1 ; grass
+	db $03, $01, 1 ; grass
+	db -1 ; end
+	
+.battle_tower_outside:
+; facing block, replacement block, animation
+	db $03, $02, 1 ; grass
+	db $07, $39, 0 ; tree
+	db -1 ; end
+	
+.battle_tower:
+; facing block, replacement block, animation
+	db $03, $02, 1 ; grass
 	db -1 ; end
 
 .forest:
@@ -43,10 +55,16 @@ CutTreeBlockPointers:
 	db -1 ; end
 
 WhirlpoolBlockPointers:
-	dbw TILESET_JOHTO, .johto
+	dbw TILESET_PARK, .park
+	dbw TILESET_BATTLE_TOWER, .battle_tower
 	db -1 ; end
 
-.johto:
+.park:
 ; facing block, replacement block, animation
-	db $07, $36, 0
+	db $7C, $3B, 0
+	db -1 ; end
+	
+.battle_tower:
+; facing block, replacement block, animation
+	db $26, $36, 0
 	db -1 ; end

@@ -53,21 +53,10 @@ PlayersHousePosterScript:
 PlayersHouseRadioScript:
 	checkevent EVENT_GOT_A_POKEMON_FROM_ELM
 	iftrue .NormalRadio
-	checkevent EVENT_LISTENED_TO_INITIAL_RADIO
-	iftrue .AbbreviatedRadio
-	playmusic MUSIC_POKEMON_TALK
 	opentext
 	writetext PlayersRadioText1
-	pause 45
-	writetext PlayersRadioText2
-	pause 45
-	writetext PlayersRadioText3
-	pause 45
-	musicfadeout MUSIC_NEW_BARK_TOWN, 16
-	writetext PlayersRadioText4
-	pause 45
+	waitbutton
 	closetext
-	setevent EVENT_LISTENED_TO_INITIAL_RADIO
 	end
 
 .NormalRadio:
@@ -84,23 +73,90 @@ PlayersHouseBookshelfScript:
 	jumpstd picturebookshelf
 
 PlayersHousePCScript:
+	checkevent EVENT_GOT_A_POKEMON_FROM_ELM
+	iftrue .PlayersHousePC2
 	opentext
-	special PlayersHousePC
-	iftrue .Warp
+	writetext PlayersRadioText2
+	waitbutton
 	closetext
 	end
 .Warp:
 	warp NONE, 0, 0
 	end
 
+.PlayersHousePC2
+	opentext
+	special PlayersHousePC
+	iftrue .Warp
+	closetext
+	end
 PlayersRadioText1:
-	text "PROF.OAK'S #MON"
-	line "TALK! Please tune"
-	cont "in next time!"
+	text "<PLAY_G> turned"
+	line "on the radio."
+	
+	para "..."
+
+	para "You're listening"
+	line "to JOPM, the"
+	para "#MON broadcast"
+	line "station!"
+	
+	para "Coming up next is"
+	line "#MON News!"
+	
+	para "... World famous"
+	line "#MON researcher"
+	para "PROF. OAK has"
+	line "disappeared from"
+	cont "KANTO!"
+	
+	para "Although some"
+	line "consider he may"
+	para "have moved in"
+	line "search of a new"
+	para "place to study,"
+	line "there is also"
+	para "the possibility"
+	line "he was involved"
+	para "in some sort of"
+	line "incident."
+	
+	para "Concerned parties"
+	line "are very worried."
+	
+	para "..."
+	
+	para "And that was"
+	line "#MON News."
+	
+	para "..."
+	
+	
+	
 	done
 
 PlayersRadioText2:
-	text "#MON CHANNEL!"
+	text "<PLAY_G> turned"
+	line "on the PC."
+	
+	para "What's this?"
+	line "A new email?"
+	
+	para "..."
+	
+	para "I hope you'll"
+	line "excuse the sudden"
+	para "email, but there's"
+	line "something that I"
+	para "would like to"
+	line "entrust you with."
+	
+	para "Won't you come by"
+	line "to collect it?"
+	
+	para "#MON researcher"
+	line "OAK"
+	
 	done
 
 PlayersRadioText3:

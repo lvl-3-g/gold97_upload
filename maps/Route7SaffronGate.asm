@@ -7,50 +7,35 @@ Route7SaffronGate_MapScripts:
 	db 0 ; callbacks
 
 Route7SaffronGuardScript:
-	faceplayer
-	opentext
-	checkevent EVENT_RETURNED_MACHINE_PART
-	iftrue .ReturnedPart
-	writetext Route7SaffronGuardPowerPlantText
-	waitbutton
-	closetext
-	end
-
-.ReturnedPart:
-	writetext Route7SaffronGuardSeriousText
-	waitbutton
-	closetext
-	end
-
-Route7SaffronGuardPowerPlantText:
-	text "Did you hear about"
-	line "the accident at"
-	cont "the POWER PLANT?"
-
-	para "It's located in"
-	line "the East, close to"
-	cont "LAVENDER TOWN."
-	done
+	jumptextfaceplayer Route7SaffronGuardSeriousText
 
 Route7SaffronGuardSeriousText:
-	text "I take my GUARD"
-	line "job seriously."
-
-	para "Hey! You have a"
-	line "#DEX."
-
-	para "OK. You can go"
-	line "through."
+	text "Have you ever"
+	line "wondered why this"
+	para "city is called"
+	line "SOUTH POINT when"
+	para "it's in Northwest"
+	line "NIHON?"
+	para "It's because of"
+	line "shipping routes of"
+	para "countries north of"
+	line "NIHON."
+	para "When they come to"
+	line "do business with"
+	para "us, this city is"
+	line "the SOUTH POINT of"
+	cont "their travels."
+	
 	done
 
 Route7SaffronGate_MapEvents:
 	db 0, 0 ; filler
 
 	db 4 ; warp events
-	warp_event  0,  4, ROUTE_7, 1
-	warp_event  0,  5, ROUTE_7, 2
-	warp_event  9,  4, SAFFRON_CITY, 10
-	warp_event  9,  5, SAFFRON_CITY, 11
+	warp_event  0,  7, CIANWOOD_CITY, 6
+	warp_event  1,  7, CIANWOOD_CITY, 6
+	warp_event  8,  7, ROUTE_4, 1
+	warp_event  9,  7, ROUTE_4, 1
 
 	db 0 ; coord events
 

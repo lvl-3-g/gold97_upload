@@ -3,7 +3,6 @@
 	const PLAYERSHOUSE1F_MOM2
 	const PLAYERSHOUSE1F_MOM3
 	const PLAYERSHOUSE1F_MOM4
-	const PLAYERSHOUSE1F_POKEFAN_F
 
 PlayersHouse1F_MapScripts:
 	db 2 ; scene scripts
@@ -24,7 +23,6 @@ MeetMomLeftScript:
 MeetMomRightScript:
 	playmusic MUSIC_MOM
 	showemote EMOTE_SHOCK, PLAYERSHOUSE1F_MOM1, 15
-	turnobject PLAYER, LEFT
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	iffalse .OnRight
 	applymovement PLAYERSHOUSE1F_MOM1, MomTurnsTowardPlayerMovement
@@ -80,6 +78,12 @@ MeetMomScript:
 	writetext InstructionsNextText
 	waitbutton
 	closetext
+	special NameRival
+	opentext
+	writetext FinalMomText
+	waitbutton
+	closetext
+	setevent EVENT_BLUE_NEW_BARK_TOWN
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	iftrue .FromRight
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
@@ -118,12 +122,12 @@ MomScript:
 	opentext
 	checkevent EVENT_FIRST_TIME_BANKING_WITH_MOM
 	iftrue .FirstTimeBanking
-	checkevent EVENT_TALKED_TO_MOM_AFTER_MYSTERY_EGG_QUEST
-	iftrue .BankOfMom
-	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
-	iftrue .GaveMysteryEgg
 	checkevent EVENT_GOT_A_POKEMON_FROM_ELM
-	iftrue .GotAPokemon
+	iftrue .BankOfMom
+	;checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
+	;iftrue .GaveMysteryEgg
+	;checkevent EVENT_GOT_A_POKEMON_FROM_ELM
+	;iftrue .GotAPokemon
 	writetext HurryUpElmIsWaitingText
 	waitbutton
 	closetext
@@ -150,37 +154,6 @@ MomScript:
 	closetext
 	end
 
-NeighborScript:
-	faceplayer
-	opentext
-	checktime MORN
-	iftrue .MornScript
-	checktime DAY
-	iftrue .DayScript
-	checktime NITE
-	iftrue .NiteScript
-
-.MornScript:
-	writetext NeighborMornIntroText
-	buttonsound
-	jump .Main
-
-.DayScript:
-	writetext NeighborDayIntroText
-	buttonsound
-	jump .Main
-
-.NiteScript:
-	writetext NeighborNiteIntroText
-	buttonsound
-	jump .Main
-
-.Main:
-	writetext NeighborText
-	waitbutton
-	closetext
-	turnobject PLAYERSHOUSE1F_POKEFAN_F, RIGHT
-	end
 
 TVScript:
 	jumptext TVText
@@ -200,6 +173,9 @@ MomTurnsTowardPlayerMovement:
 
 MomWalksToPlayerMovement:
 	slow_step RIGHT
+	slow_step RIGHT
+	slow_step UP
+	slow_step UP
 	step_end
 
 MomTurnsBackMovement:
@@ -207,22 +183,28 @@ MomTurnsBackMovement:
 	step_end
 
 MomWalksBackMovement:
+	slow_step DOWN
+	slow_step DOWN
+	slow_step LEFT
 	slow_step LEFT
 	step_end
 
+FinalMomText:
+	text "That's right,"
+	line "<RIVAL> is"
+	cont "his name!"
+	
+	para "Well he's probably"
+	line "still close by."
+	
+	para "I'm sure you'll"
+	line "bump into him"
+	cont "soon."
+	done
+
 ElmsLookingForYouText:
-	text "Oh, <PLAYER>…! Our"
-	line "neighbor, PROF."
-
-	para "ELM, was looking"
-	line "for you."
-
-	para "He said he wanted"
-	line "you to do some-"
-	cont "thing for him."
-
-	para "Oh! I almost for-"
-	line "got! Your #MON"
+	text "Oh, <PLAYER>…!"
+	line "Your #MON"
 
 	para "GEAR is back from"
 	line "the repair shop."
@@ -288,18 +270,32 @@ InstructionsNextText:
 
 	para "Gee, isn't that"
 	line "convenient?"
+	
+	para "By the way, that"
+	line "friend of yours"
+	
+	para "stopped by looking"
+	line "for you."
+	
+	para "I can't remember"
+	line "his name though..."
+	
+	
 	done
 
 HurryUpElmIsWaitingText:
-	text "PROF.ELM is wait-"
-	line "ing for you."
+	text "PROF.OAK told me"
+	line "he wanted to talk"
+	
+	para "to you. You should"
+	line "go see him when"
+	cont "you get a chance."
 
-	para "Hurry up, baby!"
 	done
 
 SoWhatWasProfElmsErrandText:
 	text "So, what was PROF."
-	line "ELM's errand?"
+	line "OAK's request?"
 
 	para "…"
 
@@ -318,38 +314,6 @@ ImBehindYouText:
 	line "the way!"
 	done
 
-NeighborMornIntroText:
-	text "Good morning,"
-	line "<PLAY_G>!"
-
-	para "I'm visiting!"
-	done
-
-NeighborDayIntroText:
-	text "Hello, <PLAY_G>!"
-	line "I'm visiting!"
-	done
-
-NeighborNiteIntroText:
-	text "Good evening,"
-	line "<PLAY_G>!"
-
-	para "I'm visiting!"
-	done
-
-NeighborText:
-	text "<PLAY_G>, have you"
-	line "heard?"
-
-	para "My daughter is"
-	line "adamant about"
-
-	para "becoming PROF."
-	line "ELM's assistant."
-
-	para "She really loves"
-	line "#MON!"
-	done
 
 StoveText:
 	text "Mom's specialty!"
@@ -392,8 +356,8 @@ PlayersHouse1F_MapEvents:
 	warp_event  9,  0, PLAYERS_HOUSE_2F, 1
 
 	db 2 ; coord events
-	coord_event  8,  4, SCENE_DEFAULT, MeetMomLeftScript
-	coord_event  9,  4, SCENE_DEFAULT, MeetMomRightScript
+	coord_event  4,  7, SCENE_DEFAULT, MeetMomLeftScript
+	coord_event  9,  1, SCENE_DEFAULT, MeetMomRightScript
 
 	db 4 ; bg events
 	bg_event  0,  1, BGEVENT_READ, StoveScript
@@ -406,4 +370,3 @@ PlayersHouse1F_MapEvents:
 	object_event  2,  2, SPRITE_MOM, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, MORN, 0, OBJECTTYPE_SCRIPT, 0, MomScript, EVENT_PLAYERS_HOUSE_MOM_2
 	object_event  7,  4, SPRITE_MOM, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, DAY, 0, OBJECTTYPE_SCRIPT, 0, MomScript, EVENT_PLAYERS_HOUSE_MOM_2
 	object_event  0,  2, SPRITE_MOM, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, NITE, 0, OBJECTTYPE_SCRIPT, 0, MomScript, EVENT_PLAYERS_HOUSE_MOM_2
-	object_event  4,  4, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, NeighborScript, EVENT_PLAYERS_HOUSE_1F_NEIGHBOR

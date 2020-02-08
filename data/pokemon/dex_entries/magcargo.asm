@@ -1,10 +1,10 @@
-	db "LAVA@" ; species name
-	dw 207, 1210 ; height, weight
+	db "WILD DUCK@" ; species name
+	dw 401, 710 ; height, weight
 
-	db   "Its body is as hot"
-	next "as lava and is"
-	next "always billowing."
+	db   "Very territorial."
+	next "Will defend its"
+	next "hatchlings if it"
 
-	page "Flames will"
-	next "occasionally burst"
-	next "from its shell.@"
+	page "has a slight sense"
+	next "of danger from its"
+	next "surroundings.@"

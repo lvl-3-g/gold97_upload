@@ -1,10 +1,10 @@
-	db "BIG HORN@" ; species name
-	dw 407, 1570 ; height, weight
+	db "BARRIER@" ; species name
+	dw 205, 430 ; height, weight
 
-	db   "The round balls"
-	next "found on the"
-	next "fallen antlers can"
+	db   "Is able to stop"
+	next "foes in their"
+	next "tracks by using"
 
-	page "be ground into a"
-	next "powder that aids"
-	next "in sleeping.@"
+	page "its mind to fool"
+	next "them into losing"
+	next "their orientation.@"

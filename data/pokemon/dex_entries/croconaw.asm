@@ -1,10 +1,10 @@
-	db "BIG JAW@" ; species name
-	dw 307, 550 ; height, weight
+	db "SMOOTH SEAL@" ; species name
+	dw 304, 910 ; height, weight
 
-	db   "The tips of its"
-	next "fangs are slanted"
-	next "backward. Once"
+	db   "Its skin is a good"
+	next "insulator. Able to"
+	next "withstand freezing"
 
-	page "those fangs clamp"
-	next "down, the prey has"
-	next "no hope of escape.@"
+	page "temperatures with"
+	next "ease. Is also"
+	next "quick on land.@"

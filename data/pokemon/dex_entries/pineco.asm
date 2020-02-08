@@ -1,10 +1,10 @@
-	db "BAGWORM@" ; species name
-	dw 200, 160 ; height, weight
+	db "CONICAL@" ; species name
+	dw 401, 1380 ; height, weight
 
-	db   "It spits out a"
-	next "fluid that it uses"
-	next "to glue tree bark"
+	db   "Despite appearing"
+	next "to have no limbs,"
+	next "this #MON is"
 
-	page "to its body. The"
-	next "fluid hardens when"
-	next "it touches air.@"
+	page "able to throw the"
+	next "weight of its body"
+	next "around with force.@"

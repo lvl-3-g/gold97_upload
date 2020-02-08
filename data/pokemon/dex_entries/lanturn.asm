@@ -1,10 +1,10 @@
-	db "LIGHT@" ; species name
-	dw 311, 500 ; height, weight
+	db "ZAP TIGER@" ; species name
+	dw 501, 1520 ; height, weight
 
-	db   "This #MON uses"
-	next "the bright part of"
-	next "its body, which"
+	db   "This #MON's skin"
+	next "seems to give off"
+	next "a glow, even in"
 
-	page "changed from a"
-	next "dorsal fin, to"
-	next "lure prey.@"
+	page "darker areas."
+	next "Its cheeks glow"
+	next "brightest.@"

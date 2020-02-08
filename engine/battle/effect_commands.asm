@@ -680,7 +680,7 @@ BattleCommand_CheckObedience:
 	jr nz, .getlevel
 
 	; stormbadge
-	bit STORMBADGE, [hl]
+	bit GLACIERBADGE, [hl]
 	ld a, 70
 	jr nz, .getlevel
 
@@ -1260,7 +1260,7 @@ BattleCommand_Stab:
 
 	push de
 	push bc
-	farcall DoBadgeTypeBoosts
+	;farcall DoBadgeTypeBoosts
 	pop bc
 	pop de
 

@@ -1,10 +1,10 @@
-	db "HAPPINESS@" ; species name
-	dw 411, 1030 ; height, weight
+	db "MILK COW@" ; species name
+	dw 311, 1660 ; height, weight
 
-	db   "Biting into one"
-	next "of the delicious"
-	next "eggs that BLISSEY"
+	db   "In order to milk a"
+	next "MILTANK, one must"
+	next "have a knack for"
 
-	page "provides will make"
-	next "everyone around"
-	next "smile with joy.@"
+	page "rhythmically pull-"
+	next "ing up and down"
+	next "on its udders.@"

@@ -2,6 +2,7 @@
 	const OLIVINECAFE_SAILOR1
 	const OLIVINECAFE_FISHING_GURU
 	const OLIVINECAFE_SAILOR2
+	const OLIVINECAFE_CLERK
 
 OlivineCafe_MapScripts:
 	db 0 ; scene scripts
@@ -11,17 +12,20 @@ OlivineCafe_MapScripts:
 OlivineCafeStrengthSailorScript:
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_HM04_STRENGTH
+	checkevent EVENT_GOT_HM02_FLY
 	iftrue .GotStrength
 	writetext OlivineCafeStrengthSailorText
 	buttonsound
-	verbosegiveitem HM_STRENGTH
-	setevent EVENT_GOT_HM04_STRENGTH
+	verbosegiveitem HM_FLY
+	setevent EVENT_GOT_HM02_FLY
 .GotStrength:
 	writetext OlivineCafeStrengthSailorText_GotStrength
 	waitbutton
 	closetext
 	end
+	
+OlivineCafeClerkScript:
+	jumptextfaceplayer OlivineCafeClerkText
 
 OlivineCafeFishingGuruScript:
 	jumptextfaceplayer OlivineCafeFishingGuruText
@@ -30,36 +34,28 @@ OlivineCafeSailorScript:
 	jumptextfaceplayer OlivineCafeSailorText
 
 OlivineCafeStrengthSailorText:
-	text "Hah! Your #MON"
-	line "sure look like"
-	cont "lightweights!"
-
-	para "They don't have"
-	line "the power to move"
-	cont "boulders aside."
-
-	para "Here, use this"
-	line "and teach them"
-	cont "STRENGTH!"
+	text "Hah! Sailing is"
+	line "such an outdated"
+	cont "way to travel!"
+	para "Walking is too!"
+	para "Why not have your"
+	line "#MON FLY you"
+	cont "everywhere?"
 	done
 
 OlivineCafeStrengthSailorText_GotStrength:
-	text "On the sea, the"
-	line "only thing you can"
-
-	para "count on is your"
-	line "own good self!"
-
-	para "I'm so proud of my"
-	line "buff bod!"
+	text "Ships still have"
+	line "to set sail since"
+	para "FLYING #MON"
+	line "can't carry cargo."
 	done
 
 OlivineCafeFishingGuruText:
-	text "OLIVINE CAFE's"
+	text "NUTYPE CAFE's"
 	line "menu is chock full"
 
 	para "of hearty fare for"
-	line "beefy SAILORS!"
+	line "hungry people!"
 	done
 
 OlivineCafeSailorText:
@@ -67,13 +63,18 @@ OlivineCafeSailorText:
 	line "into this town, I"
 
 	para "always visit the"
-	line "OLIVINE CAFE."
+	line "NUTYPE CAFE."
 
-	para "Everything on the"
-	line "menu makes me feel"
-
-	para "stronger. I can't"
-	line "stop eating!"
+	para "Everything here is"
+	line "delicious!"
+	done
+	
+OlivineCafeClerkText
+	text "Welcome to NUYTPE"
+	line "CAFE!"
+	para "We have food to"
+	line "satisfy every"
+	cont "appetite!"
 	done
 
 OlivineCafe_MapEvents:
@@ -87,7 +88,8 @@ OlivineCafe_MapEvents:
 
 	db 0 ; bg events
 
-	db 3 ; object events
-	object_event  4,  3, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OlivineCafeStrengthSailorScript, -1
-	object_event  7,  3, SPRITE_FISHING_GURU, SPRITEMOVEDATA_WALK_UP_DOWN, 0, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OlivineCafeFishingGuruScript, -1
-	object_event  6,  6, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OlivineCafeSailorScript, -1
+	db 4 ; object events
+	object_event  6,  3, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OlivineCafeStrengthSailorScript, -1
+	object_event  3,  1, SPRITE_TEACHER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OlivineCafeFishingGuruScript, -1
+	object_event  5,  6, SPRITE_JANINE, SPRITEMOVEDATA_STANDING_RIGHT, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OlivineCafeSailorScript, -1
+	object_event  1,  1, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_DOWN, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OlivineCafeClerkScript, -1

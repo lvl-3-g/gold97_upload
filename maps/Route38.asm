@@ -2,7 +2,6 @@
 	const ROUTE38_STANDING_YOUNGSTER1
 	const ROUTE38_LASS
 	const ROUTE38_STANDING_YOUNGSTER2
-	const ROUTE38_BUENA1
 	const ROUTE38_SAILOR
 	const ROUTE38_FRUIT_TREE
 	const ROUTE38_BUENA2
@@ -75,7 +74,7 @@ TrainerLassDana1:
 	ifequal 1, .Fight1
 	ifequal 0, .LoadFight0
 .Fight4:
-	checkevent EVENT_RESTORED_POWER_TO_KANTO
+	checkevent EVENT_FAST_SHIP_CABINS_SE_SSE_GENTLEMAN
 	iftrue .LoadFight4
 .Fight3:
 	checkevent EVENT_BEAT_ELITE_FOUR
@@ -84,7 +83,7 @@ TrainerLassDana1:
 	checkevent EVENT_CLEARED_RADIO_TOWER
 	iftrue .LoadFight2
 .Fight1:
-	checkflag ENGINE_FLYPOINT_CIANWOOD
+	checkevent EVENT_BEAT_CHUCK
 	iftrue .LoadFight1
 .LoadFight0:
 	loadtrainer LASS, DANA1
@@ -289,16 +288,6 @@ TrainerSchoolboyChad1:
 	jumpstd rematchm
 	end
 
-TrainerBeautyValerie:
-	trainer BEAUTY, VALERIE, EVENT_BEAT_BEAUTY_VALERIE, BeautyValerieSeenText, BeautyValerieBeatenText, 0, .Script
-
-.Script
-	endifjustbattled
-	opentext
-	writetext BeautyValerieAfterBattleText
-	waitbutton
-	closetext
-	end
 
 TrainerBeautyOlivia:
 	trainer BEAUTY, OLIVIA, EVENT_BEAT_BEAUTY_OLIVIA, BeautyOliviaSeenText, BeautyOliviaBeatenText, 0, .Script
@@ -333,10 +322,13 @@ BirdKeeperTobyBeatenText:
 
 BirdKeeperTobyAfterBattleText:
 	text "I plan to train in"
-	line "CIANWOOD CITY to"
-
-	para "teach my #MON"
-	line "how to FLY."
+	line "NUTYPE CITY at"
+	cont "the FIGHTING DOJO."
+	para "FLYING #MON are"
+	line "strong against"
+	cont "FIGHTING TYPE."
+	para "...Is that an"
+	line "unfair advantage?"
 	done
 
 SchoolboyChad1SeenText:
@@ -380,29 +372,14 @@ UnknownText_0x1a20ec:
 	text "I know something"
 	line "good!"
 
-	para "MOOMOO FARM's milk"
-	line "is famous for its"
-	cont "flavor."
+	para "MOOMOO MILK is"
+	line "a nutritious drink"
+	cont "for #MON!"
+	para "You can buy it"
+	line "over in STAND"
+	cont "CITY."
 	done
 
-BeautyValerieSeenText:
-	text "Hi! Aren't you a"
-	line "cute trainer!"
-
-	para "May I see your"
-	line "#MON?"
-	done
-
-BeautyValerieBeatenText:
-	text "I'm glad I got to"
-	line "see your #MON!"
-	done
-
-BeautyValerieAfterBattleText:
-	text "When I see #-"
-	line "MON, it seems to"
-	cont "soothe my nerves."
-	done
 
 SailorHarrySeenText:
 	text "I've been over-"
@@ -432,26 +409,22 @@ BeautyOliviaSeenText:
 	done
 
 BeautyOliviaBeatenText:
-	text "We drink MOOMOO"
-	line "MILK every day."
+	text "I keep my #MON"
+	line "prim and proper."
 	done
 
 BeautyOliviaAfterBattleText:
-	text "MOOMOO MILK is"
-	line "good for beauty"
-
-	para "and health, but"
-	line "inconveniently,"
-
-	para "they only sell a"
-	line "bottle at a time."
+	text "Have you ever had"
+	line "your #MON's"
+	para "hair cut in WEST"
+	line "CITY?"
 	done
 
 Route38SignText:
-	text "ROUTE 38"
+	text "ROUTE 108"
 
-	para "OLIVINE CITY -"
-	line "ECRUTEAK CITY"
+	para "NUTYPE CITY -"
+	line "BLUE FOREST"
 	done
 
 Route38TrainerTipsText:
@@ -474,20 +447,19 @@ Route38_MapEvents:
 	db 0, 0 ; filler
 
 	db 2 ; warp events
-	warp_event 35,  8, ROUTE_38_ECRUTEAK_GATE, 1
-	warp_event 35,  9, ROUTE_38_ECRUTEAK_GATE, 2
+	warp_event  2,  0, ROUTE_38_ECRUTEAK_GATE, 1
+	warp_event  1,  0, ROUTE_38_ECRUTEAK_GATE, 2
 
 	db 0 ; coord events
 
 	db 2 ; bg events
-	bg_event 33,  7, BGEVENT_READ, Route38Sign
-	bg_event  5, 13, BGEVENT_READ, Route38TrainerTips
+	bg_event  6,  4, BGEVENT_READ, Route38Sign
+	bg_event 18,  4, BGEVENT_READ, Route38TrainerTips
 
-	db 7 ; object events
-	object_event  4,  1, SPRITE_STANDING_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 1, TrainerSchoolboyChad1, -1
-	object_event 15,  3, SPRITE_LASS, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 2, TrainerLassDana1, -1
-	object_event 12, 15, SPRITE_STANDING_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 1, TrainerBirdKeeperToby, -1
-	object_event 19,  9, SPRITE_BUENA, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 1, TrainerBeautyValerie, -1
-	object_event 24,  5, SPRITE_SAILOR, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 2, TrainerSailorHarry, -1
-	object_event 12, 10, SPRITE_FRUIT_TREE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route38FruitTree, -1
-	object_event  5,  8, SPRITE_BUENA, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 1, TrainerBeautyOlivia, -1
+	db 6 ; object events
+	object_event 18,  6, SPRITE_STANDING_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerSchoolboyChad1, -1
+	object_event  8,  7, SPRITE_LASS, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 2, TrainerLassDana1, -1
+	object_event  7, 12, SPRITE_STANDING_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 1, TrainerBirdKeeperToby, -1
+	object_event 24,  4, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 2, TrainerSailorHarry, -1
+	object_event 28,  5, SPRITE_FRUIT_TREE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route38FruitTree, -1
+	object_event 18, 11, SPRITE_LASS, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerBeautyOlivia, -1

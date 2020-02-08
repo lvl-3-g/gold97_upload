@@ -52,8 +52,8 @@ VermilionFishingSpeechHouse_MapEvents:
 	db 0, 0 ; filler
 
 	db 2 ; warp events
-	warp_event  2,  7, VERMILION_CITY, 1
-	warp_event  3,  7, VERMILION_CITY, 1
+	warp_event  4,  7, VERMILION_CITY, 8
+	warp_event  5,  7, VERMILION_CITY, 8
 
 	db 0 ; coord events
 

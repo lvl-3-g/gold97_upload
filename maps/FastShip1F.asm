@@ -117,22 +117,39 @@ FastShip1FSailor2Script:
 FastShip1FSailor3Script:
 	jumptextfaceplayer FastShip1FSailor3Text
 
-WorriedGrandpaSceneRight:
-	moveobject FASTSHIP1F_GENTLEMAN, 20, 6
 
 WorriedGrandpaSceneLeft:
-	appear FASTSHIP1F_GENTLEMAN
-	applymovement FASTSHIP1F_GENTLEMAN, MovementData_0x7521b
+;	appear FASTSHIP1F_GENTLEMAN
+;	applymovement FASTSHIP1F_GENTLEMAN, MovementData_0x7521b
+;	playsound SFX_TACKLE
+;	applymovement PLAYER, MovementData_0x7522e
+;	applymovement FASTSHIP1F_GENTLEMAN, MovementData_0x75220
+;	opentext
+;	writetext FastShip1FGrandpaText
+;	waitbutton
+;	closetext
+;	turnobject PLAYER, RIGHT
+;	applymovement FASTSHIP1F_GENTLEMAN, MovementData_0x75222
+;	disappear FASTSHIP1F_GENTLEMAN
+;	setscene SCENE_DEFAULT
 	playsound SFX_TACKLE
-	applymovement PLAYER, MovementData_0x7522e
-	applymovement FASTSHIP1F_GENTLEMAN, MovementData_0x75220
+	earthquake 80
+	waitsfx
+	pause 30
+	playsound SFX_TACKLE
+	earthquake 80
+	waitsfx
+	pause 30
+	playsound SFX_TACKLE
+	earthquake 80
+	waitsfx
+	pause 50
+	playsound SFX_ELEVATOR_END
+	pause 30
 	opentext
-	writetext FastShip1FGrandpaText
+	writetext CaptainSpeakingText
 	waitbutton
 	closetext
-	turnobject PLAYER, RIGHT
-	applymovement FASTSHIP1F_GENTLEMAN, MovementData_0x75222
-	disappear FASTSHIP1F_GENTLEMAN
 	setscene SCENE_DEFAULT
 	end
 
@@ -204,11 +221,29 @@ MovementData_0x75238:
 	step RIGHT
 	step UP
 	step_end
+	
+CaptainSpeakingText:
+	text "Um, hello, every-"
+	line "one."
+	para "This is your"
+	line "CAPTAIN speaking."
+	para "We've hit some un-"
+	line "expected rough"
+	cont "weather."
+	para "But everything is"
+	line "fine!"
+	para "Um, nothing is"
+	line "wrong at all!"
+	para "We will arrive as"
+	line "planned."
+	para "Uh... That is all."
+	done
+
 
 FastShip1FSailor1Text_ToVermilion:
 	text "FAST SHIP S.S.AQUA"
 	line "is en route to"
-	cont "VERMILION CITY."
+	cont "AMAMI TOWN."
 
 	para "We will make an"
 	line "announcement when"
@@ -218,7 +253,7 @@ FastShip1FSailor1Text_ToVermilion:
 FastShip1FSailor1Text_ToOlivine:
 	text "FAST SHIP S.S.AQUA"
 	line "is en route to"
-	cont "OLIVINE CITY."
+	cont "WEST CITY."
 
 	para "We will make an"
 	line "announcement when"
@@ -257,30 +292,30 @@ FastShip1FSailor3Text:
 	cont "their cabins."
 	done
 
-FastShip1FGrandpaText:
-	text "Whoa! Excuse me."
-	line "I was in a hurry!"
-
-	para "My granddaughter"
-	line "is missing!"
-
-	para "She's just a wee"
-	line "girl. If you see"
-
-	para "her, please let me"
-	line "know!"
-	done
+;FastShip1FGrandpaText:
+;	text "Whoa! Excuse me."
+;	line "I was in a hurry!"
+;
+;	para "My granddaughter"
+;	line "is missing!"
+;
+;	para "She's just a wee"
+;	line "girl. If you see"
+;
+;	para "her, please let me"
+;	line "know!"
+;	done
 
 FastShip1FSailor1Text_InOlivine:
 	text "FAST SHIP S.S.AQUA"
 	line "has arrived in"
-	cont "OLIVINE CITY."
+	cont "WEST CITY."
 	done
 
 FastShip1FSailor1Text_InVermilion:
 	text "FAST SHIP S.S.AQUA"
 	line "has arrived in"
-	cont "VERMILION CITY."
+	cont "AMAMI TOWN."
 	done
 
 FastShip1F_MapEvents:
@@ -300,9 +335,12 @@ FastShip1F_MapEvents:
 	warp_event  6, 12, FAST_SHIP_B1F, 1
 	warp_event 30, 14, FAST_SHIP_B1F, 2
 
-	db 2 ; coord events
-	coord_event 24,  6, SCENE_FASTSHIP1F_MEET_GRANDPA, WorriedGrandpaSceneLeft
-	coord_event 25,  6, SCENE_FASTSHIP1F_MEET_GRANDPA, WorriedGrandpaSceneRight
+	db 5 ; coord events
+	coord_event 30,  9, SCENE_FASTSHIP1F_MEET_GRANDPA, WorriedGrandpaSceneLeft
+	coord_event 25, 16, SCENE_FASTSHIP1F_MEET_GRANDPA, WorriedGrandpaSceneLeft
+	coord_event 31, 10, SCENE_FASTSHIP1F_MEET_GRANDPA, WorriedGrandpaSceneLeft
+	coord_event 11, 11, SCENE_FASTSHIP1F_MEET_GRANDPA, WorriedGrandpaSceneLeft
+	coord_event 10, 12, SCENE_FASTSHIP1F_MEET_GRANDPA, WorriedGrandpaSceneLeft
 
 	db 0 ; bg events
 

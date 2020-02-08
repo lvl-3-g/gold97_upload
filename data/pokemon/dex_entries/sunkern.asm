@@ -1,10 +1,10 @@
-	db "SEED@" ; species name
-	dw 100, 40 ; height, weight
+	db "GOLDFISH@" ; species name
+	dw 108, 210 ; height, weight
 
-	db   "It is very weak."
-	next "Its only means of"
-	next "defense is to"
+	db   "Even at a young"
+	next "age, this #MON"
+	next "swims quickly and"
 
-	page "shake its leaves"
-	next "desperately at its"
-	next "attacker.@"
+	page "with ease, even"
+	next "against relatively"
+	next "strong currents.@"

@@ -52,6 +52,7 @@ StdScripts::
 	dba PCScript
 	dba GameCornerCoinVendorScript
 	dba HappinessCheckScript
+	dba LavaScript
 
 PokecenterNurseScript:
 ; EVENT_WELCOMED_TO_POKECOM_CENTER is never set
@@ -191,6 +192,9 @@ TownMapScript:
 WindowScript:
 	farjumptext WindowText
 
+LavaScript:
+	farjumptext LavaText
+
 TVScript:
 	opentext
 	farwritetext TVText
@@ -295,10 +299,11 @@ RadioTowerRocketsScript:
 	setevent EVENT_GOLDENROD_CITY_CIVILIANS
 	setevent EVENT_RADIO_TOWER_BLACKBELT_BLOCKS_STAIRS
 	clearevent EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	clearevent EVENT_USED_THE_CARD_KEY_IN_THE_RADIO_TOWER
+;	clearevent EVENT_USED_THE_CARD_KEY_IN_THE_RADIO_TOWER
 	setevent EVENT_MAHOGANY_TOWN_POKEFAN_M_BLOCKS_EAST
 	specialphonecall SPECIALCALL_WEIRDBROADCAST
 	setmapscene MAHOGANY_TOWN, SCENE_FINISHED
+	setmapscene RADIO_TOWER_6F, SCENE_DEFAULT
 	end
 
 BugContestResultsWarpScript:
@@ -307,7 +312,7 @@ BugContestResultsWarpScript:
 	setevent EVENT_ROUTE_36_NATIONAL_PARK_GATE_OFFICER_CONTEST_DAY
 	clearevent EVENT_ROUTE_36_NATIONAL_PARK_GATE_OFFICER_NOT_CONTEST_DAY
 	setevent EVENT_WARPED_FROM_ROUTE_35_NATIONAL_PARK_GATE
-	warp ROUTE_36_NATIONAL_PARK_GATE, 0, 4
+	warpfacing UP, ROUTE_36_NATIONAL_PARK_GATE, 0, 7
 	applymovement PLAYER, Movement_ContestResults_WalkAfterWarp
 
 BugContestResultsScript:
@@ -474,25 +479,28 @@ BugContestResults_CopyContestantsToResults:
 	end
 
 InitializeEventsScript:
-	setevent EVENT_EARLS_ACADEMY_EARL
+	setevent EVENT_TELEPORT_GUY; so he doesn't appear until after returning the fuel line
+	setevent EVENT_GOT_WATER_STONE_FROM_BILLS_GRANDPA; makes youngster disappear from n64 house
+	setevent EVENT_SLOWPOKE_WELL_SLOWPOKES; I added this, makes kurt and captain disappear until ho-oh
+	setevent EVENT_GOT_SHUCKIE; also added this, makes red disappear until you beat all trainers in gym
+;	setevent EVENT_EARLS_ACADEMY_EARL
 	setevent EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	setevent EVENT_GOLDENROD_CITY_ROCKET_TAKEOVER
 	setevent EVENT_RADIO_TOWER_CIVILIANS_AFTER
-	setevent EVENT_ILEX_FOREST_APPRENTICE
-	setevent EVENT_ILEX_FOREST_FARFETCHD
+;	setevent EVENT_ILEX_FOREST_APPRENTICE
+;	setevent EVENT_ILEX_FOREST_FARFETCHD
 	setevent EVENT_ILEX_FOREST_CHARCOAL_MASTER
 	setevent EVENT_MAHOGANY_MART_LANCE_AND_DRAGONITE
 	setevent EVENT_TEAM_ROCKET_BASE_B2F_GRUNT_WITH_EXECUTIVE
 	setevent EVENT_TEAM_ROCKET_BASE_B2F_EXECUTIVE
 	setevent EVENT_TEAM_ROCKET_BASE_B2F_DRAGONITE
-	setevent EVENT_RIVAL_TEAM_ROCKET_BASE
-	setevent EVENT_BLACKTHORN_CITY_SUPER_NERD_DOES_NOT_BLOCK_GYM
-	setevent EVENT_USED_THE_CARD_KEY_IN_THE_RADIO_TOWER
+	setevent EVENT_RIVAL_TEAM_ROCKET_BASE; used to make suicune disappear
+;	setevent EVENT_BLACKTHORN_CITY_SUPER_NERD_DOES_NOT_BLOCK_GYM
+;	setevent EVENT_USED_THE_CARD_KEY_IN_THE_RADIO_TOWER
 	setevent EVENT_RIVAL_CHERRYGROVE_CITY
-	setevent EVENT_RIVAL_AZALEA_TOWN
+	setevent EVENT_RIVAL_AZALEA_TOWN; used to make entei disappear
 	setevent EVENT_RIVAL_GOLDENROD_UNDERGROUND
-	setevent EVENT_AZALEA_TOWN_SLOWPOKES
-	setevent EVENT_KURTS_HOUSE_SLOWPOKE
+	setevent EVENT_AZALEA_TOWN_SLOWPOKES; used to make raikou disappear
 	setevent EVENT_GUIDE_GENT_VISIBLE_IN_CHERRYGROVE
 	setevent EVENT_ELMS_AIDE_IN_VIOLET_POKEMON_CENTER
 	setevent EVENT_COP_IN_ELMS_LAB
@@ -543,14 +551,16 @@ InitializeEventsScript:
 	setevent EVENT_ECRUTEAK_POKE_CENTER_BILL
 	setevent EVENT_MYSTERY_GIFT_DELIVERY_GUY
 	setevent EVENT_LAKE_OF_RAGE_LANCE
-	setevent EVENT_GOLDENROD_DEPT_STORE_B1F_LAYOUT_1
-	setevent EVENT_GOLDENROD_UNDERGROUND_WAREHOUSE_BLOCKED_OFF
+	setevent EVENT_GOLDENROD_DEPT_STORE_B1F_LAYOUT_2; makes rocker disappear in n64 house
+	setevent EVENT_GOLDENROD_DEPT_STORE_B1F_LAYOUT_1; makes rocker disappear in game corner
+	setevent EVENT_GOLDENROD_DEPT_STORE_B1F_LAYOUT_3; makes lass disappear in yoron house
+	setevent EVENT_GOLDENROD_UNDERGROUND_WAREHOUSE_BLOCKED_OFF; makes lass disappear in n64 house
 	setevent EVENT_DRAGONS_DEN_CLAIR
 	setevent EVENT_RIVAL_OLIVINE_CITY
 	setevent EVENT_RIVAL_VICTORY_ROAD
 	setevent EVENT_RIVAL_DRAGONS_DEN
 	setevent EVENT_LANCES_ROOM_OAK_AND_MARY
-	setevent EVENT_FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN_TWIN_1
+;	setevent EVENT_FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN_TWIN_1
 	setevent EVENT_BURNED_TOWER_B1F_BEASTS_1
 	setevent EVENT_RED_IN_MT_SILVER
 	setevent EVENT_OLIVINE_PORT_SPRITES_AFTER_HALL_OF_FAME
@@ -572,7 +582,7 @@ InitializeEventsScript:
 	setevent EVENT_AZALEA_TOWN_KURT
 	setevent EVENT_ILEX_FOREST_KURT
 	setevent EVENT_ROUTE_34_ILEX_FOREST_GATE_TEACHER_IN_WALKWAY
-	setevent EVENT_ILEX_FOREST_LASS
+;	setevent EVENT_ILEX_FOREST_LASS
 	setevent EVENT_GOLDENROD_SALE_OFF
 	setevent EVENT_ECRUTEAK_CITY_GRAMPS
 	setevent EVENT_EUSINE_IN_BURNED_TOWER
@@ -598,7 +608,7 @@ InitializeEventsScript:
 	variablesprite SPRITE_FUCHSIA_GYM_4, SPRITE_JANINE
 	variablesprite SPRITE_COPYCAT, SPRITE_LASS
 	variablesprite SPRITE_JANINE_IMPERSONATOR, SPRITE_LASS
-	setevent EVENT_FOUND_MACHINE_PART_IN_CERULEAN_GYM
+;	setevent EVENT_FOUND_MACHINE_PART_IN_CERULEAN_GYM
 	setevent EVENT_CERULEAN_GYM_ROCKET
 	setevent EVENT_ROUTE_24_ROCKET
 	setevent EVENT_ROUTE_25_MISTY_BOYFRIEND
@@ -1887,7 +1897,8 @@ HappinessCheckScript:
 	end
 
 Movement_ContestResults_WalkAfterWarp:
+	step UP
+	step UP
 	step RIGHT
-	step DOWN
 	turn_head UP
 	step_end

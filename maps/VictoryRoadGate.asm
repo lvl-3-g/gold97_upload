@@ -1,7 +1,7 @@
 	const_def 2 ; object constants
 	const VICTORYROADGATE_OFFICER
-	const VICTORYROADGATE_BLACK_BELT1
-	const VICTORYROADGATE_BLACK_BELT2
+	const VICTORYROADGATE_COOLTRAINERM
+	const VICTORYROADGATE_COOLTRAINERF
 
 VictoryRoadGate_MapScripts:
 	db 2 ; scene scripts
@@ -26,9 +26,18 @@ VictoryRoadGateBadgeCheckScript:
 	opentext
 	writetext VictoryRoadGateOfficerText
 	buttonsound
+	checkevent EVENT_GOT_A_POKEMON_FROM_ELM
+	iffalse .NoPokemonEvenYet
 	checkcode VAR_BADGES
 	ifgreater NUM_JOHTO_BADGES - 1, .AllEightBadges
 	writetext VictoryRoadGateNotEnoughBadgesText
+	waitbutton
+	closetext
+	applymovement PLAYER, VictoryRoadGateStepDownMovement
+	end
+
+.NoPokemonEvenYet
+	writetext VictoryRoadGateNotEvenATrainer
 	waitbutton
 	closetext
 	applymovement PLAYER, VictoryRoadGateStepDownMovement
@@ -41,15 +50,45 @@ VictoryRoadGateBadgeCheckScript:
 	setscene SCENE_FINISHED
 	end
 
-VictoryRoadGateLeftBlackBeltScript:
-	jumptextfaceplayer VictoryRoadGateLeftBlackBeltText
-
-VictoryRoadGateRightBlackBeltScript:
-	jumptextfaceplayer VictoryRoadGateRightBlackBeltText
-
 VictoryRoadGateStepDownMovement:
 	step DOWN
 	step_end
+	
+VictoryRoadGateCooltrainerMScript:
+	jumptextfaceplayer VictoryRoadGateCooltrainerMText
+	
+VictoryRoadGateCooltrainerFScript:
+	jumptextfaceplayer VictoryRoadGateCooltrainerFText
+	
+VictoryRoadGateCooltrainerMText:
+	text "I can't believe"
+	line "it!"
+	para "It's almost time"
+	line "for me to take on"
+	cont "the LEAGUE!"
+	para "I've been waiting"
+	line "my whole life for"
+	cont "this!"
+	done
+	
+VictoryRoadGateCooltrainerFText:
+	text "PRINCELY PATH may"
+	line "be a cakewalk, but"
+	para "the real challenge"
+	line "is making it to"
+	para "the top of MT.FUJI"
+	line "from PRINCE CITY."
+	done
+	
+VictoryRoadGateNotEvenATrainer:
+	text "You don't even"
+	line "appear to be a"
+	cont "#MON trainer."
+	para "Sorry, kid. But I"
+	line "can only let"
+	para "qualified trainers"
+	line "pass through."
+	done
 
 VictoryRoadGateOfficerText:
 	text "Only trainers who"
@@ -58,55 +97,33 @@ VictoryRoadGateOfficerText:
 	done
 
 VictoryRoadGateNotEnoughBadgesText:
-	text "You don't have all"
-	line "the GYM BADGES of"
-	cont "JOHTO."
-
-	para "I'm sorry, but I"
-	line "can't let you go"
-	cont "through."
+	text "You don't have"
+	line "eight badges."
+	para "I'm sorry, but"
+	line "only trainers with"
+	para "enough badges are"
+	line "permitted to enter"
+	para "PRINCE CITY and"
+	line "climb MT.FUJI."
 	done
 
 VictoryRoadGateEightBadgesText:
-	text "Oh! The eight"
-	line "BADGES of JOHTO!"
+	text "Ah! Eight badges!"
 
-	para "Please, go right"
-	line "on through!"
-	done
-
-VictoryRoadGateLeftBlackBeltText:
-	text "This way leads to"
-	line "MT.SILVER."
-
-	para "You'll see scary-"
-	line "strong #MON out"
-	cont "there."
-	done
-
-VictoryRoadGateRightBlackBeltText:
-	text "Off to the #MON"
-	line "LEAGUE, are you?"
-
-	para "The ELITE FOUR are"
-	line "so strong it's"
-
-	para "scary, and they're"
-	line "ready for you!"
+	para "You have proven"
+	line "yourself worthy."
+	para "Please, go on"
+	line "through!"
 	done
 
 VictoryRoadGate_MapEvents:
 	db 0, 0 ; filler
 
-	db 8 ; warp events
-	warp_event 17,  7, ROUTE_22, 1
-	warp_event 18,  7, ROUTE_22, 1
-	warp_event  9, 17, ROUTE_26, 1
-	warp_event 10, 17, ROUTE_26, 1
-	warp_event  9,  0, VICTORY_ROAD, 1
-	warp_event 10,  0, VICTORY_ROAD, 1
-	warp_event  1,  7, ROUTE_28, 2
-	warp_event  2,  7, ROUTE_28, 2
+	db 4 ; warp events
+	warp_event  9, 17, ROUTE_14, 1
+	warp_event 10, 17, ROUTE_14, 1
+	warp_event  9,  0, UNDERGROUND_PATH, 1
+	warp_event 10,  0, UNDERGROUND_PATH, 2
 
 	db 1 ; coord events
 	coord_event 10, 11, SCENE_DEFAULT, VictoryRoadGateBadgeCheckScene
@@ -115,5 +132,5 @@ VictoryRoadGate_MapEvents:
 
 	db 3 ; object events
 	object_event  8, 11, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, VictoryRoadGateOfficerScript, -1
-	object_event  7,  5, SPRITE_BLACK_BELT, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, VictoryRoadGateLeftBlackBeltScript, EVENT_OPENED_MT_SILVER
-	object_event 12,  5, SPRITE_BLACK_BELT, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, VictoryRoadGateRightBlackBeltScript, EVENT_FOUGHT_SNORLAX
+	object_event 12,  3, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, VictoryRoadGateCooltrainerMScript, -1
+	object_event  7,  2, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, VictoryRoadGateCooltrainerFScript, -1

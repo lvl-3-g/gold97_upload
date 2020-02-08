@@ -21,26 +21,22 @@ ElmsHouseBookshelf:
 
 ElmsWifeText:
 	text "Hi, <PLAY_G>! My"
-	line "husband's always"
-
-	para "so busy--I hope"
-	line "he's OK."
-
-	para "When he's caught"
-	line "up in his #MON"
-
-	para "research, he even"
-	line "forgets to eat."
+	line "son's always so"
+	cont "energetic."
+	para "When he gets his"
+	line "mind set on"
+	para "something, he'll"
+	line "just go at it,"
+	cont "full speed ahead."
 	done
 
 ElmsSonText:
 	text "When I grow up,"
-	line "I'm going to help"
-	cont "my dad!"
+	line "I'm going to be"
+	cont "a #MON breeder!"
 
-	para "I'm going to be a"
-	line "great #MON"
-	cont "professor!"
+	para "I'll raise all"
+	line "the #MON!"
 	done
 
 ElmsHouseLabFoodText:
@@ -90,11 +86,10 @@ ElmsHouse_MapEvents:
 
 	db 0 ; coord events
 
-	db 3 ; bg events
-	bg_event  0,  1, BGEVENT_READ, ElmsHousePC
-	bg_event  6,  1, BGEVENT_READ, ElmsHouseBookshelf
-	bg_event  7,  1, BGEVENT_READ, ElmsHouseBookshelf
+	db 2 ; bg events
+	bg_event  5,  1, BGEVENT_READ, ElmsHouseBookshelf
+	bg_event  5,  0, BGEVENT_READ, ElmsHouseBookshelf
 
 	db 2 ; object events
-	object_event  1,  5, SPRITE_TEACHER, SPRITEMOVEDATA_WALK_UP_DOWN, 0, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, ElmsWife, -1
-	object_event  5,  4, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ElmsSon, -1
+	object_event  5,  3, SPRITE_BUENA, SPRITEMOVEDATA_STANDING_LEFT, 0, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, ElmsWife, -1
+	object_event  2,  4, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ElmsSon, -1

@@ -68,3 +68,8 @@ TrainerClassDVs:
 	dn  9,  8,  8,  8 ; OFFICER
 	dn  7, 14, 10,  8 ; GRUNTF
 	dn  9,  8,  8,  8 ; MYSTICALMAN
+	dn  9,  8,  8,  8 ; ENGINEER
+	dn  9,  8,  8,  8 ; SPORTSMAN
+	dn 13,  8, 12,  8 ; SOLDIER
+	dn  9,  8, 10,  8 ; INSTRUCTOR
+	dn  9,  8,  8,  8 ; FLEDGLING

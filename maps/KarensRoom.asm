@@ -79,52 +79,56 @@ KarensRoom_EnterMovement:
 	step_end
 
 KarenScript_KarenBeforeText:
-	text "I am KAREN of the"
+	text "Hi, there!"
+
+	para "I am MISTY of the"
 	line "ELITE FOUR."
 
 	para "You're <PLAYER>?"
-	line "How amusing."
-
-	para "I love dark-type"
-	line "#MON."
-
-	para "I find their wild,"
-	line "tough image to be"
-
-	para "so appealing. And"
-	line "they're so strong."
-
-	para "Think you can take"
-	line "them? Just try to"
-	cont "entertain me."
-
-	para "Let's go."
+	line "Well it's nice to"
+	cont "meet you."
+	
+	para "But I'm not just"
+	line "here for friendly"
+	cont "greetings!"
+	
+	para "My water #MON"
+	line "are ready to"
+	cont "battle."
+	para "And I'm ready to"
+	line "work with them to"
+	cont "defeat you!"
+	
+	para "Ready? I accept"
+	line "your challenge!"
 	done
 
 KarenScript_KarenBeatenText:
-	text "Well, aren't you"
-	line "good. I like that"
-	cont "in a trainer."
+	text "Well, looks like"
+	line "you were ready to"
+	para "battle alongside"
+	line "your #MON as"
+	cont "well!"
 	done
 
 KarenScript_KarenDefeatText:
-	text "Strong #MON."
-
-	para "Weak #MON."
-
-	para "That is only the"
-	line "selfish perception"
-	cont "of people."
-
-	para "Truly skilled"
-	line "trainers should"
-
-	para "try to win with"
-	line "their favorites."
-
-	para "I like your style."
-	line "You understand"
-	cont "what's important."
+	text "The best #MON"
+	line "trainers aren't"
+	para "the ones who pick"
+	line "the strongest"
+	cont "#MON."
+	para "They're the ones"
+	line "who battle with"
+	cont "their favorites,"
+	para "and build a bond"
+	line "between trainer"
+	cont "and #MON."
+	
+	para "And that's how"
+	line "they win."
+	
+	para "I think you've"
+	line "figured that out."
 
 	para "Go on--the CHAM-"
 	line "PION is waiting."
@@ -144,4 +148,4 @@ KarensRoom_MapEvents:
 	db 0 ; bg events
 
 	db 1 ; object events
-	object_event  5,  7, SPRITE_KAREN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, KarenScript_Battle, -1
+	object_event  5,  7, SPRITE_MISTY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, KarenScript_Battle, -1

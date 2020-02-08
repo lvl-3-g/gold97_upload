@@ -398,7 +398,8 @@ UnknownText_0x1c0774::
 UnknownText_0x1c0788::
 	text_ram wStringBuffer1
 	text " can"
-	line "move boulders."
+	line "move heavy"
+	cont "objects."
 	prompt
 
 UnknownText_0x1c07a0::
@@ -410,8 +411,8 @@ UnknownText_0x1c07a0::
 	done
 
 UnknownText_0x1c07d8::
-	text "Boulders may now"
-	line "be moved!"
+	text "Heavy objects may"
+	line "now be moved!"
 	done
 
 UnknownText_0x1c07f4::

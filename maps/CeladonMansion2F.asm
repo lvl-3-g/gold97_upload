@@ -1,3 +1,6 @@
+	const_def 2 ; object constants
+	const CELADONMANSION2F_DEVELOPER
+
 CeladonMansion2F_MapScripts:
 	db 0 ; scene scripts
 
@@ -11,35 +14,38 @@ CeladonMansion2FMeetingRoomSign:
 
 CeladonMansion2FBookshelf:
 	jumpstd difficultbookshelf
+	
+CeladonMansionClerk:
+	jumptextfaceplayer CeladonMansionClerkText
+	
+CeladonMansionClerkText:
+	text "Hiya! I'm the"
+	line "developer!"
+	para "The other one."
+	para "The one that the"
+	line "guys upstairs"
+	para "wouldn't want to"
+	line "know about."
+	para "Thank you so much"
+	line "for playing"
+	cont "through this!"
+	para "I worked very hard"
+	line "on it."
+	para "Tried to make it"
+	line "feel as authentic"
+	cont "as possible."
+	para "Apart from this"
+	line "4th wall break,"
+	cont "that is."
+	done
 
 CeladonMansion2FComputerText:
-	text "<PLAYER> turned on"
-	line "the PC."
-
-	para "…"
-
-	para "Someone was in the"
-	line "middle of compos-"
-	cont "ing an e-mail."
-
-	para "…I hope you'll"
-	line "come visit KANTO."
-
-	para "I think you'll be"
-	line "surprised at how"
-
-	para "much things have"
-	line "changed here."
-
-	para "You'll also see"
-	line "many #MON that"
-
-	para "aren't native to"
-	line "JOHTO."
-
-	para "To the PRODUCER"
-
-	para "…"
+	text "It's a computer"
+	line "with lots of"
+	para "Paint, Explorer,"
+	line "Notepad Plus Plus,"
+	para "Polished Map, and"
+	line "BGB windows open."
 	done
 
 CeladonMansion2FMeetingRoomSignText:
@@ -51,16 +57,19 @@ CeladonMansion2F_MapEvents:
 	db 0, 0 ; filler
 
 	db 4 ; warp events
-	warp_event  0,  0, CELADON_MANSION_1F, 4
-	warp_event  1,  0, CELADON_MANSION_3F, 2
+	warp_event  2,  0, CELADON_MANSION_1F, 4
+	warp_event  4,  0, CELADON_MANSION_3F, 2
 	warp_event  6,  0, CELADON_MANSION_3F, 3
 	warp_event  7,  0, CELADON_MANSION_1F, 5
 
 	db 0 ; coord events
 
-	db 3 ; bg events
-	bg_event  0,  3, BGEVENT_READ, CeladonMansion2FComputer
-	bg_event  5,  8, BGEVENT_UP, CeladonMansion2FMeetingRoomSign
-	bg_event  2,  3, BGEVENT_READ, CeladonMansion2FBookshelf
+	db 4 ; bg events
+	bg_event  0,  6, BGEVENT_READ, CeladonMansion2FComputer
+	bg_event  4,  9, BGEVENT_UP, CeladonMansion2FMeetingRoomSign
+	bg_event  0,  1, BGEVENT_READ, CeladonMansion2FBookshelf
+	bg_event  1,  6, BGEVENT_READ, CeladonMansion2FComputer
 
-	db 0 ; object events
+
+	db 1 ; object events
+	object_event  2,  4, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CeladonMansionClerk, -1

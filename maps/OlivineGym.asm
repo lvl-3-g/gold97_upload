@@ -1,11 +1,88 @@
 	const_def 2 ; object constants
 	const OLIVINEGYM_JASMINE
 	const OLIVINEGYM_GYM_GUY
+	const OLIVINEGYM_BOULDER1
+	const OLIVINEGYM_BOULDER2
+	const OLIVINEGYM_BOULDER3
+	const OLIVINEGYM_GENTLEMAN
+	const OLIVINEGYM_GENTLEMAN2
+	const OLIVINEGYM_SUPERNERD
 
 OlivineGym_MapScripts:
 	db 0 ; scene scripts
 
-	db 0 ; callbacks
+	db 2 ; callbacks
+	callback MAPCALLBACK_TILES, .BouldersOlivine
+	callback MAPCALLBACK_CMDQUEUE, .SetUpStoneTable
+
+
+.BouldersOlivine:
+	checkevent EVENT_CHARCOAL_KILN_FARFETCH_D
+	iffalse .skip1olivine
+	changeblock 10, 12, $2f
+.skip1olivine
+	checkevent EVENT_CHARCOAL_KILN_APPRENTICE
+	iffalse .skip2olivine
+	changeblock 4, 14, $2f
+.skip2olivine
+	checkevent EVENT_CHARCOAL_KILN_BOSS
+	iffalse .skip3olivine
+	changeblock 4, 0, $2f
+.skip3olivine
+	return
+	
+
+.SetUpStoneTable:
+	writecmdqueue .CommandQueue
+	return
+
+.CommandQueue:
+	cmdqueue CMDQUEUE_STONETABLE, .StoneTable ; check if any stones are sitting on a warp
+
+.StoneTable:
+	stonetable 5, OLIVINEGYM_BOULDER1, .Boulder1
+	stonetable 4, OLIVINEGYM_BOULDER2, .Boulder2
+	stonetable 3, OLIVINEGYM_BOULDER3, .Boulder3
+	db -1 ; end
+
+.Boulder1:
+	disappear OLIVINEGYM_BOULDER1
+	pause 30
+	playsound SFX_STRENGTH
+	earthquake 80
+	changeblock 10, 12, $2f
+	opentext
+	writetext OlivineGymBoulderFilled
+	waitbutton
+	closetext
+	setevent EVENT_CHARCOAL_KILN_FARFETCH_D
+	end
+
+.Boulder2:
+	disappear OLIVINEGYM_BOULDER2
+	pause 30
+	playsound SFX_STRENGTH
+	earthquake 80
+	changeblock 4, 14, $2f
+	opentext
+	writetext OlivineGymBoulderFilled
+	waitbutton
+	closetext
+	setevent EVENT_CHARCOAL_KILN_APPRENTICE
+	end
+
+.Boulder3:
+	disappear OLIVINEGYM_BOULDER3
+	pause 30
+	playsound SFX_STRENGTH
+	earthquake 80
+	changeblock 4, 0, $2f
+	opentext
+	writetext OlivineGymBoulderFilled
+	waitbutton
+	closetext
+	setevent EVENT_CHARCOAL_KILN_BOSS
+	end
 
 OlivineGymJasmineScript:
 	faceplayer
@@ -62,8 +139,6 @@ OlivineGymGuyScript:
 	faceplayer
 	checkevent EVENT_BEAT_JASMINE
 	iftrue .OlivineGymGuyWinScript
-	checkevent EVENT_JASMINE_RETURNED_TO_GYM
-	iffalse .OlivineGymGuyPreScript
 	opentext
 	writetext OlivineGymGuyText
 	waitbutton
@@ -77,12 +152,6 @@ OlivineGymGuyScript:
 	closetext
 	end
 
-.OlivineGymGuyPreScript:
-	opentext
-	writetext OlivineGymGuyPreText
-	waitbutton
-	closetext
-	end
 
 OlivineGymStatue:
 	checkflag ENGINE_MINERALBADGE
@@ -92,37 +161,70 @@ OlivineGymStatue:
 	trainertotext JASMINE, JASMINE1, MEM_BUFFER_1
 	jumpstd gymstatue2
 
+OlivineGymBoulder:
+	jumpstd strengthboulder
+	
+
+TrainerGentlemanPreston:
+	trainer GENTLEMAN, PRESTON, EVENT_BEAT_GENTLEMAN_PRESTON, GentlemanPrestonSeenText, GentlemanPrestonBeatenText, 0, .Script
+
+.Script:
+	endifjustbattled
+	opentext
+	writetext GentlemanPrestonAfterBattleText
+	waitbutton
+	closetext
+	end
+
+
+TrainerGentlemanAlfred:
+	trainer GENTLEMAN, ALFRED, EVENT_BEAT_GENTLEMAN_ALFRED, GentlemanAlfredSeenText, GentlemanAlfredBeatenText, 0, .Script
+
+.Script:
+	endifjustbattled
+	opentext
+	writetext GentlemanAlfredAfterBattleText
+	waitbutton
+	closetext
+	end
+
+
+TrainerSuperNerdTom:
+	trainer SUPER_NERD, TOM, EVENT_BEAT_SUPER_NERD_TOM, SuperNerdTomSeenText, SuperNerdTomBeatenText, 0, .Script
+
+.Script:
+	endifjustbattled
+	opentext
+	writetext SuperNerdTomAfterBattleText
+	waitbutton
+	closetext
+	end
+
+
 Jasmine_SteelTypeIntro:
-	text "…Thank you for"
-	line "your help at the"
-	cont "LIGHTHOUSE…"
-
-	para "But this is dif-"
-	line "ferent. Please"
-
-	para "allow me to intro-"
-	line "duce myself."
-
-	para "I am JASMINE, a"
-	line "GYM LEADER. I use"
-	cont "the steel-type."
-
-	para "…Do you know about"
-	line "the steel-type?"
-
-	para "It's a type that"
-	line "was only recently"
-	cont "discovered."
-
-	para "…Um… May I begin?"
+	text "Only those who"
+	line "have shown that"
+	para "they can handle"
+	line "the #MON of my"
+	para "GYM TRAINERS have"
+	line "proven themselves"
+	para "to be worthy"
+	line "opponents of the"
+	para "incredible defense"
+	line "of my STEEL"
+	cont "#MON."
+	para "You've done well"
+	line "to defeat them."
+	para "But are you ready"
+	line "for me?"
 	done
 
 Jasmine_BetterTrainer:
 	text "…You are a better"
 	line "trainer than me,"
 
-	para "in both skill and"
-	line "kindness."
+	para "and have proven"
+	line "it in this battle."
 
 	para "In accordance with"
 	line "LEAGUE rules, I"
@@ -140,9 +242,13 @@ Jasmine_BadgeSpeech:
 	text "MINERALBADGE"
 	line "raises #MON's"
 	cont "DEFENSE."
+	
+	para "It also lets you"
+	line "use FLY outside"
+	cont "of battle."
 
-	para "…Um… Please take"
-	line "this too…"
+	para "You've earned this"
+	line "too."
 	done
 
 Text_ReceivedTM09:
@@ -151,15 +257,18 @@ Text_ReceivedTM09:
 	done
 
 Jasmine_IronTailSpeech:
-	text "…You could use"
+	text "You could use"
 	line "that TM to teach"
 	cont "IRON TAIL."
 	done
 
 Jasmine_GoodLuck:
-	text "Um… I don't know"
-	line "how to say this,"
-	cont "but good luck…"
+	text "Good luck with"
+	line "the rest of your"
+	cont "LEAGUE CHALLENGE."
+	para "I expect you to"
+	line "make it to the"
+	cont "end."
 	done
 
 OlivineGymGuyText:
@@ -182,32 +291,96 @@ OlivineGymGuyWinText:
 	cont "unknown kind!"
 	done
 
-OlivineGymGuyPreText:
-	text "JASMINE, the GYM"
-	line "LEADER, is at the"
-	cont "LIGHTHOUSE."
 
-	para "She's been tending"
-	line "to a sick #MON."
+	
+OlivineGymBoulderFilled:
+	text "The boulder filled"
+	line "the hole!"
+	done
 
-	para "A strong trainer"
-	line "has to be compas-"
-	cont "sionate."
+
+GentlemanPrestonSeenText:
+	text "Have you ever"
+	line "faced off against"
+	para "the defenses of"
+	line "STEEL #MON?"
+	done
+
+GentlemanPrestonBeatenText:
+	text "A good TRAINER is"
+	line "ready to face all"
+	cont "types."
+	done
+
+GentlemanPrestonAfterBattleText:
+	text "STEEL #MON have"
+	line "high DEFENSE."
+	para "But they're not"
+	line "impenetrable."
+	done
+
+
+GentlemanAlfredSeenText:
+	text "This GYM used to"
+	line "use ROCK #MON."
+	para "But JASMINE found"
+	line "the new STEEL TYPE"
+	cont "more appealing."
+	done
+
+GentlemanAlfredBeatenText:
+	text "Good show!"
+	done
+
+GentlemanAlfredAfterBattleText:
+	text "ONIX wasn't known"
+	line "to have an evolved"
+	para "form until"
+	line "recently."
+	done
+	
+SuperNerdTomSeenText:
+	text "The STEEL-TYPE"
+	line "is rare!"
+	para "Which means of"
+	line "course I have to"
+	cont "use it!"
+	done
+
+SuperNerdTomBeatenText:
+	text "Victories are also"
+	line "rare..."
+	done
+
+SuperNerdTomAfterBattleText:
+	text "I only am"
+	line "interested in"
+	cont "rare things."
 	done
 
 OlivineGym_MapEvents:
 	db 0, 0 ; filler
 
-	db 2 ; warp events
-	warp_event  4, 15, OLIVINE_CITY, 2
-	warp_event  5, 15, OLIVINE_CITY, 2
+	db 5 ; warp events
+	warp_event 16, 15, OLIVINE_CITY, 2
+	warp_event 17, 15, OLIVINE_CITY, 13
+	warp_event  4,  1, OLIVINE_CITY, 1; boulder 3
+	warp_event  4, 15, OLIVINE_CITY, 1; boulder 2
+	warp_event 10, 13, OLIVINE_CITY, 1; boulder 1
 
 	db 0 ; coord events
 
 	db 2 ; bg events
-	bg_event  3, 13, BGEVENT_READ, OlivineGymStatue
-	bg_event  6, 13, BGEVENT_READ, OlivineGymStatue
+	bg_event 15, 13, BGEVENT_READ, OlivineGymStatue
+	bg_event 18, 13, BGEVENT_READ, OlivineGymStatue
 
-	db 2 ; object events
-	object_event  5,  3, SPRITE_JASMINE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, OlivineGymJasmineScript, EVENT_OLIVINE_GYM_JASMINE
-	object_event  7, 13, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, OlivineGymGuyScript, -1
+	db 8 ; object events
+	object_event  1,  5, SPRITE_JASMINE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, OlivineGymJasmineScript, -1
+	object_event 19, 13, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, OlivineGymGuyScript, -1
+	object_event 16,  9, SPRITE_BOULDER, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OlivineGymBoulder, EVENT_CHARCOAL_KILN_FARFETCH_D
+	object_event 10, 10, SPRITE_BOULDER, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OlivineGymBoulder, EVENT_CHARCOAL_KILN_APPRENTICE
+	object_event 12,  3, SPRITE_BOULDER, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OlivineGymBoulder, EVENT_CHARCOAL_KILN_BOSS
+	object_event 18,  7, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 2, TrainerGentlemanPreston, -1
+	object_event 16,  1, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 1, TrainerGentlemanAlfred, -1
+	object_event 11,  7, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 1, TrainerSuperNerdTom, -1
+

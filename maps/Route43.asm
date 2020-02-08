@@ -1,28 +1,17 @@
 	const_def 2 ; object constants
-	const ROUTE43_SUPER_NERD1
+	const ROUTE43_BUG_CATCHER
 	const ROUTE43_SUPER_NERD2
 	const ROUTE43_SUPER_NERD3
 	const ROUTE43_FISHER
 	const ROUTE43_LASS
 	const ROUTE43_YOUNGSTER
-	const ROUTE43_FRUIT_TREE
-	const ROUTE43_POKE_BALL
+	;const ROUTE43_FRUIT_TREE
+	const ROUTE43_INSTRUCTOR
 
 Route43_MapScripts:
 	db 0 ; scene scripts
 
-	db 1 ; callbacks
-	callback MAPCALLBACK_NEWMAP, .CheckIfRockets
-
-.CheckIfRockets:
-	checkevent EVENT_CLEARED_ROCKET_HIDEOUT
-	iftrue .NoRockets
-	setmapscene ROUTE_43_GATE, SCENE_DEFAULT
-	return
-
-.NoRockets:
-	setmapscene ROUTE_43_GATE, SCENE_FINISHED
-	return
+	db 0 ; callbacks
 
 TrainerCamperSpencer:
 	trainer CAMPER, SPENCER, EVENT_BEAT_CAMPER_SPENCER, CamperSpencerSeenText, CamperSpencerBeatenText, 0, .Script
@@ -34,17 +23,19 @@ TrainerCamperSpencer:
 	waitbutton
 	closetext
 	end
-
-TrainerPokemaniacBen:
-	trainer POKEMANIAC, BEN, EVENT_BEAT_POKEMANIAC_BEN, PokemaniacBenSeenText, PokemaniacBenBeatenText, 0, .Script
+	
+TrainerInstructorCliff:
+	trainer INSTRUCTOR, CLIFF, EVENT_BEAT_INSTRUCTOR_CLIFF, InstructorCliffSeenText, InstructorCliffBeatenText, 0, .Script
 
 .Script:
 	endifjustbattled
 	opentext
-	writetext PokemaniacBenAfterBattleText
+	writetext InstructorCliffAfterBattleText
 	waitbutton
 	closetext
 	end
+
+
 
 TrainerPokemaniacBrent:
 	trainer POKEMANIAC, BRENT1, EVENT_BEAT_POKEMANIAC_BRENT, PokemaniacBrentSeenText, PokemaniacBrentBeatenText, 0, .Script
@@ -84,13 +75,13 @@ TrainerPokemaniacBrent:
 	ifequal 1, .Fight1
 	ifequal 0, .LoadFight0
 .Fight3:
-	checkevent EVENT_RESTORED_POWER_TO_KANTO
+	checkevent EVENT_BEAT_ELITE_FOUR
 	iftrue .LoadFight3
 .Fight2:
-	checkevent EVENT_BEAT_ELITE_FOUR
+	checkevent EVENT_CLEARED_RADIO_TOWER
 	iftrue .LoadFight2
 .Fight1:
-	checkevent EVENT_CLEARED_ROCKET_HIDEOUT
+	checkevent EVENT_BEAT_PRYCE
 	iftrue .LoadFight1
 .LoadFight0:
 	loadtrainer POKEMANIAC, BRENT1
@@ -149,6 +140,17 @@ TrainerPokemaniacBrent:
 
 .Rematch:
 	jumpstd rematchm
+	end
+	
+TrainerFledglingHidalgo:
+	trainer FLEDGLING, HIDALGO, EVENT_BEAT_FLEDGLING_HIDALGO, FledglingHidalgoSeenText, FledglingHidalgoBeatenText, 0, .Script
+
+.Script:
+	endifjustbattled
+	opentext
+	writetext FledglingHidalgoAfterBattleText
+	waitbutton
+	closetext
 	end
 
 TrainerPokemaniacRon:
@@ -215,13 +217,13 @@ TrainerPicnickerTiffany:
 	ifequal 1, .Fight1
 	ifequal 0, .LoadFight0
 .Fight3:
-	checkevent EVENT_RESTORED_POWER_TO_KANTO
+	checkevent EVENT_BEAT_ELITE_FOUR
 	iftrue .LoadFight3
 .Fight2:
-	checkevent EVENT_BEAT_ELITE_FOUR
+	checkevent EVENT_CLEARED_RADIO_TOWER
 	iftrue .LoadFight2
 .Fight1:
-	checkevent EVENT_CLEARED_RADIO_TOWER
+	checkevent EVENT_BEAT_PRYCE
 	iftrue .LoadFight1
 .LoadFight0:
 	loadtrainer PICNICKER, TIFFANY3
@@ -319,31 +321,42 @@ Route43TrainerTips:
 Route43FruitTree:
 	fruittree FRUITTREE_ROUTE_43
 
-Route43MaxEther:
-	itemball MAX_ETHER
 
-PokemaniacBenSeenText:
-	text "I love #MON!"
+FledglingHidalgoSeenText:
+	text "Can I try battling"
+	line "against you?"
+	done
+	
+FledglingHidalgoBeatenText:
+	text "This is tough!"
+	done
+	
+FledglingHidalgoAfterBattleText:
+	text "I'll work hard to"
+	line "keep getting"
+	cont "better at this!"
+	done
+	
 
-	para "That's why I"
-	line "started--and why"
-
-	para "I'll keep on col-"
-	line "lecting #MON!"
+InstructorCliffSeenText:
+	text "This new GAME"
+	line "CORNER is great!"
+	para "It's a fun way to"
+	line "take a break from"
+	cont "marking papers."
 	done
 
-PokemaniacBenBeatenText:
-	text "How could you do"
-	line "this to me?"
+InstructorCliffBeatenText:
+	text "Losing at #MON"
+	line "is less fun than"
+	cont "the slots..."
 	done
 
-PokemaniacBenAfterBattleText:
-	text "What else do I"
-	line "like besides"
-	cont "#MON?"
-
-	para "MARY on the radio."
-	line "I bet she's cute!"
+InstructorCliffAfterBattleText:
+	text "There's never"
+	line "enough time left"
+	para "in the day once"
+	line "grading is done."
 	done
 
 PokemaniacBrentSeenText:
@@ -367,15 +380,17 @@ PokemaniacRonSeenText:
 	line "this?"
 
 	para "Some <RIVAL> guy"
-	line "made fun of my"
-	cont "#MON!"
+	line "beat my team!"
 
 	para "Darn it! My #-"
-	line "MON's great!"
+	line "MON are great!"
+	
+	para "Surely I can win"
+	line "against you!"
 	done
 
 PokemaniacRonBeatenText:
-	text "My NIDOKING did"
+	text "My team did"
 	line "pretty right on!"
 	done
 
@@ -430,8 +445,8 @@ CamperSpencerBeatenText:
 	done
 
 CamperSpencerAfterBattleText:
-	text "What is going on"
-	line "at LAKE OF RAGE?"
+	text "Have you ever been"
+	line "to NIHON FOREST?"
 
 	para "We were planning"
 	line "to camp there."
@@ -439,7 +454,7 @@ CamperSpencerAfterBattleText:
 
 PicnickerTiffanySeenText:
 	text "Are you going to"
-	line "LAKE OF RAGE too?"
+	line "the GAME CORNER?"
 
 	para "Let's play for a "
 	line "little while!"
@@ -463,17 +478,17 @@ PicnickerTiffanyClefairyText:
 	done
 
 Route43Sign1Text:
-	text "ROUTE 43"
+	text "BOARDWALK"
 
-	para "LAKE OF RAGE -"
-	line "MAHOGANY TOWN"
+	para "HONTO TOWN -"
+	line "TEKU CITY"
 	done
 
 Route43Sign2Text:
-	text "ROUTE 43"
-
-	para "LAKE OF RAGE -"
-	line "MAHOGANY TOWN"
+	text "BOARDWALK GAME"
+	line "CORNER"
+	para "Your source for"
+	line "fun!"
 	done
 
 Route43TrainerTipsText:
@@ -501,26 +516,29 @@ Route43TrainerTipsText:
 Route43_MapEvents:
 	db 0, 0 ; filler
 
-	db 5 ; warp events
-	warp_event  9, 51, ROUTE_43_MAHOGANY_GATE, 1
-	warp_event 10, 51, ROUTE_43_MAHOGANY_GATE, 2
-	warp_event 17, 35, ROUTE_43_GATE, 3
-	warp_event 17, 31, ROUTE_43_GATE, 1
-	warp_event 18, 31, ROUTE_43_GATE, 2
+	db 8 ; warp events
+	warp_event  6, 51, ROUTE_43_MAHOGANY_GATE, 1
+	warp_event  7, 51, ROUTE_43_MAHOGANY_GATE, 2
+	warp_event 14,  9, ROUTE_43_GATE, 3
+	warp_event 14,  5, ROUTE_43_GATE, 1
+	warp_event 15,  5, ROUTE_43_GATE, 2
+	warp_event 15,  9, ROUTE_43_GATE, 4
+	warp_event 10, 23, GOLDENROD_GAME_CORNER, 1
+	warp_event 11, 23, GOLDENROD_GAME_CORNER, 2
 
 	db 0 ; coord events
 
 	db 3 ; bg events
-	bg_event 13,  3, BGEVENT_READ, Route43Sign1
-	bg_event 11, 49, BGEVENT_READ, Route43Sign2
-	bg_event 16, 38, BGEVENT_READ, Route43TrainerTips
+	bg_event 10, 10, BGEVENT_READ, Route43Sign1
+	bg_event  8, 24, BGEVENT_READ, Route43Sign2
+	bg_event 12, 40, BGEVENT_READ, Route43TrainerTips
 
-	db 8 ; object events
-	object_event 13,  5, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 2, TrainerPokemaniacBen, -1
-	object_event 13, 20, SPRITE_SUPER_NERD, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerPokemaniacBrent, -1
-	object_event 14,  7, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 2, TrainerPokemaniacRon, -1
-	object_event  4, 16, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 4, TrainerFisherMarvin, -1
-	object_event  9, 25, SPRITE_LASS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 2, TrainerPicnickerTiffany, -1
-	object_event 13, 40, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 3, TrainerCamperSpencer, -1
-	object_event  1, 26, SPRITE_FRUIT_TREE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route43FruitTree, -1
-	object_event 12, 32, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route43MaxEther, EVENT_ROUTE_43_MAX_ETHER
+	db 7 ; object events
+	object_event 15, 15, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 1, TrainerFledglingHidalgo, -1
+	object_event  9, 35, SPRITE_SUPER_NERD, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerPokemaniacBrent, -1
+	object_event  8, 10, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerPokemaniacRon, -1
+	object_event  4, 16, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 3, TrainerFisherMarvin, -1
+	object_event  9, 26, SPRITE_LASS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 2, TrainerPicnickerTiffany, -1
+	object_event  8, 42, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 2, TrainerCamperSpencer, -1
+	;object_event  4, 23, SPRITE_FRUIT_TREE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route43FruitTree, -1
+	object_event 13, 24, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 1, TrainerInstructorCliff, -1

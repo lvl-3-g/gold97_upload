@@ -11,8 +11,6 @@ RuinsOfAlphKabutoChamber_MapScripts:
 	callback MAPCALLBACK_TILES, .HiddenDoors
 
 .CheckWall:
-	checkevent EVENT_WALL_OPENED_IN_KABUTO_CHAMBER
-	iftrue .OpenWall
 	end
 
 .OpenWall:
@@ -23,10 +21,6 @@ RuinsOfAlphKabutoChamber_MapScripts:
 	end
 
 .HiddenDoors:
-	checkevent EVENT_WALL_OPENED_IN_KABUTO_CHAMBER
-	iftrue .WallOpen
-	changeblock 4, 0, $2e ; closed wall
-.WallOpen:
 	checkevent EVENT_SOLVED_KABUTO_PUZZLE
 	iffalse .FloorClosed
 	return
@@ -37,16 +31,6 @@ RuinsOfAlphKabutoChamber_MapScripts:
 	return
 
 .WallOpenScript:
-	pause 30
-	earthquake 30
-	showemote EMOTE_SHOCK, PLAYER, 20
-	pause 30
-	playsound SFX_STRENGTH
-	changeblock 4, 0, $30 ; open wall
-	reloadmappart
-	earthquake 50
-	setscene SCENE_FINISHED
-	closetext
 	end
 
 RuinsOfAlphKabutoChamberReceptionistScript:
@@ -127,18 +111,9 @@ RuinsOfAlphKabutoChamberWallPatternLeft:
 RuinsOfAlphKabutoChamberWallPatternRight:
 	checkevent EVENT_WALL_OPENED_IN_KABUTO_CHAMBER
 	iftrue .WallOpen
-	opentext
-	writetext RuinsOfAlphKabutoChamberWallPatternRightText
-	writebyte UNOWNWORDS_ESCAPE
-	special DisplayUnownWords
-	closetext
 	end
 
 .WallOpen:
-	opentext
-	writetext RuinsOfAlphKabutoChamberWallHoleText
-	waitbutton
-	closetext
 	end
 
 RuinsOfAlphKabutoChamberSkyfallTopMovement:
@@ -162,12 +137,6 @@ RuinsOfAlphKabutoChamberReceptionistText:
 	para "To the right is a"
 	line "description of the"
 	cont "#MON."
-
-	para "Scientists in the"
-	line "back are examining"
-
-	para "some newly found"
-	line "patterns."
 	done
 
 UnknownText_0x588f5:
@@ -256,23 +225,19 @@ RuinsOfAlphKabutoChamberDescriptionText:
 RuinsOfAlphKabutoChamber_MapEvents:
 	db 0, 0 ; filler
 
-	db 5 ; warp events
+	db 4 ; warp events
 	warp_event  3,  9, RUINS_OF_ALPH_OUTSIDE, 2
 	warp_event  4,  9, RUINS_OF_ALPH_OUTSIDE, 2
 	warp_event  3,  3, RUINS_OF_ALPH_INNER_CHAMBER, 4
 	warp_event  4,  3, RUINS_OF_ALPH_INNER_CHAMBER, 5
-	warp_event  4,  0, RUINS_OF_ALPH_KABUTO_ITEM_ROOM, 1
 
 	db 0 ; coord events
 
-	db 6 ; bg events
+	db 4 ; bg events
 	bg_event  2,  3, BGEVENT_READ, RuinsOfAlphKabutoChamberAncientReplica
 	bg_event  5,  3, BGEVENT_READ, RuinsOfAlphKabutoChamberAncientReplica
 	bg_event  3,  2, BGEVENT_UP, RuinsOfAlphKabutoChamberPuzzle
 	bg_event  4,  2, BGEVENT_UP, RuinsOfAlphKabutoChamberDescriptionSign
-	bg_event  3,  0, BGEVENT_UP, RuinsOfAlphKabutoChamberWallPatternLeft
-	bg_event  4,  0, BGEVENT_UP, RuinsOfAlphKabutoChamberWallPatternRight
 
-	db 2 ; object events
+	db 1 ; object events
 	object_event  5,  5, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, RuinsOfAlphKabutoChamberReceptionistScript, EVENT_RUINS_OF_ALPH_KABUTO_CHAMBER_RECEPTIONIST
-	object_event  3,  1, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, RuinsOfAlphKabutoChamberScientistScript, -1

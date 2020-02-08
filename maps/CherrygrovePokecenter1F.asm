@@ -19,59 +19,40 @@ CherrygrovePokecenter1FGentlemanScript:
 	jumptextfaceplayer CherrygrovePokecenter1FGentlemanText
 
 CherrygrovePokecenter1FTeacherScript:
-	faceplayer
-	opentext
-	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
-	iftrue .CommCenterOpen
-	writetext CherrygrovePokecenter1FTeacherText
-	waitbutton
-	closetext
-	end
-
-.CommCenterOpen:
-	writetext CherrygrovePokecenter1FTeacherText_CommCenterOpen
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer CherrygrovePokecenter1FTeacherText
 
 CherrygrovePokecenter1FFisherText:
-	text "It's great. I can"
-	line "store any number"
-
-	para "of #MON, and"
-	line "it's all free."
+	text "I better make sure"
+	line "my #MON are"
+	cont "ready."
+	para "The climb will not"
+	line "be easy."
 	done
 
 CherrygrovePokecenter1FGentlemanText:
-	text "That PC is free"
-	line "for any trainer"
-	cont "to use."
+	text "The trainers you"
+	line "meet in the mount-"
+	cont "ain are tough."
+	para "Everyone there is"
+	line "looking to face"
+	cont "the LEAGUE."
 	done
 
 CherrygrovePokecenter1FTeacherText:
-	text "The COMMUNICATION"
-	line "CENTER upstairs"
-	cont "was just built."
-
-	para "But they're still"
-	line "finishing it up."
+	text "PRINCE CITY is a"
+	line "good meeting place"
+	para "for trainers look-"
+	line "ing to climb"
+	cont "MT.FUJI."
 	done
 
-CherrygrovePokecenter1FTeacherText_CommCenterOpen:
-	text "The COMMUNICATION"
-	line "CENTER upstairs"
-	cont "was just built."
-
-	para "I traded #MON"
-	line "there already!"
-	done
 
 CherrygrovePokecenter1F_MapEvents:
 	db 0, 0 ; filler
 
 	db 3 ; warp events
-	warp_event  3,  7, CHERRYGROVE_CITY, 2
-	warp_event  4,  7, CHERRYGROVE_CITY, 2
+	warp_event  5,  7, CHERRYGROVE_CITY, 3
+	warp_event  6,  7, CHERRYGROVE_CITY, 3
 	warp_event  0,  7, POKECENTER_2F, 1
 
 	db 0 ; coord events
@@ -79,7 +60,7 @@ CherrygrovePokecenter1F_MapEvents:
 	db 0 ; bg events
 
 	db 4 ; object events
-	object_event  3,  1, SPRITE_NURSE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CherrygrovePokecenter1FNurseScript, -1
+	object_event  5,  1, SPRITE_NURSE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CherrygrovePokecenter1FNurseScript, -1
 	object_event  2,  3, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CherrygrovePokecenter1FFisherScript, -1
-	object_event  8,  6, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CherrygrovePokecenter1FGentlemanScript, -1
+	object_event  12, 6, SPRITE_GENTLEMAN, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CherrygrovePokecenter1FGentlemanScript, -1
 	object_event  1,  6, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, CherrygrovePokecenter1FTeacherScript, -1

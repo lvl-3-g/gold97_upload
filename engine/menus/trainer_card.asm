@@ -582,11 +582,6 @@ TrainerCard_JohtoBadgesOAM:
 	db $0c, $20, $24, $20 | (1 << 7)
 	db $0c, $20, $24, $20 | (1 << 7)
 
-	; Mineralbadge
-	db $80, $38, 0
-	db $10, $20, $24, $20 | (1 << 7)
-	db $10, $20, $24, $20 | (1 << 7)
-
 	; Stormbadge
 	db $80, $18, 0
 	db $14, $20, $24, $20 | (1 << 7)
@@ -596,6 +591,11 @@ TrainerCard_JohtoBadgesOAM:
 	db $80, $58, 0
 	db $18, $20, $24, $20 | (1 << 7)
 	db $18, $20, $24, $20 | (1 << 7)
+
+	; Mineralbadge
+	db $80, $38, 0
+	db $10, $20, $24, $20 | (1 << 7)
+	db $10, $20, $24, $20 | (1 << 7)
 
 	; Risingbadge
 	; X-flips on alternate cycles.

@@ -1,10 +1,10 @@
-	db "BIG JAW@" ; species name
-	dw 200, 210 ; height, weight
+	db "SMOOTH SEAL@" ; species name
+	dw 207, 310 ; height, weight
 
-	db   "This rough critter"
-	next "chomps at any"
-	next "moving object it"
+	db   "Its body is very"
+	next "moist and slick"
+	next "and is able to"
 
-	page "sees. Turning your"
-	next "back on it is not"
-	next "recommended.@"
+	page "keep its skin wet"
+	next "even while out of"
+	next "water for a time.@"

@@ -17,7 +17,7 @@ CianwoodPokecenter1FLassScript:
 
 CianwoodGymGuyScript:
 	faceplayer
-	checkevent EVENT_BEAT_CHUCK
+	checkevent EVENT_ROUTE_5_6_POKEFAN_M_BLOCKS_UNDERGROUND_PATH
 	iftrue .CianwoodGymGuyWinScript
 	opentext
 	writetext CianwoodGymGuyText
@@ -36,57 +36,30 @@ CianwoodPokecenter1FSuperNerdScript:
 	jumptextfaceplayer CianwoodPokecenter1FSuperNerdText
 
 CianwoodPokecenter1FLassText:
-	text "Did you meet the"
-	line "#MANIAC?"
+	text "Don't you get the"
+	line "urge to show off"
 
-	para "He's always brag-"
-	line "ging about his"
-	cont "rare #MON."
+	para "your #MON to"
+	line "friends?"
+	para "I always brag"
+	line "about my beautiful"
+	cont "BELLRING."
 	done
 
 CianwoodGymGuyText:
-	text "The #MON GYM"
-	line "trainers here are"
-	cont "macho bullies."
-
-	para "If I stick around,"
-	line "they might come"
-	cont "after me."
-
-	para "Here's some ad-"
-	line "vice: the GYM"
-
-	para "LEADER uses the"
-	line "fighting-type."
-
-	para "So you should"
-	line "confound him with"
-	cont "psychic #MON."
-
-	para "Wipe out his #-"
-	line "MON before they"
-
-	para "can use their"
-	line "physical strength."
-
-	para "And those boulders"
-	line "in the middle of"
-	cont "the GYM?"
-
-	para "If you don't move"
-	line "them correctly,"
-
-	para "you won't reach"
-	line "the GYM LEADER."
-
-	para "If you get stuck,"
-	line "go outside."
+	text "Did you go up to"
+	line "the DOCKS?"
+	para "Something fishy is"
+	line "going on up there."
 	done
 
 CianwoodGymGuyWinText:
-	text "<PLAYER>! You won!"
-	line "I could tell by"
-	cont "looking at you!"
+	text "Those were TEAM"
+	line "ROCKET members at"
+	cont "the docks?"
+	para "I can't believe"
+	line "they showed their"
+	cont "faces again!"
 	done
 
 CianwoodPokecenter1FUnusedText1:
@@ -135,8 +108,8 @@ CianwoodPokecenter1F_MapEvents:
 	db 0, 0 ; filler
 
 	db 3 ; warp events
-	warp_event  3,  7, CIANWOOD_CITY, 3
-	warp_event  4,  7, CIANWOOD_CITY, 3
+	warp_event  5,  7, CIANWOOD_CITY, 3
+	warp_event  6,  7, CIANWOOD_CITY, 3
 	warp_event  0,  7, POKECENTER_2F, 1
 
 	db 0 ; coord events
@@ -144,7 +117,7 @@ CianwoodPokecenter1F_MapEvents:
 	db 0 ; bg events
 
 	db 4 ; object events
-	object_event  3,  1, SPRITE_NURSE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CianwoodPokecenter1FNurseScript, -1
-	object_event  1,  5, SPRITE_LASS, SPRITEMOVEDATA_WALK_UP_DOWN, 0, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, CianwoodPokecenter1FLassScript, -1
-	object_event  5,  3, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CianwoodGymGuyScript, -1
-	object_event  8,  6, SPRITE_SUPER_NERD, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, CianwoodPokecenter1FSuperNerdScript, -1
+	object_event  5,  1, SPRITE_NURSE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CianwoodPokecenter1FNurseScript, -1
+	object_event  1,  4, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, CianwoodPokecenter1FLassScript, -1
+	object_event 10,  1, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CianwoodGymGuyScript, -1
+	object_event 12,  5, SPRITE_SUPER_NERD, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, CianwoodPokecenter1FSuperNerdScript, -1

@@ -19,7 +19,7 @@ IsHMMove::
 	db FLY
 	db SURF
 	db STRENGTH
-	db FLASH
+	db ROCK_SMASH
 	db WATERFALL
 	db WHIRLPOOL
 	db -1 ; end

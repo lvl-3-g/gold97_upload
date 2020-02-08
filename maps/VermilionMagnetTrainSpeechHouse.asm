@@ -1,49 +1,123 @@
 	const_def 2 ; object constants
-	const VERMILIONMAGNETTRAINSPEECHHOUSE_POKEFAN_F
-	const VERMILIONMAGNETTRAINSPEECHHOUSE_YOUNGSTER
+	const VERMILION_CHARMANDER_1
+	const VERMILION_CHARMANDER_2
+	const VERMILION_CHARMANDER_3
+	const VERMILION_CHARMANDER_4
+	const VERMILION_CHARMANDER_5
+	const VERMILION_CHARMANDER_6
 
 VermilionMagnetTrainSpeechHouse_MapScripts:
 	db 0 ; scene scripts
 
 	db 0 ; callbacks
-
-VermilionMagnetTrainSpeechHousePokefanFScript:
-	jumptextfaceplayer VermilionMagnetTrainSpeechHousePokefanFText
-
-VermilionMagnetTrainSpeechHouseYoungsterScript:
-	jumptextfaceplayer VermilionMagnetTrainSpeechHouseYoungsterText
-
-VermilionMagnetTrainSpeechHouseBookshelf:
-	jumpstd picturebookshelf
-
-VermilionMagnetTrainSpeechHousePokefanFText:
-	text "Do you know about"
-	line "the MAGNET TRAIN?"
-
-	para "It's a railway"
-	line "that goes to GOL-"
-	cont "DENROD in JOHTO."
+VermilionMagnetTrainSpeechHouseCharmander:
+	opentext
+	writetext VermilionMagnetTrainSpeechHouseCharmanderText
+	cry CHARMANDER
+	waitbutton
+	closetext
+	end
+	
+VermilionMagnetTrainSpeechHouseTeacher:
+	faceplayer
+	opentext
+	checkevent EVENT_EXPLODING_TRAP_6
+	iftrue .AlreadyGotCharmander
+	writetext ILoveCharmanderText
+	yesorno
+	iffalse .DontTakeCharmander
+	checkcode VAR_PARTYCOUNT
+	ifequal PARTY_LENGTH, .PartyFullCharmander
+	writetext UnknownText_0x7e355a
+	playsound SFX_CAUGHT_MON
+	waitsfx
+	givepoke CHARMANDER, 5
+	writetext GiveCharmanderText
+	waitbutton
+	closetext
+	setevent EVENT_EXPLODING_TRAP_6
+	end
+	
+.AlreadyGotCharmander
+	writetext AlreadyGotCharmanderText
+	waitbutton
+	closetext
+	end
+	
+.DontTakeCharmander
+	writetext NoCharmanderText
+	waitbutton
+	closetext
+	end
+	
+.PartyFullCharmander
+	writetext PartyFullCharmanderText
+	waitbutton
+	closetext
+	end
+	
+UnknownText_0x7e355a:
+	text "<PLAYER> received"
+	line "CHARMANDER."
 	done
+	
+AlreadyGotCharmanderText:
+	text "My sweet"
+	line "CHARMANDER are my"
+	cont "favorite thing!"
+	done
+	
+PartyFullCharmanderText:
+	text "You've already got"
+	line "too many #MON"
+	cont "with you!"
+	done
+	
+NoCharmanderText:
+	text "Aw, you don't like"
+	line "them as much as I"
+	cont "do?"
+	done
+	
 
-VermilionMagnetTrainSpeechHouseYoungsterText:
-	text "I want to go to"
-	line "SAFFRON to see"
-	cont "the MAGNET TRAIN."
+VermilionMagnetTrainSpeechHouseCharmanderText:
+	text "CHARMANDER: Char!"
+	done
+	
+ILoveCharmanderText:
+	text "Oooh I just love"
+	line "CHARMANDER!"
+	para "They're absolutely"
+	line "adorable!"
+	para "My goal in life is"
+	line "to share my love"
+	para "of CHARMANDER with"
+	line "the world."
+	para "Would you like"
+	line "one?"
+	done
+	
+GiveCharmanderText:
+	text "Take good care of"
+	line "it, dearie!"
 	done
 
 VermilionMagnetTrainSpeechHouse_MapEvents:
 	db 0, 0 ; filler
 
 	db 2 ; warp events
-	warp_event  2,  7, VERMILION_CITY, 4
-	warp_event  3,  7, VERMILION_CITY, 4
+	warp_event  4,  7, CERULEAN_CITY, 3
+	warp_event  5,  7, CERULEAN_CITY, 3
 
 	db 0 ; coord events
 
-	db 2 ; bg events
-	bg_event  0,  1, BGEVENT_READ, VermilionMagnetTrainSpeechHouseBookshelf
-	bg_event  1,  1, BGEVENT_READ, VermilionMagnetTrainSpeechHouseBookshelf
+	db 0 ; bg events
 
-	db 2 ; object events
-	object_event  2,  3, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, VermilionMagnetTrainSpeechHousePokefanFScript, -1
-	object_event  0,  3, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, VermilionMagnetTrainSpeechHouseYoungsterScript, -1
+	db 7 ; object events
+	object_event  9,  7, SPRITE_CHARMANDER, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, VermilionMagnetTrainSpeechHouseCharmander, -1
+	object_event  6,  2, SPRITE_CHARMANDER, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, VermilionMagnetTrainSpeechHouseCharmander, -1
+	object_event  8,  1, SPRITE_CHARMANDER, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, VermilionMagnetTrainSpeechHouseCharmander, -1
+	object_event  4,  5, SPRITE_CHARMANDER, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, VermilionMagnetTrainSpeechHouseCharmander, -1
+	object_event  2,  3, SPRITE_CHARMANDER, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, VermilionMagnetTrainSpeechHouseCharmander, -1
+	object_event  1,  4, SPRITE_CHARMANDER, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, VermilionMagnetTrainSpeechHouseCharmander, -1
+	object_event  7,  4, SPRITE_TEACHER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, VermilionMagnetTrainSpeechHouseTeacher, -1

@@ -1,8 +1,5 @@
 	const_def 2 ; object constants
 	const FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_CAPTAIN
-	const FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_GENTLEMAN
-	const FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_TWIN1
-	const FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_TWIN2
 	const FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_POKEFAN_M1
 	const FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_TWIN3
 	const FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_TWIN4
@@ -24,119 +21,68 @@ SSAquaCaptain:
 	opentext
 	checkevent EVENT_FAST_SHIP_FIRST_TIME
 	iftrue .LaterTrip
+	checkevent EVENT_FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN_TWIN_2
+	iffalse .FirstCaptainTalk
 	writetext SSAquaCaptainExhaustingText
 	waitbutton
 	closetext
 	end
+	
+.FirstCaptainTalk
+	writetext SSAquaCaptainShipIsBrokenText
+	waitbutton
+	closetext
+;	turnobject FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_CAPTAIN, DOWN
+;	pause 20
+;	playsound SFX_ELEVATOR_END
+;	pause 30
+;	opentext
+;	writetext SSAquaHasArrivedVermilionText
+;	waitbutton
+;	setevent EVENT_FAST_SHIP_HAS_ARRIVED
+	setevent EVENT_FAST_SHIP_FOUND_GIRL
+	setevent EVENT_FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN_TWIN_2
+;	closetext
+	end
+	
 
 .LaterTrip:
+	checkevent EVENT_GOT_METAL_COAT_FROM_GRANDPA_ON_SS_AQUA
+	iffalse .GiveMetalCoatCaptain
 	writetext SSAquaCaptainHowDoYouLikeText
 	waitbutton
 	closetext
 	end
-
-SSAquaGranddaughterBefore:
-	turnobject FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_TWIN2, RIGHT
-	opentext
-	writetext SSAquaGranddaughterCaptainPlayWithMeText
+	
+.GiveMetalCoatCaptain
+	writetext SSAquaCaptainThankYouText
 	waitbutton
-	closetext
-	faceplayer
-	opentext
-	writetext SSAquaGranddaughterHasToFindGrandpaText
-	waitbutton
-	closetext
-	special FadeBlackQuickly
-	special ReloadSpritesNoPalettes
-	disappear FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_TWIN2
-	applymovement PLAYER, MovementData_0x76004
-	moveobject FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_TWIN1, 3, 19
-	appear FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_TWIN1
-	turnobject PLAYER, UP
-	turnobject FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_TWIN1, UP
-	special FadeInQuickly
-	turnobject FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_GENTLEMAN, DOWN
-	showemote EMOTE_SHOCK, FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_GENTLEMAN, 15
-	applymovement FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_TWIN1, MovementData_0x7600c
-	turnobject FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_GENTLEMAN, RIGHT
-	checkflag ENGINE_PLAYER_IS_FEMALE
-	iftrue .PlayerIsFemale
-	opentext
-	writetext SSAquaGranddaughterWasPlayingMText
-	waitbutton
-	closetext
-	jump .cont
-
-.PlayerIsFemale:
-	opentext
-	writetext SSAquaGranddaughterWasPlayingFText
-	waitbutton
-	closetext
-.cont:
-	turnobject FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_TWIN2, DOWN
-	applymovement FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_GENTLEMAN, MovementData_0x76010
-	opentext
-	writetext SSAquaEntertainedGranddaughterText
-	buttonsound
-	setevent EVENT_VERMILION_PORT_SAILOR_AT_GANGWAY
-	setmapscene FAST_SHIP_1F, SCENE_DEFAULT
-	jump SSAquaMetalCoatAndDocking
-
-SSAquaGrandpa:
-	faceplayer
-	opentext
-	checkevent EVENT_GOT_METAL_COAT_FROM_GRANDPA_ON_SS_AQUA
-	iftrue SSAquaGotMetalCoat
-	checkevent EVENT_FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN_TWIN_2
-	iftrue SSAquaFoundGranddaughter
-	writetext SSAquaCantFindGranddaughterText
-	waitbutton
-	closetext
-	setmapscene FAST_SHIP_1F, SCENE_DEFAULT
-	end
-
-SSAquaMetalCoatAndDocking:
-	writetext SSAquaGrandpaHaveThisText
-	buttonsound
 	verbosegiveitem METAL_COAT
-	iffalse .NoRoom
+	iffalse SSCaptain_NoRoom
 	setevent EVENT_GOT_METAL_COAT_FROM_GRANDPA_ON_SS_AQUA
-.NoRoom:
-	closetext
-	waitsfx
-	playsound SFX_ELEVATOR_END
-	pause 30
-	opentext
-	writetext SSAquaHasArrivedVermilionText
-	waitbutton
-	setevent EVENT_FAST_SHIP_HAS_ARRIVED
-	setevent EVENT_FAST_SHIP_FOUND_GIRL
-	closetext
-	end
-
-SSAquaFoundGranddaughter:
-	writetext SSAquaGrandpaHaveThisText
-	buttonsound
-	verbosegiveitem METAL_COAT
-	iffalse .NoRoom
-	setevent EVENT_GOT_METAL_COAT_FROM_GRANDPA_ON_SS_AQUA
-.NoRoom:
-	closetext
-	end
-
-SSAquaGotMetalCoat:
-	writetext SSAquaGrandpaTravellingText
+	writetext SSAquaCaptainHowDoYouLikeText
 	waitbutton
 	closetext
 	end
-
-SSAquaGranddaughterAfter:
-	faceplayer
-	opentext
-	writetext SSAquaGranddaughterHadFunText
+	
+SSCaptain_NoRoom:
+	writetext SSCaptain_NoRoomText
 	waitbutton
 	closetext
 	end
+	
+;.NoRoom:
+;	closetext
+;	waitsfx
+;	playsound SFX_ELEVATOR_END
+;	pause 30
+;	opentext
+;	writetext SSAquaHasArrivedVermilionText
+;	waitbutton
+;	setevent EVENT_FAST_SHIP_HAS_ARRIVED
+;	setevent EVENT_FAST_SHIP_FOUND_GIRL
+;	closetext
+;	end
 
 TrainerPokefanmColin:
 	trainer POKEFANM, COLIN, EVENT_BEAT_POKEFANM_COLIN, PokefanmColinSeenText, PokefanmColinBeatenText, 0, .Script
@@ -237,14 +183,62 @@ MovementData_0x7600c:
 MovementData_0x76010:
 	step DOWN
 	step_end
+	
+SSCaptain_NoRoomText:
+	text "Why, you have no"
+	line "room for my gift!"
+	done
+	
+SSAquaCaptainThankYouText:
+	text "Ah, it's you!"
+	para "The kid who helped"
+	line "fix the ship!"
+	para "Thank you so very"
+	line "much!"
+	para "As a token of my"
+	line "gratitude, I'd"
+	para "like you to have"
+	line "this."
+	done
+	
+	
+SSAquaCaptainShipIsBrokenText:
+	text "Oh, dear."
+	para "We're in a serious"
+	line "predicament here."
+	para "The rough weather"
+	line "damaged the ship's"
+	cont "main FUEL LINE."
+	para "We have reserves"
+	line "that can get us"
+	cont "to AMAMI TOWN."
+	para "But we won't be"
+	line "able to make the"
+	para "return trip until"
+	line "this gets fixed!"
+	para "It might be asking"
+	line "too much, but"
+	para "could you help us"
+	line "out?"
+	para "There's a guy"
+	line "over in YORON CITY"
+	cont "who repairs ships."
+	para "He'll have the"
+	line "part we need."
+	para "When we dock,"
+	line "could you please"
+	para "help us out by"
+	line "going to get the"
+	cont "part?"
+	para "We won't be able"
+	line "to return to the"
+	para "mainland until it"
+	line "gets fixed!"
+	done
 
 SSAquaCaptainExhaustingText:
-	text "Whew! Thanks for"
-	line "coming along."
-
-	para "Keeping that lit-"
-	line "tle girl amused"
-	cont "was exhausting."
+	text "Won't you please"
+	line "help us out?"
 	done
 
 SSAquaCaptainHowDoYouLikeText:
@@ -254,86 +248,6 @@ SSAquaCaptainHowDoYouLikeText:
 	para "She practically"
 	line "skates across the"
 	cont "waves."
-	done
-
-SSAquaCantFindGranddaughterText:
-	text "Oh, hello…"
-
-	para "I still can't find"
-	line "my granddaughter."
-
-	para "If she's on the"
-	line "ship, that's OK."
-
-	para "She's an energetic"
-	line "child, so she may"
-
-	para "be bugging some-"
-	line "one. I'm worried…"
-	done
-
-SSAquaEntertainedGranddaughterText:
-	text "<PLAY_G>, was it?"
-	line "I heard you enter-"
-	cont "tained my grand-"
-	cont "daughter."
-
-	para "I want to thank"
-	line "you for that."
-	done
-
-SSAquaGrandpaHaveThisText:
-	text "I know! I'd like"
-	line "you to have this!"
-	done
-
-SSAquaGrandpaTravellingText:
-	text "We're traveling"
-	line "around the world."
-	done
-
-SSAquaGranddaughterCaptainPlayWithMeText:
-	text "CAPTAIN, play with"
-	line "me, please?"
-
-	para "I'm bored! I want"
-	line "to play more!"
-	done
-
-SSAquaGranddaughterHasToFindGrandpaText:
-	text "Hi! Will you play"
-	line "with me?"
-
-	para "…Oh!"
-
-	para "Grandpa's worried"
-	line "about me?"
-
-	para "I have to go!"
-
-	para "I have to go find"
-	line "Grandpa!"
-	done
-
-SSAquaGranddaughterWasPlayingMText:
-	text "Grandpa, here I"
-	line "am! I was playing"
-
-	para "with the CAPTAIN"
-	line "and this guy!"
-	done
-
-SSAquaGranddaughterWasPlayingFText:
-	text "Grandpa, here I"
-	line "am! I was playing"
-
-	para "with the CAPTAIN"
-	line "and this big girl!"
-	done
-
-SSAquaGranddaughterHadFunText:
-	text "I had lots of fun"
-	line "playing!"
 	done
 
 PokefanmColinSeenText:
@@ -399,8 +313,8 @@ PsychicRodneyBeatenText:
 
 PsychicRodneyAfterBattleText:
 	text "I get it. You can"
-	line "hear JOHTO's radio"
-	cont "on the FAST SHIP."
+	line "hear NIHONS's"
+	cont "radio on here."
 	done
 
 PokefanmJeremySeenText:
@@ -457,7 +371,7 @@ SupernerdShawnAfterBattleText:
 SSAquaHasArrivedVermilionText:
 	text "FAST SHIP S.S.AQUA"
 	line "has arrived in"
-	cont "VERMILION CITY."
+	cont "AMAMI TOWN."
 	done
 
 FastShipCabins_SE_SSE_CaptainsCabin_MapEvents:
@@ -468,19 +382,16 @@ FastShipCabins_SE_SSE_CaptainsCabin_MapEvents:
 	warp_event  3,  7, FAST_SHIP_1F, 8
 	warp_event  2, 19, FAST_SHIP_1F, 9
 	warp_event  3, 19, FAST_SHIP_1F, 9
-	warp_event  2, 33, FAST_SHIP_1F, 10
-	warp_event  3, 33, FAST_SHIP_1F, 10
+	warp_event  4, 33, FAST_SHIP_1F, 10
+	warp_event  5, 33, FAST_SHIP_1F, 10
 
 	db 0 ; coord events
 
 	db 1 ; bg events
-	bg_event  4, 25, BGEVENT_READ, FastShipCaptainsCabinTrashcan
+	bg_event  6, 25, BGEVENT_READ, FastShipCaptainsCabinTrashcan
 
-	db 11 ; object events
-	object_event  3, 25, SPRITE_CAPTAIN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, SSAquaCaptain, -1
-	object_event  2, 17, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, SSAquaGrandpa, EVENT_FAST_SHIP_CABINS_SE_SSE_GENTLEMAN
-	object_event  3, 17, SPRITE_TWIN, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, SSAquaGranddaughterAfter, EVENT_FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN_TWIN_1
-	object_event  2, 25, SPRITE_TWIN, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, SSAquaGranddaughterBefore, EVENT_FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN_TWIN_2
+	db 8 ; object events
+	object_event  5, 25, SPRITE_CAPTAIN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, SSAquaCaptain, -1
 	object_event  5,  6, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 5, TrainerPokefanmColin, EVENT_FAST_SHIP_PASSENGERS_FIRST_TRIP
 	object_event  2,  4, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 1, TrainerTwinsMegandpeg1, EVENT_FAST_SHIP_PASSENGERS_FIRST_TRIP
 	object_event  3,  4, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 1, TrainerTwinsMegandpeg2, EVENT_FAST_SHIP_PASSENGERS_FIRST_TRIP

@@ -32,7 +32,7 @@ RedsHouse2F_MapEvents:
 	db 0 ; coord events
 
 	db 2 ; bg events
-	bg_event  3,  5, BGEVENT_READ, RedsHouse2FN64Script
-	bg_event  0,  1, BGEVENT_READ, RedsHouse2FPCScript
+	bg_event  5,  5, BGEVENT_READ, RedsHouse2FN64Script
+	bg_event  2,  1, BGEVENT_READ, RedsHouse2FPCScript
 
 	db 0 ; object events

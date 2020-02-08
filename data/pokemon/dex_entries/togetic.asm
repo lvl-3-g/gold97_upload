@@ -1,10 +1,10 @@
-	db "HAPPINESS@" ; species name
-	dw 200, 70 ; height, weight
+	db "FIRE FOAL@" ; species name
+	dw 205, 310 ; height, weight
 
-	db   "Although it does"
-	next "not flap its wings"
-	next "very much, it can"
+	db   "Although it is"
+	next "not able to run"
+	next "very quickly, it"
 
-	page "stay up in the air"
-	next "as it tags along"
-	next "after its trainer.@"
+	page "is still able to"
+	next "stomp its hooves"
+	next "with great force.@"

@@ -6,19 +6,19 @@ _Squirtbottle:
 	ret
 
 .SquirtbottleScript:
-	reloadmappart
-	special UpdateTimePals
-	callasm .CheckCanUseSquirtbottle
-	iffalse .NothingHappenedScript
-	farjump WateredWeirdTreeScript
+	;reloadmappart
+	;special UpdateTimePals
+	;callasm .CheckCanUseSquirtbottle
+	;iffalse .NothingHappenedScript
+	;farjump WateredWeirdTreeScript
 
 .NothingHappenedScript:
-	jumptext .NothingHappenedText
+	;jumptext .NothingHappenedText
 
 .NothingHappenedText:
-	; sprinkled water. But nothing happened…
-	text_far UnknownText_0x1c0b3b
-	text_end
+	;; sprinkled water. But nothing happened…
+	;text_far UnknownText_0x1c0b3b
+	;text_end
 
 .CheckCanUseSquirtbottle:
 	ld a, [wMapGroup]

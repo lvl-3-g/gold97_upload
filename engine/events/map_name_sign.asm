@@ -3,7 +3,8 @@ MAP_NAME_SIGN_START EQU $60
 ReturnFromMapSetupScript::
 	xor a
 	ldh [hBGMapMode], a
-	farcall .inefficient_farcall ; this is a waste of 6 ROM bytes and 6 stack bytes
+	;farcall .inefficient_farcall ; swap comment from this line to the one below to enable/disable map signs
+	farcall .dont_do_map_sign
 	ret
 
 ; should have just been a fallthrough

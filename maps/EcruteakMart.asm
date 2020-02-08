@@ -22,17 +22,15 @@ EcruteakMartGrannyScript:
 
 EcruteakMartSuperNerdText:
 	text "My EEVEE evolved"
-	line "into an ESPEON."
+	line "into an FLAREON."
 
 	para "But my friend's"
 	line "EEVEE turned into"
 	cont "an UMBREON."
-
-	para "I wonder why? We"
-	line "both were raising"
-
-	para "our EEVEE in the"
-	line "same way…"
+	
+	para "EEVEE can become"
+	line "many different"
+	cont "types of #MON."
 	done
 
 EcruteakMartGrannyText:
@@ -47,8 +45,8 @@ EcruteakMart_MapEvents:
 	db 0, 0 ; filler
 
 	db 2 ; warp events
-	warp_event  2,  7, ECRUTEAK_CITY, 9
-	warp_event  3,  7, ECRUTEAK_CITY, 9
+	warp_event  4,  7, ECRUTEAK_CITY, 6
+	warp_event  5,  7, ECRUTEAK_CITY, 6
 
 	db 0 ; coord events
 

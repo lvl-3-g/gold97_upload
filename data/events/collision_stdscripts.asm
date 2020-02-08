@@ -10,4 +10,5 @@ TileCollisionStdScripts:
 	dbw COLL_TV,             tv
 	dbw COLL_WINDOW,         window
 	dbw COLL_INCENSE_BURNER, incenseburner
+	dbw COLL_LAVA,			 lava
 	db -1 ; end

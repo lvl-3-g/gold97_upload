@@ -499,7 +499,7 @@ UnknownText_0x1bc80a::
 
 _OPT_IntroText1::
 	text_start
-	line "MARY: PROF.OAK'S"
+	line "MARY: It's KEN'S"
 	done
 
 _OPT_IntroText2::
@@ -514,7 +514,7 @@ _OPT_IntroText3::
 
 _OPT_OakText1::
 	text_start
-	line "OAK: @"
+	line "KEN: @"
 	text_ram wMonOrItemNameBuffer
 	text_end
 
@@ -962,7 +962,7 @@ _RocketRadioText2::
 
 _RocketRadioText3::
 	text_start
-	line "After three years"
+	line "After a long year"
 	done
 
 _RocketRadioText4::
@@ -982,30 +982,30 @@ _RocketRadioText6::
 
 _RocketRadioText7::
 	text_start
-	line "GIOVANNI! @"
+	line "#MON! @"
 	text_pause
 	text "Can you"
 	done
 
 _RocketRadioText8::
 	text_start
-	line "hear?@"
+	line "hear us?@"
 	text_pause
-	text " We did it!"
+	text " "
 	done
 
 _RocketRadioText9::
 	text_start
 	line "@"
 	text_pause
-	text "Where is our boss?"
+	text "You will soon be"
 	done
 
 _RocketRadioText10::
 	text_start
 	line "@"
 	text_pause
-	text "Is he listening?"
+	text "under our control!"
 	done
 
 _BuenaRadioText1::
@@ -1037,7 +1037,7 @@ _BuenaRadioText5::
 
 _BuenaRadioText6::
 	text_start
-	line "I'm in GOLDENROD's"
+	line "I'm in WEST's"
 	done
 
 _BuenaRadioText7::
@@ -1472,11 +1472,16 @@ UnknownText_0x1bd621::
 	line "@"
 	text_ram wStringBuffer1
 	text "?"
+	
+	para "I got a fossil"
+	line "revived over in"
+	para "KANTO, but the"
+	line "#MON kind of"
+	cont "scares me."
 
-	para "Want to trade it"
-	line "for my @"
-	text_ram wStringBuffer2
-	text "?"
+	para "Want to trade"
+	line "CHANSEY for my"
+	cont "AERODACTYL?"
 	done
 
 UnknownText_0x1bd673::

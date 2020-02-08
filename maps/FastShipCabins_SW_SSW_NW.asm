@@ -112,9 +112,10 @@ FastShipCabinsNorthwestCabinTrashcan:
 	jumpstd trashcan
 
 FirebreatherLyleSeenText:
-	text "I'm going to KANTO"
-	line "to put on fire-"
-	cont "breathing shows!"
+	text "I'm going to the"
+	line "ISLANDS to put on"
+	para "firebreathing"
+	line "shows!"
 	done
 
 FirebreatherLyleBeatenText:
@@ -144,7 +145,7 @@ BugCatcherKenBeatenText:
 BugCatcherKenAfterBattleText:
 	text "You can find lots"
 	line "of #MON in the"
-	cont "trees of JOHTO!"
+	cont "trees of NIHON!"
 	done
 
 BeautyCassieSeenText:
@@ -171,8 +172,8 @@ GuitaristClydeSeenText:
 	text "I'm going to audi-"
 	line "tion my songs at"
 
-	para "GOLDENROD's RADIO"
-	line "STATION."
+	para "the JOPM RADIO"
+	line "TOWER."
 	done
 
 GuitaristClydeBeatenText:
@@ -183,10 +184,11 @@ GuitaristClydeBeatenText:
 GuitaristClydeAfterBattleMobileText:
 	text "I was going to"
 	line "make my debut at"
-	cont "the BATTLE TOWER…"
+	para "the KANTO BATTLE"
+	line "CLUB."
 
 	para "I should go back"
-	line "to VERMILION and"
+	line "to AMAMI TOWN and"
 	cont "redo my training…"
 	done
 
@@ -211,13 +213,13 @@ FastShipBedText2:
 FastShipArrivedOlivineText:
 	text "FAST SHIP S.S.AQUA"
 	line "has arrived in"
-	cont "OLIVINE CITY."
+	cont "WEST CITY."
 	done
 
 FastShipArrivedVermilionText:
 	text "FAST SHIP S.S.AQUA"
 	line "has arrived in"
-	cont "VERMILION CITY."
+	cont "AMAMI TOWN."
 	done
 
 FastShipCabins_SW_SSW_NW_MapEvents:
@@ -240,5 +242,5 @@ FastShipCabins_SW_SSW_NW_MapEvents:
 	db 4 ; object events
 	object_event  1, 15, SPRITE_FISHER, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 2, TrainerFirebreatherLyle, EVENT_FAST_SHIP_PASSENGERS_FIRST_TRIP
 	object_event  6, 15, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 2, TrainerBugCatcherKen, EVENT_FAST_SHIP_PASSENGERS_WESTBOUND
-	object_event  1, 26, SPRITE_BUENA, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerBeautyCassie, EVENT_FAST_SHIP_PASSENGERS_EASTBOUND
+	object_event  1, 26, SPRITE_LASS, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerBeautyCassie, EVENT_FAST_SHIP_PASSENGERS_EASTBOUND
 	object_event  3, 28, SPRITE_ROCKER, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 2, TrainerGuitaristClyde, EVENT_FAST_SHIP_PASSENGERS_WESTBOUND

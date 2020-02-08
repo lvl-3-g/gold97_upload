@@ -1,10 +1,10 @@
-	db "LONG BODY@" ; species name
-	dw 511, 720 ; height, weight
+	db "JUNGLE@" ; species name
+	dw 504, 1220 ; height, weight
 
-	db   "It lives in narrow"
-	next "burrows that fit"
-	next "its slim body. The"
+	db   "Its vision is very"
+	next "poor. However, its"
+	next "other senses are"
 
-	page "deeper the nests"
-	next "go, the more maze-"
-	next "like they become.@"
+	page "hightened and it"
+	next "uses its vines to"
+	next "observe around it.@"

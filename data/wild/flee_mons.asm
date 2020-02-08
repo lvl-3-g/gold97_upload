@@ -14,21 +14,18 @@ SometimesFleeMons:
 	db UMBREON
 	db UNOWN
 	db SNUBBULL
-	db HERACROSS
 	db -1
 
 OftenFleeMons:
 	db CUBONE
-	db ARTICUNO
-	db ZAPDOS
-	db MOLTRES
-	db QUAGSIRE
+;	db ARTICUNO
+;	db ZAPDOS
+;	db MOLTRES
 	db DELIBIRD
 	db PHANPY
-	db TEDDIURSA
 	db -1
 
 AlwaysFleeMons:
-	db RAIKOU
-	db ENTEI
+;	db RAIKOU
+;	db ENTEI
 	db -1

@@ -21,36 +21,19 @@ EcruteakPokecenter1F_MapScripts:
 
 .BillActivatesTimeCapsule:
 	pause 30
-	playsound SFX_EXIT_BUILDING
 	appear ECRUTEAKPOKECENTER1F_BILL
-	waitsfx
 	applymovement ECRUTEAKPOKECENTER1F_BILL, EcruteakPokecenter1FBillMovement1
-	applymovement PLAYER, EcruteakPokecenter1FPlayerMovement1
-	turnobject ECRUTEAKPOKECENTER1F_NURSE, UP
-	pause 10
-	turnobject ECRUTEAKPOKECENTER1F_NURSE, DOWN
-	pause 30
-	turnobject ECRUTEAKPOKECENTER1F_NURSE, UP
-	pause 10
-	turnobject ECRUTEAKPOKECENTER1F_NURSE, DOWN
-	pause 20
-	turnobject ECRUTEAKPOKECENTER1F_BILL, DOWN
-	pause 10
 	opentext
 	writetext EcruteakPokecenter1F_BillText1
-	buttonsound
-	jump .PointlessJump
-
-.PointlessJump:
-	writetext EcruteakPokecenter1F_BillText2
 	waitbutton
 	closetext
-	turnobject PLAYER, DOWN
 	applymovement ECRUTEAKPOKECENTER1F_BILL, EcruteakPokecenter1FBillMovement2
 	playsound SFX_EXIT_BUILDING
 	disappear ECRUTEAKPOKECENTER1F_BILL
-	clearevent EVENT_MET_BILL
 	setflag ENGINE_TIME_CAPSULE
+	clearevent EVENT_ECRUTEAK_CITY_GRAMPS
+	clearevent EVENT_WISE_TRIOS_ROOM_WISE_TRIO_1
+	clearevent EVENT_BURNED_TOWER_MORTY
 	setscene SCENE_FINISHED
 	waitsfx
 	end
@@ -73,21 +56,30 @@ EcruteakPokecenter1FGymGuyScript:
 	jumptextfaceplayer EcruteakPokecenter1FGymGuyText
 
 EcruteakPokecenter1FBillMovement1:
-	step UP
-	step UP
-	step UP
-	step UP
+	step LEFT
+	step LEFT
+	step LEFT
+	step LEFT
+	step LEFT
+	step LEFT
+	step LEFT
+	step LEFT
 	step RIGHT
 	step RIGHT
+	step DOWN
+	step DOWN
+	step UP
 	step RIGHT
-	turn_head UP
+	step LEFT
+	step UP
+	step RIGHT
+	step DOWN
+	step LEFT
+	step DOWN
 	step_end
 
 EcruteakPokecenter1FBillMovement2:
 	step RIGHT
-	step DOWN
-	step DOWN
-	step DOWN
 	step DOWN
 	step_end
 
@@ -98,60 +90,59 @@ EcruteakPokecenter1FPlayerMovement1:
 	step_end
 
 EcruteakPokecenter1F_BillText1:
-	text "Hi, I'm BILL. And"
-	line "who are you?"
-
-	para "Hmm, <PLAYER>, huh?"
-	line "You've come at the"
-	cont "right time."
+	text "Oh dear, oh dear."
+	para "She's not here"
+	line "either!"
+	para "I've looked"
+	line "everywhere!"
+	para "Oh dear, oh dear."
+	para "Excuse me, son."
+	line "You wouldn't have"
+	para "happened to see"
+	line "a young girl come"
+	para "through here,"
+	line "have you?"
+	para "It's my"
+	line "granddaughter."
+	para "I can't find her"
+	line "anywhere!"
+	para "She's gone missing"
+	line "and I can't find"
+	cont "her."
+	para "..."
+	para "Oh, no. I hope she"
+	line "didn't get trapped"
+	cont "in the MINE..."
+	para "Listen, there's an"
+	line "old MINE just west"
+	para "of town that has"
+	line "become a popular"
+	para "spot for kids to"
+	line "run off to play"
+	cont "at."
+	para "But it's obviously"
+	line "not safe!"
+	para "Could you go look"
+	line "there to see if"
+	para "my granddaughter"
+	line "could be stuck"
+	cont "inside?"
+	para "I don't know where"
+	line "else she could be."
+	para "Oh dear, oh dear."
 	done
 
 EcruteakPokecenter1F_BillText2:
-	text "I just finished"
-	line "adjustments on my"
-	cont "TIME CAPSULE."
+	text "I made the #MON"
+	line "storage system!"
 
-	para "You know that"
-	line "#MON can be"
-	cont "traded, right?"
-
-	para "My TIME CAPSULE"
-	line "was developed to"
-
-	para "enable trades with"
-	line "the past."
-
-	para "But you can't send"
-	line "anything that"
-
-	para "didn't exist in"
-	line "the past."
-
-	para "If you did, the PC"
-	line "in the past would"
-	cont "have a breakdown."
-
-	para "So you have to"
-	line "remove anything"
-
-	para "that wasn't around"
-	line "in the past."
-
-	para "Put simply, no"
-	line "sending new moves"
-
-	para "or new #MON in"
-	line "the TIME CAPSULE."
-
-	para "Don't you worry."
-	line "I'm done with the"
-	cont "adjustments."
-
-	para "Tomorrow, TIME"
-	line "CAPSULES will be"
-
-	para "running at all"
-	line "#MON CENTERS."
+	para "I truly hope you"
+	line "find it useful."
+	
+	para "It's a great tool"
+	line "if you want to"
+	para "catch every single"
+	line "#MON! Anyways,"
 
 	para "I have to hurry on"
 	line "back to GOLDENROD"
@@ -161,12 +152,11 @@ EcruteakPokecenter1F_BillText2:
 	done
 
 EcruteakPokecenter1FPokefanMText:
-	text "The way the KIMONO"
-	line "GIRLS dance is"
-
-	para "marvelous. Just"
-	line "like the way they"
-	cont "use their #MON."
+	text "Your #MON will"
+	line "become more"
+	para "friendly towards"
+	line "you if you treat"
+	cont "them well."
 	done
 
 EcruteakPokecenter1FPokefanMTextMobile:
@@ -186,30 +176,31 @@ EcruteakPokecenter1FPokefanMTextMobile:
 	done
 
 EcruteakPokecenter1FCooltrainerFText:
-	text "MORTY, the GYM"
-	line "LEADER, is soooo"
-	cont "cool."
-
-	para "His #MON are"
-	line "really tough too."
+	text "Your #MON know"
+	line "HM moves, right?"
+	para "Those moves can"
+	line "be used outside of"
+	para "battle even if the"
+	line "#MON fainted."
 	done
 
 EcruteakPokecenter1FGymGuyText:
-	text "LAKE OF RAGE…"
-
-	para "The appearance of"
-	line "a GYARADOS swarm…"
-
-	para "I smell a conspir-"
-	line "acy. I know it!"
+	text "Have you ever been"
+	line "to the SOUTH POINT"
+	cont "DOCKS?"
+	para "Forget any other"
+	line "port in NIHON,"
+	para "that's where the"
+	line "most trade"
+	cont "happens."
 	done
 
 EcruteakPokecenter1F_MapEvents:
 	db 0, 0 ; filler
 
 	db 3 ; warp events
-	warp_event  3,  7, ECRUTEAK_CITY, 6
-	warp_event  4,  7, ECRUTEAK_CITY, 6
+	warp_event  5,  7, ECRUTEAK_CITY, 3
+	warp_event  6,  7, ECRUTEAK_CITY, 3
 	warp_event  0,  7, POKECENTER_2F, 1
 
 	db 0 ; coord events
@@ -217,8 +208,8 @@ EcruteakPokecenter1F_MapEvents:
 	db 0 ; bg events
 
 	db 5 ; object events
-	object_event  3,  1, SPRITE_NURSE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, EcruteakPokecenter1FNurseScript, -1
-	object_event  7,  6, SPRITE_POKEFAN_M, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, EcruteakPokecenter1FPokefanMScript, -1
-	object_event  1,  4, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, EcruteakPokecenter1FCooltrainerFScript, -1
-	object_event  7,  1, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, EcruteakPokecenter1FGymGuyScript, -1
-	object_event  0,  7, SPRITE_BILL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_ECRUTEAK_POKE_CENTER_BILL
+	object_event  5,  1, SPRITE_NURSE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, EcruteakPokecenter1FNurseScript, -1
+	object_event 12,  6, SPRITE_GENTLEMAN, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, EcruteakPokecenter1FPokefanMScript, -1
+	object_event  1,  4, SPRITE_FISHER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, EcruteakPokecenter1FCooltrainerFScript, -1
+	object_event 10,  1, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, EcruteakPokecenter1FGymGuyScript, -1
+	object_event 11,  4, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_ECRUTEAK_POKE_CENTER_BILL
