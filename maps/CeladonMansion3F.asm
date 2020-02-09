@@ -14,7 +14,7 @@ GameFreakGameDesignerScript:
 	opentext
 	writetext GameFreakGameDesignerText
 	checkcode VAR_DEXCAUGHT
-	ifgreater NUM_POKEMON - 2 - 1, .CompletedPokedex ; ignore Mew and Celebi
+	ifgreater NUM_POKEMON - 2 - 1, .CompletedPokedex ; ignore Mew and Leafeon
 	waitbutton
 	closetext
 	end

@@ -53,22 +53,22 @@ SaffronSwimmerGirlScript:
 
 	
 FireStarterTest:
-	clearevent EVENT_GOT_TOTODILE_FROM_ELM
-	clearevent EVENT_GOT_CHIKORITA_FROM_ELM
-	setevent EVENT_GOT_CYNDAQUIL_FROM_ELM
+	clearevent EVENT_GOT_CRUISE_FROM_ELM
+	clearevent EVENT_GOT_HAPPA_FROM_ELM
+	setevent EVENT_GOT_FLAMBEAR_FROM_ELM
 	jumptext FireStarterTestText
 	
 WaterStarterTest:
-	setevent EVENT_GOT_TOTODILE_FROM_ELM
-	clearevent EVENT_GOT_CHIKORITA_FROM_ELM
-	clearevent EVENT_GOT_CYNDAQUIL_FROM_ELM
+	setevent EVENT_GOT_CRUISE_FROM_ELM
+	clearevent EVENT_GOT_HAPPA_FROM_ELM
+	clearevent EVENT_GOT_FLAMBEAR_FROM_ELM
 	jumptext WaterStarterTestText
 	
 	
 GrassStarterTest:
-	clearevent EVENT_GOT_TOTODILE_FROM_ELM
-	setevent EVENT_GOT_CHIKORITA_FROM_ELM
-	clearevent EVENT_GOT_CYNDAQUIL_FROM_ELM
+	clearevent EVENT_GOT_CRUISE_FROM_ELM
+	setevent EVENT_GOT_HAPPA_FROM_ELM
+	clearevent EVENT_GOT_FLAMBEAR_FROM_ELM
 	jumptext GrassStarterTestText
 	
 GrassStarterTestText:

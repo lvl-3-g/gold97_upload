@@ -1,10 +1,10 @@
-	db "JAW FISH@" ; species name
-	dw 207, 720 ; height, weight
+	db "WATER FISH@" ; species name
+	dw 407, 1650 ; height, weight
 
-	db   "Has incredibly"
-	next "strong jaws that"
-	next "can tear through"
+	db   "Its body is always"
+	next "slimy. It often"
+	next "bangs its head on"
 
-	page "rocks, metals, and"
-	next "other materials"
-	next "with ease.@"
+	page "the river bottom"
+	next "as it swims but"
+	next "seems not to care.@"

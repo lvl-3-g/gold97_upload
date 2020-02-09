@@ -33,14 +33,14 @@ Route35GoldenrodGatePokefanFScript:
 	faceplayer
 	opentext
 	checkevent EVENT_BEAT_WHITNEY
-	iftrue .FoughtSudowoodo
+	iftrue .FoughtBipetal
 	writetext Route35GoldenrodGatePokefanFText
 	waitbutton
 	closetext
 	end
 
-.FoughtSudowoodo
-	writetext Route35GoldenrodGatePokefanFText_FoughtSudowoodo
+.FoughtBipetal
+	writetext Route35GoldenrodGatePokefanFText_FoughtBipetal
 	waitbutton
 	closetext
 	end
@@ -127,7 +127,7 @@ Route35GoldenrodGatePokefanFText:
 	line "now."
 	done
 
-Route35GoldenrodGatePokefanFText_FoughtSudowoodo:
+Route35GoldenrodGatePokefanFText_FoughtBipetal:
 	text "The path ahead has"
 	line "been cleared."
 	para "That's good, since"

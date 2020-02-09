@@ -33,14 +33,14 @@ IcePathNewPryceScript:
 	applymovement ICE_PATH_NEW_PRYCE, PryceLeavesMovement
 	disappear ICE_PATH_NEW_PRYCE
 	setevent EVENT_HERDED_FARFETCHD
-	clearevent EVENT_FOUGHT_SUDOWOODO
+	clearevent EVENT_FOUGHT_BIPETAL
 	end
 	
 .PryceWalksAroundPlayer:
 	applymovement ICE_PATH_NEW_PRYCE, PryceLeavesMovementAlt
 	disappear ICE_PATH_NEW_PRYCE
 	setevent EVENT_HERDED_FARFETCHD
-	clearevent EVENT_FOUGHT_SUDOWOODO
+	clearevent EVENT_FOUGHT_BIPETAL
 	end
 
 PryceGreetingText:

@@ -92,28 +92,28 @@ SafariZoneBetaSilverScript:
 	writetext SafariZoneBetaSilverBefore
 	waitbutton
 	closetext
-	checkevent EVENT_GOT_TOTODILE_FROM_ELM
-	iftrue .Totodile
-	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
-	iftrue .Chikorita
+	checkevent EVENT_GOT_CRUISE_FROM_ELM
+	iftrue .Cruise
+	checkevent EVENT_GOT_HAPPA_FROM_ELM
+	iftrue .Happa
 	winlosstext SafariZoneBetaSilverTextWin, SafariZoneBetaSilverTextLoss
-	loadtrainer RIVAL2, RIVAL2_1_TOTODILE
+	loadtrainer RIVAL2, RIVAL2_1_CRUISE
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
 	jump .FinishBattle
 
-.Totodile:
+.Cruise:
 	winlosstext SafariZoneBetaSilverTextWin, SafariZoneBetaSilverTextLoss
-	loadtrainer RIVAL2, RIVAL2_1_CHIKORITA
+	loadtrainer RIVAL2, RIVAL2_1_HAPPA
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
 	jump .FinishBattle
 
-.Chikorita:
+.Happa:
 	winlosstext SafariZoneBetaSilverTextWin, SafariZoneBetaSilverTextLoss
-	loadtrainer RIVAL2, RIVAL2_1_CYNDAQUIL
+	loadtrainer RIVAL2, RIVAL2_1_FLAMBEAR
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle

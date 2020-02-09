@@ -191,128 +191,128 @@ ElmAfterLeagueInPerson:
 	closetext
 	end
 
-CyndaquilPokeBallScript:
+FlambearPokeBallScript:
 	checkevent EVENT_GOT_A_POKEMON_FROM_ELM
 	iftrue LookAtElmPokeBallScript
 	turnobject ELMSLAB_ELM, DOWN
 	refreshscreen
-	pokepic CYNDAQUIL
-	cry CYNDAQUIL
+	pokepic FLAMBEAR
+	cry FLAMBEAR
 	waitbutton
 	closepokepic
 	opentext
-	writetext TakeCyndaquilText
+	writetext TakeFlambearText
 	yesorno
 	iffalse DidntChooseStarterScript
 	disappear ELMSLAB_POKE_BALL1
-	setevent EVENT_GOT_CYNDAQUIL_FROM_ELM
+	setevent EVENT_GOT_FLAMBEAR_FROM_ELM
 	writetext ChoseStarterText
 	buttonsound
 	waitsfx
-	pokenamemem CYNDAQUIL, MEM_BUFFER_0
+	pokenamemem FLAMBEAR, MEM_BUFFER_0
 	writetext ReceivedStarterText
 	playsound SFX_CAUGHT_MON
 	waitsfx
 	buttonsound
-	givepoke CYNDAQUIL, 5, BERRY
+	givepoke FLAMBEAR, 5, BERRY
 	closetext
-	applymovement ELMSLAB_SILVER, SilverGetTotodileMovement
+	applymovement ELMSLAB_SILVER, SilverGetCruiseMovement
 	opentext
 	writetext Text_SilverTakeThisOne
 	waitbutton
 	closetext
 	disappear ELMSLAB_POKE_BALL2
 	opentext
-	writetext Text_SilverGetTotodile
+	writetext Text_SilverGetCruise
 	playsound SFX_CAUGHT_MON
 	waitsfx
 	buttonsound
 	closetext
-	setevent EVENT_TOTODILE_POKEBALL_IN_ELMS_LAB
+	setevent EVENT_CRUISE_POKEBALL_IN_ELMS_LAB
 	setevent EVENT_PLAYERS_HOUSE_1F_NEIGHBOR
 	clearevent EVENT_PLAYERS_NEIGHBORS_HOUSE_NEIGHBOR
 	jump ElmDirectionsScript
 
-TotodilePokeBallScript:
+CruisePokeBallScript:
 	checkevent EVENT_GOT_A_POKEMON_FROM_ELM
 	iftrue LookAtElmPokeBallScript
 	turnobject ELMSLAB_ELM, DOWN
 	refreshscreen
-	pokepic TOTODILE
-	cry TOTODILE
+	pokepic CRUISE
+	cry CRUISE
 	waitbutton
 	closepokepic
 	opentext
-	writetext TakeTotodileText
+	writetext TakeCruiseText
 	yesorno
 	iffalse DidntChooseStarterScript
 	disappear ELMSLAB_POKE_BALL2
-	setevent EVENT_GOT_TOTODILE_FROM_ELM
+	setevent EVENT_GOT_CRUISE_FROM_ELM
 	writetext ChoseStarterText
 	buttonsound
 	waitsfx
-	pokenamemem TOTODILE, MEM_BUFFER_0
+	pokenamemem CRUISE, MEM_BUFFER_0
 	writetext ReceivedStarterText
 	playsound SFX_CAUGHT_MON
 	waitsfx
 	buttonsound
-	givepoke TOTODILE, 5, BERRY
+	givepoke CRUISE, 5, BERRY
 	closetext
-	applymovement ELMSLAB_SILVER, SilverGetChikoritaMovement
+	applymovement ELMSLAB_SILVER, SilverGetHappaMovement
 	opentext
 	writetext Text_SilverTakeThisOne
 	waitbutton
 	closetext
 	disappear ELMSLAB_POKE_BALL3
 	opentext
-	writetext Text_SilverGetChikorita
+	writetext Text_SilverGetHappa
 	playsound SFX_CAUGHT_MON
 	waitsfx
 	buttonsound
 	closetext
-	setevent EVENT_CHIKORITA_POKEBALL_IN_ELMS_LAB
+	setevent EVENT_HAPPA_POKEBALL_IN_ELMS_LAB
 	setevent EVENT_PLAYERS_HOUSE_1F_NEIGHBOR
 	clearevent EVENT_PLAYERS_NEIGHBORS_HOUSE_NEIGHBOR
 	jump ElmDirectionsScript
 
-ChikoritaPokeBallScript:
+HappaPokeBallScript:
 	checkevent EVENT_GOT_A_POKEMON_FROM_ELM
 	iftrue LookAtElmPokeBallScript
 	turnobject ELMSLAB_ELM, DOWN
 	refreshscreen
-	pokepic CHIKORITA
-	cry CHIKORITA
+	pokepic HAPPA
+	cry HAPPA
 	waitbutton
 	closepokepic
 	opentext
-	writetext TakeChikoritaText
+	writetext TakeHappaText
 	yesorno
 	iffalse DidntChooseStarterScript
 	disappear ELMSLAB_POKE_BALL3
-	setevent EVENT_GOT_CHIKORITA_FROM_ELM
+	setevent EVENT_GOT_HAPPA_FROM_ELM
 	writetext ChoseStarterText
 	buttonsound
 	waitsfx
-	pokenamemem CHIKORITA, MEM_BUFFER_0
+	pokenamemem HAPPA, MEM_BUFFER_0
 	writetext ReceivedStarterText
 	playsound SFX_CAUGHT_MON
 	waitsfx
 	buttonsound
-	givepoke CHIKORITA, 5, BERRY
+	givepoke HAPPA, 5, BERRY
 	closetext
-	applymovement ELMSLAB_SILVER, SilverGetCyndaquilMovement
+	applymovement ELMSLAB_SILVER, SilverGetFlambearMovement
 	opentext
 	writetext Text_SilverTakeThisOne
 	waitbutton
 	closetext
 	disappear ELMSLAB_POKE_BALL1
 	opentext
-	writetext Text_SilverGetCyndaquil
+	writetext Text_SilverGetFlambear
 	playsound SFX_CAUGHT_MON
 	waitsfx
 	buttonsound
 	closetext
-	setevent EVENT_CYNDAQUIL_POKEBALL_IN_ELMS_LAB
+	setevent EVENT_FLAMBEAR_POKEBALL_IN_ELMS_LAB
 	setevent EVENT_PLAYERS_HOUSE_1F_NEIGHBOR
 	clearevent EVENT_PLAYERS_NEIGHBORS_HOUSE_NEIGHBOR
 	jump ElmDirectionsScript
@@ -517,20 +517,20 @@ ElmToTable:
 	turn_head DOWN
 	step_end
 	
-SilverGetTotodileMovement:
+SilverGetCruiseMovement:
 	step RIGHT
 	step RIGHT
 	step UP
 	step UP
 	step_end
 	
-SilverGetCyndaquilMovement:
+SilverGetFlambearMovement:
 	step RIGHT
 	step UP
 	step UP
 	step_end
 	
-SilverGetChikoritaMovement:
+SilverGetHappaMovement:
 	step RIGHT
 	step RIGHT
 	step RIGHT
@@ -632,20 +632,20 @@ ElmsLab_ElmToDefaultPositionMovement2:
 	turn_head DOWN
 	step_end
 
-AfterCyndaquilMovement:
+AfterFlambearMovement:
 	step LEFT
 	step UP
 	turn_head UP
 	step_end
 
-AfterTotodileMovement:
+AfterCruiseMovement:
 	step LEFT
 	step LEFT
 	step UP
 	turn_head UP
 	step_end
 
-AfterChikoritaMovement:
+AfterHappaMovement:
 	step LEFT
 	step LEFT
 	step LEFT
@@ -694,17 +694,17 @@ Text_SilverTakeThisOne:
 	line "much stronger!"
 	done
 	
-Text_SilverGetTotodile:
+Text_SilverGetCruise:
 	text "<RIVAL> received"
 	line "CRUISE!"
 	done
 	
-Text_SilverGetCyndaquil:
+Text_SilverGetFlambear:
 	text "<RIVAL> received"
 	line "FLAMBEAR!"
 	done
 	
-Text_SilverGetChikorita:
+Text_SilverGetHappa:
 	text "<RIVAL> received"
 	line "HAPPA!"
 	done
@@ -934,19 +934,19 @@ LabWhereGoingText:
 	line "are you going?"
 	done
 
-TakeCyndaquilText:
+TakeFlambearText:
 	text "OAK: You'll take"
 	line "FLAMBEAR, the"
 	cont "fire #MON?"
 	done
 
-TakeTotodileText:
+TakeCruiseText:
 	text "OAK: Do you want"
 	line "CRUISE, the"
 	cont "water #MON?"
 	done
 
-TakeChikoritaText:
+TakeHappaText:
 	text "OAK: So, you like"
 	line "HAPPA, the"
 	cont "grass #MON?"
@@ -1399,8 +1399,8 @@ ElmsLab_MapEvents:
 	db 7 ; object events
 	object_event  4,  2, SPRITE_ELM, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ProfElmScript, -1
 	object_event  7,  6, SPRITE_SCIENTIST, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, ElmsAideScript, EVENT_ELMS_AIDE_IN_LAB
-	object_event  5,  2, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CyndaquilPokeBallScript, EVENT_CYNDAQUIL_POKEBALL_IN_ELMS_LAB
-	object_event  6,  2, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, TotodilePokeBallScript, EVENT_TOTODILE_POKEBALL_IN_ELMS_LAB
-	object_event  7,  2, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ChikoritaPokeBallScript, EVENT_CHIKORITA_POKEBALL_IN_ELMS_LAB
+	object_event  5,  2, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, FlambearPokeBallScript, EVENT_FLAMBEAR_POKEBALL_IN_ELMS_LAB
+	object_event  6,  2, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CruisePokeBallScript, EVENT_CRUISE_POKEBALL_IN_ELMS_LAB
+	object_event  7,  2, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, HappaPokeBallScript, EVENT_HAPPA_POKEBALL_IN_ELMS_LAB
 	object_event  2,  3, SPRITE_BLUE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, ElmsLabBlueScript, EVENT_BLUE_IN_ELMS_LAB
 	object_event  4,  5, SPRITE_SILVER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, ElmsLabSilverScript, EVENT_SILVER_IN_ELMS_LAB

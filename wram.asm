@@ -1906,7 +1906,7 @@ wVramState:: ; d0ed
 
 wBattleResult:: ; d0ee
 ; WIN, LOSE, or DRAW
-; bit 6: caught celebi
+; bit 6: caught leafeon
 ; bit 7: box full
 	db
 wUsingItemWithSelect:: db ; d0ef
@@ -2687,7 +2687,7 @@ wCurBox:: db ; db72
 ; 8 chars + $50
 wBoxNames:: ds BOX_NAME_LENGTH * NUM_BOXES ; db75
 
-wCelebiEvent:: ; dbf3
+wLeafeonEvent:: ; dbf3
 ; bit 2: forest is restless
 	db
 
@@ -2763,8 +2763,8 @@ wDailyRematchFlags:: ds 4
 wDailyPhoneItemFlags:: ds 4
 wDailyPhoneTimeOfDayFlags:: ds 4
 wKenjiBreakTimer:: ds 2 ; Kenji
-wYanmaMapGroup:: db ; dc5a
-wYanmaMapNumber:: db
+wOsunfishMapGroup:: db ; dc5a
+wOsunfishMapNumber:: db
 wPlayerMonSelection:: ds 3
 wdc5f:: ds 1
 wdc60:: ds 19
@@ -2891,8 +2891,8 @@ wEggMon::  box_struct wEggMon ; df7b
 wBugContestSecondPartySpecies:: db
 wContestMon:: party_struct wContestMon ; df9c
 
-wDunsparceMapGroup:: db
-wDunsparceMapNumber:: db
+wEeveeMapGroup:: db
+wEeveeMapNumber:: db
 wFishingSwarmFlag:: db
 
 wRoamMon1:: roam_struct wRoamMon1 ; dfcf

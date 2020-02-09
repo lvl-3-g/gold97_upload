@@ -211,7 +211,7 @@ ChuckIntroText1:
 	para "power that finds"
 	line "its strength in"
 	cont "the dark?"
-	para "DARK TYPE #MON"
+	para "DARK type #MON"
 	line "possess a power"
 	cont "like none other."
 	para "Even in the short"

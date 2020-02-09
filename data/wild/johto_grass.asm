@@ -45,24 +45,24 @@ JohtoGrassWildMons:
 	db 3, PIDGEY
 	db 3, FARFETCH_D
 	db 2, RATTATA
-	db 3, SHUCKLE
-	db 3, SHUCKLE
+	db 3, RINRING
+	db 3, RINRING
 	; day
 	db 2, PIDGEY
 	db 2, RATTATA
 	db 3, PIDGEY
 	db 3, FARFETCH_D
 	db 2, RATTATA
-	db 3, SHUCKLE
-	db 3, SHUCKLE
+	db 3, RINRING
+	db 3, RINRING
 	; nite
 	db 2, HOOTHOOT
 	db 2, RATTATA
 	db 3, HOOTHOOT
 	db 3, FARFETCH_D
 	db 2, RATTATA
-	db 3, SHUCKLE
-	db 3, SHUCKLE
+	db 3, RINRING
+	db 3, RINRING
 	
 
 	map_id SPROUT_TOWER_2F
@@ -87,7 +87,7 @@ JohtoGrassWildMons:
 	db 3, GASTLY
 	db 4, GASTLY
 	db 5, GASTLY
-	db 3, SWINUB
+	db 3, CURSTRAW
 	db 6, GASTLY
 	db 5, RATTATA
 	db 5, RATTATA
@@ -116,7 +116,7 @@ JohtoGrassWildMons:
 	db 4, GASTLY
 	db 5, GASTLY
 	db 3, RATTATA
-	db 6, SWINUB
+	db 6, CURSTRAW
 	db 5, RATTATA
 	db 5, RATTATA
 	
@@ -143,7 +143,7 @@ JohtoGrassWildMons:
 	db 4, GASTLY
 	db 5, GASTLY
 	db 3, RATTATA
-	db 6, SWINUB
+	db 6, CURSTRAW
 	db 5, RATTATA
 	db 5, RATTATA
 
@@ -180,24 +180,24 @@ JohtoGrassWildMons:
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
 	db 10, MAREEP
-	db 11, SHUCKLE
-	db 11, CHINCHOU
+	db 11, RINRING
+	db 11, KOTORA
 	db 11, LEDYBA
 	db 10, HOPPIP
 	db 12, HOPPIP
 	db 12, HOPPIP
 	; day
 	db 10, MAREEP
-	db 11, SHUCKLE
-	db 11, CHINCHOU
+	db 11, RINRING
+	db 11, KOTORA
 	db 11, HOPPIP
 	db 10, HOPPIP
 	db 12, HOPPIP
 	db 12, HOPPIP
 	; nite
 	db 10, MAREEP
-	db 11, SHUCKLE
-	db 11, CHINCHOU
+	db 11, RINRING
+	db 11, KOTORA
 	db 11, SPINARAK
 	db 10, HOPPIP
 	db 12, HOPPIP
@@ -264,7 +264,7 @@ JohtoGrassWildMons:
 	db 9, GEODUDE
 	db 10, SANDSHREW
 	db 9, ZUBAT
-	db 9, PINECO
+	db 9, TURBAN
 	db 10, ZUBAT
 	db 9, ONIX
 	db 12, ONIX
@@ -272,7 +272,7 @@ JohtoGrassWildMons:
 	db 9, GEODUDE
 	db 10, SANDSHREW
 	db 9, ZUBAT
-	db 9, PINECO
+	db 9, TURBAN
 	db 10, ZUBAT
 	db 9, ONIX
 	db 12, ONIX
@@ -280,7 +280,7 @@ JohtoGrassWildMons:
 	db 9, GEODUDE
 	db 10, SANDSHREW
 	db 9, ZUBAT
-	db 9, PINECO
+	db 9, TURBAN
 	db 10, ZUBAT
 	db 9, ONIX
 	db 12, ONIX
@@ -480,7 +480,7 @@ JohtoGrassWildMons:
 	db 11, ZUBAT
 	db 12, DIGLETT
 	db 12, POLIWAG
-	db 12, GRANBULL
+	db 12, QUAGSIRE
 	db 11, GRIMER
 	db 13, ZUBAT
 	db 13, ZUBAT
@@ -488,7 +488,7 @@ JohtoGrassWildMons:
 	db 11, ZUBAT
 	db 12, DIGLETT
 	db 12, POLIWAG
-	db 12, GRANBULL
+	db 12, QUAGSIRE
 	db 11, GRIMER
 	db 13, ZUBAT
 	db 13, ZUBAT
@@ -496,7 +496,7 @@ JohtoGrassWildMons:
 	db 11, ZUBAT
 	db 12, DIGLETT
 	db 12, POLIWAG
-	db 12, GRANBULL
+	db 12, QUAGSIRE
 	db 11, GRIMER
 	db 13, ZUBAT
 	db 13, ZUBAT
@@ -507,7 +507,7 @@ JohtoGrassWildMons:
 	db 11, ZUBAT
 	db 12, DIGLETT
 	db 12, POLIWAG
-	db 12, GRANBULL
+	db 12, QUAGSIRE
 	db 11, GRIMER
 	db 13, ZUBAT
 	db 13, ZUBAT
@@ -515,7 +515,7 @@ JohtoGrassWildMons:
 	db 11, ZUBAT
 	db 12, DIGLETT
 	db 12, POLIWAG
-	db 12, GRANBULL
+	db 12, QUAGSIRE
 	db 11, GRIMER
 	db 13, ZUBAT
 	db 13, ZUBAT
@@ -523,7 +523,7 @@ JohtoGrassWildMons:
 	db 11, ZUBAT
 	db 12, DIGLETT
 	db 12, POLIWAG
-	db 12, GRANBULL
+	db 12, QUAGSIRE
 	db 11, GRIMER
 	db 13, ZUBAT
 	db 13, ZUBAT
@@ -633,8 +633,8 @@ JohtoGrassWildMons:
 	db 12, NATU
 	db 12, MAREEP
 	db 11, MAREEP
-	db 13, WOBBUFFET
-	db 13, WOBBUFFET
+	db 13, TWINBORUS
+	db 13, TWINBORUS
 
 	map_id ROUTE_30
 	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
@@ -723,7 +723,7 @@ JohtoGrassWildMons:
 	db 17, EKANS
 	db 16, ODDISH
 	db 17, PARAS
-	db 17, BLISSEY
+	db 17, MILTANK
 	db 16, PHANPY
 	db 18, LEDIAN
 	db 18, LEDIAN
@@ -731,7 +731,7 @@ JohtoGrassWildMons:
 	db 17, EKANS
 	db 16, ODDISH
 	db 17, PARAS
-	db 17, BLISSEY
+	db 17, MILTANK
 	db 16, PHANPY
 	db 18, PONYTA
 	db 18, PONYTA
@@ -739,7 +739,7 @@ JohtoGrassWildMons:
 	db 17, EKANS
 	db 16, ODDISH
 	db 17, PARAS
-	db 17, BLISSEY
+	db 17, MILTANK
 	db 16, PHANPY
 	db 18, PONYTA
 	db 18, PONYTA
@@ -750,7 +750,7 @@ JohtoGrassWildMons:
 	db 17, EKANS
 	db 16, ODDISH
 	db 17, PARAS
-	db 17, BLISSEY
+	db 17, MILTANK
 	db 16, PHANPY
 	db 18, LEDIAN
 	db 18, LEDIAN
@@ -758,7 +758,7 @@ JohtoGrassWildMons:
 	db 17, EKANS
 	db 16, ODDISH
 	db 17, PARAS
-	db 17, BLISSEY
+	db 17, MILTANK
 	db 16, PHANPY
 	db 18, PONYTA
 	db 18, PONYTA
@@ -766,7 +766,7 @@ JohtoGrassWildMons:
 	db 17, EKANS
 	db 16, ODDISH
 	db 17, PARAS
-	db 17, BLISSEY
+	db 17, MILTANK
 	db 16, PHANPY
 	db 18, PONYTA
 	db 18, PONYTA
@@ -860,7 +860,7 @@ JohtoGrassWildMons:
 	db 17, SLOWPOKE
 	db 17, SLOWPOKE
 	db 18, DELIBIRD
-	db 17, GRANBULL
+	db 17, QUAGSIRE
 	db 19, DELIBIRD
 	; day
 	db 17, ZUBAT
@@ -868,7 +868,7 @@ JohtoGrassWildMons:
 	db 17, SLOWPOKE
 	db 17, SLOWPOKE
 	db 18, DELIBIRD
-	db 17, GRANBULL
+	db 17, QUAGSIRE
 	db 19, DELIBIRD
 	; nite
 	db 17, ZUBAT
@@ -876,7 +876,7 @@ JohtoGrassWildMons:
 	db 17, SLOWPOKE
 	db 17, SLOWPOKE
 	db 18, DELIBIRD
-	db 17, GRANBULL
+	db 17, QUAGSIRE
 	db 19, DELIBIRD
 
 	map_id ICE_PATH_B3F
@@ -887,7 +887,7 @@ JohtoGrassWildMons:
 	db 17, SLOWPOKE
 	db 17, SLOWPOKE
 	db 18, DELIBIRD
-	db 17, GRANBULL
+	db 17, QUAGSIRE
 	db 19, DELIBIRD
 	; day
 	db 17, ZUBAT
@@ -895,7 +895,7 @@ JohtoGrassWildMons:
 	db 17, SLOWPOKE
 	db 17, SLOWPOKE
 	db 18, DELIBIRD
-	db 17, GRANBULL
+	db 17, QUAGSIRE
 	db 19, DELIBIRD
 	; nite
 	db 17, ZUBAT
@@ -903,7 +903,7 @@ JohtoGrassWildMons:
 	db 17, SLOWPOKE
 	db 17, SLOWPOKE
 	db 18, DELIBIRD
-	db 17, GRANBULL
+	db 17, QUAGSIRE
 	db 19, DELIBIRD
 
 	map_id ICE_PATH_NEW
@@ -913,25 +913,25 @@ JohtoGrassWildMons:
 	db 18, SEEL
 	db 17, SLOWPOKE
 	db 17, DELIBIRD
-	db 18, LARVITAR
-	db 17, GRANBULL
-	db 19, LARVITAR
+	db 18, WOLFAN
+	db 17, QUAGSIRE
+	db 19, WOLFAN
 	; day
 	db 17, ZUBAT
 	db 18, SEEL
 	db 17, SLOWPOKE
 	db 17, DELIBIRD
-	db 18, LARVITAR
-	db 17, GRANBULL
-	db 19, LARVITAR
+	db 18, WOLFAN
+	db 17, QUAGSIRE
+	db 19, WOLFAN
 	; nite
 	db 17, ZUBAT
 	db 18, SEEL
 	db 17, SLOWPOKE
 	db 17, DELIBIRD
-	db 18, LARVITAR
-	db 17, GRANBULL
-	db 19, LARVITAR
+	db 18, WOLFAN
+	db 17, QUAGSIRE
+	db 19, WOLFAN
 
 	map_id ROUTE_32
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
@@ -1075,7 +1075,7 @@ JohtoGrassWildMons:
 	db 25, GRAVELER
 	db 20, RHYHORN
 	db 21, PHANPY
-	db 25, AZUMARILL
+	db 25, BOMSEAL
 	db 22, MAGMAR
 	db 23, MAGMAR
 	; day
@@ -1083,7 +1083,7 @@ JohtoGrassWildMons:
 	db 25, GRAVELER
 	db 20, RHYHORN
 	db 21, PHANPY
-	db 25, AZUMARILL
+	db 25, BOMSEAL
 	db 22, MAGMAR
 	db 23, MAGMAR
 	; nite
@@ -1091,7 +1091,7 @@ JohtoGrassWildMons:
 	db 25, GRAVELER
 	db 20, RHYHORN
 	db 21, PHANPY
-	db 25, AZUMARILL
+	db 25, BOMSEAL
 	db 22, MAGMAR
 	db 23, MAGMAR
 
@@ -1249,10 +1249,10 @@ JohtoGrassWildMons:
 	db 30, DODRIO
 	db 30, DODRIO
 	; nite
-	db 28, GRANBULL
+	db 28, QUAGSIRE
 	db 28, NOCTOWL
 	db 30, RATICATE
-	db 30, GRANBULL
+	db 30, QUAGSIRE
 	db 32, NOCTOWL
 	db 32, NOCTOWL
 	db 32, NOCTOWL

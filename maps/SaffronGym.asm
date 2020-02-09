@@ -12,9 +12,9 @@ SaffronGym_MapScripts:
 	callback MAPCALLBACK_TILES, .SaffronGymTypeChange
 	
 .SaffronGymTypeChange:
-	checkevent EVENT_GOT_TOTODILE_FROM_ELM
+	checkevent EVENT_GOT_CRUISE_FROM_ELM
 	iftrue .GrassGym
-	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
+	checkevent EVENT_GOT_HAPPA_FROM_ELM
 	iftrue .FireGym
 	jump .doneGym
 .GrassGym:
@@ -103,10 +103,10 @@ SaffronGym_MapScripts:
 SaffronGymPokefanMScript:
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
-	iftrue .GotChikoritaGiveCyndaquil
-	checkevent EVENT_GOT_TOTODILE_FROM_ELM
-	iftrue .GotTotodileGiveChikorita
+	checkevent EVENT_GOT_HAPPA_FROM_ELM
+	iftrue .GotHappaGiveFlambear
+	checkevent EVENT_GOT_CRUISE_FROM_ELM
+	iftrue .GotCruiseGiveHappa
 	checkevent EVENT_EXPLODING_TRAP_19
 	iftrue .AfterBattleFakeGymWater
 	writetext PokefanMBeforeTextWater
@@ -125,7 +125,7 @@ SaffronGymPokefanMScript:
 	waitbutton
 	checkcode VAR_PARTYCOUNT
 	ifequal PARTY_LENGTH, .PartyFullStarter2
-	giveegg TOTODILE, 5
+	giveegg CRUISE, 5
 	stringtotext .eggname2, MEM_BUFFER_1
 	scall .GetStarter2Egg
 	setevent EVENT_EXPLODING_TRAP_20
@@ -135,7 +135,7 @@ SaffronGymPokefanMScript:
 	closetext
 	end
 	
-.GotChikoritaGiveCyndaquil
+.GotHappaGiveFlambear
 	checkevent EVENT_EXPLODING_TRAP_19
 	iftrue .AfterBattleFakeGymFire
 	writetext PokefanMBeforeTextFire
@@ -154,7 +154,7 @@ SaffronGymPokefanMScript:
 	waitbutton
 	checkcode VAR_PARTYCOUNT
 	ifequal PARTY_LENGTH, .PartyFullStarter2
-	giveegg CYNDAQUIL, 5
+	giveegg FLAMBEAR, 5
 	stringtotext .eggname2, MEM_BUFFER_1
 	scall .GetStarter2Egg
 	setevent EVENT_EXPLODING_TRAP_20
@@ -164,7 +164,7 @@ SaffronGymPokefanMScript:
 	closetext
 	end
 	
-.GotTotodileGiveChikorita
+.GotCruiseGiveHappa
 	checkevent EVENT_EXPLODING_TRAP_19
 	iftrue .AfterBattleFakeGymGrass
 	writetext PokefanMBeforeTextGrass
@@ -183,7 +183,7 @@ SaffronGymPokefanMScript:
 	waitbutton
 	checkcode VAR_PARTYCOUNT
 	ifequal PARTY_LENGTH, .PartyFullStarter2
-	giveegg CHIKORITA, 5
+	giveegg HAPPA, 5
 	stringtotext .eggname2, MEM_BUFFER_1
 	scall .GetStarter2Egg
 	setevent EVENT_EXPLODING_TRAP_20
@@ -211,10 +211,10 @@ Trainer1Scene:
 	showemote EMOTE_SHOCK, SAFFRON_GYM_LASS, 30
 	turnobject PLAYER, LEFT
 	opentext
-	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
-	iftrue .Trainer1GotChikoritaUseFire
-	checkevent EVENT_GOT_TOTODILE_FROM_ELM
-	iftrue .Trainer1GotTotodileUseGrass
+	checkevent EVENT_GOT_HAPPA_FROM_ELM
+	iftrue .Trainer1GotHappaUseFire
+	checkevent EVENT_GOT_CRUISE_FROM_ELM
+	iftrue .Trainer1GotCruiseUseGrass
 	writetext LassTextBeforeWater
 	waitbutton
 	closetext
@@ -225,7 +225,7 @@ Trainer1Scene:
 	setscene SCENE_SAFFRON_GYM_TRAINER_2
 	end
 	
-.Trainer1GotChikoritaUseFire
+.Trainer1GotHappaUseFire
 	writetext LassTextBeforeFire
 	waitbutton
 	closetext
@@ -236,7 +236,7 @@ Trainer1Scene:
 	setscene SCENE_SAFFRON_GYM_TRAINER_2
 	end
 	
-.Trainer1GotTotodileUseGrass
+.Trainer1GotCruiseUseGrass
 	writetext LassTextBeforeGrass
 	waitbutton
 	closetext
@@ -251,10 +251,10 @@ Trainer2Scene:
 	playmusic MUSIC_YOUNGSTER_ENCOUNTER
 	showemote EMOTE_SHOCK, SAFFRON_GYM_YOUNGSTER, 30
 	opentext
-	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
-	iftrue .Trainer2GotChikoritaUseFire
-	checkevent EVENT_GOT_TOTODILE_FROM_ELM
-	iftrue .Trainer2GotTotodileUseGrass
+	checkevent EVENT_GOT_HAPPA_FROM_ELM
+	iftrue .Trainer2GotHappaUseFire
+	checkevent EVENT_GOT_CRUISE_FROM_ELM
+	iftrue .Trainer2GotCruiseUseGrass
 	writetext YoungsterTextBeforeWater
 	waitbutton
 	closetext
@@ -265,7 +265,7 @@ Trainer2Scene:
 	setscene SCENE_SAFFRON_GYM_NOTHING
 	end
 
-.Trainer2GotChikoritaUseFire
+.Trainer2GotHappaUseFire
 	writetext YoungsterTextBeforeFire
 	waitbutton
 	closetext
@@ -276,7 +276,7 @@ Trainer2Scene:
 	setscene SCENE_SAFFRON_GYM_NOTHING
 	end
 
-.Trainer2GotTotodileUseGrass
+.Trainer2GotCruiseUseGrass
 	writetext YoungsterTextBeforeGrass
 	waitbutton
 	closetext
@@ -290,9 +290,9 @@ Trainer2Scene:
 SaffronGymYoungsterScript:
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
+	checkevent EVENT_GOT_HAPPA_FROM_ELM
 	iftrue .Trainer2AfterFire
-	checkevent EVENT_GOT_TOTODILE_FROM_ELM
+	checkevent EVENT_GOT_CRUISE_FROM_ELM
 	iftrue .Trainer2AfterGrass
 	writetext Trainer2AfterWaterText
 	waitbutton
@@ -317,9 +317,9 @@ SaffronGymGuyScript:
 	opentext
 	checkevent EVENT_EXPLODING_TRAP_19
 	iftrue .GymGuyFakeGymAfter
-	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
+	checkevent EVENT_GOT_HAPPA_FROM_ELM
 	iftrue .GymGuyFire
-	checkevent EVENT_GOT_TOTODILE_FROM_ELM
+	checkevent EVENT_GOT_CRUISE_FROM_ELM
 	iftrue .GymGuyGrass
 	writetext GymGuyWaterText
 	waitbutton

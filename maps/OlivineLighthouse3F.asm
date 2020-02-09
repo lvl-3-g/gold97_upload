@@ -92,19 +92,23 @@ SailorTerrellAfterBattleText:
 	done
 	
 CooltrainermNickSeenText:
-	text "No one can pass"
-	line "here unless they"
-	cont "defeat me!"
+	text "Do your #MON"
+	line "know the ability"
+	para "to carry you over"
+	line "water?"
+	para "There's an old man"
+	line "over in BIRDON who"
+	cont "taught mine!"
 	done
 
 CooltrainermNickBeatenText:
-	text "You may pass..."
+	text "Have you met him?"
 	done
 
 CooltrainermNickAfterBattleText:
 	text "Not many people"
 	line "come through here"
-	cont "to battle anyways."
+	cont "to battle."
 	done
 
 

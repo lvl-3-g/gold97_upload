@@ -19,31 +19,31 @@ RivalBattleFinal:
 	writetext UndergroundSilverBeforeText
 	waitbutton
 	closetext
-	checkevent EVENT_GOT_TOTODILE_FROM_ELM
-	iftrue .totodile
-	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
-	iftrue .chikorita
+	checkevent EVENT_GOT_CRUISE_FROM_ELM
+	iftrue .cruise
+	checkevent EVENT_GOT_HAPPA_FROM_ELM
+	iftrue .happa
 	winlosstext UndergroundSilverWinText, UndergroundSilverLossText
 	;setlasttalked SLOWPOKE_WELL_B1F_SILVER
-	loadtrainer RIVAL1, RIVAL1_5_TOTODILE
+	loadtrainer RIVAL1, RIVAL1_5_CRUISE
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
 	jump .returnfrombattle
 
-.totodile
+.cruise
 	winlosstext UndergroundSilverWinText, UndergroundSilverLossText
 	;setlasttalked SLOWPOKE_WELL_B1F_SILVER
-	loadtrainer RIVAL1, RIVAL1_5_CHIKORITA
+	loadtrainer RIVAL1, RIVAL1_5_HAPPA
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
 	jump .returnfrombattle
 
-.chikorita
+.happa
 	winlosstext UndergroundSilverWinText, UndergroundSilverLossText
 	;setlasttalked SLOWPOKE_WELL_B1F_SILVER
-	loadtrainer RIVAL1, RIVAL1_5_CYNDAQUIL
+	loadtrainer RIVAL1, RIVAL1_5_FLAMBEAR
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle

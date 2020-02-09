@@ -124,8 +124,8 @@ gfx/pokemon/dewgong/frames.asm: gfx/pokemon/dewgong/front.animated.tilemap gfx/p
 	tools/pokemon_animation -f $^ > $@
 	echo "	db \$$4d" >> $@
 
-# Lugia has two unused tile ids in its last frame. The tiles themselves are missing.
-gfx/pokemon/lugia/frames.asm: gfx/pokemon/lugia/front.animated.tilemap gfx/pokemon/lugia/front.dimensions
+# Blissey has two unused tile ids in its last frame. The tiles themselves are missing.
+gfx/pokemon/blissey/frames.asm: gfx/pokemon/blissey/front.animated.tilemap gfx/pokemon/blissey/front.dimensions
 	tools/pokemon_animation -f $^ > $@
 	echo "	db \$$5e, \$$59" >> $@
 

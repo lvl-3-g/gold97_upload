@@ -5039,7 +5039,7 @@ BattleCommand_ForceSwitch:
 	jp z, .fail
 	cp BATTLETYPE_TRAP
 	jp z, .fail
-	cp BATTLETYPE_CELEBI
+	cp BATTLETYPE_LEAFEON
 	jp z, .fail
 	cp BATTLETYPE_SUICUNE
 	jp z, .fail

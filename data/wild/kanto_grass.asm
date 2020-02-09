@@ -75,10 +75,10 @@ KantoGrassWildMons:
 	db 40, DODRIO
 	db 40, DODRIO
 	; nite
-	db 36, GRANBULL
+	db 36, QUAGSIRE
 	db 38, NOCTOWL
 	db 40, RATICATE
-	db 40, GRANBULL
+	db 40, QUAGSIRE
 	db 42, NOCTOWL
 	db 42, NOCTOWL
 	db 42, NOCTOWL
@@ -116,7 +116,7 @@ KantoGrassWildMons:
 	db 32, PIDGEOTTO
 	db 35, PIDGEOTTO
 	db 36, PIDGEOT
-	db 33, MAGCARGO
+	db 33, MADAME
 	db 32, RATICATE
 	db 33, JUMPLUFF
 	db 33, JUMPLUFF
@@ -124,7 +124,7 @@ KantoGrassWildMons:
 	db 32, PIDGEOTTO
 	db 35, PIDGEOTTO
 	db 36, PIDGEOT
-	db 33, MAGCARGO
+	db 33, MADAME
 	db 32, RATICATE
 	db 33, JUMPLUFF
 	db 33, JUMPLUFF
@@ -132,7 +132,7 @@ KantoGrassWildMons:
 	db 32, NOCTOWL
 	db 32, RATICATE
 	db 33, NOCTOWL
-	db 33, MAGCARGO
+	db 33, MADAME
 	db 32, RATICATE
 	db 33, NOCTOWL
 	db 33, NOCTOWL
@@ -143,7 +143,7 @@ KantoGrassWildMons:
 	db 42, PIDGEOTTO
 	db 42, PIDGEOTTO
 	db 43, PIDGEOT
-	db 43, MAGCARGO
+	db 43, MADAME
 	db 42, RATICATE
 	db 43, JUMPLUFF
 	db 43, JUMPLUFF
@@ -151,7 +151,7 @@ KantoGrassWildMons:
 	db 42, PIDGEOTTO
 	db 42, PIDGEOTTO
 	db 43, PIDGEOT
-	db 43, MAGCARGO
+	db 43, MADAME
 	db 42, RATICATE
 	db 43, JUMPLUFF
 	db 43, JUMPLUFF
@@ -159,7 +159,7 @@ KantoGrassWildMons:
 	db 42, NOCTOWL
 	db 42, RATICATE
 	db 43, NOCTOWL
-	db 43, MAGCARGO
+	db 43, MADAME
 	db 42, RATICATE
 	db 43, NOCTOWL
 	db 43, NOCTOWL
@@ -170,7 +170,7 @@ KantoGrassWildMons:
 	db 42, MAGNETON
 	db 42, ELECTRODE
 	db 43, HAUNTER
-	db 43, PILOSWINE
+	db 43, CURPAN
 	db 42, RATICATE
 	db 43, RATICATE
 	db 43, RATICATE
@@ -178,7 +178,7 @@ KantoGrassWildMons:
 	db 42, MAGNETON
 	db 42, ELECTRODE
 	db 43, HAUNTER
-	db 43, PILOSWINE
+	db 43, CURPAN
 	db 42, RATICATE
 	db 43, RATICATE
 	db 43, RATICATE
@@ -186,7 +186,7 @@ KantoGrassWildMons:
 	db 42, MAGNETON
 	db 42, ELECTRODE
 	db 43, HAUNTER
-	db 43, PILOSWINE
+	db 43, CURPAN
 	db 42, RATICATE
 	db 43, RATICATE
 	db 43, RATICATE
@@ -226,7 +226,7 @@ KantoGrassWildMons:
 	db 37, SLOWPOKE
 	db 37, SLOWPOKE
 	db 38, JYNX
-	db 37, GRANBULL
+	db 37, QUAGSIRE
 	db 39, JYNX
 	; day
 	db 37, GOLBAT
@@ -234,7 +234,7 @@ KantoGrassWildMons:
 	db 37, SLOWPOKE
 	db 37, SLOWPOKE
 	db 38, JYNX
-	db 37, GRANBULL
+	db 37, QUAGSIRE
 	db 39, JYNX
 	; nite
 	db 37, GOLBAT
@@ -242,7 +242,7 @@ KantoGrassWildMons:
 	db 37, SLOWPOKE
 	db 37, SLOWPOKE
 	db 38, JYNX
-	db 37, GRANBULL
+	db 37, QUAGSIRE
 	db 39, JYNX
 	
 	map_id MOUNT_MORTAR_B1F
@@ -253,7 +253,7 @@ KantoGrassWildMons:
 	db 37, SLOWPOKE
 	db 37, SLOWPOKE
 	db 38, JYNX
-	db 37, GRANBULL
+	db 37, QUAGSIRE
 	db 39, JYNX
 	; day
 	db 37, GOLBAT
@@ -261,7 +261,7 @@ KantoGrassWildMons:
 	db 37, SLOWPOKE
 	db 37, SLOWPOKE
 	db 38, JYNX
-	db 37, GRANBULL
+	db 37, QUAGSIRE
 	db 39, JYNX
 	; nite
 	db 37, GOLBAT
@@ -269,7 +269,7 @@ KantoGrassWildMons:
 	db 37, SLOWPOKE
 	db 37, SLOWPOKE
 	db 38, JYNX
-	db 37, GRANBULL
+	db 37, QUAGSIRE
 	db 39, JYNX
 	
  	map_id SAFARI_ZONE_BETA

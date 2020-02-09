@@ -34,7 +34,7 @@ BlackthornDragonSpeechHouseGrannyText:
 	line "because of the"
 	para "many whirlpools"
 	line "that surround it."
-	para "It is a dangrous"
+	para "It is a dangerous"
 	line "maze that leads"
 	cont "nowhere."
 	para "Make sure you know"

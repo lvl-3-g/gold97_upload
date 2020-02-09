@@ -13,7 +13,7 @@ LavenderSpeechHousePokefanFScript:
 	opentext
 	checkevent EVENT_HERDED_FARFETCHD
 	iffalse .PryceVisitsSoonG
-	checkevent EVENT_FOUGHT_SUDOWOODO
+	checkevent EVENT_FOUGHT_BIPETAL
 	iffalse .PryceIsVisitingG
 	checkflag ENGINE_GLACIERBADGE
 	iffalse .GoBeatPryce
@@ -57,7 +57,7 @@ LavenderSpeechHouseTwinScript:
 	opentext
 	checkevent EVENT_HERDED_FARFETCHD
 	iffalse .PryceVisitsSoon
-	checkevent EVENT_FOUGHT_SUDOWOODO
+	checkevent EVENT_FOUGHT_BIPETAL
 	iffalse .PryceIsVisiting
 	writetext PryceVisitingIsMyFavorite
 	waitbutton
@@ -87,7 +87,7 @@ LavenderSpeechHousePryceScript:
 	applymovement LAVENDERSPEECHHOUSE_PRYCE, PryceLeavesMovement2
 	playsound SFX_EXIT_BUILDING
 	disappear LAVENDERSPEECHHOUSE_PRYCE
-	setevent EVENT_FOUGHT_SUDOWOODO
+	setevent EVENT_FOUGHT_BIPETAL
 	clearevent EVENT_JASMINE_RETURNED_TO_GYM
 	waitsfx
 	end
@@ -96,7 +96,7 @@ LavenderSpeechHousePryceScript:
 	applymovement LAVENDERSPEECHHOUSE_PRYCE, PryceLeavesMovement2Alt
 	playsound SFX_EXIT_BUILDING
 	disappear LAVENDERSPEECHHOUSE_PRYCE
-	setevent EVENT_FOUGHT_SUDOWOODO
+	setevent EVENT_FOUGHT_BIPETAL
 	clearevent EVENT_JASMINE_RETURNED_TO_GYM
 	waitsfx
 	end
@@ -250,4 +250,4 @@ LavenderSpeechHouse_MapEvents:
 	db 3 ; object events
 	object_event  1,  2, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, LavenderSpeechHousePokefanFScript, -1
 	object_event  5,  2, SPRITE_TWIN, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 1, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, LavenderSpeechHouseTwinScript, -1
-	object_event  7,  4, SPRITE_PRYCE, SPRITEMOVEDATA_SPINRANDOM_SLOW, 1, 1, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, LavenderSpeechHousePryceScript, EVENT_FOUGHT_SUDOWOODO
+	object_event  7,  4, SPRITE_PRYCE, SPRITEMOVEDATA_SPINRANDOM_SLOW, 1, 1, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, LavenderSpeechHousePryceScript, EVENT_FOUGHT_BIPETAL

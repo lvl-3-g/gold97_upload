@@ -470,9 +470,9 @@ ForestTreeLeftAnimation:
 	ld b, h
 	ld c, l
 
-; Only during the Celebi event.
-	ld a, [wCelebiEvent]
-	bit CELEBIEVENT_FOREST_IS_RESTLESS_F, a
+; Only during the Leafeon event.
+	ld a, [wLeafeonEvent]
+	bit LEAFEONEVENT_FOREST_IS_RESTLESS_F, a
 	jr nz, .asm_fc46c
 	ld hl, ForestTreeLeftFrames
 	jr .asm_fc47d
@@ -507,9 +507,9 @@ ForestTreeRightAnimation:
 	ld b, h
 	ld c, l
 
-; Only during the Celebi event.
-	ld a, [wCelebiEvent]
-	bit CELEBIEVENT_FOREST_IS_RESTLESS_F, a
+; Only during the Leafeon event.
+	ld a, [wLeafeonEvent]
+	bit LEAFEONEVENT_FOREST_IS_RESTLESS_F, a
 	jr nz, .asm_fc4d4
 	ld hl, ForestTreeRightFrames
 	jr .asm_fc4eb
@@ -540,9 +540,9 @@ ForestTreeLeftAnimation2:
 	ld b, h
 	ld c, l
 
-; Only during the Celebi event.
-	ld a, [wCelebiEvent]
-	bit CELEBIEVENT_FOREST_IS_RESTLESS_F, a
+; Only during the Leafeon event.
+	ld a, [wLeafeonEvent]
+	bit LEAFEONEVENT_FOREST_IS_RESTLESS_F, a
 	jr nz, .asm_fc502
 	ld hl, ForestTreeLeftFrames
 	jr .asm_fc515
@@ -570,9 +570,9 @@ ForestTreeRightAnimation2:
 	ld b, h
 	ld c, l
 
-; Only during the Celebi event.
-	ld a, [wCelebiEvent]
-	bit CELEBIEVENT_FOREST_IS_RESTLESS_F, a
+; Only during the Leafeon event.
+	ld a, [wLeafeonEvent]
+	bit LEAFEONEVENT_FOREST_IS_RESTLESS_F, a
 	jr nz, .asm_fc52c
 	ld hl, ForestTreeRightFrames
 	jr .asm_fc545

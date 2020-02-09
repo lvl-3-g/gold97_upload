@@ -265,7 +265,7 @@ Jasmine_IronTailSpeech:
 Jasmine_GoodLuck:
 	text "Good luck with"
 	line "the rest of your"
-	cont "LEAGUE CHALLENGE."
+	cont "LEAGUE challenge."
 	para "I expect you to"
 	line "make it to the"
 	cont "end."
@@ -307,7 +307,7 @@ GentlemanPrestonSeenText:
 	done
 
 GentlemanPrestonBeatenText:
-	text "A good TRAINER is"
+	text "A good trainer is"
 	line "ready to face all"
 	cont "types."
 	done
@@ -324,7 +324,7 @@ GentlemanAlfredSeenText:
 	text "This GYM used to"
 	line "use ROCK #MON."
 	para "But JASMINE found"
-	line "the new STEEL TYPE"
+	line "the new STEEL type"
 	cont "more appealing."
 	done
 
@@ -340,7 +340,7 @@ GentlemanAlfredAfterBattleText:
 	done
 	
 SuperNerdTomSeenText:
-	text "The STEEL-TYPE"
+	text "The STEEL type"
 	line "is rare!"
 	para "Which means of"
 	line "course I have to"

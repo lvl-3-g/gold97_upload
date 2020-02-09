@@ -102,7 +102,7 @@ CherrygroveCity_MapEvents:
 	warp_event  5, 22, CHERRYGROVE_POKECENTER_1F, 1
 	warp_event 11, 22, CHERRYGROVE_MART, 1
 	warp_event  9,  1, VICTORY_ROAD, 1
-	warp_event  3, 17, CIANWOOD_LUGIA_SPEECH_HOUSE, 1
+	warp_event  3, 17, CIANWOOD_BLISSEY_SPEECH_HOUSE, 1
 	warp_event 15, 19, CIANWOOD_PHARMACY, 1
 	warp_event 14, 15, ROUTE_16_FUCHSIA_SPEECH_HOUSE, 1
 	warp_event 15, 15, ROUTE_16_FUCHSIA_SPEECH_HOUSE, 2

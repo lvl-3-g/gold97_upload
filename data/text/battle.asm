@@ -28,7 +28,7 @@ PokemonFellFromTreeText:
 	line "out of the tree!"
 	prompt
 
-WildCelebiAppearedText:
+WildLeafeonAppearedText:
 	text "Wild @"
 	text_ram wEnemyMonNick
 	text_start

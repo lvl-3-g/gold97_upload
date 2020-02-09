@@ -123,7 +123,7 @@ GivePokerusAndConvertBerries:
 
 ConvertBerriesToBerryJuice:
 ; If we haven't been to Goldenrod City at least once,
-; prevent Shuckle from turning held Berry into Berry Juice.
+; prevent Rinring from turning held Berry into Berry Juice.
 	ld hl, wStatusFlags2
 	bit STATUSFLAGS2_REACHED_GOLDENROD_F, [hl]
 	ret z
@@ -136,7 +136,7 @@ ConvertBerriesToBerryJuice:
 	push af
 	push hl
 	ld a, [hl]
-	cp SHUCKLE
+	cp RINRING
 	jr nz, .loopMon
 	ld bc, MON_ITEM
 	add hl, bc

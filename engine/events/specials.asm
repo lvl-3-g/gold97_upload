@@ -294,19 +294,19 @@ ActivateFishingSwarm:
 StoreSwarmMapIndices::
 	ld a, c
 	and a
-	jr nz, .yanma
+	jr nz, .osunfish
 ; swarm dark cave violet entrance
 	ld a, d
-	ld [wDunsparceMapGroup], a
+	ld [wEeveeMapGroup], a
 	ld a, e
-	ld [wDunsparceMapNumber], a
+	ld [wEeveeMapNumber], a
 	ret
 
-.yanma
+.osunfish
 	ld a, d
-	ld [wYanmaMapGroup], a
+	ld [wOsunfishMapGroup], a
 	ld a, e
-	ld [wYanmaMapNumber], a
+	ld [wOsunfishMapNumber], a
 	ret
 
 CheckPokerus:

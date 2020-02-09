@@ -129,7 +129,7 @@ CeladonGameCornerPrizeRoomPokemonVendor:
 	closewindow
 	ifequal 1, .pikachu
 	ifequal 2, .porygon
-	ifequal 3, .larvitar
+	ifequal 3, .wolfan
 	jump CeladonPrizeRoom_cancel
 
 .pikachu
@@ -168,21 +168,21 @@ CeladonGameCornerPrizeRoomPokemonVendor:
 	takecoins 5555
 	jump .loop
 
-.larvitar
+.wolfan
 	checkcoins 8888
 	ifequal HAVE_LESS, CeladonPrizeRoom_notenoughcoins
 	checkcode VAR_PARTYCOUNT
 	ifequal PARTY_LENGTH, CeladonPrizeRoom_notenoughroom
-	pokenamemem LARVITAR, MEM_BUFFER_0
+	pokenamemem WOLFAN, MEM_BUFFER_0
 	scall CeladonPrizeRoom_askbuy
 	iffalse CeladonPrizeRoom_cancel
 	waitsfx
 	playsound SFX_TRANSACTION
 	writetext CeladonPrizeRoom_HereYouGoText
 	waitbutton
-	writebyte LARVITAR
+	writebyte WOLFAN
 	special GameCornerPrizeMonCheckDex
-	givepoke LARVITAR, 40
+	givepoke WOLFAN, 40
 	takecoins 8888
 	jump .loop
 

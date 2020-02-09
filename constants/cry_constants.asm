@@ -48,27 +48,27 @@
 	const CRY_GIRAFARIG
 	const CRY_RAIKOU
 	const CRY_MAREEP
-	const CRY_TOGETIC
+	const CRY_PONITTLE
 	const CRY_HOOTHOOT
-	const CRY_SENTRET
+	const CRY_TANG
 	const CRY_SLOWKING
-	const CRY_CYNDAQUIL
-	const CRY_CHIKORITA
-	const CRY_TOTODILE
+	const CRY_FLAMBEAR
+	const CRY_HAPPA
+	const CRY_CRUISE
 	const CRY_GLIGAR
 	const CRY_CLEFFA
-	const CRY_SLUGMA
+	const CRY_MEOWSY
 	const CRY_LEDYBA
 	const CRY_ENTEI
-	const CRY_WOOPER
+	const CRY_ANCHORAGE
 	const CRY_MANTINE
-	const CRY_TYPHLOSION
+	const CRY_DYNABEAR
 	const CRY_NATU
-	const CRY_TEDDIURSA
+	const CRY_QWILFISH
 	const CRY_SUNFLORA
 	const CRY_AMPHAROS
-	const CRY_MAGCARGO
+	const CRY_MADAME
 	const CRY_PICHU
 	const CRY_AIPOM
-	const CRY_DUNSPARCE
+	const CRY_PARA
 	const CRY_DONPHAN

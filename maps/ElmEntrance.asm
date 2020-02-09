@@ -57,12 +57,12 @@ BattleScript:
 	writetext TimeToBattle
 	waitbutton
 	closetext
-	checkevent EVENT_GOT_TOTODILE_FROM_ELM
-	iftrue .Totodile
-	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
-	iftrue .Chikorita
+	checkevent EVENT_GOT_CRUISE_FROM_ELM
+	iftrue .Cruise
+	checkevent EVENT_GOT_HAPPA_FROM_ELM
+	iftrue .Happa
 	winlosstext SilverEntranceWinText, SilverEntranceLossText
-	loadtrainer RIVAL1, RIVAL1_1_TOTODILE
+	loadtrainer RIVAL1, RIVAL1_1_CRUISE
 	writecode VAR_BATTLETYPE, BATTLETYPE_CANLOSE
 	startbattle
 	dontrestartmapmusic
@@ -70,9 +70,9 @@ BattleScript:
 	iftrue .AfterVictorious
 	jump .AfterYourDefeat
 
-.Totodile:
+.Cruise:
 	winlosstext SilverEntranceWinText, SilverEntranceLossText
-	loadtrainer RIVAL1, RIVAL1_1_CHIKORITA
+	loadtrainer RIVAL1, RIVAL1_1_HAPPA
 	writecode VAR_BATTLETYPE, BATTLETYPE_CANLOSE
 	startbattle
 	dontrestartmapmusic
@@ -80,9 +80,9 @@ BattleScript:
 	iftrue .AfterVictorious
 	jump .AfterYourDefeat
 
-.Chikorita:
+.Happa:
 	winlosstext SilverEntranceWinText, SilverEntranceLossText
-	loadtrainer RIVAL1, RIVAL1_1_CYNDAQUIL
+	loadtrainer RIVAL1, RIVAL1_1_FLAMBEAR
 	writecode VAR_BATTLETYPE, BATTLETYPE_CANLOSE
 	startbattle
 	dontrestartmapmusic

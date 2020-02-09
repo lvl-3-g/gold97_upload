@@ -86,8 +86,8 @@ SpecialsPointers::
 	add_special ActivateFishingSwarm ; $48
 	add_special ToggleMaptileDecorations
 	add_special ToggleDecorationsVisibility
-	add_special GiveShuckle
-	add_special ReturnShuckle
+	add_special GiveRinring
+	add_special ReturnRinring
 	add_special BillsGrandfather
 	add_special CheckPokerus
 	add_special DisplayCoinCaseBalance
@@ -156,8 +156,8 @@ SpecialsPointers::
 	add_special AskMobileOrCable
 	add_special HoOhChamber
 	add_special Function102142
-	add_special CelebiShrineEvent
-	add_special CheckCaughtCelebi ; $90
+	add_special LeafeonShrineEvent
+	add_special CheckCaughtLeafeon ; $90
 	add_special PokeSeer
 	add_special BuenasPassword
 	add_special BuenaPrize

@@ -126,7 +126,7 @@ ENDM
 	map_const WHIRL_ISLAND_SE,                              5,  9 ; 70
 	map_const WHIRL_ISLAND_B1F,                            20, 18 ; 71
 	map_const WHIRL_ISLAND_B2F,                            20, 18 ; 72
-	map_const WHIRL_ISLAND_LUGIA_CHAMBER,                  10,  9 ; 73
+	map_const WHIRL_ISLAND_BLISSEY_CHAMBER,                  10,  9 ; 73
 	map_const SILVER_CAVE_ROOM_1,                          10, 18 ; 74
 	map_const SILVER_CAVE_ROOM_2,                          15, 18 ; 75
 	map_const SILVER_CAVE_ROOM_3,                          10, 18 ; 76
@@ -149,7 +149,7 @@ ENDM
 	map_const ECRUTEAK_TIN_TOWER_ENTRANCE,                 10,  9 ;  1
 	map_const WISE_TRIOS_ROOM,                              4,  4 ;  2
 	map_const ECRUTEAK_POKECENTER_1F,                       8,  4 ;  3
-	map_const ECRUTEAK_LUGIA_SPEECH_HOUSE,                  5,  4 ;  4
+	map_const ECRUTEAK_BLISSEY_SPEECH_HOUSE,                  5,  4 ;  4
 	map_const ECRUTEAK_MART,                                8,  4 ;  6
 	map_const ECRUTEAK_ITEMFINDER_HOUSE,                    5,  4 ;  8
 	map_const ECRUTEAK_CITY,                               20, 18 ;  9
@@ -505,6 +505,6 @@ ENDM
 	map_const MR_POKEMONS_HOUSE,                            4,  4 ; 10
 	map_const CHERRYGROVE_CITY,                            10, 13 ;  3
 	map_const MOUNT_MOON_SQUARE,                           10,  9 ; 10
-	map_const CIANWOOD_LUGIA_SPEECH_HOUSE,                  5,  4 ;  9
+	map_const CIANWOOD_BLISSEY_SPEECH_HOUSE,                  5,  4 ;  9
 	map_const CIANWOOD_PHARMACY,                            5,  4 ;  7
 	map_const ROUTE_16_FUCHSIA_SPEECH_HOUSE,                8,  4 ; 23

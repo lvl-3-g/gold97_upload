@@ -372,8 +372,8 @@ Falkner:
 KurtsHouseOakPhoto:
 	jumptext KurtsHouseOakPhotoText
 
-KurtsHouseCelebiStatue:
-	jumptext KurtsHouseCelebiStatueText
+KurtsHouseLeafeonStatue:
+	jumptext KurtsHouseLeafeonStatueText
 
 KurtsHouseBookshelf:
 	jumpstd difficultbookshelf
@@ -549,7 +549,7 @@ KurtsHouseOakPhotoText:
 	cont "hat."
 	done
 
-KurtsHouseCelebiStatueText:
+KurtsHouseLeafeonStatueText:
 	text "It's a statue of"
 	line "the forest's pro-"
 	cont "tector."
@@ -682,7 +682,7 @@ KurtsHouse_MapEvents:
 	bg_event  5,  1, BGEVENT_READ, KurtsHouseBookshelf
 	bg_event  2,  0, BGEVENT_READ, KurtsHouseBookshelf
 	bg_event  3,  0, BGEVENT_READ, KurtsHouseBookshelf
-	bg_event  7,  0, BGEVENT_READ, KurtsHouseCelebiStatue
+	bg_event  7,  0, BGEVENT_READ, KurtsHouseLeafeonStatue
 
 	db 3 ; object events
 	object_event  4,  2, SPRITE_KURT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Kurt1, EVENT_KURTS_HOUSE_KURT_1

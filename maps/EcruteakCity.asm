@@ -313,7 +313,7 @@ EcruteakCity_MapEvents:
 	warp_event 22, 31, TEKU_PORT_PASSAGE, 1
 	warp_event 23, 31, TEKU_PORT_PASSAGE, 2
 	warp_event 31, 10, ECRUTEAK_POKECENTER_1F, 1
-	warp_event  7, 17, ECRUTEAK_LUGIA_SPEECH_HOUSE, 1
+	warp_event  7, 17, ECRUTEAK_BLISSEY_SPEECH_HOUSE, 1
 	warp_event  7, 27, OLIVINE_LIGHTHOUSE_1F, 2
 	warp_event 31, 16, ECRUTEAK_MART, 1
 	warp_event 10, 11, GOLDENROD_GYM, 1

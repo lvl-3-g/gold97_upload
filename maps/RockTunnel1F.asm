@@ -2,7 +2,8 @@
 	const ROCKTUNNEL1F_POKE_BALL1
 	const ROCKTUNNEL1F_POKE_BALL2
 	const ROCKTUNNEL1F_BOULDER
-	const ROCKTUNNEL1F_MORTY
+	const ROCKTUNNEL1F_WHITNEY
+	const ROCKTUNNEL1F_ITEMBALL
 
 RockTunnel1F_MapScripts:
 	db 0 ; scene scripts
@@ -21,14 +22,18 @@ RockTunnel1FHiddenXAccuracy:
 RockTunnel1FHiddenXDefend:
 	hiddenitem X_DEFEND, EVENT_ROCK_TUNNEL_1F_HIDDEN_X_DEFEND
 	
+RockTunnel1FHeartStone:
+	itemball SUN_STONE
+
+	
 RockTunnel1FBoulder:
 	jumpstd strengthboulder
 	
-RockTunnelMortyScript:
-	jumptextfaceplayer RockTunnelMortyText
+RockTunnelWhitneyScript:
+	jumptextfaceplayer RockTunnelWhitneyText
 	end
 
-RockTunnelMortyText:
+RockTunnelWhitneyText:
 	text "WHITNEY: Hi, I'm"
 	line "WHITNEY, leader of"
 	cont "the TEKU CITY GYM."
@@ -64,9 +69,10 @@ RockTunnel1F_MapEvents:
 	bg_event 29,  1, BGEVENT_ITEM, RockTunnel1FHiddenXAccuracy
 	bg_event 26,  8, BGEVENT_ITEM, RockTunnel1FHiddenXDefend
 
-	db 4 ; object events
+	db 5 ; object events
 	object_event  8, 17, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, RockTunnel1FElixer, EVENT_ROCK_TUNNEL_1F_ELIXER
 	object_event 39,  6, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, RockTunnel1FTMSteelWing, EVENT_ROCK_TUNNEL_1F_TM_STEEL_WING
 	object_event 16, 16, SPRITE_BOULDER, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, RockTunnel1FBoulder, -1
-	object_event 15,  1, SPRITE_WHITNEY, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, RockTunnelMortyScript, EVENT_BURNED_TOWER_MORTY
+	object_event 15,  1, SPRITE_WHITNEY, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, RockTunnelWhitneyScript, EVENT_BURNED_TOWER_MORTY
+	object_event 37, 16, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, RockTunnel1FHeartStone, EVENT_PICKED_UP_GOLD_BERRY_FROM_AERODACTYL_ITEM_ROOM
 

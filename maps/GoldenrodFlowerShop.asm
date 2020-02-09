@@ -48,47 +48,47 @@ N64HouseScientistScript:
 	end
 	
 .N643PeopleTimeForStarter3
-	checkevent EVENT_USED_THE_CARD_KEY_IN_THE_RADIO_TOWER
+	checkevent EVENT_TIN_TOWER_1F_ENTEI
 	iftrue .AlreadyGotStarter3
 	writetext N64HouseScientistText5
 	waitbutton
-	checkevent EVENT_GOT_TOTODILE_FROM_ELM
-	iftrue .HaveTotodileGiveCyndaquil
-	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
-	iftrue .HaveChikoritaGiveTotodile
+	checkevent EVENT_GOT_CRUISE_FROM_ELM
+	iftrue .HaveCruiseGiveFlambear
+	checkevent EVENT_GOT_HAPPA_FROM_ELM
+	iftrue .HaveHappaGiveCruise
 	checkcode VAR_PARTYCOUNT
 	ifequal PARTY_LENGTH, .PartyFullStarter3
-	giveegg CHIKORITA, 5
+	giveegg HAPPA, 5
 	stringtotext .eggname3, MEM_BUFFER_1
 	scall .GetStarter3Egg
 	writetext TakeGoodCareOfStarter3
 	waitbutton
 	closetext
-	setevent EVENT_USED_THE_CARD_KEY_IN_THE_RADIO_TOWER
+	setevent EVENT_TIN_TOWER_1F_ENTEI
 	end
 	
-.HaveChikoritaGiveTotodile
+.HaveHappaGiveCruise
 	checkcode VAR_PARTYCOUNT
 	ifequal PARTY_LENGTH, .PartyFullStarter3
-	giveegg TOTODILE, 5
+	giveegg CRUISE, 5
 	stringtotext .eggname3, MEM_BUFFER_1
 	scall .GetStarter3Egg
 	writetext TakeGoodCareOfStarter3
 	waitbutton
 	closetext
-	setevent EVENT_USED_THE_CARD_KEY_IN_THE_RADIO_TOWER
+	setevent EVENT_TIN_TOWER_1F_ENTEI
 	end
 	
-.HaveTotodileGiveCyndaquil
+.HaveCruiseGiveFlambear
 	checkcode VAR_PARTYCOUNT
 	ifequal PARTY_LENGTH, .PartyFullStarter3
-	giveegg CYNDAQUIL, 5
+	giveegg FLAMBEAR, 5
 	stringtotext .eggname3, MEM_BUFFER_1
 	scall .GetStarter3Egg
 	writetext TakeGoodCareOfStarter3
 	waitbutton
 	closetext
-	setevent EVENT_USED_THE_CARD_KEY_IN_THE_RADIO_TOWER
+	setevent EVENT_TIN_TOWER_1F_ENTEI
 	end
 	
 .AlreadyGotStarter3

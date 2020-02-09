@@ -539,10 +539,10 @@ StartTrainerBattle_DrawSineWave:
 	calc_sine_wave
 ```
 
-And `CelebiEvent_Cosine` in [engine/events/celebi.asm](/engine/events/celebi.asm):
+And `LeafeonEvent_Cosine` in [engine/events/leafeon.asm](/engine/events/leafeon.asm):
 
 ```asm
-CelebiEvent_Cosine:
+LeafeonEvent_Cosine:
 ; a = d * cos(a * pi/32)
 	add %010000 ; cos(x) = sin(x + pi/2)
 	calc_sine_wave

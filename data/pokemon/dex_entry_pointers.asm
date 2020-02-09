@@ -151,17 +151,17 @@ PokedexDataPointerTable:
 	dw DragonitePokedexEntry
 	dw MewtwoPokedexEntry
 	dw MewPokedexEntry
-	dw ChikoritaPokedexEntry
-	dw BayleefPokedexEntry
-	dw MeganiumPokedexEntry
-	dw CyndaquilPokedexEntry
-	dw QuilavaPokedexEntry
-	dw TyphlosionPokedexEntry
-	dw TotodilePokedexEntry
-	dw CroconawPokedexEntry
-	dw FeraligatrPokedexEntry
-	dw SentretPokedexEntry
-	dw FurretPokedexEntry
+	dw HappaPokedexEntry
+	dw BlossomolePokedexEntry
+	dw BlossomitePokedexEntry
+	dw FlambearPokedexEntry
+	dw VolbearPokedexEntry
+	dw DynabearPokedexEntry
+	dw CruisePokedexEntry
+	dw AqualloPokedexEntry
+	dw AquariusPokedexEntry
+	dw TangPokedexEntry
+	dw TangrowthPokedexEntry
 	dw HoothootPokedexEntry
 	dw NoctowlPokedexEntry
 	dw LedybaPokedexEntry
@@ -169,13 +169,13 @@ PokedexDataPointerTable:
 	dw SpinarakPokedexEntry
 	dw AriadosPokedexEntry
 	dw CrobatPokedexEntry
-	dw ChinchouPokedexEntry
-	dw LanturnPokedexEntry
+	dw KotoraPokedexEntry
+	dw RaitoraPokedexEntry
 	dw PichuPokedexEntry
 	dw CleffaPokedexEntry
 	dw IgglybuffPokedexEntry
 	dw TogepiPokedexEntry
-	dw TogeticPokedexEntry
+	dw PonittlePokedexEntry
 	dw NatuPokedexEntry
 	dw XatuPokedexEntry
 	dw MareepPokedexEntry
@@ -183,45 +183,45 @@ PokedexDataPointerTable:
 	dw AmpharosPokedexEntry
 	dw BellossomPokedexEntry
 	dw MarillPokedexEntry
-	dw AzumarillPokedexEntry
-	dw SudowoodoPokedexEntry
+	dw BomsealPokedexEntry
+	dw BipetalPokedexEntry
 	dw PolitoedPokedexEntry
 	dw HoppipPokedexEntry
 	dw SkiploomPokedexEntry
 	dw JumpluffPokedexEntry
 	dw AipomPokedexEntry
-	dw SunkernPokedexEntry
+	dw KingoldPokedexEntry
 	dw SunfloraPokedexEntry
-	dw YanmaPokedexEntry
-	dw WooperPokedexEntry
-	dw QuagsirePokedexEntry
+	dw OsunfishPokedexEntry
+	dw AnchoragePokedexEntry
+	dw GrotessPokedexEntry
 	dw EspeonPokedexEntry
 	dw UmbreonPokedexEntry
 	dw MurkrowPokedexEntry
 	dw SlowkingPokedexEntry
-	dw MisdreavusPokedexEntry
+	dw TritalesPokedexEntry
 	dw UnownPokedexEntry
-	dw WobbuffetPokedexEntry
+	dw TwinborusPokedexEntry
 	dw GirafarigPokedexEntry
-	dw PinecoPokedexEntry
-	dw ForretressPokedexEntry
-	dw DunsparcePokedexEntry
+	dw TurbanPokedexEntry
+	dw GrimbyPokedexEntry
+	dw ParaPokedexEntry
 	dw GligarPokedexEntry
 	dw SteelixPokedexEntry
 	dw SnubbullPokedexEntry
-	dw GranbullPokedexEntry
-	dw QwilfishPokedexEntry
+	dw QuagsirePokedexEntry
+	dw PluckrossPokedexEntry
 	dw ScizorPokedexEntry
-	dw ShucklePokedexEntry
-	dw HeracrossPokedexEntry
+	dw RinringPokedexEntry
+	dw BellringPokedexEntry
 	dw SneaselPokedexEntry
-	dw TeddiursaPokedexEntry
-	dw UrsaringPokedexEntry
-	dw SlugmaPokedexEntry
-	dw MagcargoPokedexEntry
-	dw SwinubPokedexEntry
-	dw PiloswinePokedexEntry
-	dw CorsolaPokedexEntry
+	dw QwilfishPokedexEntry
+	dw NumbpuffPokedexEntry
+	dw MeowsyPokedexEntry
+	dw MadamePokedexEntry
+	dw CurstrawPokedexEntry
+	dw CurpanPokedexEntry
+	dw GrowlitePokedexEntry
 	dw RemoraidPokedexEntry
 	dw OctilleryPokedexEntry
 	dw DelibirdPokedexEntry
@@ -233,21 +233,21 @@ PokedexDataPointerTable:
 	dw PhanpyPokedexEntry
 	dw DonphanPokedexEntry
 	dw Porygon2PokedexEntry
-	dw StantlerPokedexEntry
+	dw MimeJrPokedexEntry
 	dw SmearglePokedexEntry
 	dw TyroguePokedexEntry
 	dw HitmontopPokedexEntry
 	dw SmoochumPokedexEntry
 	dw ElekidPokedexEntry
 	dw MagbyPokedexEntry
+	dw ChixPokedexEntry
 	dw MiltankPokedexEntry
-	dw BlisseyPokedexEntry
 	dw RaikouPokedexEntry
 	dw EnteiPokedexEntry
 	dw SuicunePokedexEntry
-	dw LarvitarPokedexEntry
-	dw PupitarPokedexEntry
-	dw TyranitarPokedexEntry
-	dw LugiaPokedexEntry
+	dw WolfanPokedexEntry
+	dw WarfaruPokedexEntry
+	dw LickylickyPokedexEntry
+	dw BlisseyPokedexEntry
 	dw HoOhPokedexEntry
-	dw CelebiPokedexEntry
+	dw LeafeonPokedexEntry

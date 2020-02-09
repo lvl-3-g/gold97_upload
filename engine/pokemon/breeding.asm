@@ -237,7 +237,7 @@ HatchEggs:
 	call SetSeenAndCaughtMon
 
 	ld a, [wCurPartySpecies]
-	cp MEGANIUM ; this will never hatch from an egg so the event will never be triggered
+	cp BLOSSOMITE ; this will never hatch from an egg so the event will never be triggered
 	jr nz, .nottogepi
 	; set the event flag for hatching togepi
 	ld de, EVENT_TOGEPI_HATCHED

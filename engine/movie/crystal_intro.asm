@@ -660,7 +660,7 @@ IntroScene7:
 	debgcoord 0, 0
 	call Intro_DecompressRequest2bpp_64Tiles
 
-	ld hl, IntroPichuWooperGFX
+	ld hl, IntroPichuAnchorageGFX
 	ld de, vTiles0 tile $00
 	call Intro_DecompressRequest2bpp_128Tiles
 
@@ -784,7 +784,7 @@ IntroScene9:
 	ret
 
 IntroScene10:
-; Wooper and Pichu enter.
+; Anchorage and Pichu enter.
 	call Intro_RustleGrass
 	ld hl, wIntroSceneFrameCounter
 	ld a, [hl]
@@ -792,7 +792,7 @@ IntroScene10:
 	cp $c0
 	jr z, .done
 	cp $20
-	jr z, .wooper
+	jr z, .anchorage
 	cp $40
 	jr z, .pichu
 	ret
@@ -805,9 +805,9 @@ IntroScene10:
 	call PlaySFX
 	ret
 
-.wooper
+.anchorage
 	depixel 22, 6
-	ld a, SPRITE_ANIM_INDEX_INTRO_WOOPER
+	ld a, SPRITE_ANIM_INDEX_INTRO_ANCHORAGE
 	call _InitSpriteAnimStruct
 	ld de, SFX_INTRO_PICHU
 	call PlaySFX
@@ -2006,8 +2006,8 @@ Intro_PerspectiveScrollBG:
 IntroSuicuneRunGFX:
 INCBIN "gfx/intro/suicune_run.2bpp.lz"
 
-IntroPichuWooperGFX:
-INCBIN "gfx/intro/pichu_wooper.2bpp.lz"
+IntroPichuAnchorageGFX:
+INCBIN "gfx/intro/pichu_anchorage.2bpp.lz"
 
 IntroBackgroundGFX:
 INCBIN "gfx/intro/background.2bpp.lz"

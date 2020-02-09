@@ -254,7 +254,7 @@ TrainerHikerAnthony:
 	opentext
 	checkflag ENGINE_ANTHONY
 	iftrue .Rematch
-	checkflag ENGINE_DUNSPARCE_SWARM
+	checkflag ENGINE_EEVEE_SWARM
 	iftrue .Swarm
 	checkcellnum PHONE_HIKER_ANTHONY
 	iftrue .NumberAccepted
@@ -337,7 +337,7 @@ TrainerHikerAnthony:
 	end
 
 .Swarm:
-	writetext HikerAnthonyDunsparceText
+	writetext HikerAnthonyParaText
 	waitbutton
 	closetext
 	end
@@ -530,7 +530,7 @@ HikerAnthony2AfterText:
 	line "explore endlessly."
 	done
 
-HikerAnthonyDunsparceText:
+HikerAnthonyParaText:
 	text "Hey, did you get"
 	line "an EEVEE?"
 

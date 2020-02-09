@@ -9,13 +9,13 @@ prob_total = 0
 	prob 6
 	prob 2
 ; Cleffa
-	prob 6
+	prob 5
 	prob 2
 ; Igglybuff
-	prob 6
+	prob 5
 	prob 2
 ; Smoochum
-	prob 6
+	prob 5
 	prob 2
 ; Magby
 	prob 6
@@ -23,23 +23,26 @@ prob_total = 0
 ; Elekid
 	prob 6
 	prob 2
-; Mime Jr/Stantler
+; Mime Jr/Mime JR
 	prob 6
 	prob 2
-; Ponittle/Togetic
-	prob 7
-	prob 2
-; Tritales/Misdreavus
-	prob 7
-	prob 2
-; Grimby/Forretress
+; Ponittle/Ponittle
 	prob 6
 	prob 2
-; Meowsy/Slugma
-	prob 7
+; Tritales/Tritales
+	prob 6
 	prob 2
-; Growlite/Corsola
-	prob 7
+; Grimby/Grimby
+	prob 6
+	prob 2
+; Meowsy/Meowsy
+	prob 6
+	prob 2
+; Growlite/Growlite
+	prob 6
+	prob 2
+; Tang
+	prob 5
 	prob 2
 
 OddEggs:
@@ -358,7 +361,7 @@ OddEgg1End:
 	bigdw 11 ; SDef
 	db "EGG@@@@@@@@"
 
-	db STANTLER
+	db MIME_JR
 	db NO_ITEM
 	db BARRIER, DIZZY_PUNCH, 0, 0
 	dw 02560 ; OT ID
@@ -384,7 +387,7 @@ OddEgg1End:
 	bigdw 12 ; SDef
 	db "EGG@@@@@@@@"
 
-	db STANTLER
+	db MIME_JR
 	db NO_ITEM
 	db BARRIER, DIZZY_PUNCH, 0, 0
 	dw 00256 ; OT ID
@@ -410,7 +413,7 @@ OddEgg1End:
 	bigdw 12 ; SDef
 	db "EGG@@@@@@@@"
 	
-	db TOGETIC
+	db PONITTLE
 	db NO_ITEM
 	db TACKLE, FLAME_WHEEL, 0, 0
 	dw 02560 ; OT ID
@@ -436,7 +439,7 @@ OddEgg1End:
 	bigdw 11 ; SDef
 	db "EGG@@@@@@@@"
 
-	db TOGETIC
+	db PONITTLE
 	db NO_ITEM
 	db TACKLE, FLAME_WHEEL, 0, 0
 	dw 00256 ; OT ID
@@ -462,7 +465,7 @@ OddEgg1End:
 	bigdw 11 ; SDef
 	db "EGG@@@@@@@@"
 	
-	db MISDREAVUS
+	db TRITALES
 	db NO_ITEM
 	db EMBER, FAINT_ATTACK, 0, 0
 	dw 02560 ; OT ID
@@ -488,7 +491,7 @@ OddEgg1End:
 	bigdw 10 ; SDef
 	db "EGG@@@@@@@@"
 
-	db MISDREAVUS
+	db TRITALES
 	db NO_ITEM
 	db EMBER, FAINT_ATTACK, 0, 0
 	dw 00256 ; OT ID
@@ -514,7 +517,7 @@ OddEgg1End:
 	bigdw 10 ; SDef
 	db "EGG@@@@@@@@"
 	
-	db FORRETRESS
+	db GRIMBY
 	db NO_ITEM
 	db LICK, MEAN_LOOK, POISON_GAS, 0
 	dw 02560 ; OT ID
@@ -540,7 +543,7 @@ OddEgg1End:
 	bigdw 10 ; SDef
 	db "EGG@@@@@@@@"
 
-	db FORRETRESS
+	db GRIMBY
 	db NO_ITEM
 	db LICK, MEAN_LOOK, POISON_GAS, 0
 	dw 02560 ; OT ID
@@ -566,7 +569,7 @@ OddEgg1End:
 	bigdw 10 ; SDef
 	db "EGG@@@@@@@@"
 	
-	db SLUGMA
+	db MEOWSY
 	db NO_ITEM
 	db SCRATCH, CHARM, 0, 0
 	dw 02560 ; OT ID
@@ -592,7 +595,7 @@ OddEgg1End:
 	bigdw 9 ; SDef
 	db "EGG@@@@@@@@"
 
-	db SLUGMA
+	db MEOWSY
 	db NO_ITEM
 	db SCRATCH, CHARM, 0, 0
 	dw 02560 ; OT ID
@@ -618,7 +621,7 @@ OddEgg1End:
 	bigdw 9 ; SDef
 	db "EGG@@@@@@@@"
 	
-	db CORSOLA
+	db GROWLITE
 	db NO_ITEM
 	db CRUNCH, ROAR, 0, 0
 	dw 02560 ; OT ID
@@ -644,7 +647,7 @@ OddEgg1End:
 	bigdw 10 ; SDef
 	db "EGG@@@@@@@@"
 
-	db CORSOLA
+	db GROWLITE
 	db NO_ITEM
 	db CRUNCH, ROAR, 0, 0
 	dw 02560 ; OT ID
@@ -667,5 +670,57 @@ OddEgg1End:
 	bigdw 10 ; Def
 	bigdw 11 ; Spd
 	bigdw 12 ; SAtk
+	bigdw 10 ; SDef
+	db "EGG@@@@@@@@"
+	
+	db TANG
+	db NO_ITEM
+	db CONFUSION, SLEEP_POWDER, ABSORB, 0
+	dw 02560 ; OT ID
+	dt 156 ; Exp
+	; Stat exp
+	bigdw 0
+	bigdw 0
+	bigdw 0
+	bigdw 0
+	bigdw 0
+	dn 0, 0, 0, 0 ; DVs
+	db 15, 20, 0, 0 ; PP
+	db 20 ; Happiness
+	db 0, 0, 0 ; Pokerus, Caught data
+	db 5 ; Level
+	db 0, 0 ; Status
+	bigdw 0 ; HP
+	bigdw 18 ; Max HP
+	bigdw 10 ; Atk
+	bigdw 13 ; Def
+	bigdw 10 ; Spd
+	bigdw 11 ; SAtk
+	bigdw 10 ; SDef
+	db "EGG@@@@@@@@"
+
+	db TANG
+	db NO_ITEM
+	db CONFUSION, SLEEP_POWDER, ABSORB, 0
+	dw 02560 ; OT ID
+	dt 156 ; Exp
+	; Stat exp
+	bigdw 0
+	bigdw 0
+	bigdw 0
+	bigdw 0
+	bigdw 0
+	dn 2, 10, 10, 10 ; DVs
+	db 15, 20, 0, 0 ; PP
+	db 20 ; Happiness
+	db 0, 0, 0 ; Pokerus, Caught data
+	db 5 ; Level
+	db 0, 0 ; Status
+	bigdw 0 ; HP
+	bigdw 18 ; Max HP
+	bigdw 10 ; Atk
+	bigdw 13 ; Def
+	bigdw 10 ; Spd
+	bigdw 11 ; SAtk
 	bigdw 10 ; SDef
 	db "EGG@@@@@@@@"

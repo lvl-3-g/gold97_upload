@@ -129,7 +129,7 @@ EngineFlags:
 
 	engine_flag wPlayerGender, PLAYERGENDER_FEMALE_F
 
-	engine_flag wCelebiEvent, CELEBIEVENT_FOREST_IS_RESTLESS_F
+	engine_flag wLeafeonEvent, LEAFEONEVENT_FOREST_IS_RESTLESS_F
 
 	; rematches
 	engine_flag wDailyRematchFlags,  0 ; jack
@@ -195,5 +195,5 @@ EngineFlags:
 
 	engine_flag wPlayerSpriteSetupFlags, PLAYERSPRITESETUP_FEMALE_TO_MALE_F
 
-	engine_flag wSwarmFlags, SWARMFLAGS_DUNSPARCE_SWARM_F ; $a0
-	engine_flag wSwarmFlags, SWARMFLAGS_YANMA_SWARM_F
+	engine_flag wSwarmFlags, SWARMFLAGS_EEVEE_SWARM_F ; $a0
+	engine_flag wSwarmFlags, SWARMFLAGS_OSUNFISH_SWARM_F

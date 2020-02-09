@@ -43,8 +43,8 @@ DoAnimFrame:
 	dw .MobileTradeSentPulse
 	dw .MobileTradeOTPulse
 	dw .IntroSuicune
-	dw .IntroPichuWooper
-	dw .Celebi
+	dw .IntroPichuAnchorage
+	dw .Leafeon
 	dw .IntroUnown
 	dw .IntroUnownF
 	dw .IntroSuicuneAway
@@ -773,7 +773,7 @@ DoAnimFrame:
 	call _ReinitSpriteAnimFrame
 	ret
 
-.IntroPichuWooper
+.IntroPichuAnchorage
 	ld hl, SPRITEANIMSTRUCT_0C
 	add hl, bc
 	ld a, [hl]
@@ -839,8 +839,8 @@ DoAnimFrame:
 	farcall AnimateEZChatCursor
 	ret
 
-.Celebi
-	farcall UpdateCelebiPosition
+.Leafeon
+	farcall UpdateLeafeonPosition
 	ret
 
 .AnonymousJumptable:

@@ -50,14 +50,14 @@ Route36_MapScripts:
 ;	opentext
 ;	checkevent EVENT_GOT_TM08_ROCK_SMASH
 ;	iftrue .AlreadyGotRockSmash
-;	checkevent EVENT_FOUGHT_SUDOWOODO
-;	iftrue .ClearedSudowoodo
+;	checkevent EVENT_FOUGHT_BIPETAL
+;	iftrue .ClearedBipetal
 ;	writetext RockSmashGuyText1
 ;	waitbutton
 ;	closetext
 ;	end
 ;
-;.ClearedSudowoodo:
+;.ClearedBipetal:
 ;	writetext RockSmashGuyText2
 ;	buttonsound
 ;	verbosegiveitem HM_ROCK_SMASH
@@ -300,28 +300,28 @@ Route36SilverScript:
 	writetext Route36RivalBeforeText
 	waitbutton
 	closetext
-	checkevent EVENT_GOT_TOTODILE_FROM_ELM
-	iftrue .Totodile
-	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
-	iftrue .Chikorita
+	checkevent EVENT_GOT_CRUISE_FROM_ELM
+	iftrue .Cruise
+	checkevent EVENT_GOT_HAPPA_FROM_ELM
+	iftrue .Happa
 	winlosstext Route36SilverWinText, Route36SilverLossText
-	loadtrainer RIVAL1, RIVAL1_2_TOTODILE
+	loadtrainer RIVAL1, RIVAL1_2_CRUISE
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
 	jump .AfterBattle
 
-.Totodile:
+.Cruise:
 	winlosstext Route36SilverWinText, Route36SilverLossText
-	loadtrainer RIVAL1, RIVAL1_2_CHIKORITA
+	loadtrainer RIVAL1, RIVAL1_2_HAPPA
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
 	jump .AfterBattle
 
-.Chikorita:
+.Happa:
 	winlosstext Route36SilverWinText, Route36SilverLossText
-	loadtrainer RIVAL1, RIVAL1_2_CYNDAQUIL
+	loadtrainer RIVAL1, RIVAL1_2_FLAMBEAR
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
@@ -362,7 +362,7 @@ Route36GameHouse:
 Route36FruitTree:
 	fruittree FRUITTREE_ROUTE_36
 
-SudowoodoShakeMovement:
+BipetalShakeMovement:
 	tree_shake ; shake
 	step_end
 
@@ -477,7 +477,7 @@ UsedSquirtbottleText:
 	line "SQUIRTBOTTLE."
 	done
 
-SudowoodoAttackedText:
+BipetalAttackedText:
 	text "The weird tree"
 	line "doesn't like the"
 	cont "SQUIRTBOTTLE!"

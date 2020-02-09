@@ -148,9 +148,8 @@ EngineerRicardoAfterText:
 	done
 
 SwimmermSimonSeenText:
-	text "Brr!"
-	para "This cold water"
-	line "builds character!"
+	text "I wish the waater"
+	line "was warmer here."
 	done
 
 SwimmermSimonBeatenText:

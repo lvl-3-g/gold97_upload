@@ -79,7 +79,7 @@ SwimmermMathewAfterBattleText:
 	text "I can't swim any"
 	line "farther north."
 	para "The waters get too"
-	line "dangrous."
+	line "dangerous."
 	done
 
 

@@ -1,10 +1,10 @@
-	db "HATCHLING@" ; species name
-	dw 203, 450 ; height, weight
+	db "MILK COW@" ; species name
+	dw 311, 1660 ; height, weight
 
-	db   "Each one of its"
-	next "three heads has"
-	next "its own brain."
+	db   "In order to milk a"
+	next "CHIX, one must"
+	next "have a knack for"
 
-	page "But one of the"
-	next "brains go dormant"
-	next "as it grows.@"
+	page "rhythmically pull-"
+	next "ing up and down"
+	next "on its udders.@"

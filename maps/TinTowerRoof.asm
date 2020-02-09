@@ -35,7 +35,7 @@ TinTowerHoOh:
 	clearevent EVENT_RIVAL_TEAM_ROCKET_BASE
 	clearevent EVENT_AZALEA_TOWN_SLOWPOKES
 	writecode VAR_BATTLETYPE, BATTLETYPE_FORCEITEM
-	loadwildmon HO_OH, 40
+	loadwildmon HO_OH, 30
 ;	writecode VAR_BATTLETYPE, BATTLETYPE_LEGENDKANTO
 	startbattle
 	disappear TINTOWERROOF_HO_OH

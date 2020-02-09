@@ -28,9 +28,9 @@ SpriteAnimOAMData:
 	dbw $00, .OAMData_IntroUnownF2_1           ; SPRITE_ANIM_OAMSET_GS_INTRO_SMALL_FIREBALL
 	dbw $01, .OAMData_TradePoofBubble          ; SPRITE_ANIM_OAMSET_GS_INTRO_MED_FIREBALL
 	dbw $09, .OAMData_GSIntroBigFireball       ; SPRITE_ANIM_OAMSET_GS_INTRO_BIG_FIREBALL
-	dbw $10, .OAMData_GSIntroStarter           ; SPRITE_ANIM_OAMSET_GS_INTRO_CHIKORITA
-	dbw $29, .OAMData_GSIntroStarter           ; SPRITE_ANIM_OAMSET_GS_INTRO_CYNDAQUIL
-	dbw $42, .OAMData_GSIntroStarter           ; SPRITE_ANIM_OAMSET_GS_INTRO_TOTODILE
+	dbw $10, .OAMData_GSIntroStarter           ; SPRITE_ANIM_OAMSET_GS_INTRO_HAPPA
+	dbw $29, .OAMData_GSIntroStarter           ; SPRITE_ANIM_OAMSET_GS_INTRO_FLAMBEAR
+	dbw $42, .OAMData_GSIntroStarter           ; SPRITE_ANIM_OAMSET_GS_INTRO_CRUISE
 	dbw $f8, .OAMData_GSTitleTrail             ; SPRITE_ANIM_OAMSET_GS_TITLE_TRAIL_1
 	dbw $fa, .OAMData_GSTitleTrail             ; SPRITE_ANIM_OAMSET_GS_TITLE_TRAIL_2
 	dbw $00, .OAMData_TextEntryCursor          ; SPRITE_ANIM_OAMSET_TEXT_ENTRY_CURSOR
@@ -118,7 +118,7 @@ SpriteAnimOAMData:
 	dbw $00, .OAMData_IntroPichu               ; SPRITE_ANIM_OAMSET_INTRO_PICHU_1
 	dbw $05, .OAMData_IntroPichu               ; SPRITE_ANIM_OAMSET_INTRO_PICHU_2
 	dbw $0a, .OAMData_IntroPichu               ; SPRITE_ANIM_OAMSET_INTRO_PICHU_3
-	dbw $50, .OAMData_IntroWooper              ; SPRITE_ANIM_OAMSET_INTRO_WOOPER
+	dbw $50, .OAMData_IntroAnchorage              ; SPRITE_ANIM_OAMSET_INTRO_ANCHORAGE
 	dbw $00, .OAMData_IntroUnown1              ; SPRITE_ANIM_OAMSET_INTRO_UNOWN_1
 	dbw $01, .OAMData_IntroUnown2              ; SPRITE_ANIM_OAMSET_INTRO_UNOWN_2
 	dbw $04, .OAMData_IntroUnown3              ; SPRITE_ANIM_OAMSET_INTRO_UNOWN_3
@@ -128,8 +128,8 @@ SpriteAnimOAMData:
 	dbw $08, .OAMData_IntroUnownF2_4_5         ; SPRITE_ANIM_OAMSET_INTRO_UNOWN_F_2_4
 	dbw $1c, .OAMData_IntroUnownF2_4_5         ; SPRITE_ANIM_OAMSET_INTRO_UNOWN_F_2_5
 	dbw $80, .OAMData_IntroSuicuneAway         ; SPRITE_ANIM_OAMSET_INTRO_SUICUNE_AWAY
-	dbw $00, .OAMData_Celebi                   ; SPRITE_ANIM_OAMSET_CELEBI_1
-	dbw $04, .OAMData_Celebi                   ; SPRITE_ANIM_OAMSET_CELEBI_2
+	dbw $00, .OAMData_Leafeon                   ; SPRITE_ANIM_OAMSET_LEAFEON_1
+	dbw $04, .OAMData_Leafeon                   ; SPRITE_ANIM_OAMSET_LEAFEON_2
 	dbw $d0, .OAMData_GameFreakLogo1_3         ; SPRITE_ANIM_OAMSET_GAMEFREAK_LOGO_1
 	dbw $d3, .OAMData_GameFreakLogo1_3         ; SPRITE_ANIM_OAMSET_GAMEFREAK_LOGO_2
 	dbw $d6, .OAMData_GameFreakLogo1_3         ; SPRITE_ANIM_OAMSET_GAMEFREAK_LOGO_3
@@ -970,7 +970,7 @@ SpriteAnimOAMData:
 	dsprite  1,  4,  0,  4, $43, 1 | VRAM_BANK_1
 	dsprite  1,  4,  1,  4, $44, 1 | VRAM_BANK_1
 
-.OAMData_IntroWooper:
+.OAMData_IntroAnchorage:
 	db 16
 	dsprite -2,  0, -3,  4, $00, 2 | VRAM_BANK_1
 	dsprite -2,  0, -2,  4, $01, 2 | VRAM_BANK_1
@@ -1081,7 +1081,7 @@ SpriteAnimOAMData:
 	dsprite  2,  0, -13,  0, $00, 1 | PRIORITY
 	dsprite  3,  0, -12,  0, $00, 1 | PRIORITY
 
-.OAMData_Celebi:
+.OAMData_Leafeon:
 	db 4
 	dsprite -1,  0, -1,  0, $00, PAL_OW_GREEN
 	dsprite -1,  0,  0,  0, $01, PAL_OW_GREEN

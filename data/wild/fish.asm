@@ -43,13 +43,13 @@ FishGroups:
 .Ocean_Good:
 	db  35 percent,     MAGIKARP,   20
 	db  70 percent,     TENTACOOL,  20
-	db  90 percent + 1, YANMA,   20
+	db  90 percent + 1, OSUNFISH,   20
 	db 100 percent,     time_group 2
 .Ocean_Super:
-	db  40 percent,     YANMA,   40
+	db  40 percent,     OSUNFISH,   40
 	db  70 percent,     time_group 3
 	db  90 percent + 1, TENTACRUEL, 40
-	db 100 percent,     WOOPER,    40
+	db 100 percent,     ANCHORAGE,    40
 
 .Lake_Old:
 	db  70 percent + 1, MAGIKARP,   10
@@ -99,17 +99,17 @@ FishGroups:
 .Qwilfish_Swarm_Old:
 	db  70 percent + 1, MAGIKARP,   5
 	db  85 percent + 1, MAGIKARP,   5
-	db 100 percent,     TEDDIURSA,   5
+	db 100 percent,     QWILFISH,   5
 .Qwilfish_Swarm_Good:
 	db  35 percent,     MAGIKARP,   20
-	db  70 percent,     TEDDIURSA,   20
-	db  90 percent + 1, TEDDIURSA,   20
+	db  70 percent,     QWILFISH,   20
+	db  90 percent + 1, QWILFISH,   20
 	db 100 percent,     time_group 10
 .Qwilfish_Swarm_Super:
-	db  40 percent,     TEDDIURSA,   40
+	db  40 percent,     QWILFISH,   40
 	db  70 percent,     time_group 11
-	db  90 percent + 1, TEDDIURSA,   40
-	db 100 percent,     TEDDIURSA,   40
+	db  90 percent + 1, QWILFISH,   40
+	db 100 percent,     QWILFISH,   40
 
 .Remoraid_Swarm_Old:
 	db  70 percent + 1, MAGIKARP,   10
@@ -187,7 +187,7 @@ FishGroups:
 	db  40 percent,     TENTACOOL,  40
 	db  70 percent,     time_group 21
 	db  90 percent + 1, MAGIKARP,   40
-	db 100 percent,     TEDDIURSA,   40
+	db 100 percent,     QWILFISH,   40
 
 .Remoraid_Old:
 	db  70 percent + 1, MAGIKARP,   10
@@ -206,8 +206,8 @@ FishGroups:
 
 TimeFishGroups:
 	;  day              nite
-	db YANMA,      20,  STARYU,     20 ; 0
-	db YANMA,      40,  STARYU,     40 ; 1
+	db OSUNFISH,      20,  STARYU,     20 ; 0
+	db OSUNFISH,      40,  STARYU,     40 ; 1
 	db SHELLDER,   20,  SHELLDER,   20 ; 2
 	db SHELLDER,   40,  SHELLDER,   40 ; 3
 	db GOLDEEN,    20,  GOLDEEN,    20 ; 4
@@ -216,8 +216,8 @@ TimeFishGroups:
 	db POLIWAG,    40,  POLIWAG,    40 ; 7
 	db DRATINI,    20,  DRATINI,    20 ; 8
 	db DRATINI,    40,  DRATINI,    40 ; 9
-	db TEDDIURSA,  20,  TEDDIURSA,  20 ; 10
-	db TEDDIURSA,  40,  TEDDIURSA,  40 ; 11
+	db QWILFISH,  20,  QWILFISH,  20 ; 10
+	db QWILFISH,  40,  QWILFISH,  40 ; 11
 	db REMORAID,   20,  REMORAID,   20 ; 12
 	db REMORAID,   40,  REMORAID,   40 ; 13
 	db GYARADOS,   20,  GYARADOS,   20 ; 14

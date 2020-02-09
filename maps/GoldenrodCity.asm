@@ -258,7 +258,7 @@ GoldenrodCityMonScript:
 	faceplayer
 	opentext
 	writetext GoldenrodCityMonText
-	cry LUGIA
+	cry BLISSEY
 	waitbutton
 	closetext
 	end

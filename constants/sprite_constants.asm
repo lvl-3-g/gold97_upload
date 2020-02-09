@@ -83,7 +83,7 @@
 	const SPRITE_DRAGON ; 4f
 	const SPRITE_BIG_ONIX ; 50
 	const SPRITE_N64 ; 51
-	const SPRITE_SUDOWOODO ; 52
+	const SPRITE_BIPETAL ; 52
 	const SPRITE_SURF ; 53
 	const SPRITE_POKE_BALL ; 54
 	const SPRITE_POKEDEX ; 55
@@ -143,7 +143,7 @@ SPRITE_POKEMON EQU const_value
 	const SPRITE_MOLTRES ; 9e
 	const SPRITE_SNORLAX ; 9f
 	const SPRITE_GYARADOS ; a0
-	const SPRITE_LUGIA ; a1
+	const SPRITE_BLISSEY ; a1
 	const SPRITE_HO_OH ; a2
 
 ; special GetMonSprite values (see engine/overworld/overworld.asm)

@@ -11,6 +11,14 @@ VermilionSnorlax:
 	;faceplayer
 	opentext
 	writetext SnorlaxText
+	yesorno
+	iffalse DontDisturbSnorlaxScript
+	writetext SnorlaxText2
+	waitbutton
+	closetext
+	pause 20
+	opentext
+	writetext SnorlaxText3
 	cry SNORLAX
 	pause 15
 	closetext
@@ -22,9 +30,35 @@ VermilionSnorlax:
 	reloadmapafterbattle
 	end
 	
-SnorlaxText:
-	text "Snor?"
+DontDisturbSnorlaxScript:
+	writetext SnorlaxAloneText
+	waitbutton
+	closetext
+	end
+	
+SnorlaxAloneText:
+	text "Better leave it"
+	line "alone..."
 	done
+	
+SnorlaxText:
+	text "This SNORLAX looks"
+	line "kind of restless."
+	para "...Want to disturb"
+	line "it?"
+	done
+	
+SnorlaxText2:
+	text "You pushed against"
+	line "the SNORLAX..."
+	para "It's awake!"
+	done
+	
+SnorlaxText3:
+	text "SNORLAX:"
+	line "Snor?"
+	done
+	
 
 CeruleanGym_MapEvents:
 	db 0, 0 ; filler

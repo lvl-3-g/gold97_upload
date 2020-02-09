@@ -228,8 +228,8 @@ PLAYER_SKATE     EQU 2
 PLAYER_SURF      EQU 4
 PLAYER_SURF_PIKA EQU 8
 
-; wCelebiEvent:: ; dbf3
-CELEBIEVENT_FOREST_IS_RESTLESS_F EQU 2
+; wLeafeonEvent:: ; dbf3
+LEAFEONEVENT_FOREST_IS_RESTLESS_F EQU 2
 
 ; wBikeFlags:: ; dbf5
 	const_def
@@ -263,8 +263,8 @@ CELEBIEVENT_FOREST_IS_RESTLESS_F EQU 2
 	const_def
 	const SWARMFLAGS_BUENAS_PASSWORD_F           ; 0
 	const SWARMFLAGS_GOLDENROD_DEPT_STORE_SALE_F ; 1
-	const SWARMFLAGS_DUNSPARCE_SWARM_F           ; 2
-	const SWARMFLAGS_YANMA_SWARM_F               ; 3
+	const SWARMFLAGS_EEVEE_SWARM_F           ; 2
+	const SWARMFLAGS_OSUNFISH_SWARM_F               ; 3
 	const SWARMFLAGS_MOBILE_4_F                  ; 4
 
 ; wLuckyNumberShowFlag:: ; dc9d

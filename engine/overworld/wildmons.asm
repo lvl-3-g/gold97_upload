@@ -415,30 +415,30 @@ _SwarmWildmonCheck:
 	call CopyCurrMapDE
 	push hl
 	ld hl, wSwarmFlags
-	bit SWARMFLAGS_DUNSPARCE_SWARM_F, [hl]
+	bit SWARMFLAGS_EEVEE_SWARM_F, [hl]
 	pop hl
-	jr z, .CheckYanma
-	ld a, [wDunsparceMapGroup]
+	jr z, .CheckOsunfish
+	ld a, [wEeveeMapGroup]
 	cp d
-	jr nz, .CheckYanma
-	ld a, [wDunsparceMapNumber]
+	jr nz, .CheckOsunfish
+	ld a, [wEeveeMapNumber]
 	cp e
-	jr nz, .CheckYanma
+	jr nz, .CheckOsunfish
 	call LookUpWildmonsForMapDE
 	jr nc, _NoSwarmWildmon
 	scf
 	ret
 
-.CheckYanma:
+.CheckOsunfish:
 	push hl
 	ld hl, wSwarmFlags
-	bit SWARMFLAGS_YANMA_SWARM_F, [hl]
+	bit SWARMFLAGS_OSUNFISH_SWARM_F, [hl]
 	pop hl
 	jr z, _NoSwarmWildmon
-	ld a, [wYanmaMapGroup]
+	ld a, [wOsunfishMapGroup]
 	cp d
 	jr nz, _NoSwarmWildmon
-	ld a, [wYanmaMapNumber]
+	ld a, [wOsunfishMapNumber]
 	cp e
 	jr nz, _NoSwarmWildmon
 	call LookUpWildmonsForMapDE

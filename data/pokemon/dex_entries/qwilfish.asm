@@ -1,10 +1,10 @@
-	db "STAGBEETLE@" ; species name
-	dw 503, 1540 ; height, weight
+	db "BALLOON@" ; species name
+	dw 108, 90 ; height, weight
 
-	db   "The pincers on its"
-	next "head allow it a"
-	next "firm grip to be"
+	db   "When faced with a"
+	next "larger opponent,"
+	next "it swallows as"
 
-	page "able to inflict"
-	next "damage with the"
-	next "horn in between.@"
+	page "much water as it"
+	next "can to match the"
+	next "opponent's size.@"

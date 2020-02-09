@@ -46,7 +46,7 @@ ImposterCompEncounter:
 
 
 TeamRocketBaseB2FTMThief:
-	itemball TM_THIEF
+	itemball TM_PSYCH_UP
 
 TeamRocketBaseB2FHiddenFullHeal:
 	hiddenitem FULL_HEAL, EVENT_TEAM_ROCKET_BASE_B2F_HIDDEN_FULL_HEAL
@@ -254,7 +254,7 @@ TeamRocketBaseB2FComputerPower_loop:
 	turnobject TEAMROCKETBASEB2F_SILVER, LEFT
 	playsound SFX_BALL_POOF
 	waitsfx
-	cry LANTURN
+	cry RAITORA
 	turnobject TEAMROCKETBASEB2F_SILVER, LEFT
 	pause 15
 	opentext

@@ -119,7 +119,7 @@
 	const ENGINE_62
 ; wPlayerGender
 	const ENGINE_PLAYER_IS_FEMALE
-; wCelebiEvent
+; wLeafeonEvent
 	const ENGINE_FOREST_IS_RESTLESS
 ; wDailyRematchFlags
 	const ENGINE_JACK
@@ -185,6 +185,6 @@
 ; wPlayerSpriteSetupFlags
 	const ENGINE_KRIS_IN_CABLE_CLUB
 ; wSwarmFlags
-	const ENGINE_DUNSPARCE_SWARM ; a0
-	const ENGINE_YANMA_SWARM
+	const ENGINE_EEVEE_SWARM ; a0
+	const ENGINE_OSUNFISH_SWARM
 NUM_ENGINE_FLAGS EQU const_value

@@ -56,7 +56,7 @@ SpriteAnimFrameData:
 	dw .Frameset_IntroSuicune
 	dw .Frameset_IntroSuicune2
 	dw .Frameset_IntroPichu
-	dw .Frameset_IntroWooper
+	dw .Frameset_IntroAnchorage
 	dw .Frameset_IntroUnown1
 	dw .Frameset_IntroUnown2
 	dw .Frameset_IntroUnown3
@@ -64,8 +64,8 @@ SpriteAnimFrameData:
 	dw .Frameset_IntroUnownF2
 	dw .Frameset_IntroSuicuneAway
 	dw .Frameset_IntroUnownF
-	dw .Frameset_CelebiLeft
-	dw .Frameset_CelebiRight
+	dw .Frameset_LeafeonLeft
+	dw .Frameset_LeafeonRight
 
 .Frameset_00:
 	frame SPRITE_ANIM_OAMSET_RED_WALK_1, 32
@@ -442,8 +442,8 @@ SpriteAnimFrameData:
 	frame SPRITE_ANIM_OAMSET_INTRO_PICHU_3,  7
 	endanim
 
-.Frameset_IntroWooper:
-	frame SPRITE_ANIM_OAMSET_INTRO_WOOPER,  3
+.Frameset_IntroAnchorage:
+	frame SPRITE_ANIM_OAMSET_INTRO_ANCHORAGE,  3
 	endanim
 
 .Frameset_IntroUnown1:
@@ -486,12 +486,12 @@ SpriteAnimFrameData:
 	dorepeat 0
 	endanim
 
-.Frameset_CelebiLeft:
-	frame SPRITE_ANIM_OAMSET_CELEBI_1,  8
-	frame SPRITE_ANIM_OAMSET_CELEBI_2,  8
+.Frameset_LeafeonLeft:
+	frame SPRITE_ANIM_OAMSET_LEAFEON_1,  8
+	frame SPRITE_ANIM_OAMSET_LEAFEON_2,  8
 	endanim
 
-.Frameset_CelebiRight:
-	frame SPRITE_ANIM_OAMSET_CELEBI_1,  8, OAM_X_FLIP
-	frame SPRITE_ANIM_OAMSET_CELEBI_2,  8, OAM_X_FLIP
+.Frameset_LeafeonRight:
+	frame SPRITE_ANIM_OAMSET_LEAFEON_1,  8, OAM_X_FLIP
+	frame SPRITE_ANIM_OAMSET_LEAFEON_2,  8, OAM_X_FLIP
 	endanim

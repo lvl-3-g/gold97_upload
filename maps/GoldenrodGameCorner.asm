@@ -165,7 +165,7 @@ GoldenrodGameCornerPrizeMonVendorScript:
 	closewindow
 	ifequal 1, .abra
 	ifequal 2, .cubone
-	ifequal 3, .wobbuffet
+	ifequal 3, .twinborus
 	jump GoldenrodGameCornerPrizeVendor_CancelPurchaseScript
 
 .abra
@@ -204,21 +204,21 @@ GoldenrodGameCornerPrizeMonVendorScript:
 	takecoins 800
 	jump .loop
 
-.wobbuffet
+.twinborus
 	checkcoins 1500
 	ifequal HAVE_LESS, GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript
 	checkcode VAR_PARTYCOUNT
 	ifequal PARTY_LENGTH, GoldenrodGameCornerPrizeMonVendor_NoRoomForPrizeScript
-	pokenamemem WOBBUFFET, MEM_BUFFER_0
+	pokenamemem TWINBORUS, MEM_BUFFER_0
 	scall GoldenrodGameCornerPrizeVendor_ConfirmPurchaseScript
 	iffalse GoldenrodGameCornerPrizeVendor_CancelPurchaseScript
 	waitsfx
 	playsound SFX_TRANSACTION
 	writetext GoldenrodGameCornerPrizeVendorHereYouGoText
 	waitbutton
-	writebyte WOBBUFFET
+	writebyte TWINBORUS
 	special GameCornerPrizeMonCheckDex
-	givepoke WOBBUFFET, 15
+	givepoke TWINBORUS, 15
 	takecoins 1500
 	jump .loop
 

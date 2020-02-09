@@ -34,10 +34,10 @@
 	const ICON_BAT
 	const ICON_SNORLAX
 	const ICON_HO_OH
-	const ICON_LUGIA
+	const ICON_BLISSEY
 	const ICON_GYARADOS
 	const ICON_SLOWPOKE
-	const ICON_SUDOWOODO
+	const ICON_BIPETAL
 	const ICON_BIGMON
 
 ; LoadMenuMonIcon.Jumptable indexes (see engine/gfx/mon_icons.asm)

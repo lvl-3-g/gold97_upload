@@ -104,7 +104,7 @@ GoldenrodDeptStore6FBirdScript:
 	faceplayer
 	opentext
 	writetext GoldenrodDeptStore6FBirdText
-	cry MAGCARGO
+	cry MADAME
 	waitbutton
 	closetext
 	end

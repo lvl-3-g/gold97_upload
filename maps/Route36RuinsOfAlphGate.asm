@@ -74,28 +74,28 @@ Route36GateRivalScript:
 	closetext
 	applymovement ROUTE36RUINSOFALPHGATE_RIVAL, SilverChecksGuard2
 	pause 5
-	checkevent EVENT_GOT_TOTODILE_FROM_ELM
-	iftrue .R36GTotodile
-	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
-	iftrue .R36GChikorita
+	checkevent EVENT_GOT_CRUISE_FROM_ELM
+	iftrue .R36GCruise
+	checkevent EVENT_GOT_HAPPA_FROM_ELM
+	iftrue .R36GHappa
 	winlosstext Route36GSilverWinText, Route36GSilverLossText
-	loadtrainer RIVAL1, RIVAL1_4_TOTODILE
+	loadtrainer RIVAL1, RIVAL1_4_CRUISE
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
 	jump .R36GAfterBattle
 
-.R36GTotodile:
+.R36GCruise:
 	winlosstext Route36GSilverWinText, Route36GSilverLossText
-	loadtrainer RIVAL1, RIVAL1_4_CHIKORITA
+	loadtrainer RIVAL1, RIVAL1_4_HAPPA
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
 	jump .R36GAfterBattle
 
-.R36GChikorita:
+.R36GHappa:
 	winlosstext Route36GSilverWinText, Route36GSilverLossText
-	loadtrainer RIVAL1, RIVAL1_4_CYNDAQUIL
+	loadtrainer RIVAL1, RIVAL1_4_FLAMBEAR
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle

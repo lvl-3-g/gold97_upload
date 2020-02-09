@@ -34,8 +34,8 @@ IconPointers:
 	dw BatIcon
 	dw SnorlaxIcon
 	dw HoOhIcon
-	dw LugiaIcon
+	dw BlisseyIcon
 	dw GyaradosIcon
 	dw SlowpokeIcon
-	dw SudowoodoIcon
+	dw BipetalIcon
 	dw BigmonIcon

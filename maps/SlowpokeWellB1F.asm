@@ -22,31 +22,31 @@ SlowpokeWellB1F_MapScripts:
 	writetext BurnedTowerSilver_BeforeText
 	waitbutton
 	closetext
-	checkevent EVENT_GOT_TOTODILE_FROM_ELM
-	iftrue .totodile
-	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
-	iftrue .chikorita
+	checkevent EVENT_GOT_CRUISE_FROM_ELM
+	iftrue .cruise
+	checkevent EVENT_GOT_HAPPA_FROM_ELM
+	iftrue .happa
 	winlosstext BurnedTowerSilver_WinText, BurnedTowerSilver_LossText
 	;setlasttalked SLOWPOKE_WELL_B1F_SILVER
-	loadtrainer RIVAL1, RIVAL1_3_TOTODILE
+	loadtrainer RIVAL1, RIVAL1_3_CRUISE
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
 	jump .returnfrombattle
 
-.totodile
+.cruise
 	winlosstext BurnedTowerSilver_WinText, BurnedTowerSilver_LossText
 	;setlasttalked SLOWPOKE_WELL_B1F_SILVER
-	loadtrainer RIVAL1, RIVAL1_3_CHIKORITA
+	loadtrainer RIVAL1, RIVAL1_3_HAPPA
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
 	jump .returnfrombattle
 
-.chikorita
+.happa
 	winlosstext BurnedTowerSilver_WinText, BurnedTowerSilver_LossText
 	;setlasttalked SLOWPOKE_WELL_B1F_SILVER
-	loadtrainer RIVAL1, RIVAL1_3_CYNDAQUIL
+	loadtrainer RIVAL1, RIVAL1_3_FLAMBEAR
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle

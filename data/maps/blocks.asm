@@ -174,7 +174,7 @@ Route28SteelWingHouse_Blocks:
 ManiasHouse_Blocks:
 CianwoodPharmacy_Blocks:
 CianwoodPhotoStudio_Blocks:
-CianwoodLugiaSpeechHouse_Blocks:
+CianwoodBlisseySpeechHouse_Blocks:
 PokeSeersHouse_Blocks:
 ViridianNicknameSpeechHouse_Blocks:
 Route2NuggetHouse_Blocks:
@@ -188,7 +188,7 @@ GuideGentsHouse_Blocks:
 CherrygroveEvolutionSpeechHouse_Blocks:
 Route30BerryHouse_Blocks:
 EcruteakItemfinderHouse_Blocks:
-EcruteakLugiaSpeechHouse_Blocks:
+EcruteakBlisseySpeechHouse_Blocks:
 SugarHouse1_Blocks:
 BlueForestHouse1_Blocks:
 KantoHouse1_Blocks:
@@ -677,8 +677,8 @@ WhirlIslandSE_Blocks:
 WhirlIslandB1F_Blocks:
 	INCBIN "maps/WhirlIslandB1F.blk"
 
-WhirlIslandLugiaChamber_Blocks:
-	INCBIN "maps/WhirlIslandLugiaChamber.blk"
+WhirlIslandBlisseyChamber_Blocks:
+	INCBIN "maps/WhirlIslandBlisseyChamber.blk"
 
 SilverCaveRoom1_Blocks:
 	INCBIN "maps/SilverCaveRoom1.blk"

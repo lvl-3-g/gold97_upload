@@ -31,9 +31,9 @@ JohtoWaterWildMons:
 	
 	map_id RUINS_OF_ALPH_OUTSIDE
 	db 6 percent ; encounter rate
-	db 15, YANMA
-	db 18, GRANBULL
-	db 15, GRANBULL
+	db 15, OSUNFISH
+	db 18, QUAGSIRE
+	db 15, QUAGSIRE
 	
 	map_id ROUTE_7
 	db 6 percent ; encounter rate

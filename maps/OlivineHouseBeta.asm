@@ -180,7 +180,7 @@ OlivineHouseBetaElderEvilText:
 	text "I sense an evil"
 	line "presence looming"
 	cont "over NIHON."
-	para "Sureley the bird"
+	para "surely the bird"
 	line "shall not return"
 	cont "until it is gone."
 	done
