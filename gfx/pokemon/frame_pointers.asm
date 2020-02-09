@@ -246,7 +246,7 @@ FramesPointers:
 	dw SuicuneFrames
 	dw WolfanFrames
 	dw WarfaruFrames
-	dw LickylickyFrames
+	dw LickilickyFrames
 	dw BlisseyFrames
 	dw HoOhFrames
 	dw LeafeonFrames

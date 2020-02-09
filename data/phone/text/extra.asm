@@ -10,7 +10,7 @@ UnknownText_0x64032:
 	text "<PLAY_G>, have you"
 	line "heard?"
 
-	para "GOLDENROD's RADIO"
+	para "WEST's RADIO"
 	line "TOWER has been"
 
 	para "taken over by TEAM"
@@ -34,10 +34,10 @@ UnknownText_0x640e6:
 	text "Hey, I heard about"
 	line "you!"
 
-	para "You saved that"
-	line "#MON at the"
+	para "You saved the"
+	line "SLOWPOKE at the"
 
-	para "LIGHTHOUSE, didn't"
+	para "WELL, didn't"
 	line "you?"
 
 	para "<PLAY_G>, I wish"
@@ -76,7 +76,8 @@ UnknownText_0x64247:
 	text "I saw, I saw!"
 
 	para "I saw you go into"
-	line "the DRAGON'S DEN!"
+	line "the CAVE OF"
+	cont "DRAGONS."
 
 	para "I'm certain you"
 	line "passed! Aww, no"
@@ -87,7 +88,7 @@ UnknownText_0x64247:
 
 UnknownText_0x642bb:
 	text "Yesterday, I went"
-	line "out to NEW BARK"
+	line "out to SILENT"
 
 	para "TOWN.  There was a"
 	line "lady who looked a"
@@ -186,9 +187,6 @@ UnknownText_0x645ff:
 	para "How did you get so"
 	line "strong?"
 
-	para "Go for the world"
-	line "championship now!"
-
 	para "I'll always be"
 	line "cheering you on!"
 	done
@@ -204,8 +202,8 @@ IrwinCalledRightAwayText:
 UnknownText_0x646df:
 	text "I saw, I heard!"
 
-	para "You beat MORTY of"
-	line "ECRUTEAK GYM!"
+	para "You beat ENOKI of"
+	line "BIRDON GYM!"
 
 	para "Th-that's just"
 	line "incredible!"
@@ -216,14 +214,11 @@ UnknownText_0x646df:
 	para "to cheer you on."
 	line "Did you know that?"
 
-	para "But everyone was"
-	line "floating, and"
+	para "But there were"
+	line "ghost everywhere!"
 
-	para "there were ghosts"
-	line "all over! So I"
-
-	para "chickened out and"
-	line "took off for home…"
+	para "I chickened out"
+	line "and left for home…"
 	done
 
 UnknownText_0x647d8:
@@ -704,13 +699,9 @@ ChadDaisyGossipText:
 
 ChadProfElmGossipText:
 	text "Everyone's talking"
-	line "about PROF.ELM."
+	line "about PROF.OAK."
 
-	para "He used to be an"
-	line "assistant to the"
-	cont "great PROF.OAK!"
-
-	para "That is so cool!"
+	para "He is so cool!"
 	line "I envy him!"
 	done
 
@@ -757,22 +748,18 @@ ChadLeagueGossipText:
 	done
 
 ChadRadioShowGossipText:
-	text "PROF.OAK'S #MON"
+	text "KEN'S #MON"
 	line "TALK is a popular"
 	cont "radio show, right?"
 
 	para "Did you know that"
-	line "he was going to"
+	line "PROF.OAK has been"
 
-	para "turn down the show"
-	line "at first?"
-
-	para "But MARY's energy"
-	line "and persistence"
-	cont "wore him down."
-
-	para "So we have MARY to"
-	line "thank for it!"
+	para "a guest on that"
+	line "show before?"
+	
+	para "He helps out with"
+	line "the data they use!"
 	done
 
 ChadBattlingGossipText:

@@ -557,7 +557,7 @@ INCBIN "gfx/footprints/entei.1bpp",      footprint_top
 INCBIN "gfx/footprints/suicune.1bpp",    footprint_top
 INCBIN "gfx/footprints/wolfan.1bpp",   footprint_top
 INCBIN "gfx/footprints/warfaru.1bpp",    footprint_top
-INCBIN "gfx/footprints/lickylicky.1bpp",  footprint_top
+INCBIN "gfx/footprints/lickilicky.1bpp",  footprint_top
 ; 241-248 bottom halves
 INCBIN "gfx/footprints/chix.1bpp",    footprint_bottom
 INCBIN "gfx/footprints/miltank.1bpp",    footprint_bottom
@@ -566,7 +566,7 @@ INCBIN "gfx/footprints/entei.1bpp",      footprint_bottom
 INCBIN "gfx/footprints/suicune.1bpp",    footprint_bottom
 INCBIN "gfx/footprints/wolfan.1bpp",   footprint_bottom
 INCBIN "gfx/footprints/warfaru.1bpp",    footprint_bottom
-INCBIN "gfx/footprints/lickylicky.1bpp",  footprint_bottom
+INCBIN "gfx/footprints/lickilicky.1bpp",  footprint_bottom
 ; 249-256 top halves
 INCBIN "gfx/footprints/blissey.1bpp",      footprint_top
 INCBIN "gfx/footprints/ho_oh.1bpp",      footprint_top

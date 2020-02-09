@@ -180,7 +180,7 @@ NewPokedexOrder:
 	db SEEL
 	db DEWGONG
 	db LICKITUNG
-	db LICKYLICKY
+	db LICKILICKY
 	db TANG
 	db TANGELA
 	db TANGROWTH

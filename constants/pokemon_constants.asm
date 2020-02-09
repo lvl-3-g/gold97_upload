@@ -267,7 +267,7 @@ JOHTO_POKEMON EQU const_value
 	const SUICUNE    ; f5
 	const WOLFAN   ; f6
 	const WARFARU    ; f7
-	const LICKYLICKY  ; f8
+	const LICKILICKY  ; f8
 	const BLISSEY      ; f9
 	const HO_OH      ; fa
 	const LEAFEON     ; fb

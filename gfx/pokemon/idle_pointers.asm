@@ -246,7 +246,7 @@ AnimationIdlePointers:
 	dw SuicuneAnimationIdle
 	dw WolfanAnimationIdle
 	dw WarfaruAnimationIdle
-	dw LickylickyAnimationIdle
+	dw LickilickyAnimationIdle
 	dw BlisseyAnimationIdle
 	dw HoOhAnimationIdle
 	dw LeafeonAnimationIdle

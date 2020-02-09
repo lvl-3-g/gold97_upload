@@ -118,7 +118,7 @@ AlphabeticalPokedexOrder:
 	db LEDIAN
 	db LEDYBA
 	db LICKITUNG
-	db LICKYLICKY
+	db LICKILICKY
 	db MACHAMP
 	db MACHOKE
 	db MACHOP

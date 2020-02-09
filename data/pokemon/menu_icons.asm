@@ -248,7 +248,7 @@ MonMenuIcons:
 	db ICON_FOX         ; SUICUNE
 	db ICON_MONSTER     ; WOLFAN
 	db ICON_MONSTER     ; WARFARU
-	db ICON_MONSTER     ; LICKYLICKY
+	db ICON_MONSTER     ; LICKILICKY
 	db ICON_CLEFAIRY    ; BLISSEY actually miltank
 	db ICON_HO_OH       ; HO_OH
 	db ICON_FOX		    ; LEAFEON

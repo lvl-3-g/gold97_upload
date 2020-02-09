@@ -246,7 +246,7 @@ AnimationPointers:
 	dw SuicuneAnimation
 	dw WolfanAnimation
 	dw WarfaruAnimation
-	dw LickylickyAnimation
+	dw LickilickyAnimation
 	dw BlisseyAnimation
 	dw HoOhAnimation
 	dw LeafeonAnimation

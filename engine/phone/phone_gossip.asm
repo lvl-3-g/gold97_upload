@@ -257,14 +257,8 @@ BrentBillTriviaScript:
 	jump PhoneScript_HangupText_Male
 
 IrwinRumorScript:
-	checkevent EVENT_OPENED_MT_SILVER
+	checkevent EVENT_FAST_SHIP_CABINS_SE_SSE_GENTLEMAN
 	iftrue .MtSilver
-	checkevent EVENT_FOUGHT_SNORLAX
-	iftrue .Snorlax
-	checkevent EVENT_GOT_PASS_FROM_COPYCAT
-	iftrue .TrainPass
-	checkflag ENGINE_MARSHBADGE
-	iftrue .MarshBadge
 	checkflag ENGINE_FLYPOINT_VERMILION
 	iftrue .VermilionCity
 	checkevent EVENT_BEAT_ELITE_FOUR
@@ -275,7 +269,7 @@ IrwinRumorScript:
 	iftrue .RadioTower
 	checkevent EVENT_CLEARED_ROCKET_HIDEOUT
 	iftrue .RocketHideout
-	checkevent EVENT_JASMINE_RETURNED_TO_GYM
+	checkevent EVENT_RIVAL_BURNED_TOWER; slowpoke well
 	iftrue .JasmineReturned
 	checkflag ENGINE_FOGBADGE
 	iftrue .FogBadge

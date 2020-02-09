@@ -252,7 +252,7 @@ PokemonCries::
 	mon_cry CRY_MADAME,    $000,  $180 ; SUICUNE
 	mon_cry CRY_RAIKOU,     -$0b0,  $120 ; WOLFAN
 	mon_cry CRY_RAIKOU,     -$1db,  $150 ; WARFARU
-	mon_cry CRY_SEEL,       -$100,  $180 ; LICKYLICKY
+	mon_cry CRY_SEEL,       -$100,  $180 ; LICKILICKY
 	mon_cry CRY_SLOWKING,    $293,  $140 ; BLISSEY actually miltank
 	mon_cry CRY_AIPOM,       $000,  $180 ; HO_OH
 	mon_cry CRY_AIPOM,       $0d2,  $100 ; LEAFEON

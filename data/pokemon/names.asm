@@ -246,7 +246,7 @@ PokemonNames::
 	db "SUICUNE@@@"
 	db "WOLFAN@@@@"
 	db "WARFARU@@@"
-	db "LICKYLICKY"
+	db "LICKILICKY"
 	db "BLISSEY@@@"
 	db "HO-OH@@@@@"
 	db "LEAFEON@@@"

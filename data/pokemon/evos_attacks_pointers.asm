@@ -248,7 +248,7 @@ EvosAttacksPointers::
 	dw SuicuneEvosAttacks
 	dw WolfanEvosAttacks
 	dw WarfaruEvosAttacks
-	dw LickylickyEvosAttacks
+	dw LickilickyEvosAttacks
 	dw BlisseyEvosAttacks
 	dw HoOhEvosAttacks
 	dw LeafeonEvosAttacks

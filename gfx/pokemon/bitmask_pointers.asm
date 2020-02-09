@@ -246,7 +246,7 @@ BitmasksPointers:
 	dw SuicuneBitmasks
 	dw WolfanBitmasks
 	dw WarfaruBitmasks
-	dw LickylickyBitmasks
+	dw LickilickyBitmasks
 	dw BlisseyBitmasks
 	dw HoOhBitmasks
 	dw LeafeonBitmasks

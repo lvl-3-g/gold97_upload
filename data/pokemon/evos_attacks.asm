@@ -1484,8 +1484,8 @@ HitmonchanEvosAttacks:
 	db 0 ; no more level-up moves
 
 LickitungEvosAttacks:
-	db EVOLVE_TRADE, -1, LICKYLICKY
-	db EVOLVE_ITEM, TRADE_STONE, LICKYLICKY
+	db EVOLVE_TRADE, -1, LICKILICKY
+	db EVOLVE_ITEM, TRADE_STONE, LICKILICKY
 	db 0 ; no more evolutions
 	db 1, LICK
 	db 7, SUPERSONIC
@@ -3396,7 +3396,7 @@ WarfaruEvosAttacks:
 	db 59, HYPER_BEAM
 	db 0 ; no more level-up moves
 
-LickylickyEvosAttacks:
+LickilickyEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, LICK
 	db 7, SUPERSONIC

@@ -1175,9 +1175,8 @@ ElmGiveEverstoneText1:
 
 
 AideText_AfterTheft:
-	text "There are only two"
-	line "of us, so we're"
-	cont "always busy."
+	text "We appreciate"
+	line "your assistance!"
 	done
 
 ElmGiveMasterBallText1:
@@ -1249,15 +1248,13 @@ AideText_GiveYouPotion:
 	done
 
 AideText_AlwaysBusy:
-	text "There are only two"
-	line "of us, so we're"
-	cont "always busy."
+	text "We appreciate"
+	line "your assistance!"
 	done
 
 AideText_TheftTestimony:
-	text "There are only two"
-	line "of us, so we're"
-	cont "always busy."
+	text "We appreciate"
+	line "your assistance!"
 	done
 
 

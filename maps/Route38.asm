@@ -210,7 +210,7 @@ TrainerSchoolboyChad1:
 	ifequal 1, .Fight1
 	ifequal 0, .LoadFight0
 .Fight4:
-	checkevent EVENT_RESTORED_POWER_TO_KANTO
+	checkevent EVENT_FAST_SHIP_CABINS_SE_SSE_GENTLEMAN
 	iftrue .LoadFight4
 .Fight3:
 	checkevent EVENT_BEAT_ELITE_FOUR
@@ -219,7 +219,7 @@ TrainerSchoolboyChad1:
 	checkevent EVENT_CLEARED_RADIO_TOWER
 	iftrue .LoadFight2
 .Fight1:
-	checkflag ENGINE_FLYPOINT_MAHOGANY
+	checkevent EVENT_BEAT_CHUCK
 	iftrue .LoadFight1
 .LoadFight0:
 	loadtrainer SCHOOLBOY, CHAD1

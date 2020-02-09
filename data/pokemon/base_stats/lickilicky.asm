@@ -1,4 +1,4 @@
-	db LICKYLICKY ; 248
+	db LICKILICKY ; 248
 
 	db 110,  80,  85,  65,  75,  95
 	;   hp  atk  def  spd  sat  sdf
@@ -11,7 +11,7 @@
 	db 100 ; unknown 1
 	db 20 ; step cycles to hatch
 	db 5 ; unknown 2
-	INCBIN "gfx/pokemon/lickylicky/front.dimensions"
+	INCBIN "gfx/pokemon/lickilicky/front.dimensions"
 	db 0, 0, 0, 0 ; padding
 	db GROWTH_MEDIUM_FAST ; growth rate
 	dn EGG_MONSTER, EGG_MONSTER ; egg groups

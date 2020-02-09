@@ -247,7 +247,7 @@ PokedexDataPointerTable:
 	dw SuicunePokedexEntry
 	dw WolfanPokedexEntry
 	dw WarfaruPokedexEntry
-	dw LickylickyPokedexEntry
+	dw LickilickyPokedexEntry
 	dw BlisseyPokedexEntry
 	dw HoOhPokedexEntry
 	dw LeafeonPokedexEntry

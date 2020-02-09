@@ -34,9 +34,9 @@ ChadAskNumber2Text:
 	done
 
 ChadNumberAcceptedText:
-	text "You must listen to"
-	line "PROF.OAK'S #MON"
-	cont "TALK, right?"
+	text "You get your"
+	line "#DEX rated by"
+	cont "PROF.OAK, right?"
 	done
 
 ChadNumberDeclinedText:

@@ -499,8 +499,8 @@ PokemonPicPointers::
 	dba_pic WolfanBackpic
 	dba_pic WarfaruFrontpic
 	dba_pic WarfaruBackpic
-	dba_pic LickylickyFrontpic
-	dba_pic LickylickyBackpic
+	dba_pic LickilickyFrontpic
+	dba_pic LickilickyBackpic
 	dba_pic BlisseyFrontpic
 	dba_pic BlisseyBackpic
 	dba_pic HoOhFrontpic

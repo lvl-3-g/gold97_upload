@@ -2774,7 +2774,7 @@ BattleTowerMons6:
 	bigdw 172 ; SDef
 	db "KINGUDORA@@"
 
-	db LICKYLICKY
+	db LICKILICKY
 	db GOLD_BERRY
 	db CRUNCH, EARTHQUAKE, ROCK_SLIDE, HYPER_BEAM
 	dw 0 ; OT ID
@@ -3453,7 +3453,7 @@ BattleTowerMons7:
 	bigdw 175 ; SDef
 	db "HERUGA-@@@@"
 
-	db LICKYLICKY
+	db LICKILICKY
 	db LEFTOVERS
 	db EARTHQUAKE, CRUNCH, ROCK_SLIDE, HYPER_BEAM
 	dw 0 ; OT ID
@@ -3976,7 +3976,7 @@ BattleTowerMons8:
 	bigdw 218 ; SDef
 	db "RAPURASU@@@"
 
-	db LICKYLICKY
+	db LICKILICKY
 	db MIRACLEBERRY
 	db REST, CRUNCH, EARTHQUAKE, ROCK_SLIDE
 	dw 0 ; OT ID
@@ -4577,7 +4577,7 @@ BattleTowerMons9:
 	bigdw 248 ; SDef
 	db "KINGUDORA@@"
 
-	db LICKYLICKY
+	db LICKILICKY
 	db QUICK_CLAW
 	db HYPER_BEAM, CRUNCH, EARTHQUAKE, ROCK_SLIDE
 	dw 0 ; OT ID
