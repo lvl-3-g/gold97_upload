@@ -206,7 +206,7 @@ PokedexDataPointerTable:
 	dw TurbanPokedexEntry
 	dw GrimbyPokedexEntry
 	dw ParaPokedexEntry
-	dw GligarPokedexEntry
+	dw AnimonPokedexEntry
 	dw SteelixPokedexEntry
 	dw SnubbullPokedexEntry
 	dw QuagsirePokedexEntry

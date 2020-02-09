@@ -245,7 +245,7 @@ Pokered_MonIndices:
 	db TURBAN
 	db GRIMBY
 	db PARA
-	db GLIGAR
+	db ANIMON
 	db STEELIX
 	db SNUBBULL
 	db QUAGSIRE

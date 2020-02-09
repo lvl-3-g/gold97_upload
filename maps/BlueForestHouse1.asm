@@ -28,7 +28,7 @@ BlueForestHouse1AnimonScript:
 	faceplayer
 	opentext
 	writetext BlueForestHouse1MonText
-	cry GLIGAR
+	cry ANIMON
 	waitbutton
 	closetext
 	end

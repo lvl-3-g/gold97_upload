@@ -417,8 +417,8 @@ PokemonPicPointers::
 	dba_pic GrimbyBackpic
 	dba_pic ParaFrontpic
 	dba_pic ParaBackpic
-	dba_pic GligarFrontpic
-	dba_pic GligarBackpic
+	dba_pic AnimonFrontpic
+	dba_pic AnimonBackpic
 	dba_pic SteelixFrontpic
 	dba_pic SteelixBackpic
 	dba_pic SnubbullFrontpic

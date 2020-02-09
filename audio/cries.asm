@@ -49,9 +49,9 @@ Cry_Happa:
 	musicheader 1, 6, Cry_Happa_Ch6
 	musicheader 1, 8, Cry_Happa_Ch8
 
-Cry_Gligar:
-	musicheader 2, 5, Cry_Gligar_Ch5
-	musicheader 1, 8, Cry_Gligar_Ch8
+Cry_Animon:
+	musicheader 2, 5, Cry_Animon_Ch5
+	musicheader 1, 8, Cry_Animon_Ch8
 
 Cry_Girafarig:
 	musicheader 3, 5, Cry_Girafarig_Ch5
@@ -448,7 +448,7 @@ Cry_Mareep_Ch5:
 Cry_Mareep_Ch6:
 	sound_duty 1, 0, 0, 0
 Cry_Mareep_branch_f3145:
-Cry_Gligar_branch_f3145:
+Cry_Animon_branch_f3145:
 	sound __,  5, $3a, $073d
 	sound __,  7, $f8, $0762
 	sound __,  7, $f8, $0760
@@ -471,7 +471,7 @@ Cry_Flambear_Ch6:
 	endchannel
 
 Cry_Flambear_Ch8:
-Cry_Gligar_Ch8:
+Cry_Animon_Ch8:
 	noise __,  9, $3f, $52
 	noise C#,  1, $93, $4f
 	endchannel
@@ -492,9 +492,9 @@ Cry_Happa_Ch8:
 	noise __,  9, $94, $3
 	endchannel
 
-Cry_Gligar_Ch5:
+Cry_Animon_Ch5:
 	sound_duty 2, 0, 2, 2
-	jumpchannel Cry_Gligar_branch_f3145
+	jumpchannel Cry_Animon_branch_f3145
 
 Cry_Girafarig_Ch5:
 	dutycycle $1

@@ -205,7 +205,7 @@ AnimationIdlePointers:
 	dw TurbanAnimationIdle
 	dw GrimbyAnimationIdle
 	dw ParaAnimationIdle
-	dw GligarAnimationIdle
+	dw AnimonAnimationIdle
 	dw SteelixAnimationIdle
 	dw SnubbullAnimationIdle
 	dw QuagsireAnimationIdle

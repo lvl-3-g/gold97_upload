@@ -22,7 +22,7 @@ EcruteakMartGrannyScript:
 
 EcruteakMartSuperNerdText:
 	text "My EEVEE evolved"
-	line "into an FLAREON."
+	line "into a FLAREON."
 
 	para "But my friend's"
 	line "EEVEE turned into"

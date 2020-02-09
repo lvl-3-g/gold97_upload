@@ -207,7 +207,7 @@ MonMenuIcons:
 	db ICON_SHELL       ; TURBAN
 	db ICON_BLOB        ; GRIMBY
 	db ICON_BUG         ; PARA
-	db ICON_BLOB        ; GLIGAR
+	db ICON_BLOB        ; ANIMON
 	db ICON_SERPENT     ; STEELIX
 	db ICON_MONSTER     ; SNUBBULL
 	db ICON_FISH        ; QUAGSIRE

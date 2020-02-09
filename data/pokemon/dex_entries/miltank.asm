@@ -2,7 +2,7 @@
 	dw 311, 1660 ; height, weight
 
 	db   "In order to milk a"
-	next "CHIX, one must"
+	next "MILTANK, one must"
 	next "have a knack for"
 
 	page "rhythmically pull-"

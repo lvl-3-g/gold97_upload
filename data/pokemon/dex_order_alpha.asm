@@ -7,7 +7,7 @@ AlphabeticalPokedexOrder:
 	db ALAKAZAM
 	db AMPHAROS
 	db ANCHORAGE
-	db GLIGAR
+	db ANIMON
 	db AQUALLO
 	db AQUARIUS
 	db ARBOK

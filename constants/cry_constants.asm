@@ -55,7 +55,7 @@
 	const CRY_FLAMBEAR
 	const CRY_HAPPA
 	const CRY_CRUISE
-	const CRY_GLIGAR
+	const CRY_ANIMON
 	const CRY_CLEFFA
 	const CRY_MEOWSY
 	const CRY_LEDYBA

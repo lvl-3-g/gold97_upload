@@ -91,7 +91,7 @@ NewPokedexOrder:
 	db KADABRA
 	db ALAKAZAM
 	db DITTO
-	db GLIGAR
+	db ANIMON
 	db NIDORAN_F
 	db NIDORINA
 	db NIDOQUEEN

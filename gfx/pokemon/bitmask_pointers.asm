@@ -205,7 +205,7 @@ BitmasksPointers:
 	dw TurbanBitmasks
 	dw GrimbyBitmasks
 	dw ParaBitmasks
-	dw GligarBitmasks
+	dw AnimonBitmasks
 	dw SteelixBitmasks
 	dw SnubbullBitmasks
 	dw QuagsireBitmasks

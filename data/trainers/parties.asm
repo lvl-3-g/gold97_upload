@@ -304,7 +304,7 @@ ScientistGroup:
 	; SCIENTIST (2)
 	db "MITCH@", TRAINERTYPE_NORMAL; used, base b2f
 	db 26, DITTO
-	db 27, GLIGAR
+	db 27, ANIMON
 	db -1 ; end
 
 	; SCIENTIST (3)
@@ -492,7 +492,7 @@ SchoolboyGroup:
 	db "RICKY@", TRAINERTYPE_NORMAL; used fast ship a2w
 	db 35, AIPOM
 	db 33, DITTO
-	db 36, GLIGAR
+	db 36, ANIMON
 	db -1 ; end
 
 	; SCHOOLBOY (13)
@@ -808,7 +808,7 @@ CooltrainerMGroup:
 	db "NICK@", TRAINERTYPE_MOVES ; used, lighthouse 3f/endon cave 2f
 	db 17, HOUNDOUR, EMBER, ROAR, DOUBLE_TEAM, BITE
 	db 16, WOLFAN, BITE, POWDER_SNOW, SWAGGER, PROTECT
-	db 18, GLIGAR,  TRANSFORM, NO_MOVE, NO_MOVE, NO_MOVE
+	db 18, ANIMON,  TRANSFORM, NO_MOVE, NO_MOVE, NO_MOVE
 	db 17, POLIWHIRL, SURF, WATER_GUN, HYPNOSIS, DOUBLESLAP
 	db -1 ; end
 

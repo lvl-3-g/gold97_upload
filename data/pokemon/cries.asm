@@ -211,7 +211,7 @@ PokemonCries::
 	mon_cry CRY_DYNABEAR, -$0e9,  $0f0 ; TURBAN
 	mon_cry CRY_GRIMER,      $080,  $0b0 ; GRIMBY
 	mon_cry CRY_PARAS,       $0c4,  $0b0 ; PARA
-	mon_cry CRY_PIDGEY,      $162,  $120 ; GLIGAR
+	mon_cry CRY_PIDGEY,      $162,  $120 ; ANIMON
 	mon_cry CRY_DYNABEAR,  $0ef,  $0f7 ; STEELIX
 	mon_cry CRY_PARA,   $112,  $0e8 ; SNUBBULL
 	mon_cry CRY_ANCHORAGE,     -$0c6,  $140 ; QUAGSIRE
@@ -246,7 +246,7 @@ PokemonCries::
 	mon_cry CRY_SUNFLORA,   -$2d8,  $0b4 ; ELEKID
 	mon_cry CRY_QWILFISH,   $176,  $03a ; MAGBY
 	mon_cry CRY_DIGLETT,     $0cb,  $061 ; CHIX actually chix
-	mon_cry CRY_GLIGAR,     -$1cd,  $1a0 ; MILTANK actually chix
+	mon_cry CRY_ANIMON,     -$1cd,  $1a0 ; MILTANK actually chix
 	mon_cry CRY_RAIKOU,      $22e,  $120 ; RAIKOU
 	mon_cry CRY_ENTEI,       $000,  $1a0 ; ENTEI
 	mon_cry CRY_MADAME,    $000,  $180 ; SUICUNE

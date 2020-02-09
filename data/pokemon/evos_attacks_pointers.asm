@@ -207,7 +207,7 @@ EvosAttacksPointers::
 	dw TurbanEvosAttacks
 	dw GrimbyEvosAttacks
 	dw ParaEvosAttacks
-	dw GligarEvosAttacks
+	dw AnimonEvosAttacks
 	dw SteelixEvosAttacks
 	dw SnubbullEvosAttacks
 	dw QuagsireEvosAttacks

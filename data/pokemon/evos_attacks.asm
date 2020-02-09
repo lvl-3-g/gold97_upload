@@ -1814,8 +1814,8 @@ LaprasEvosAttacks:
 	db 0 ; no more level-up moves
 
 DittoEvosAttacks:	
-	db EVOLVE_TRADE, METAL_COAT, GLIGAR
-	db EVOLVE_ITEM, TRADE_STONE, GLIGAR
+	db EVOLVE_TRADE, METAL_COAT, ANIMON
+	db EVOLVE_ITEM, TRADE_STONE, ANIMON
 	db 0 ; no more evolutions
 	db 1, TRANSFORM
 	db 0 ; no more level-up moves
@@ -2854,7 +2854,7 @@ ParaEvosAttacks:
 	db 35, GIGA_DRAIN
 	db 0 ; no more level-up moves
 
-GligarEvosAttacks:
+AnimonEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, TRANSFORM
 	db 0 ; no more level-up moves

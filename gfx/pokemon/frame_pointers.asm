@@ -205,7 +205,7 @@ FramesPointers:
 	dw TurbanFrames
 	dw GrimbyFrames
 	dw ParaFrames
-	dw GligarFrames
+	dw AnimonFrames
 	dw SteelixFrames
 	dw SnubbullFrames
 	dw QuagsireFrames

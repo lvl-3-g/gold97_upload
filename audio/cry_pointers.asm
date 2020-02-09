@@ -50,7 +50,7 @@ Cries:
 	dba Cry_Flambear
 	dba Cry_Happa
 	dba Cry_Cruise
-	dba Cry_Gligar
+	dba Cry_Animon
 	dba Cry_Cleffa
 	dba Cry_Meowsy
 	dba Cry_Ledyba

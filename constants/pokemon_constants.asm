@@ -226,7 +226,7 @@ JOHTO_POKEMON EQU const_value
 	const TURBAN     ; cc
 	const GRIMBY ; cd
 	const PARA  ; ce
-	const GLIGAR     ; cf
+	const ANIMON     ; cf
 	const STEELIX    ; d0
 	const SNUBBULL   ; d1
 	const QUAGSIRE   ; d2

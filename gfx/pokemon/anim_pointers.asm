@@ -205,7 +205,7 @@ AnimationPointers:
 	dw TurbanAnimation
 	dw GrimbyAnimation
 	dw ParaAnimation
-	dw GligarAnimation
+	dw AnimonAnimation
 	dw SteelixAnimation
 	dw SnubbullAnimation
 	dw QuagsireAnimation

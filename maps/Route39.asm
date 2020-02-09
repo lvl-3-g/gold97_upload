@@ -270,7 +270,7 @@ PokefanfJaimeBeatenText:
 PokefanfJaimeAfterBattleText:
 	text "I met my PONYTA at"
 	line "night, right here"
-	cont "on ROUTE 39."
+	cont "on ROUTE 109."
 
 	para "I'm not sure why,"
 	line "but it seems to"
