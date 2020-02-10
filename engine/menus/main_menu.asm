@@ -256,7 +256,9 @@ MainMenu_PrintCurrentTimeAndDay:
 	ld b, a
 	decoord 1, 15
 	call .PlaceCurrentDay
-	decoord 4, 16
+	ld de, .VersionNumberPrint
+	call PlaceString
+	decoord 1, 16
 	ldh a, [hHours]
 	ld c, a
 	farcall PrintHour
@@ -299,17 +301,22 @@ MainMenu_PrintCurrentTimeAndDay:
 	ld de, .Day
 	call PlaceString
 	ret
+	
+	
+.VersionNumberPrint:
+	db "    v1.13@"
+
 
 .Days:
-	db "SUN@"
-	db "MON@"
-	db "TUES@"
-	db "WEDNES@"
-	db "THURS@"
-	db "FRI@"
-	db "SATUR@"
+	db "SUNDAY   @"
+	db "MONDAY   @"
+	db "TUESDAY  @"
+	db "WEDNESDAY@"
+	db "THURSDAY @"
+	db "FRIDAY   @"
+	db "SATURDAY @"
 .Day:
-	db "DAY@"
+	db "@"
 
 Function49ed0:
 	xor a
