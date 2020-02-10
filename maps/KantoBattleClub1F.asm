@@ -172,7 +172,7 @@ NoEntryAllowed:
 NoPassText:
 	text "I'm sorry, but no"
 	line "one can enter"
-	para "without at BATTLE"
+	para "without a BATTLE"
 	line "PASS."
 	done
 

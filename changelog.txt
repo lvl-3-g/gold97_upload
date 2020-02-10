@@ -1,0 +1,5 @@
+1.14
+- fixed typo when trying to enter battle club without battle pass
+- gave curstraw/curpan curse via level-up
+- removed unneeded data for crystal exclusive movesets
+- all pokemon that should be able to can now learn toxic

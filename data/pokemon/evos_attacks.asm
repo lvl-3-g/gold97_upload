@@ -672,9 +672,7 @@ DiglettEvosAttacks:
 
 DugtrioEvosAttacks:
 	db 0 ; no more evolutions
-if _CRYSTAL
 	db 1, TRI_ATTACK
-endc
 	db 1, SCRATCH
 	db 1, GROWL
 	db 1, MAGNITUDE
@@ -1122,11 +1120,7 @@ MagnetonEvosAttacks:
 	db 16, SONICBOOM
 	db 21, THUNDER_WAVE
 	db 27, LOCK_ON
-if _CRYSTAL
 	db 35, TRI_ATTACK
-else
-	db 35, SWIFT
-endc
 	db 43, SCREECH
 	db 53, ZAP_CANNON
 	db 0 ; no more level-up moves
@@ -1245,9 +1239,7 @@ CloysterEvosAttacks:
 	db 1, SUPERSONIC
 	db 1, AURORA_BEAM
 	db 1, PROTECT
-if _CRYSTAL
 	db 33, SPIKES
-endc
 	db 41, SPIKE_CANNON
 	db 0 ; no more level-up moves
 
@@ -1834,11 +1826,7 @@ EeveeEvosAttacks:
 	db 16, GROWL
 	db 23, QUICK_ATTACK
 	db 30, BITE
-if _CRYSTAL
 	db 36, BATON_PASS
-else
-	db 36, FOCUS_ENERGY
-endc
 	db 42, TAKE_DOWN
 	db 0 ; no more level-up moves
 
@@ -2321,11 +2309,7 @@ SpinarakEvosAttacks:
 	db 23, LEECH_LIFE
 	db 30, FURY_SWIPES
 	db 37, SPIDER_WEB
-if _CRYSTAL
 	db 45, AGILITY
-else
-	db 45, SCREECH
-endc
 	db 53, PSYCHIC_M
 	db 0 ; no more level-up moves
 
@@ -2341,11 +2325,7 @@ AriadosEvosAttacks:
 	db 25, LEECH_LIFE
 	db 34, FURY_SWIPES
 	db 43, SPIDER_WEB
-if _CRYSTAL
 	db 53, AGILITY
-else
-	db 53, SCREECH
-endc
 	db 63, PSYCHIC_M
 	db 0 ; no more level-up moves
 
@@ -2566,11 +2546,7 @@ HoppipEvosAttacks:
 	db EVOLVE_LEVEL, 18, SKIPLOOM
 	db 0 ; no more evolutions
 	db 1, SPLASH
-if _CRYSTAL
 	db 5, SYNTHESIS
-else
-	db 1, SYNTHESIS
-endc
 	db 5, TAIL_WHIP
 	db 10, TACKLE
 	db 13, POISONPOWDER
@@ -2588,9 +2564,7 @@ SkiploomEvosAttacks:
 	db 1, SYNTHESIS
 	db 1, TAIL_WHIP
 	db 1, TACKLE
-if _CRYSTAL
-	db 5, SYNTHESIS
-endc
+	db 4, SYNTHESIS
 	db 5, TAIL_WHIP
 	db 10, TACKLE
 	db 13, POISONPOWDER
@@ -2607,9 +2581,7 @@ JumpluffEvosAttacks:
 	db 1, SYNTHESIS
 	db 1, TAIL_WHIP
 	db 1, TACKLE
-if _CRYSTAL
-	db 5, SYNTHESIS
-endc
+	db 4, SYNTHESIS
 	db 5, TAIL_WHIP
 	db 10, TACKLE
 	db 13, POISONPOWDER
@@ -2966,17 +2938,13 @@ SneaselEvosAttacks:
 	db 41, AGILITY
 	db 49, SLASH
 	db 57, BEAT_UP
-if _CRYSTAL
 	db 65, METAL_CLAW
-endc
 	db 0 ; no more level-up moves
 
 QwilfishEvosAttacks:
 	db EVOLVE_LEVEL, 35, NUMBPUFF
 	db 0 ; no more evolutions
-if _CRYSTAL
 	db 1, SPIKES
-endc
 	db 1, TACKLE
 	db 1, POISON_STING
 	db 10, HARDEN
@@ -2989,9 +2957,7 @@ endc
 
 NumbpuffEvosAttacks:
 	db 0 ; no more evolutions
-if _CRYSTAL
 	db 1, SPIKES
-endc
 	db 1, TACKLE
 	db 1, POISON_STING
 	db 12, HARDEN
@@ -3039,7 +3005,8 @@ CurstrawEvosAttacks:
 	db 1, PSYWAVE
 	db 6, SPITE
 	db 11, CONFUSE_RAY
-	db 17, MEAN_LOOK
+	db 15, CURSE
+	db 19, MEAN_LOOK
 	db 25, PSYBEAM
 	db 30, BODY_SLAM
 	db 36, PAIN_SPLIT
@@ -3054,7 +3021,8 @@ CurpanEvosAttacks:
 	db 1, PSYWAVE
 	db 7, SPITE
 	db 14, CONFUSE_RAY
-	db 19, MEAN_LOOK
+	db 19, CURSE
+	db 21, MEAN_LOOK
 	db 27, PSYBEAM
 	db 32, BODY_SLAM
 	db 39, PAIN_SPLIT
@@ -3300,7 +3268,7 @@ MagbyEvosAttacks:
 	db 49, FIRE_BLAST
 	db 0 ; no more level-up moves
 
-ChixEvosAttacks: ;actually chix
+ChixEvosAttacks:
 	db EVOLVE_HAPPINESS, TR_ANYTIME, DODUO
 	db 0 ; no more evolutions
 	db 1, PECK
@@ -3313,7 +3281,7 @@ ChixEvosAttacks: ;actually chix
 	db 30, AGILITY
 	db 0 ; no more level-up moves
 
-MiltankEvosAttacks: ;actually chix
+MiltankEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, TACKLE
 	db 4, GROWL
