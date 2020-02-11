@@ -321,16 +321,16 @@ Route7LockedDoorText:
 	done
 	
 Route7Rocket1Text:
-	text "Fufufufu..."
+	text "Fufufufu…"
 	para "Why are we even"
 	line "stationed here?"
 	done
 	
 Route7Rocket2Text:
-	text "Hehehehe..."
+	text "Hehehehe…"
 	para "I don't think the"
 	line "boss likes us"
-	cont "very much..."
+	cont "very much…"
 	done
 	
 MeetWesleyText:

@@ -262,7 +262,7 @@ ShockedRocket1Step:
 	
 SafariZoneWardensHome1FTVText:
 	text "It's not turned"
-	line "on..."
+	line "on…"
 	done
 	
 SafariZoneWardensHome1FPosterText:
@@ -324,7 +324,7 @@ WardensGranddaughterText1:
 	line "just walk on by"
 	para "if you've got"
 	line "#MON that"
-	cont "strong..."
+	cont "strong…"
 	done
 
 

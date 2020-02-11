@@ -37,7 +37,7 @@ OfficerScript_GuardWithSnore:
 
 
 OfficerText_FoundTM:
-	text "Zzzz...."
+	text "Zzzz…."
 	para "Hm?"
 	para "Oh, yeah, I can"
 	line "still keep watch"
@@ -54,9 +54,9 @@ Text_ReceivedTM30:
 	done
 
 OfficerText_AvoidGrass:
-	text "Zzz..."
+	text "Zzz…"
 	para "Be careful out"
-	line "there..."
+	line "there…"
 	done
 
 Route43Gate_MapEvents:

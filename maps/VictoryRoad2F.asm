@@ -184,7 +184,7 @@ CooltrainerfJennSeenText:
 	done
 
 CooltrainerfJennBeatenText:
-	text "I'd say you do..."
+	text "I'd say you do…"
 	done
 
 CooltrainerfJennAfterBattleText:
@@ -264,7 +264,7 @@ PsychicRichardAfterBattleText:
 	text "You desire to make"
 	line "your way out of"
 	cont "this cave!"
-	para "...I guess that"
+	para "…I guess that"
 	line "one is pretty"
 	cont "obvious."
 	done

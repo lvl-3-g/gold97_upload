@@ -409,10 +409,10 @@ ImposterWalksUp:
 	
 FuchsiaCityNationalBlockRocketAfterBaseText:
 	text "I always feel left"
-	line "out..."
+	line "out…"
 	para "No one tells me"
 	line "what's going on"
-	cont "over here..."
+	cont "over here…"
 	done
 	
 BlockRocket4AfterBaseText:
@@ -458,7 +458,7 @@ FuchsiaCityHQBlockRocketText:
 	para "I hope my"
 	line "replacement"
 	para "actually shows up"
-	line "this time..."
+	line "this time…"
 	done
 	
 FuchsiaCityNationalBlockRocketText:
@@ -563,8 +563,8 @@ ImposterText3:
 	para "effect of making"
 	line "#MON that are"
 	para "exposed to it feel"
-	line "unwell..."
-	para "..."
+	line "unwell…"
+	para "…"
 	para "But just ignore"
 	line "that!"
 	para "They'll be fine!"
@@ -611,7 +611,7 @@ FuchsiaCityRockerImposterText:
 	line "me that they'll be"
 	para "okay and it's a"
 	line "part of important"
-	cont "research..."
+	cont "research…"
 	para "And I trust him."
 	done
 
@@ -630,7 +630,7 @@ FuchsiaCityPokefanImposterText:
 	para "the #MON not"
 	line "feeling well?"
 	para "He must have a"
-	line "good reason..."
+	line "good reason…"
 	done
 	
 FuchsiaCityPokefanAllGoodText:
@@ -641,7 +641,7 @@ FuchsiaCityPokefanAllGoodText:
 
 FuchsiaCityTwinText:
 	text "The STAND CITY ZOO"
-	line "is closed..."
+	line "is closed…"
 	
 	para "It's sad,"
 	line "considering it's"
@@ -657,7 +657,7 @@ FuchsiaCityTwinImposterText:
 	line "back?"
 	para "And with PROF.OAK?"
 	para "This can't be"
-	line "right..."
+	line "right…"
 	done
 	
 FuchsiaCityTwinAllGoodText:
@@ -677,7 +677,7 @@ FuchsiaCityTeacherText:
 FuchsiaCityTeacherImposterText:
 	text "Something didn't"
 	line "seem right about"
-	cont "PROF.OAK..."
+	cont "PROF.OAK…"
 	done
 
 FuchsiaCityTeacherAllGoodText:

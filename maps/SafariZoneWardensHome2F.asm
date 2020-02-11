@@ -119,7 +119,7 @@ Warden2FOneStepLeftAndUp:
 	step_end
 	
 SafariZoneWardensHome2FTVText:
-	text "It's a rerun..."
+	text "It's a rerun…"
 	done
 
 SafariZoneWardensHome2FPosterText:
@@ -159,7 +159,7 @@ Warden2FWhoDoYouThinkYouAreText:
 	line "revolution in"
 	para "#MON technology"
 	line "ever!"
-	para "..."
+	para "…"
 	para "Clearly you don't"
 	line "feel the same."
 	para "I guess I'll have"
@@ -235,7 +235,7 @@ GruntM6AfterBattleText:
 	line "won't like hearing"
 	para "about more kids"
 	line "getting in the way"
-	cont "of the plan..."
+	cont "of the plan…"
 	done
 
 SafariZoneWardensHome2F_MapEvents:

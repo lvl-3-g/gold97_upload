@@ -87,7 +87,7 @@ SafariOfficeRockerText:
 	text "It seems that the"
 	line "#MON are"
 	para "suffering from"
-	line "headaches..."
+	line "headaches…"
 	para "That's the inital"
 	line "symptom."
 	done
@@ -105,7 +105,7 @@ SafariOfficeRockerText2:
 SafariOfficePokefanMText:
 	text "I've never seen"
 	line "anything like"
-	cont "this..."
+	cont "this…"
 	done
 
 SafariOfficePokefanMText2:

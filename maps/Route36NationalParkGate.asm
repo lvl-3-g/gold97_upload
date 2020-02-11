@@ -232,7 +232,7 @@ Route36OfficerScriptContest:
 	end
 
 Route36Officer_ContestHasConcluded:
-	checkevent EVENT_CONTEST_OFFICER_HAS_SUN_STONE
+	checkevent EVENT_CONTEST_OFFICER_HAS_HEART_STONE
 	iftrue .Sunstone
 	checkevent EVENT_CONTEST_OFFICER_HAS_EVERSTONE
 	iftrue .Everstone
@@ -248,9 +248,9 @@ Route36Officer_ContestHasConcluded:
 .Sunstone:
 	writetext UnknownText_0x6b97f
 	buttonsound
-	verbosegiveitem SUN_STONE
+	verbosegiveitem HEART_STONE
 	iffalse .BagFull
-	clearevent EVENT_CONTEST_OFFICER_HAS_SUN_STONE
+	clearevent EVENT_CONTEST_OFFICER_HAS_HEART_STONE
 	closetext
 	end
 

@@ -32,7 +32,7 @@ MahoganyPokecenter1FPokefanMText:
 	line "several members"
 	cont "in it."
 	para "I wonder what"
-	line "they're up to..."
+	line "they're up to…"
 	done
 
 MahoganyPokecenter1FYoungsterText:

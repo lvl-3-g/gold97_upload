@@ -226,7 +226,7 @@ Route33TeacherText:
 	line "out my way back"
 	cont "to BIRDON TOWN."
 	para "There's got to be"
-	line "a way around..."
+	line "a way around…"
 	done
 
 DontStepFlowers:

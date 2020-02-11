@@ -318,7 +318,7 @@ BugContestResultsWarpScript:
 BugContestResultsScript:
 	clearflag ENGINE_BUG_CONTEST_TIMER
 	clearevent EVENT_WARPED_FROM_ROUTE_35_NATIONAL_PARK_GATE
-	clearevent EVENT_CONTEST_OFFICER_HAS_SUN_STONE
+	clearevent EVENT_CONTEST_OFFICER_HAS_HEART_STONE
 	clearevent EVENT_CONTEST_OFFICER_HAS_EVERSTONE
 	clearevent EVENT_CONTEST_OFFICER_HAS_GOLD_BERRY
 	clearevent EVENT_CONTEST_OFFICER_HAS_BERRY
@@ -388,10 +388,10 @@ BugContestResults_CleanUp:
 
 BugContestResults_FirstPlace:
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
-	itemtotext SUN_STONE, MEM_BUFFER_1
+	itemtotext HEART_STONE, MEM_BUFFER_1
 	farwritetext ContestResults_PlayerWonAPrizeText
 	waitbutton
-	verbosegiveitem SUN_STONE
+	verbosegiveitem HEART_STONE
 	iffalse BugContestResults_NoRoomForSunStone
 	jump BugContestResults_ReturnAfterWinnersPrize
 
@@ -414,7 +414,7 @@ BugContestResults_ThirdPlace:
 BugContestResults_NoRoomForSunStone:
 	farwritetext BugContestPrizeNoRoomText
 	buttonsound
-	setevent EVENT_CONTEST_OFFICER_HAS_SUN_STONE
+	setevent EVENT_CONTEST_OFFICER_HAS_HEART_STONE
 	jump BugContestResults_ReturnAfterWinnersPrize
 
 BugContestResults_NoRoomForEverstone:

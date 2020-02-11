@@ -109,10 +109,10 @@ SwimmermCameronAfterBattleText:
 CinnabarGymSignText:
 	text "#MON RESEARCH"
 	line "FACILITY"
-	para "...The sign reads,"
+	para "…The sign reads,"
 	line "with the word"
 	para "'CONDEMNED'"
-	line "written over it..."
+	line "written over it…"
 	done
 
 Route20_MapEvents:

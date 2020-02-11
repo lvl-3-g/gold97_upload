@@ -32,7 +32,7 @@ OaksLabPoster2Text:
 
 OaksLabPCText:
 	text "It isn't turned"
-	line "on..."
+	line "on…"
 	done
 
 OaksLab_MapEvents:

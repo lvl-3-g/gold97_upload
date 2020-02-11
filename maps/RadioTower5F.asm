@@ -77,7 +77,7 @@ GruntM30SeenText:
 GruntM30BeatenText:
 	text "I actually kind"
 	line "of like #MON"
-	cont "music..."
+	cont "music…"
 	done
 	
 GruntM30AfterBattleText:
@@ -101,7 +101,7 @@ ScientistRichSeenText:
 	
 ScientistRichBeatenText:
 	text "You're too good"
-	line "for me..."
+	line "for me…"
 	done
 	
 ScientistRichAfterBattleText:

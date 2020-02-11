@@ -12,8 +12,8 @@ CyclingRoadSign:
 CyclingRoadSignText:
 	text "PRIVATE PROPERTY"
 
-	para "...The sign is"
-	line "old and faded..."
+	para "…The sign is"
+	line "old and faded…"
 	done
 
 Route16_MapEvents:

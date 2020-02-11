@@ -205,7 +205,7 @@ ChuckIntroText1:
 	line "people."
 	para "Faced a lot of"
 	line "challenges."
-	para "..."
+	para "…"
 	para "But have you"
 	line "faced the sheer"
 	para "power that finds"

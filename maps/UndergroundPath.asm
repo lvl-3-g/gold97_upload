@@ -100,7 +100,7 @@ UndergroundSilverLeavesMovement:
 	
 UndergroundSilverBeforeText:
 	text "Hi, <PLAY_G>!"
-	para "..."
+	para "…"
 	para "You're about to"
 	line "climb MT.FUJI,"
 	cont "right?"
@@ -119,11 +119,11 @@ UndergroundSilverBeforeText:
 	done
 	
 UndergroundSilverWinText:
-	text "..."
+	text "…"
 	done
 	
 UndergroundSilverLossText:
-	text "..."
+	text "…"
 	done
 	
 UndergroundSilverAfterText:

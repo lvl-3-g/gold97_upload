@@ -438,7 +438,7 @@ Route36RivalBeforeText:
 	line "out WEST CITY!"
 	para "There's a giant"
 	line "MART and a RADIO"
-	cont "TOWER, and..."
+	cont "TOWER, and…"
 	para "Oh, yeah!"
 	para "I've started the"
 	line "LEAGUE challenge!"

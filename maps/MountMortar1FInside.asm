@@ -121,7 +121,7 @@ SupernerdMarkusSeenText:
 	done
 
 SupernerdMarkusBeatenText:
-	text "You startled me..."
+	text "You startled me…"
 	done
 
 SupernerdMarkusAfterBattleText:

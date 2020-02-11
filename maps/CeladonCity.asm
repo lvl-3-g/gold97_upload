@@ -147,7 +147,7 @@ KantoPokefanMText:
 	para "The guy inside of"
 	line "the KANTO BATTLE"
 	para "CLUB wouldn't let"
-	line "me inside..."
+	line "me inside…"
 	done
 	
 KantoFisherText:
@@ -227,7 +227,7 @@ KantoCooltrainerMText:
 	cont "the restaurant."
 	para "Just watching them"
 	line "go at it makes me"
-	cont "feel bloated..."
+	cont "feel bloated…"
 	done
 	
 KantoTeacherText:
@@ -238,7 +238,7 @@ KantoTeacherText:
 	line "it there, you"
 	para "can't get it any-"
 	line "where!"
-	para "...Gee, I sound"
+	para "…Gee, I sound"
 	line "like a sales"
 	cont "clerk."
 	done

@@ -117,8 +117,8 @@ DocksRocket4Text:
 	
 DocksRocket5Text:
 	text "I'm a-working on"
-	line "the railroad..."
-	para "..."
+	line "the railroad…"
+	para "…"
 	para "Hm, wrong song."
 	done
 	
@@ -161,7 +161,7 @@ DocksGuruText2:
 	line "the best food!"
 	para "I wish I didn't"
 	line "work so far from"
-	cont "it..."
+	cont "it…"
 	done
 
 DocksFisherText:

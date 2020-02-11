@@ -158,7 +158,7 @@ GruntM18SeenText:
 	
 GruntM18BeatenText:
 	text "That's what you're"
-	line "doing here..."
+	line "doing here…"
 	done
 	
 GruntM18AfterBattleText:
@@ -169,7 +169,7 @@ GruntM18AfterBattleText:
 	line "disorganized."
 	para "I was almost left"
 	line "behind on the"
-	cont "cargo ship..."
+	cont "cargo ship…"
 	done
 	
 GruntM17SeenText:
@@ -177,7 +177,7 @@ GruntM17SeenText:
 	line "17!"
 	para "That's all that"
 	line "the EXECUTIVE ever"
-	cont "refers to me as..."
+	cont "refers to me as…"
 	done
 	
 GruntM17BeatenText:

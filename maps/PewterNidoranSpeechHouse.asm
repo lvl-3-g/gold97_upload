@@ -47,7 +47,7 @@ YouNeedAFuelLine:
 	para "You need parts for"
 	line "seafaring vessels?"
 	para "I'm your guy!"
-	para "..."
+	para "…"
 	para "Oh, dear!"
 	para "The S.S.AQUA needs"
 	line "a new FUEL LINE?"

@@ -26,7 +26,7 @@ KantoHouse1BugCatcherText:
 	text "Maybe I could"
 	line "beat the LEAGUE"
 	para "with just BUG"
-	line "#MON..."
+	line "#MON…"
 	done
 	
 KantoHouse1TeacherText:

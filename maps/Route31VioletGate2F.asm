@@ -25,7 +25,7 @@ Route31VioletGate2FTwinScript:
 Route31VioletGate2FTwinText:
 	text "Are you a tourist?"
 	para "If so, that's too"
-	line "bad... Not just"
+	line "bad… Not just"
 	para "anyone can enter"
 	line "the 5 FLOOR TOWER."
 	done

@@ -293,9 +293,9 @@ JugglerFritzBeatenText:
 	done
 
 JugglerFritzAfterBattleText:
-	text "Ugh..."
+	text "Ugh…"
 	para "I can hold it"
-	line "together..."
+	line "together…"
 	done
 
 SailorGarrettSeenText:

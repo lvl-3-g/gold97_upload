@@ -1310,5 +1310,32 @@ JohtoGrassWildMons:
 	db 35, DUGTRIO
 	db 35, KANGASKHAN
 	db 35, KANGASKHAN
+	
+	map_id TEST_GARDEN
+	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
+	; morn
+	db 33, WOLFAN
+	db 33, WOLFAN
+	db 33, WOLFAN
+	db 33, WOLFAN
+	db 33, WOLFAN
+	db 33, WOLFAN
+	db 33, WOLFAN
+	; day
+	db 33, WOLFAN
+	db 33, WOLFAN
+	db 33, WOLFAN
+	db 33, WOLFAN
+	db 33, WOLFAN
+	db 33, WOLFAN
+	db 33, WOLFAN
+	; nite
+	db 33, WOLFAN
+	db 33, WOLFAN
+	db 33, WOLFAN
+	db 33, WOLFAN
+	db 33, WOLFAN
+	db 33, WOLFAN
+	db 33, WOLFAN
 
 	db -1 ; end

@@ -344,7 +344,7 @@ GruntM22SeenText:
 
 GruntM22BeatenText:
 	text "The CAPTAIN won't"
-	line "like this..."
+	line "like this…"
 	done
 
 GruntM22AfterBattleText:
@@ -403,7 +403,7 @@ GruntM25SeenText:
 
 GruntM25BeatenText:
 	text "I think I'll stay"
-	line "in this closet..."
+	line "in this closet…"
 	done
 
 GruntM25AfterBattleText:
@@ -483,7 +483,7 @@ ImposterOakIsShocked2:
 	done
 	
 CaptainRFinishesSpeech:
-	text "..."
+	text "…"
 	para "And I see you've"
 	line "met our IMPOSTER"
 	cont "OAK."
@@ -657,7 +657,7 @@ ImposterGreetingText2:
 	para "It's me, PROF.OAK!"
 	para "I'm working with"
 	line "TEAM ROCKET now!"
-	para "...Nah, I know"
+	para "…Nah, I know"
 	line "you're not buying"
 	cont "it."
 	done

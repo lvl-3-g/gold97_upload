@@ -235,7 +235,7 @@ SlowpokeWellB2FGymGuyText_GotKingsRock:
 OakSpeechText:
 	text "OAK: This research"
 	line "trip didn't go as"
-	cont "planned..."
+	cont "planned…"
 	para "But!"
 	para "It is far more"
 	line "important that we"

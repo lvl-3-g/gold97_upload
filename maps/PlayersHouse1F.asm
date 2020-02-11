@@ -278,7 +278,7 @@ InstructionsNextText:
 	line "for you."
 	
 	para "I can't remember"
-	line "his name though..."
+	line "his name though…"
 	
 	
 	done

@@ -105,7 +105,7 @@ FuchsiaPokecenter1FJanineImpersonatorText1:
 	cont "#MON."
 	para "I'm kind of upset"
 	line "I can't do any of"
-	cont "that right now..."
+	cont "that right now…"
 	done
 
 FuchsiaPokecenter1FJanineImpersonatorText2:

@@ -151,7 +151,7 @@ RocketBossRoomGrunt3Text:
 	para "down the mind"
 	line "control antenna."
 	para "He can also be"
-	line "very forgetful..."
+	line "very forgetful…"
 	done
 	
 RocketBossRoomGrunt4Text:
@@ -178,10 +178,10 @@ BadSecurityPractices:
 	text "What's this?"
 	para "The EXECUTIVE has"
 	line "a note stuck to"
-	cont "his computer..."
+	cont "his computer…"
 	para "It's the password"
 	line "to the console!"
-	para "..."
+	para "…"
 	para "<PLAY_G>"
 	line "remembered the"
 	cont "password!"
@@ -226,7 +226,7 @@ TheExecutiveGreeting:
 	para "Clearly you don't,"
 	line "or you wouldn't be"
 	cont "here."
-	para "..."
+	para "…"
 	para "You remember me,"
 	line "right?"
 	para "I was the CAPTAIN"

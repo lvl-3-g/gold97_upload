@@ -162,7 +162,7 @@ LavRadioTower1FGentlemanText:
 	cont "plans."
 	para "First the AQUARIUM"
 	line "heist, then the"
-	cont "SLOWPOKE WELL..."
+	cont "SLOWPOKE WELL…"
 	para "But it doesn't"
 	line "matter!"
 	para "Minor setbacks,"
@@ -225,7 +225,7 @@ LavRadioTower1FDirectoryText:
 	done
 
 LavRadioTower1FPokeFluteSignText:
-	text "It's a rerun..."
+	text "It's a rerun…"
 	done
 
 LavRadioTower1FReferenceLibraryText:

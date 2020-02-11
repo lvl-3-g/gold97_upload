@@ -174,7 +174,7 @@
 	const LOVE_BALL    ; a6
 	const NORMAL_BOX   ; a7
 	const GORGEOUS_BOX ; a8
-	const SUN_STONE    ; a9
+	const HEART_STONE    ; a9
 	const POLKADOT_BOW ; aa
 	const ITEM_AB      ; ab
 	const UP_GRADE     ; ac

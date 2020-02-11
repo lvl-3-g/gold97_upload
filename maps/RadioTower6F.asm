@@ -257,7 +257,7 @@ GiovanniGreeting:
 	line "your heart."
 	para "Most might call"
 	line "that admirable."
-	para "..."
+	para "…"
 	para "I'd call it"
 	line "foolish."
 	para "#MON possess a"
@@ -298,11 +298,11 @@ Executive6FSeenText:
 	done
 	
 Executive6FBeatenText:
-	text "..."
+	text "…"
 	done
 	
 Executive6FAfterBattleText:
-	text "..."
+	text "…"
 	para "I have no anger"
 	line "left for you."
 	para "If you would like"
@@ -328,12 +328,12 @@ ClefableScaredText:
 	
 ClefableScaredText2:
 	text "It seems to be"
-	line "frightened..."
+	line "frightened…"
 	para "Also there's no"
 	line "way to talk to"
 	para "the scared cleffa,"
 	line "so you never see"
-	cont "this text..."
+	cont "this text…"
 	done
 
 RadioTower6fTeacherText:

@@ -96,7 +96,7 @@ CooltrainerFEmmaAfterBattleText:
 PokemaniacLarrySeenText:
 	text "I wonder what"
 	line "gets mined from"
-	cont "this cave..."
+	cont "this cave…"
 	done
 
 PokemaniacLarryBeatenText:
@@ -107,20 +107,20 @@ PokemaniacLarryBeatenText:
 PokemaniacLarryAfterBattleText:
 	text "I wonder if there"
 	line "is anything worth"
-	cont "any money..."
+	cont "any money…"
 	done
 
 Text_FoundMe:
 	text "Oh, hi!"
-	para "Um..."
+	para "Um…"
 	line "Do you happen to"
 	para "know the way out"
 	line "of here?"
-	para "..."
+	para "…"
 	para "Oh! Grandpa is"
 	line "looking for me?"
 	para "I didn't mean to"
-	line "make him worry..."
+	line "make him worry…"
 	para "Okay! You'll help"
 	line "me get out of"
 	cont "here?"

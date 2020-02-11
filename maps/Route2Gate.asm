@@ -39,21 +39,21 @@ Route2GateScientistScript:
 	end
 	
 Route2GateRocket1Text:
-	text "Fufufufu..."
+	text "Fufufufu…"
 	para "Our SLOWPOKE team"
 	line "should be back"
 	para "with the next"
 	line "batch of TAILs"
-	cont "soon..."
+	cont "soon…"
 	done
 	
 Route2GateRocket2Text:
-	text "Hehehehe..."
+	text "Hehehehe…"
 	para "No one will even"
 	line "notice the TAILs"
 	para "missing from those"
 	line "SLOWPOKE until"
-	cont "it's too late..."
+	cont "it's too late…"
 	done
 
 Route2GateScientistText:
@@ -65,7 +65,7 @@ Route2GateScientistText:
 	para "I wish they'd stop"
 	line "blocking the gate,"
 	para "but they kind of"
-	line "scare me..."
+	line "scare me…"
 	done
 	
 Route2GateScientistTextNoRockets:

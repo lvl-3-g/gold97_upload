@@ -181,7 +181,7 @@ ItemEffects:
 	dw PokeBallEffect      ; LOVE_BALL
 	dw NormalBoxEffect     ; NORMAL_BOX
 	dw GorgeousBoxEffect   ; GORGEOUS_BOX
-	dw EvoStoneEffect      ; SUN_STONE
+	dw EvoStoneEffect      ; HEART_STONE
 	dw NoEffect            ; POLKADOT_BOW
 	dw NoEffect            ; ITEM_AB
 	dw NoEffect            ; UP_GRADE

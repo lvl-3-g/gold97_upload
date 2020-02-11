@@ -82,7 +82,7 @@ KurtsDoorLocked_Movement:
 
 	
 KurtsDoorLockedText:
-	text "It's locked..."
+	text "It's locked…"
 	done
 
 VioletCityLassText:

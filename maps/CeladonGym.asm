@@ -328,11 +328,11 @@ CooltrainermPaulAfterBattleText:
 	done
 
 ErikaBeforeBattleText:
-	text "..."
+	text "…"
 	done
 
 ErikaBeatenText:
-	text "..."
+	text "…"
 	done
 
 PlayerReceivedRainbowBadgeText:
@@ -341,11 +341,11 @@ PlayerReceivedRainbowBadgeText:
 	done
 
 ErikaExplainTMText:
-	text "..."
+	text "…"
 	done
 
 ErikaAfterBattleText:
-	text "..."
+	text "…"
 	done
 
 

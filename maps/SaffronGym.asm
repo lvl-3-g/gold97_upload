@@ -478,7 +478,7 @@ NoRoomForStarter2:
 PokefanMBeforeTextWater:
 	text "Hey there!"
 	para "Welcome to my GYM!"
-	para "...Well, it's not"
+	para "…Well, it's not"
 	line "an official one."
 	para "But one day!"
 	para "I'm going to be a"
@@ -511,7 +511,7 @@ PokefanMWinTextFake:
 PokefanMBeforeTextGrass:
 	text "Hey there!"
 	para "Welcome to my GYM!"
-	para "...Well, it's not"
+	para "…Well, it's not"
 	line "an official one."
 	para "But one day!"
 	para "I'm going to be a"
@@ -536,7 +536,7 @@ PokefanMBeforeTextGrass:
 PokefanMBeforeTextFire:
 	text "Hey there!"
 	para "Welcome to my GYM!"
-	para "...Well, it's not"
+	para "…Well, it's not"
 	line "an official one."
 	para "But one day!"
 	para "I'm going to be a"

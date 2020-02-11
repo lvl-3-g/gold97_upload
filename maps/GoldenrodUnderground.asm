@@ -409,7 +409,7 @@ SupernerdEricBeatenText:
 SupernerdEricAfterBattleText:
 	text "I guess I should"
 	line "just behave"
-	cont "better..."
+	cont "better…"
 	done
 
 SupernerdTeruSeenText:

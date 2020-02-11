@@ -64,7 +64,7 @@ FujiSlowpokeProblem:
 	line "have the strength"
 	cont "to protect them."
 	para "I hope they're"
-	line "okay..."
+	line "okay…"
 	done
 
 FujiTakeThisSurfText:

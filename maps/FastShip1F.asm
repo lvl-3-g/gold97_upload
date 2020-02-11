@@ -236,7 +236,7 @@ CaptainSpeakingText:
 	line "wrong at all!"
 	para "We will arrive as"
 	line "planned."
-	para "Uh... That is all."
+	para "Uh… That is all."
 	done
 
 

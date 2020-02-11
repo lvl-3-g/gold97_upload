@@ -87,7 +87,7 @@ SaffronMagnetTrainSpeechHouseYoungsterText:
 	
 SaffronMagnetTrainParasText:
 	text "PARAS:"
-	line "Paraa..."
+	line "Paraa…"
 	done
 	
 SaffronMagnetTrainBulbasaurText:

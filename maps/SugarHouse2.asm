@@ -19,7 +19,7 @@ SugarHouse2GuruText:
 	line "any by fishing."
 	para "Maybe you have to"
 	line "have a special"
-	cont "ROD..."
+	cont "ROD…"
 	done
 
 SugarHouse2_MapEvents:

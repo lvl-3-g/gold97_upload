@@ -349,7 +349,7 @@ SuperNerdTomSeenText:
 
 SuperNerdTomBeatenText:
 	text "Victories are also"
-	line "rare..."
+	line "rare…"
 	done
 
 SuperNerdTomAfterBattleText:

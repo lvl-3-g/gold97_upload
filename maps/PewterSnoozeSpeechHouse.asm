@@ -14,7 +14,7 @@ PewterSnoozeSpeechHouseTeacherText:
 	line "peaceful here on"
 	cont "the ISLANDS."
 	para "I think I'll take"
-	line "a snooze..."
+	line "a snooze…"
 	done
 	
 	

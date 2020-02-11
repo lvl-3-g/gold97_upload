@@ -349,7 +349,7 @@ InstructorCliffSeenText:
 InstructorCliffBeatenText:
 	text "Losing at #MON"
 	line "is less fun than"
-	cont "the slots..."
+	cont "the slots…"
 	done
 
 InstructorCliffAfterBattleText:

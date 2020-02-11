@@ -69,7 +69,7 @@ StringOptions:
 	db "        :<LF>"
 	db "SOUND<LF>"
 	db "        :<LF>"
-	db "PRINT<LF>"
+	db "TYPE CHART<LF>"
 	db "        :<LF>"
 	db "MENU ACCOUNT<LF>"
 	db "        :<LF>"
@@ -366,47 +366,32 @@ Options_Print:
 	dw .Darker
 	dw .Darkest
 
-.Lightest: db "LIGHTEST@"
-.Lighter:  db "LIGHTER @"
-.Normal:   db "NORMAL  @"
-.Darker:   db "DARKER  @"
-.Darkest:  db "DARKEST @"
+.Lightest: db "BETA    @"
+.Lighter:  db "NORMAL  @"
+.Normal:   db "BETA    @"
+.Darker:   db "NORMAL  @"
+.Darkest:  db "BETA    @"
 
 GetPrinterSetting:
 ; converts GBPRINTER_* value in a to OPT_PRINT_* value in c,
 ; with previous/next GBPRINTER_* values in d/e
 	ld a, [wGBPrinter]
 	and a
-	jr z, .IsLightest
+	jr z, .IsDark
 	cp GBPRINTER_LIGHTER
-	jr z, .IsLight
+	jr z, .IsDark
 	cp GBPRINTER_DARKER
 	jr z, .IsDark
 	cp GBPRINTER_DARKEST
-	jr z, .IsDarkest
+	jr z, .IsDark
 	; none of the above
 	ld c, OPT_PRINT_NORMAL
-	lb de, GBPRINTER_LIGHTER, GBPRINTER_DARKER
-	ret
-
-.IsLightest:
-	ld c, OPT_PRINT_LIGHTEST
-	lb de, GBPRINTER_DARKEST, GBPRINTER_LIGHTER
-	ret
-
-.IsLight:
-	ld c, OPT_PRINT_LIGHTER
-	lb de, GBPRINTER_LIGHTEST, GBPRINTER_NORMAL
+	lb de, GBPRINTER_DARKER, GBPRINTER_DARKER
 	ret
 
 .IsDark:
 	ld c, OPT_PRINT_DARKER
-	lb de, GBPRINTER_NORMAL, GBPRINTER_DARKEST
-	ret
-
-.IsDarkest:
-	ld c, OPT_PRINT_DARKEST
-	lb de, GBPRINTER_DARKER, GBPRINTER_LIGHTEST
+	lb de, GBPRINTER_NORMAL, GBPRINTER_NORMAL
 	ret
 
 Options_MenuAccount:

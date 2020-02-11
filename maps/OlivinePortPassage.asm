@@ -76,7 +76,7 @@ TeleportGuyText12_2:
 TeleportGuyYesText2:
 	text "OK, OK. Picture"
 	line "AMAMI TOWN in your"
-	cont "mind..."
+	cont "mind…"
 	done
 
 TeleportGuyNoText2:

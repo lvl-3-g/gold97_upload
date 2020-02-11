@@ -719,7 +719,7 @@ Text_OakDream:
 	text "OAK: To make a"
 	line "complete guide on"
 	para "all of the #MON"
-	line "in the world..."
+	line "in the world…"
 	para "That was my dream!"
 	line "But #MON are"
 	para "being discovered"
@@ -780,7 +780,7 @@ Text_OakSpeech:
 	line "documenting 150"
 	para "species of"
 	line "#MON!"
-	para "However... It is"
+	para "However… It is"
 	line "a vast world we"
 	para "live in! New"
 	line "#MON are being"
@@ -814,7 +814,7 @@ Text_OakIsOld:
 	text "<RIVAL>: I can't"
 	line "believe this old"
 	para "geezer is PROF."
-	line "OAK..."
+	line "OAK…"
 	done
 
 ElmText_Intro:
@@ -837,7 +837,7 @@ BlueText_Pokedex:
 	para "world's best"
 	line "#MON trainer."
 	para "But when I got"
-	line "too arrogant..."
+	line "too arrogant…"
 	para "There was someone"
 	line "who showed me"
 	cont "humility."
@@ -1338,7 +1338,7 @@ ElmRocketsReturnedText:
 	text "I worry that TEAM"
 	line "ROCKET is planning"
 	para "something truly"
-	line "terrible..."
+	line "terrible…"
 	done
 	
 ElmYoureBasicallyAHeroText:

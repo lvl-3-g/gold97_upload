@@ -94,7 +94,7 @@ PlayersRadioText1:
 	text "<PLAY_G> turned"
 	line "on the radio."
 	
-	para "..."
+	para "…"
 
 	para "You're listening"
 	line "to JOPM, the"
@@ -104,7 +104,7 @@ PlayersRadioText1:
 	para "Coming up next is"
 	line "#MON News!"
 	
-	para "... World famous"
+	para "… World famous"
 	line "#MON researcher"
 	para "PROF. OAK has"
 	line "disappeared from"
@@ -124,12 +124,12 @@ PlayersRadioText1:
 	para "Concerned parties"
 	line "are very worried."
 	
-	para "..."
+	para "…"
 	
 	para "And that was"
 	line "#MON News."
 	
-	para "..."
+	para "…"
 	
 	
 	
@@ -142,7 +142,7 @@ PlayersRadioText2:
 	para "What's this?"
 	line "A new email?"
 	
-	para "..."
+	para "…"
 	
 	para "I hope you'll"
 	line "excuse the sudden"

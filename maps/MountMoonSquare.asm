@@ -99,7 +99,7 @@ NoHealThisTime:
 LassHealTimeText:
 	text "Okay, let me see"
 	line "your #MON for"
-	cont "just a second..."
+	cont "just a second…"
 	done
 	
 LassHealTimeText2:

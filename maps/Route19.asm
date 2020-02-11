@@ -86,7 +86,7 @@ SwimmerfDawnBeatenText:
 
 SwimmerfDawnAfterBattleText:
 	text "It's a quick swim"
-	line "to YORON CITY..."
+	line "to YORON CITY…"
 
 	para "Sheesh, some big"
 	line "man my boyfriend"

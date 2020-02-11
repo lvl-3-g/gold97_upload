@@ -327,7 +327,7 @@ BirdKeeperTobyAfterBattleText:
 	para "FLYING #MON are"
 	line "strong against"
 	cont "FIGHTING TYPE."
-	para "...Is that an"
+	para "…Is that an"
 	line "unfair advantage?"
 	done
 

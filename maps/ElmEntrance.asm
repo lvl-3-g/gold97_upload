@@ -231,10 +231,10 @@ Text_RootingText:
 DaisySpeechText:
 	text "The boy who"
 	line "brought you"
-	cont "here..."
+	cont "here…"
 	para "That's my little"
 	line "brother."
-	para "In other words..."
+	para "In other words…"
 	para "I'm PROF.OAK's"
 	line "granddaughter!"
 	para "Grandpa's a"
@@ -246,9 +246,8 @@ DaisySpeechText:
 	line "of himself if he"
 	para "heard that, so"
 	line "don't tell him!"
-	para "...But he can be"
-	line "be a little"
-	cont "forgetful."
+	para "…But he can be a"
+	line "little forgetful."
 	para "He was also"
 	line "supposed to give"
 	cont "you this!"
@@ -347,7 +346,7 @@ ElmEntranceAideText:
 	
 DoorLockedText:
 	text "The door seems to"
-	line "be locked..."
+	line "be locked…"
 	done
 	
 ElmEntranceSilverText:

@@ -215,7 +215,7 @@ GruntM12SeenText:
 GruntM12BeatenText:
 	text "Losing a battle"
 	line "isn't what I was"
-	cont "talking about..."
+	cont "talking about…"
 	done
 	
 GruntM12AfterBattleText:

@@ -334,7 +334,7 @@ MartCeladon3F2:
 	db WATER_STONE
 	db LEAF_STONE
 	db MOON_STONE
-	db SUN_STONE
+	db HEART_STONE
 	db TRADE_STONE
 	db POISON_STONE
 	db -1 ; end
@@ -426,7 +426,7 @@ MartTestGarden:
 	db ULTRA_BALL
 	db TRADE_STONE
 	db MAX_REVIVE
-	db SUN_STONE
+	db HEART_STONE
 	db POISON_STONE
 	db FULL_HEAL
 	db RARE_CANDY

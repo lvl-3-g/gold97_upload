@@ -37,7 +37,7 @@ RedsMomText1:
 
 RedsHouse1FTVText:
 	text "I've never seen"
-	line "this show..."
+	line "this show…"
 	done
 
 RedsHouse1F_MapEvents:

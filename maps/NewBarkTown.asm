@@ -321,16 +321,16 @@ Movement_PlayerTurnsHead:
 	step_end
 	
 Text_Study101:
-	text "...And if we spend"
+	text "…And if we spend"
 	line "just a few more"
 	para "days observing the"
 	line "#MON living in"
-	para "ROUTE 101..."
+	para "ROUTE 101…"
 	
-	para "..."
+	para "…"
 	para "He seems to be"
 	line "completely"
-	cont "occupied..."
+	cont "occupied…"
 	
 	done
 
@@ -367,9 +367,9 @@ Text_ItsDangerousToGoAlone:
 	cont "protection!"
 	
 	para "Ah! Wait, are you"
-	line "perhaps...?"
+	line "perhaps…?"
 	
-	para "...Come with me!"
+	para "…Come with me!"
 	done
 
 Text_YourMonIsAdorable:

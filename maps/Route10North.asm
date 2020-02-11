@@ -136,7 +136,7 @@ BirdKeeperPeterBeatenText:
 
 BirdKeeperPeterAfterText:
 	text "I wish I could"
-	line "fly..."
+	line "fly…"
 	done
 	
 PokefanmJoshuaSeenText:

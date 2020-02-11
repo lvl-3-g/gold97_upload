@@ -144,7 +144,7 @@ CooltrainermSeanBeatenText:
 CooltrainermSeanAfterBattleText:
 	text "I should battle"
 	line "more GYM LEADERS"
-	cont "first..."
+	cont "first…"
 	done
 
 CooltrainerfCarolSeenText:

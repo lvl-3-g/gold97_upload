@@ -113,7 +113,7 @@ ScientistJedSeenText:
 ScientistJedBeatenText:
 	text "#MON battles"
 	line "are more difficult"
-	cont "than science..."
+	cont "than science…"
 	done
 	
 ScientistJedAfterBattleText:

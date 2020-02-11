@@ -248,7 +248,7 @@ N64HouseScientistText4:
 	line "that people meet"
 	para "to socialize, but"
 	line "doesn't have any"
-	cont "games to play..."
+	cont "games to play…"
 	done
 	
 N64HouseScientistText3:
@@ -264,7 +264,7 @@ N64HouseScientistText3:
 	para "Maybe look some-"
 	line "where that people"
 	para "play other types"
-	line "of games..."
+	line "of games…"
 	done
 	
 N64HouseScientistText2:
@@ -276,7 +276,7 @@ N64HouseScientistText2:
 	para "Maybe look in a"
 	line "town where there"
 	para "isn't too much"
-	line "to do..."
+	line "to do…"
 	done
 
 N64HouseScientistText:
@@ -288,7 +288,7 @@ N64HouseScientistText:
 	cont "between battles."
 	para "But it doesn't"
 	line "seem to be"
-	cont "catching on..."
+	cont "catching on…"
 	para "Hey, if you find"
 	line "any trainers who"
 	para "might be interest-"

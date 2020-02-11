@@ -119,7 +119,7 @@ BurnedTowerSilver_WinText:
 	para "I've raised my"
 	line "team to be the"
 	para "strongest, but"
-	line "still I lose..."
+	line "still I lose…"
 	done
 BurnedTowerSilver_AfterText1:
 	text "Ah, whatever."

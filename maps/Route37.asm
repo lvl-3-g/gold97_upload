@@ -192,7 +192,7 @@ YoungsterAlbertAfterBattleText:
 	done
 	
 FledglingClaytonSeenText:
-	text "I'm... I'm pretty"
+	text "I'm… I'm pretty"
 	line "new at this."
 	para "Oh, are you too?"
 	done

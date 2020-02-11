@@ -81,7 +81,7 @@ TeleportGuyText1_2:
 TeleportGuyYesText:
 	text "OK, OK. Picture"
 	line "WEST CITY in your"
-	cont "mind..."
+	cont "mind…"
 	done
 
 TeleportGuyNoText:

@@ -185,11 +185,11 @@ GruntF1AfterBattleText:
 	done
 	
 AquaYoungsterRocketsText:
-	text "Hmm... I don't"
+	text "Hmm… I don't"
 	line "think these guys"
 	para "in black are"
 	line "supposed to be"
-	cont "here..."
+	cont "here…"
 	done
 
 AquaYoungsterNoRocketsText:

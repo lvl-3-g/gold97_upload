@@ -118,7 +118,7 @@ GruntM28SeenText:
 	
 GruntM28BeatenText:
 	text "You were prepared"
-	line "for this..."
+	line "for this…"
 	done
 	
 GruntM28AfterBattleText:
@@ -213,7 +213,7 @@ RadioTower4fSuperNerdText:
 	para "help research the"
 	line "locations #MON"
 	cont "live at!"
-	para "..."
+	para "…"
 	para "Ah, you're helping"
 	line "him with his"
 	cont "research?"

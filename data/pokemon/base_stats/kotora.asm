@@ -1,6 +1,6 @@
 	db KOTORA ; 170
 
-	db  80,  38,  33,  72,  56,  51
+	db  70,  45,  33,  72,  58,  51
 	;   hp  atk  def  spd  sat  sdf
 
 	db ELECTRIC, ELECTRIC ; type

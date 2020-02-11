@@ -21,7 +21,7 @@ CeruleanDiglett:
 CeruleanPoliceStationFishingGuruText:
 	text "IMPOSTER OAK: Oh."
 	para "It's you."
-	para "..."
+	para "…"
 	para "I'm not here to"
 	line "fight or to take"
 	para "part in some evil"

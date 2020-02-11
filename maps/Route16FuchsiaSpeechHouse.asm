@@ -47,7 +47,7 @@ ViridianCityDreamEaterFisherText:
 	text "Yawn!"
 
 	para "I've been training"
-	line "so much lately..."
+	line "so much lately…"
 	para "I'm so tired, I"
 	line "could fall asleep."
 	

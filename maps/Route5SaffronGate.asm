@@ -36,9 +36,9 @@ Route5SaffronGateOfficerRocketsText:
 	line "be breaking any"
 	para "laws, so I guess"
 	line "it's none of my"
-	cont "business..."
+	cont "business…"
 	para "But they make me"
-	line "uneasy..."
+	line "uneasy…"
 	done
 
 Route5SaffronGateOfficerGoodText:

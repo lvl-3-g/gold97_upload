@@ -74,7 +74,7 @@ MahoganyRedGyaradosSpeechHouseBlackBeltText_No:
 	text "Oh. I guess I"
 	line "should work on my"
 	para "own self-restraint"
-	line "instead..."
+	line "instead…"
 	done
 
 MahoganyRedGyaradosSpeechHouseBlackBeltText_After:

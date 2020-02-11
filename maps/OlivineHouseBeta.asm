@@ -110,7 +110,7 @@ SometimesYouLiveLongEnough:
 	done
 	
 OlivineElderStoryText:
-	text "Listen closely..."
+	text "Listen closely…"
 	para "Many years ago,"
 	line "NIHON was guarded"
 	para "by a noble bird,"
@@ -152,7 +152,7 @@ OlivineElderStoryText:
 	para "It is said that"
 	line "one day, the bird"
 	cont "shall return."
-	para "..."
+	para "…"
 	para "I feel we are upon"
 	line "that day."
 	para "Could it be?"

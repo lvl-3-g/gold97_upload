@@ -256,7 +256,7 @@ R36GSilverGreets3:
 	done
 	
 R36GSilverGreets3_5:
-	text "..."
+	text "…"
 	done
 	
 R36GSilverGreets4:

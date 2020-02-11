@@ -108,7 +108,7 @@ SageMasaSeenText:
 	done
 
 SageMasaBeatenText:
-	text "..."
+	text "…"
 	done
 
 SageMasaAfterBattleText:

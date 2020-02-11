@@ -480,7 +480,7 @@ WhatHaveYouDoneText:
 	done
 	
 WhatHaveYouDoneText2:
-	text "..."
+	text "…"
 	para "I had hoped it"
 	line "wouldn't have to"
 	cont "come to this."
@@ -592,7 +592,7 @@ YoureNotOakCompScene:
 SystemAlreadyOff:
 	text "The system makes"
 	line "no noise and seems"
-	cont "inoperable..."
+	cont "inoperable…"
 	done
 	
 SystemShuttingDown:
@@ -617,14 +617,14 @@ AreYouSurePowerText:
 	
 ReturningToPowerMenu:
 	text "RETURNING TO"
-	line "PREVIOUS MENU..."
+	line "PREVIOUS MENU…"
 	done
 	
 PasswordEntered:
 	text "<PLAY_G> entered"
-	line "the password..."
+	line "the password…"
 	para "'HAIL GIOVANNI'"
-	para "..."
+	para "…"
 	para "WARNING!"
 	line "THE ACTION YOU ARE"
 	para "ABOUT TO TAKE CAN-"
@@ -671,7 +671,7 @@ ConsoleMenu1Text:
 	
 ConsoleMenu2Text:
 	text "CURRENT CAPACITY-"
-	line "74 PERCENT..."
+	line "74 PERCENT…"
 	done
 	
 ConsoleMenu3Text:
@@ -681,7 +681,7 @@ ConsoleMenu3Text:
 	
 TeamRocketBaseB2FComputerConsoleCancelText:
 	text "SIGNING OUT OF"
-	line "CONSOLE..."
+	line "CONSOLE…"
 	done
 	
 TeamRocketBaseB2FComputerConsoleIntroText:
@@ -724,7 +724,7 @@ ScientistRossSeenText:
 ScientistRossBeatenText:
 	text "Yours clearly"
 	line "aren't under our"
-	cont "control..."
+	cont "control…"
 	done
 	
 ScientistRossAfterBattleText:
@@ -802,13 +802,13 @@ GruntM10SeenText:
 	done
 	
 GruntM10BeatenText:
-	text "I lose..."
+	text "I lose…"
 	done
 	
 GruntM10AfterBattleText:
 	text "Apparently I get"
 	line "defeated when you"
-	cont "get in my way..."
+	cont "get in my way…"
 	done
 
 GruntM9SeenText:
@@ -838,7 +838,7 @@ GruntM8SeenText:
 	
 GruntM8BeatenText:
 	text "You still don't"
-	line "belong..."
+	line "belong…"
 	done
 	
 GruntM8AfterBattleText:

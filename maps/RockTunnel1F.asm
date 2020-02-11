@@ -23,7 +23,7 @@ RockTunnel1FHiddenXDefend:
 	hiddenitem X_DEFEND, EVENT_ROCK_TUNNEL_1F_HIDDEN_X_DEFEND
 	
 RockTunnel1FHeartStone:
-	itemball SUN_STONE
+	itemball HEART_STONE
 
 	
 RockTunnel1FBoulder:

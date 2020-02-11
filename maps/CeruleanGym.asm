@@ -38,19 +38,19 @@ DontDisturbSnorlaxScript:
 	
 SnorlaxAloneText:
 	text "Better leave it"
-	line "alone..."
+	line "alone…"
 	done
 	
 SnorlaxText:
 	text "This SNORLAX looks"
 	line "kind of restless."
-	para "...Want to disturb"
+	para "…Want to disturb"
 	line "it?"
 	done
 	
 SnorlaxText2:
 	text "You pushed against"
-	line "the SNORLAX..."
+	line "the SNORLAX…"
 	para "It's awake!"
 	done
 	

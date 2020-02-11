@@ -50,7 +50,7 @@ FuchsiaMartFisherText:
 	text "I wonder how much"
 	line "the local MART is"
 	para "affected by the"
-	line "ZOO closure..."
+	line "ZOO closure…"
 	done
 	
 FuchsiaMartFisherText2:

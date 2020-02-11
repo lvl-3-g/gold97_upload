@@ -241,7 +241,7 @@ EcruteakCityYoungsterText:
 	text "I've tried many"
 	line "times, but I've"
 	para "never been able to"
-	line "defeat WHITNEY..."
+	line "defeat WHITNEY…"
 	done
 
 EcruteakCityGramps3Text:
