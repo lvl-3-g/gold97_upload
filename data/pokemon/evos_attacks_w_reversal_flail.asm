@@ -273,6 +273,7 @@ RattataEvosAttacks:
 	db 1, TAIL_WHIP
 	db 7, QUICK_ATTACK
 	db 13, HYPER_FANG
+;	db 17, REVERSAL
 	db 17, BODY_SLAM
 	db 20, FOCUS_ENERGY
 	db 27, PURSUIT
@@ -286,6 +287,7 @@ RaticateEvosAttacks:
 	db 1, QUICK_ATTACK
 	db 7, QUICK_ATTACK
 	db 13, HYPER_FANG
+;	db 17, REVERSAL
 	db 17, BODY_SLAM
 	db 20, SCARY_FACE
 	db 30, PURSUIT
@@ -1469,6 +1471,7 @@ HitmonleeEvosAttacks:
 	db 36, FORESIGHT
 	db 41, ENDURE
 	db 46, MEGA_KICK
+;	db 51, REVERSAL
 	db 51, MACH_PUNCH
 	db 0 ; no more level-up moves
 
@@ -1598,6 +1601,7 @@ KangaskhanEvosAttacks:
 	db 31, RAGE
 	db 37, ENDURE
 	db 43, DIZZY_PUNCH
+;	db 49, REVERSAL
 	db 49, BODY_SLAM
 	db 0 ; no more level-up moves
 
@@ -1636,6 +1640,7 @@ GoldeenEvosAttacks:
 	db 1, TAIL_WHIP
 	db 10, SUPERSONIC
 	db 15, HORN_ATTACK
+;	db 24, FLAIL
 	db 24, TACKLE
 	db 29, FURY_ATTACK
 	db 38, WATERFALL
@@ -1650,6 +1655,7 @@ SeakingEvosAttacks:
 	db 1, TAIL_WHIP
 	db 10, SUPERSONIC
 	db 15, HORN_ATTACK
+;	db 24, FLAIL
 	db 24, TACKLE
 	db 29, FURY_ATTACK
 	db 41, WATERFALL
@@ -1788,6 +1794,7 @@ MagikarpEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, SPLASH
 	db 15, TACKLE
+;	db 30, FLAIL
 	db 0 ; no more level-up moves
 
 GyaradosEvosAttacks:
@@ -2634,6 +2641,7 @@ KingoldEvosAttacks:
 	db 1, TAIL_WHIP
 	db 8, SUPERSONIC
 	db 12, HORN_ATTACK
+;	db 20, FLAIL
 	db 20, TACKLE
 	db 25, FURY_ATTACK
 	db 32, WATERFALL
@@ -3180,6 +3188,7 @@ PhanpyEvosAttacks:
 	db 1, TACKLE
 	db 1, GROWL
 	db 9, DEFENSE_CURL
+;	db 17, FLAIL
 	db 17, BODY_SLAM
 	db 25, TAKE_DOWN
 	db 33, ROLLOUT
@@ -3192,6 +3201,7 @@ DonphanEvosAttacks:
 	db 1, HORN_ATTACK
 	db 1, GROWL
 	db 9, DEFENSE_CURL
+;	db 17, FLAIL
 	db 17, BODY_SLAM
 	db 25, FURY_ATTACK
 	db 33, ROLLOUT
