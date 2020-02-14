@@ -105,7 +105,7 @@ TrainerBoarderDouglas:
 MahoganyGymGuyScript:
 	faceplayer
 	opentext
-	checkevent EVENT_JASMINE_RETURNED_TO_GYM
+	checkevent EVENT_PRYCE_IN_GYM
 	iftrue .PryceNotAround
 	checkevent EVENT_BEAT_PRYCE
 	iftrue .MahoganyGymGuyWinScript
@@ -372,7 +372,7 @@ MahoganyGym_MapEvents:
 	bg_event  6, 15, BGEVENT_READ, MahoganyGymStatue
 
 	db 5 ; object events
-	object_event  3,  2, SPRITE_PRYCE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, MahoganyGymPryceScript, EVENT_JASMINE_RETURNED_TO_GYM
+	object_event  3,  2, SPRITE_PRYCE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, MahoganyGymPryceScript, EVENT_PRYCE_IN_GYM
 	object_event  9, 10, SPRITE_LASS, SPRITEMOVEDATA_SPINRANDOM_FAST, 1, 1, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 1, TrainerSkierRoxanne, -1
 ;	object_event  0, 17, SPRITE_ROCKER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 0, TrainerBoarderRonald, -1
 ;	object_event  9, 17, SPRITE_LASS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 0, TrainerSkierClarissa, -1

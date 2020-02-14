@@ -88,7 +88,7 @@ LavenderSpeechHousePryceScript:
 	playsound SFX_EXIT_BUILDING
 	disappear LAVENDERSPEECHHOUSE_PRYCE
 	setevent EVENT_FOUGHT_BIPETAL
-	clearevent EVENT_JASMINE_RETURNED_TO_GYM
+	clearevent EVENT_PRYCE_IN_GYM
 	waitsfx
 	end
 
@@ -97,7 +97,7 @@ LavenderSpeechHousePryceScript:
 	playsound SFX_EXIT_BUILDING
 	disappear LAVENDERSPEECHHOUSE_PRYCE
 	setevent EVENT_FOUGHT_BIPETAL
-	clearevent EVENT_JASMINE_RETURNED_TO_GYM
+	clearevent EVENT_PRYCE_IN_GYM
 	waitsfx
 	end
 	

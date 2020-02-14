@@ -13,7 +13,7 @@ LavRadioTower1F_MapScripts:
 LavRadioTower1FReceptionistScript:
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_SECRETPOTION_FROM_PHARMACY
+	checkevent EVENT_ROCKET_KEY_DIALOGUE
 	iftrue .GiveKey
 	writetext LavRadioTower1FReceptionistText
 	waitbutton
@@ -62,7 +62,7 @@ LavRadioTower1FOfficerScript:
 LavRadioTower1FSuperNerd1Script:
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_SECRETPOTION_FROM_PHARMACY
+	checkevent EVENT_ROCKET_KEY_DIALOGUE
 	iftrue .SN1KeyScript
 	writetext LavRadioTower1FSuperNerd1Text
 	waitbutton
@@ -78,7 +78,7 @@ LavRadioTower1FSuperNerd1Script:
 LavRadioTower1FGentlemanScript:
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_SECRETPOTION_FROM_PHARMACY
+	checkevent EVENT_ROCKET_KEY_DIALOGUE
 	iftrue .GMKeyScript
 	writetext LavRadioTower1FGentlemanText
 	waitbutton
@@ -95,7 +95,7 @@ LavRadioTower1FGentlemanScript:
 LavRadioTower1FSuperNerd2Script:
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_SECRETPOTION_FROM_PHARMACY
+	checkevent EVENT_ROCKET_KEY_DIALOGUE
 	iftrue .SN2KeyScript
 	writetext LavRadioTower1FSuperNerd2Text
 	waitbutton

@@ -158,6 +158,17 @@ N64HouseCooltrainerMScript:
 N64HouseFisherScript:
 	jumptextfaceplayer N64HouseFisherText
 	
+N64HouseN64Script:
+	jumptext N64HouseN64Text
+	
+N64HouseN64Text:
+	text "<PLAYER> played the"
+	line "N64."
+
+	para "Better get going--"
+	line "no time to lose!"
+	done
+	
 N64HouseFisherText:
 	text "Should I try to"
 	line "play the racing"
@@ -306,7 +317,10 @@ GoldenrodFlowerShop_MapEvents:
 
 	db 0 ; coord events
 
-	db 0 ; bg events
+	db 2 ; bg events
+	bg_event  4,  3, BGEVENT_READ, N64HouseN64Script
+	bg_event  0,  3, BGEVENT_READ, N64HouseN64Script
+
 
 	db 6 ; object events
 	object_event 6,  6, SPRITE_SCIENTIST, SPRITEMOVEDATA_SPINRANDOM_SLOW, 2, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, N64HouseScientistScript, -1

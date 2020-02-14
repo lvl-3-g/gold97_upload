@@ -53,7 +53,7 @@ MewScript:
 	closetext
 	setevent EVENT_EXPLODING_TRAP_17
 	writecode VAR_BATTLETYPE, BATTLETYPE_LEGENDKANTO
-	loadwildmon MEW, 10
+	loadwildmon MEW, 5
 	startbattle
 	disappear BLACKTHORN_GYM_1F_MEW
 	reloadmapafterbattle

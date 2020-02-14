@@ -148,7 +148,7 @@ EngineerRicardoAfterText:
 	done
 
 SwimmermSimonSeenText:
-	text "I wish the waater"
+	text "I wish the water"
 	line "was warmer here."
 	done
 

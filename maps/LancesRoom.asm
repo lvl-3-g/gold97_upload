@@ -220,8 +220,8 @@ LanceBattleIntroText:
 	para "It's inevitable"
 	line "that someone with"
 	para "your skills would"
-	line "would eventually"
-	cont "reach me here."
+	line "eventually reach"
+	cont "me here."
 
 	para "There's no need"
 	line "for words now."

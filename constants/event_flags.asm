@@ -43,10 +43,10 @@
 	const EVENT_GOT_HAPPA_FROM_ELM
 	const EVENT_GOT_MYSTERY_EGG_FROM_MR_POKEMON
 	const EVENT_GAVE_MYSTERY_EGG_TO_ELM
-	const EVENT_JASMINE_RETURNED_TO_GYM; used, for pryce in his gym
+	const EVENT_PRYCE_IN_GYM; used, for pryce in his gym
 	const EVENT_CLEARED_RADIO_TOWER ;this is the end of team rocket- if this is set, they're gone
 	const EVENT_CLEARED_ROCKET_HIDEOUT ;this is what's used for the end of team rocket hideout in honto(did I actually use this? Not sure)
-	const EVENT_GOT_SECRETPOTION_FROM_PHARMACY ;used for dialogue in the rocket honto house after being told to get ship key
+	const EVENT_ROCKET_KEY_DIALOGUE ;used for dialogue in the rocket honto house after being told to get ship key
 	const EVENT_GOT_SS_TICKET_FROM_ELM
 	const EVENT_USED_THE_CARD_KEY_IN_THE_RADIO_TOWER;used for getting ship fuel line 
 	const EVENT_REFUSED_TO_HELP_LANCE_AT_LAKE_OF_RAGE

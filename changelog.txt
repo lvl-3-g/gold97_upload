@@ -3,3 +3,16 @@
 - gave curstraw/curpan curse via level-up
 - removed unneeded data for crystal exclusive movesets
 - all pokemon that should be able to can now learn toxic
+2.0
+- new type chart, option to return to final game chart
+- changed typings for many beta pokemon to match the demo
+- revamped movesets for many pokemon more closely inspired by the demo
+2.01
+- minor fixes
+2.02
+- fixed bugged tilesets for several cave maps
+- removed all instances of Flail and Reversal from level-up movesets- those moves don't calculate damage correctly since editing the type chart, don't know how to fix it yet, only affects a few pokemon
+2.03
+- fixed a few typos 
+- changed menu options for type chart to "SW97" and "FINAL"
+- reduced encounter level of Mew from 10 to 5, so the wild Mew won't know Transform yet, which causes the game to treat it as if it was a Ditto when caught

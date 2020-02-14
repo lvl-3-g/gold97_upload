@@ -44,7 +44,7 @@ BlackthornYoungsterScript:
 BlackthornCooltrainerF2Script:
 	faceplayer
 	opentext
-	checkevent EVENT_JASMINE_RETURNED_TO_GYM
+	checkevent EVENT_PRYCE_IN_GYM
 	iffalse .HotshotWow
 	writetext BlackthornCooltrainerF2TextNotWow
 	waitbutton

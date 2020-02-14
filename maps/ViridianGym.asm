@@ -146,7 +146,7 @@ TrainerGruntM22:
 
 
 .Script:
-	setevent EVENT_GOT_SECRETPOTION_FROM_PHARMACY
+	setevent EVENT_ROCKET_KEY_DIALOGUE
 	checkevent EVENT_USED_BASEMENT_KEY
 	iftrue .HowdYouGetThat
 	opentext
@@ -233,7 +233,7 @@ CaptainRocketScript:
 	pause 15
 	setevent EVENT_ROUTE_5_6_POKEFAN_M_BLOCKS_UNDERGROUND_PATH
 	clearevent EVENT_FLORIA_AT_FLOWER_SHOP
-	setevent EVENT_JASMINE_RETURNED_TO_GYM
+	setevent EVENT_PRYCE_IN_GYM
 	setevent EVENT_FOUGHT_BIPETAL
 	setmapscene ROUTE_33, SCENE_ROUTE33_NOTHING
 	warp ROUTE_5, 13, 3
