@@ -359,7 +359,7 @@ GruntM26SeenText:
 	text "Why are we here?"
 	para "Because you and"
 	line "your friend"
-	para "destoryed our"
+	para "destroyed our"
 	line "antenna!"
 	para "Why build another"
 	line "when we could just"
