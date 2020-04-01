@@ -729,7 +729,7 @@ Text_OakDream:
 	cont "in this world."
 	para "So you two are"
 	line "going to help me"
-	cont "fufill my dream!"
+	cont "fulfill my dream!"
 	para "And to do that,"
 	line "you'll need your"
 	cont "own #MON!"
