@@ -16,3 +16,5 @@
 - fixed a few typos 
 - changed menu options for type chart to "SW97" and "FINAL"
 - reduced encounter level of Mew from 10 to 5, so the wild Mew won't know Transform yet, which causes the game to treat it as if it was a Ditto when caught
+2.04
+- fixed a few typos
