@@ -1151,7 +1151,7 @@ TitleScreenMain:
 ; Hold Down + B + Select to initiate the sequence.
 	ldh a, [hClockResetTrigger]
 	cp $34
-	jr z, .check_clock_reset
+	jr z, .clock_reset
 
 	ld a, [hl]
 	and D_DOWN + B_BUTTON + SELECT

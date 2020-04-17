@@ -910,9 +910,9 @@ UnknownText_0x1c55d6::
 	done
 
 UnknownText_0x1c55db::
-	text "Password OK."
-	line "Select CONTINUE &"
-	cont "reset settings."
+;	text "Password OK."
+	text "Select CONTINUE &"
+	line "reset settings."
 	prompt
 
 UnknownText_0x1c560b::

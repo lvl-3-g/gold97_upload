@@ -41,6 +41,10 @@ ZapdosScript:
 ZapdosText:
 	text "Zyah!"
 	done
+	
+
+ZapdosHiddenBrightPowder:
+	hiddenitem BRIGHTPOWDER, EVENT_PICKED_UP_ENERGY_ROOT_FROM_AERODACTYL_ITEM_ROOM
 
 MountMortarZapdosRoom_MapEvents:
 	db 0, 0 ; filler
@@ -50,7 +54,8 @@ MountMortarZapdosRoom_MapEvents:
 
 	db 0 ; coord events
 
-	db 0 ; bg events
+	db 1 ; bg events
+	bg_event  3,  4, BGEVENT_ITEM, ZapdosHiddenBrightPowder
 
 	db 1 ; object events
 	object_event  7,  5, SPRITE_MOLTRES, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, ZapdosScript, EVENT_EXPLODING_TRAP_8

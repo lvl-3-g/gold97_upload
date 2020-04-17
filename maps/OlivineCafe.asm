@@ -70,7 +70,7 @@ OlivineCafeSailorText:
 	done
 	
 OlivineCafeClerkText
-	text "Welcome to NUYTPE"
+	text "Welcome to NUTYPE"
 	line "CAFE!"
 	para "We have food to"
 	line "satisfy every"

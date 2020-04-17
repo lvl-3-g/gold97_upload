@@ -125,7 +125,6 @@ GoldenrodGymGuyScript:
 	end
 	
 .GoldenrodGymGuyWinScript:
-	opentext
 	writetext GoldenrodGymGuyWinText
 	waitbutton
 	closetext
