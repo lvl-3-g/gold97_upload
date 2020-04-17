@@ -18,3 +18,7 @@
 - reduced encounter level of Mew from 10 to 5, so the wild Mew won't know Transform yet, which causes the game to treat it as if it was a Ditto when caught
 2.04
 - fixed a few typos
+2.05
+- fixed a few typos
+- made clock reset easier, just hold down+b+select on title screen
+- added brightpowder item to zapdos room
