@@ -479,9 +479,20 @@ OlivinePortCooltrainerFText:
 OlivinePortSailorBeforeHOFText:
 	text "We're very sorry,"
 	line "but at this time,"
-	para "the WEST CITY DOCK"
-	line "is closed while we"
-	cont "do repairs."
+	para "the WEST CITY"
+	line "DOCKS are closed"
+	cont "for maintenance."
+	para "You look like a"
+	line "tough trainer,"
+	cont "though."
+	para "Have you given"
+	line "BUGSY a challenge?"
+	para "Why don't you give"
+	line "that a try and"
+	cont "come back later."
+	para "We'll probably be"
+	line "done with our work"
+	cont "by then."
 	done
 
 

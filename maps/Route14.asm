@@ -11,7 +11,7 @@ Route14_MapEvents:
 
 	db 2 ; warp events
 	warp_event  9,  7, VICTORY_ROAD_GATE, 1
-	warp_event 11,  7, TEST_GARDEN, 1
+	warp_event 11,  7, OLIVINE_PORT, 1
 
 	db 0 ; coord events
 

@@ -178,7 +178,12 @@ RuinsOfAlphResearchCenterPhoto:
 	jumptext RuinsOfAlphResearchCenterProfSilktreePhotoText
 
 RuinsOfAlphResearchCenterBookshelf:
+RuinsOfAlphResearchCenterBookshelf2:
+RuinsOfAlphResearchCenterBookshelf3:
 	jumptext RuinsOfAlphResearchCenterAcademicBooksText
+	
+RuinsOfAlphResearchCenterComputer2:
+	jumptext RuinsOfAlphResearchCenterComputer2Text
 
 MovementData_0x5926f:
 	step DOWN
@@ -197,6 +202,12 @@ MovementData_0x59276:
 	step UP
 	step UP
 	step_end
+	
+RuinsOfAlphResearchCenterComputer2Text:
+	text "It's a computer"
+	line "displaying images"
+	cont "of strange glyphs."
+	done
 	
 RuinsOfAlphResearchCenterModifiedDexBeforeText:
 	text "Ah!"
@@ -417,10 +428,13 @@ RuinsOfAlphResearchCenter_MapEvents:
 	
 	db 0 ; coord events
 
-	db 3 ; bg events
+	db 6 ; bg events
+	bg_event  1,  1, BGEVENT_READ, RuinsOfAlphResearchCenterBookshelf
+	bg_event  0,  1, BGEVENT_READ, RuinsOfAlphResearchCenterBookshelf
 	bg_event  3,  1, BGEVENT_READ, RuinsOfAlphResearchCenterBookshelf
 	bg_event  0,  0, BGEVENT_READ, RuinsOfAlphResearchCenterComputer
 	bg_event  6,  1, BGEVENT_READ, RuinsOfAlphResearchCenterPrinter
+	bg_event  2,  3, BGEVENT_READ, RuinsOfAlphResearchCenterComputer2
 
 	db 3 ; object events
 	object_event  7,  5, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, RuinsOfAlphResearchCenterScientist1Script, -1

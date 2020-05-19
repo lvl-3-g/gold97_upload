@@ -22,6 +22,8 @@ ViridianPokecenter1FNurseScript:
 	end
 
 ViridianPokecenter1FCooltrainerMScript:
+	checkevent EVENT_MET_BILL
+	iftrue Script_TimeCapsuleClosed2
 	faceplayer
 	opentext
 	writetext ViridianPokecenter1FCooltrainerMText
@@ -29,7 +31,13 @@ ViridianPokecenter1FCooltrainerMScript:
 	closetext
 	end
 
-
+Script_TimeCapsuleClosed2:
+	faceplayer
+	opentext
+	writetext ViridianPokecenter1FCooltrainerMText2
+	waitbutton
+	closetext
+	end
 
 ViridianPokecenter1FCooltrainerFScript:
 	jumptextfaceplayer ViridianPokecenter1FCooltrainerFText
@@ -58,8 +66,17 @@ ViridianPokecenterMonText:
 	text "HOUNDOOM:"
 	line "GRUFFF!"
 	done
-
+	
 ViridianPokecenter1FCooltrainerMText:
+	text "It's true!"
+	para "The TIME CAPSULE"
+	line "upstairs allows"
+	para "you to trade"
+	line "#MON with the"
+	cont "past!"
+	done
+
+ViridianPokecenter1FCooltrainerMText2:
 	text "I heard the"
 	line "machine they're"
 	

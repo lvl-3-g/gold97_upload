@@ -179,6 +179,7 @@ DebugSign:
 ;	giveitem HM_ROCK_SMASH
 ;	giveitem RARE_CANDY, 99
 ;	giveitem MASTER_BALL, 99
+	clearevent EVENT_BEAT_SAGE_NICO
 	jumptext DebugSignText
 	end
 
@@ -369,7 +370,7 @@ Route29_MapEvents:
 	bg_event 42,  8, BGEVENT_READ, Route29Sign1
 	bg_event 10,  2, BGEVENT_READ, Route29Sign2
 	bg_event 34,  7, BGEVENT_READ, SilentHillsEntranceSign
-	bg_event 37,  2, BGEVENT_READ, DebugSign
+	bg_event 38,  2, BGEVENT_READ, DebugSign
 
 	db 8 ; object events
 	object_event 45, 11, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CatchingTutorialDudeScript, -1
