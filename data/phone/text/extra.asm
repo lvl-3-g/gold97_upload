@@ -1134,15 +1134,19 @@ UnknownText_0x662fc:
 UnknownText_0x66335:
 	text "Did you know…?"
 	line "BILL's originally"
-	cont "from GOLDENROD."
+	cont "from OLD CITY."
 	done
 
 UnknownText_0x66366:
 	text "Did you know…?"
 	line "BILL evidently"
 
-	para "lives on ROUTE 25"
-	line "in KANTO."
+	para "created many"
+	line "versions of the"
+	cont "storage system."
+	para "The one we use"
+	line "is the latest"
+	cont "and greatest!"
 	done
 
 UnknownText_0x663a1:
@@ -1182,15 +1186,15 @@ UnknownText_0x6649b:
 	line "BILL appears to"
 
 	para "like the lady at"
-	line "the FLOWER SHOP."
+	line "the KANTO BATTLE"
+	cont "CLUB."
 	done
 
 UnknownText_0x664dd:
 	text "Did you know…?"
-	line "BILL's mother is"
-
-	para "said to have been"
-	line "a KIMONO GIRL."
+	line "BILL's mother had"
+	para "once been a GYM"
+	line "LEADER."
 	done
 
 UnknownText_0x6651e:

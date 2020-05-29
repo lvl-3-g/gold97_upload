@@ -279,6 +279,9 @@ ViridianGymSmokeBall:
 	
 ViridianGymAmuletCoin:
 	itemball AMULET_COIN
+	
+TrashCanBoatScript:
+	jumptext TrashCanBoatText
 
 	
 Movement_StepUpToMeShip:
@@ -334,6 +337,11 @@ ImposterLeavesRoom:
 	step RIGHT
 	step DOWN
 	step_end
+	
+TrashCanBoatText:
+	text "There's nothing in"
+	line "here…"
+	done
 
 GruntM22SeenText:
 	text "You're pretty far"
@@ -701,8 +709,9 @@ ViridianGym_MapEvents:
 	coord_event  3,  2, SCENE_DEFAULT, RocketGreetingsScript
 	coord_event 35, 21, SCENE_VIRIDIAN_GYM_IMPOSTER, ImposterAndCaptainScript
 
-	db 1 ; bg events
+	db 2 ; bg events
 	bg_event 29, 29, BGEVENT_READ, BasementDoorScript
+	bg_event 29,  7, BGEVENT_READ, TrashCanBoatScript
 
 
 	db 11 ; object events
