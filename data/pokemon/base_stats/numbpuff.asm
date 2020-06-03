@@ -1,6 +1,6 @@
 	db NUMBPUFF ; 217
 
-	db  75,  90,  70,  95,  95,  65
+	db  75,  90,  70,  95,  80,  65
 	;   hp  atk  def  spd  sat  sdf
 
 	db WATER, ELECTRIC ; type

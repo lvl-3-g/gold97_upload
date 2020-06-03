@@ -32,8 +32,13 @@
 - added text to West City Docks clarifying player to return after defeating Bugsy
 - added arrows pointing to the entrance of Silent Hills
 - added new text for trainer in Silent Town pokecenter after Time Capsule opens
-2.11
+3.00
+- Difficulty curve adjustment! The biggest thing people have asked for. Many trainers in the 2nd half of the game have difficulty adjustments.
 - fixed some dialogue for phone calls on trivia about Bill
 - Qwilfish learns thunder wave at level 12 instead of 10 so it isn't at the same time as water gun
 - added text to empty trash can in team rocket boat
 - boardwalk is built now as soon as slowpoke well event is complete, doesn't require stepping onto route 116
+- slightly adjusted stats for Numbpuff, Aquarius
+- a few minor item ball placement changes
+
+I think I'm about done making changes to this for now. Will still fix any minor bugs that are found but I believe it's feature complete at this point. Maybe I'll come back to it in the future, pretty happy with what I've made though.
